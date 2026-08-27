@@ -1,0 +1,214 @@
+{
+  "region": "PO7-PO11 Havant borough",
+  "date": "2026-07-02",
+  "townsCrawled": [
+    "Havant (+Bedhampton, Leigh Park)",
+    "Hayling Island",
+    "Emsworth",
+    "Waterlooville (+Purbrook)",
+    "Cowplain+Horndean"
+  ],
+  "townsRemaining": [],
+  "newVenues": {
+    "The Ropemaker, A Heartwood Inn (Emsworth)": "0fb76f42-1aeb-42e9-9521-86b6bd9efa7b",
+    "The Spring Arts & Heritage Centre (Havant)": "fb25e68a-e9a4-4b6e-879f-8f0515f0d558"
+  },
+  "existingVenuesReused": {
+    "Emsworth Sports & Social Club": "b9cf260b-63da-46c2-ad84-51d88ead74ee",
+    "The Westleigh (Havant)": "11fbe3bb-6798-4c30-b34e-2b999648ac01",
+    "The Heroes, Waterlooville": "eb51991a-b082-433c-90e4-123340283271",
+    "Cowplain Social Club": "2f01ebc9-abce-4ff6-8b39-0bde440d45ff"
+  },
+  "newArtists": {
+    "Kirk Brandon": "78a41602-02e1-4485-90f4-212318c4ed87",
+    "Bad Influence": "3e06d840-a303-406d-9389-17a223d2150f",
+    "James Oliver Band": "a7622514-d15d-4fcc-b9be-e7fc8aae2692",
+    "Xander and The Peace Pirates": "d372e426-89b5-497d-be60-6b72cf1cab6d",
+    "GlitzBlitz": "6a7ab16e-f2bb-4d77-97bc-7bb8dc1f39fe",
+    "Ron Thomas": "0d4465b5-b51c-4539-8b35-ece0731482ec",
+    "Beth Montague": "372e9fe0-76ad-4a9e-912a-a4390680073d",
+    "Judas Rising": "7f860537-8b9c-47e0-a101-a0fa82226ec6",
+    "Free Peace Sweet": "9688fa5b-1cf6-4cc0-aca5-ccdb69990757",
+    "A Band Called Malice": "eefcdb78-1493-4d6c-b307-47f95ac9d3f2",
+    "Forever Queen": "02c77116-5a68-4d2f-bea3-9bf94f87c2ba",
+    "The Courtiers": "c26e4096-b356-47e2-8e35-4bf249a5f17e",
+    "Hattie Chandler": "1a77f5f5-f747-4a33-a996-326a6b9f1de0"
+  },
+  "existingArtistsReused": {
+    "West End Jerseys": "9c141a60-fb0f-490d-aeb2-d27eeafa6498"
+  },
+  "noFbPrecision": [
+    "GlitzBlitz (homonyms Glitz UK / Glam'n'Glitz only - attempted, no match)",
+    "Ron Thomas (hyper-generic name, no confident UK page - attempted, no match)",
+    "Beth Montague (only unrelated same-name profiles - attempted, no match)"
+  ],
+  "eventsCreated": [
+    "The Courtiers @ The Spring Arts & Heritage Centre 2026-07-03 20:00",
+    "A Band Called Malice @ Cowplain Social Club 2026-07-04 19:00 \u00a38",
+    "Hattie Chandler @ The Spring Arts & Heritage Centre 2026-07-29 20:00 \u00a317",
+    "Ron Thomas @ The Ropemaker 2026-07-31 19:30 FREE",
+    "Beth Montague @ The Ropemaker 2026-08-07 20:00 FREE",
+    "Forever Queen @ Cowplain Social Club 2026-08-08 19:00",
+    "Kirk Brandon @ Emsworth Sports & Social Club 2026-08-14 19:00 ticketed",
+    "Judas Rising @ The Heroes 2026-08-29 21:00 FREE",
+    "Free Peace Sweet @ The Heroes 2026-08-30 16:30 FREE",
+    "Bad Influence @ Emsworth Sports & Social Club 2026-09-11 19:00 ticketed",
+    "GlitzBlitz @ Emsworth Sports & Social Club 2026-10-03 20:00",
+    "James Oliver Band @ Emsworth Sports & Social Club 2026-11-13 19:00 ticketed",
+    "Xander and The Peace Pirates @ Emsworth Sports & Social Club 2026-12-11 19:00 ticketed"
+  ],
+  "dedupHits": {
+    "venues": 4,
+    "events": 1,
+    "artists": 1
+  },
+  "staged": [
+    "Hi Fest 2026 (24-26 Jul, 6 Hayling venues, 14 acts)",
+    "Lincfest 2026 (11 Jul Horndean, lineup behind SPA)",
+    "Ultimate 40 @ RBL Hayling 1 Aug (no time)",
+    "MAFIA @ Lord Raglan 10 Jul + 2 Oct (no time)",
+    "The Spring remaining 9-gig diary",
+    "J D Harmo & His Band @ ESSC 9 Oct (French act)",
+    "WemsFest autumn trio (Westbourne Hall + St James' Church)",
+    "The Beatniks @ ESSC 7 Aug (unverified)",
+    "Woodman Folk Club Purbrook diary (unreadable)"
+  ],
+  "keyFindings": [
+    "Scenic Eye already had the venue layer (4/6 venues existed incl. ESSC, Heroes, Westleigh, Cowplain SC) but almost NONE of the forward diary: 13/14 events were new to bndy, only 1 DUPLICATE_EVENT (West End Jerseys @ Westleigh 4 Jul, this weekend) - Scenic Eye's Thu-Sun window misses everything beyond the coming weekend",
+    "Emsworth Music Club (at ESSC) is the anchor promoter: full ticketed 2026 diary published with doors 19:00 on emsworthmusic.club - worth a scheduled source",
+    "Sons of the Delta 'Emsworth Music Club' gig 11 Aug is actually Upstairs at RAPS, 30 Southgate, CHICHESTER PO19 - out of region, rejected; EMC promotes at two sites",
+    "gigpig.uk is server-rendered and reliable for pub-gig times (Ropemaker Fridays)",
+    "The Spring music listing page shows a stale season; per-event times must come from Skiddle/event pages",
+    "Two grass-roots festivals found in-region: Hi Fest (Hayling, 24-26 Jul) and Lincfest (Horndean, 11 Jul) - neither in bndy yet"
+  ],
+  "spider": {
+    "run": "2026-07-03",
+    "seededFrom": {
+      "poVenues": 63,
+      "localArtists": {
+        "Hampshire": 125,
+        "Portsmouth": 13,
+        "Gosport": 2,
+        "Fareham": 1
+      }
+    },
+    "nodesProcessed": [
+      "Gosport AI Mode venue sweep (33 Green Bottles, Windsor Castle, Fox Tavern, Sailmaker, WPM, Katies)",
+      "lincfest.co.uk /lineup (Chrome, lovable SPA - 14 acts extracted)",
+      "theflashonair.co.uk weekly gig guide (server-rendered, updated Mondays-ish; this week 30 Jun-5 Jul)",
+      "themafiarocks.com (gig guide page unfetchable - no times)",
+      "ents24 RBL Hayling (empty - no Ultimate 40 time)"
+    ],
+    "newVenues": {
+      "The Fox Tavern Gosport": "5d1ac9c2-0fb6-46d2-8a1c-6cdbb998d672",
+      "Sailmaker (Gosport PO13)": "2514635e-dc6f-40d2-9b79-ee503a4ebdf6",
+      "W P M Sports & Social Club (Gosport)": "db9dd035-7cee-42a4-ad23-9976bad2a339",
+      "Jubilee Park, Horndean": "2ebace81-f0be-409c-8cab-a1b638627c01"
+    },
+    "newArtists": {
+      "Ask The Dog (West Sussex, FB)": "dbcd0561-f884-45b8-9fbb-b7acfce4230c",
+      "Red Hoax Chili Peppers (tribute, FB+site)": "ec564842-b8d7-4512-9e50-d50a74bde9d7",
+      "The Johnny No Show (no FB found)": "6e9fe9ae-cdf7-4d53-8a74-8be295c6ba20",
+      "The Flying Tigers (FB+site)": "66bebe02-e80b-4c2e-8ed2-09fcbaba708d",
+      "The Alternates (Gosport, FB+bandcamp)": "2b525284-2339-4116-bb13-64d3fb5168db",
+      "Canada Hill (Redhill leaf, bandsintown img)": "5ce30d69-c233-4e0f-ba0e-a1474b2540cd",
+      "COAST (Portsmouth, IG+site)": "62d2f178-7700-44b8-a28f-6688b40bbbf0",
+      "Into Pieces (no FB found)": "b120d178-32b2-425e-b4d4-567ede2b4a08",
+      "Evading Solaris (Horsham, FB)": "0e4efa7a-a2b2-416f-a62c-28496cd91825",
+      "Summoners (Portsmouth, FB+site)": "71f02aeb-d7b0-4c35-b72d-f6af3da47e52",
+      "Glen Dean and The Allstars (Hastings leaf, FB)": "14a38d6a-d60f-4364-8643-576d3451de4e",
+      "Nevaeh (Portsmouth, FB+IG)": "75fa3580-8c67-4f36-b76f-832bbdf7780a",
+      "The Guillotine Union Boys (no FB found)": "0dc45a65-a86e-46f7-aae8-0962dd519287",
+      "Harry Budd (no confident FB)": "62c9198c-8943-4c5e-a3f2-51d217b30d00",
+      "Ollie Hutton (Havant, FB+IG)": "ea63ad2c-6a08-412c-b17c-3053ca4054bb",
+      "The Fabulous Fug Band (FB+site)": "3b8f4515-a8de-48d3-99d3-08e0dda256d5",
+      "Marley Blandford (Portsmouth, FB+bandcamp)": "2b509362-0630-4890-bba9-9a4dbc93abc4"
+    },
+    "duplicatesCreatedNeedManualDelete": {
+      "Blue Ridge Band DUP (keep 70e29c87-6afc-487d-a4a5-6d30356466cd)": "e4d07ecb-8fd2-4b9c-9647-57fe59b8766c",
+      "The Chase DUP (keep 09c5d121-9cfc-482f-88b0-4c26132dda45)": "97445235-27f8-4950-8b68-67ad690d203a"
+    },
+    "eventsCreated": [
+      "Ask The Dog @ 33 Green Bottles 2026-08-01 20:00",
+      "Red Hoax Chili Peppers @ 33 Green Bottles 2026-10-24 20:00",
+      "The Johnny No Show @ 33 Green Bottles 2026-11-28 20:00",
+      "Judas Rising @ 33 Green Bottles 2026-12-12 20:00",
+      "The Flying Tigers @ The Fox Tavern 2026-07-11 21:00",
+      "Canada Hill @ The Sailmaker 2026-07-17 20:00 FREE",
+      "The Alternates @ W P M Sports & Social Club 2026-11-28 20:00",
+      "FESTIVAL: Lincfest 2026 @ Jubilee Park Horndean 2026-07-11 12:00-22:30 (14 acts)",
+      "Damiain Lodrick (solo) @ The Exchange 2026-07-03 20:00-22:00"
+    ],
+    "dedupHits": {
+      "events": 12,
+      "note": "Eight Foot Yeti/Windsor 3 Jul + 11 Flash-guide weekend gigs already in bndy via sceniceye-daily-import incl Kings Fest 8-act festival event"
+    },
+    "visitedVenues": [
+      "33 Green Bottles",
+      "The Windsor Castle Gosport",
+      "The Fox Tavern",
+      "Sailmaker",
+      "WPM Sports & Social",
+      "Jubilee Park Horndean",
+      "The King's Arms Emsworth (KingsFest already in)"
+    ],
+    "frontierVenues": [
+      "The Spring Arts Centre diary gap-fill (9 leaf-artist gigs w/ dates+prices in staged line, needs times) - HIGH VALUE",
+      "emsworthmusic.club full ticketed diary (anchor promoter)",
+      "The Crown Hotel/Inn Emsworth (near-nightly named acts per Flash guide)",
+      "The Powder Monkey Slow Sundays weekly 13:00 diary",
+      "Katies Vinyl Bar & Kitchen Gosport (Live at Katies Fridays - acts unnamed so far)",
+      "The Dockyard Club Portsmouth (Bullfrog Blues Club ticketed nights)",
+      "Merchistoun Hall Horndean",
+      "Apsley House Southsea",
+      "Casemates Studios Hilsea",
+      "Gosport Sunset Festival 9-12 Jul Walpole Park (60+ acts, lineup crawl needed)"
+    ],
+    "frontierArtists": [
+      "COAST",
+      "Summoners",
+      "The Alternates",
+      "Into Pieces",
+      "The Marvilles",
+      "The Chase (09c5d121)",
+      "Eight Foot Yeti",
+      "The Flying Tigers",
+      "Marley Blandford",
+      "Ollie Hutton",
+      "Zed Men",
+      "Dustbowl Dance",
+      "The Johnny No Show",
+      "Nevaeh",
+      "Harry Budd"
+    ],
+    "leafArtists": [
+      "Canada Hill (Redhill)",
+      "Glen Dean and The Allstars (Hastings)",
+      "Ask The Dog (Bognor/W Sussex)",
+      "Evading Solaris (Horsham)",
+      "The Fabulous Fug Band (SE-wide)"
+    ],
+    "leafVenues": [],
+    "runawayFlags": [
+      "Lincfest lineup node spawned 11 new artists (processed fully, not expanded)"
+    ],
+    "run1Stats": {
+      "entitiesCreated": 24,
+      "venues": 4,
+      "artists": 20,
+      "artistsValid": 18,
+      "artistDupes": 2,
+      "events": 9,
+      "festivalEvents": 1,
+      "dedupEventHits": 12
+    },
+    "keyFindings": [
+      "theflashonair.co.uk/local-live-music-guide-guide/ = best weekly structured source for SE Hampshire (names+venues+times), but its window overlaps sceniceye import: 11/13 weekend gigs were dups. Value = beyond-weekend + festival intel",
+      "Google AI Mode Gosport sweep was accurate (lemonrock/bandsintown-backed) incl. Oct-Dec diary for 33 Green Bottles",
+      "CRITICAL: search_artist missed Blue Ridge Band + The Chase created by sceniceye import <24h earlier -> before creating artists from a festival lineup, get_by_id any existing festival event at that venue first",
+      "delete_artist returns ARTIST_NOT_FOUND (route not deployed) - dupes need manual delete",
+      "Helen Spooner has TRIPLICATE records (a14a292d, c8edb2fc, 3cfacff3-solo-with-FB) - merge candidate",
+      "lincfest.co.uk lineup lives at /lineup (nav says Line-up); lovable SPA, Chrome-readable"
+    ]
+  }
+}

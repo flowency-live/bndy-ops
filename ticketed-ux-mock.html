@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" data-skin="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>bndy — free vs ticketed UX mock</title>
+<style>
+  :root{--bg:#0F1729;--card:#1C2637;--card2:#26334A;--txt:#F1F5F9;--dim:#94A3B8;--dim2:#64748B;--line:#334155;--acc:#F97316;--on-acc:#fff;--acc2:#06B6D4;--on-acc2:#07222B;--band:#1C2637;--band-fg:#94A3B8}
+  html[data-skin="print"]{--bg:#F5EFE2;--card:#FDFBF5;--card2:#ECE4D2;--txt:#181309;--dim:#4A4234;--dim2:#8B8170;--line:#181309;--acc:#F03A21;--on-acc:#FDFBF5;--acc2:#2A46E8;--on-acc2:#FDFBF5;--band:#181309;--band-fg:#F5EFE2}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:Inter,system-ui,sans-serif;padding:28px 20px 80px;max-width:860px;margin-inline:auto}
+  h1{font-size:20px;font-weight:900;margin:0 0 4px}
+  .sub{color:var(--dim);font-size:13px;margin:0 0 18px;line-height:1.5}
+  h2{font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--acc);margin:34px 0 10px}
+  .ctl{display:flex;gap:8px;margin:14px 0 6px;flex-wrap:wrap}
+  .ctl button{padding:7px 14px;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--dim);font-size:12px;font-weight:800;cursor:pointer}
+  .ctl button.on{background:var(--acc);border-color:var(--acc);color:var(--on-acc)}
+
+  /* ---------- artist/venue page rows (matches live layout) ---------- */
+  .band{display:flex;justify-content:space-between;align-items:center;background:var(--band);color:var(--band-fg);border-radius:8px;padding:8px 14px;font-size:11.5px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;margin:14px 0 8px}
+  .row{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--acc);border-radius:10px;padding:12px 14px;margin-bottom:8px}
+  .date{min-width:44px;text-align:center;line-height:1.05}
+  .date .dw{font-size:10px;font-weight:800;color:var(--acc);text-transform:uppercase}
+  .date .dn{font-size:22px;font-weight:900}
+  .date .mo{font-size:10px;font-weight:800;color:var(--dim);text-transform:uppercase}
+  .info{flex:1;min-width:0}
+  .vn{font-size:14.5px;font-weight:800;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .meta{font-size:12px;color:var(--dim);margin-top:3px;font-weight:600}
+  .in{background:var(--card2);color:var(--dim);border-radius:6px;padding:2px 8px;font-size:9.5px;font-weight:800;letter-spacing:.5px;text-transform:uppercase}
+  .chev{color:var(--dim2);font-size:18px}
+
+  /* ---------- the ticket stub ---------- */
+  .stub{position:relative;display:inline-flex;align-items:center;padding:3px 11px;border-radius:5px;background:var(--acc2);color:var(--on-acc2);font-size:10px;font-weight:900;letter-spacing:.8px;text-transform:uppercase;cursor:pointer;white-space:nowrap}
+  .stub i{font-style:normal;border-left:1.5px dashed color-mix(in srgb,var(--on-acc2) 45%,transparent);margin-left:8px;padding-left:8px}
+  .stub::before,.stub::after{content:"";position:absolute;top:50%;width:7px;height:7px;border-radius:50%;background:var(--card);transform:translateY(-50%)}
+  .stub::before{left:-3.5px}.stub::after{right:-3.5px}
+  .stub:hover{filter:brightness(1.12)}
+  .stub.free{background:transparent;color:var(--dim);border:1.5px dashed var(--dim2);font-weight:800;cursor:default}
+  .stub.free::before,.stub.free::after{display:none}
+  /* meta-only variant */
+  .tikmeta{color:var(--acc2);font-weight:800}
+  [data-mode="a"] .stub.free{display:none}
+  [data-mode="meta"] .stub{display:none}
+  [data-mode="a"] .tikmeta,[data-mode="b"] .tikmeta{display:none}
+
+  /* ---------- map pins ---------- */
+  .maprow{display:flex;gap:34px;align-items:flex-end;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:26px 24px 20px;flex-wrap:wrap}
+  .pinbox{text-align:center}
+  .pinbox .cap{font-size:10px;color:var(--dim);font-weight:800;text-transform:uppercase;letter-spacing:.5px;margin-top:10px;max-width:110px}
+  .pin{position:relative;margin-inline:auto;border-radius:50%;background:var(--acc);border:2.5px solid #fff;display:flex;align-items:center;justify-content:center}
+  html[data-skin="print"] .pin{border-color:var(--line)}
+  .pin.z10{width:15px;height:15px}
+  .pin.z13{width:21px;height:21px}
+  .pin.z16{width:27px;height:27px}
+  .pin b{color:#fff;font-size:11px;font-weight:900;line-height:1}
+  .pin.z16 b{font-size:13px}
+  html[data-skin="print"] .pin b{color:var(--on-acc)}
+  .pin .ring{position:absolute;inset:-7px;border-radius:50%;border:2px solid var(--acc);opacity:.7;animation:ping 1.6s ease-out infinite}
+  @keyframes ping{0%{transform:scale(.7);opacity:.8}100%{transform:scale(1.25);opacity:0}}
+  .note{font-size:11.5px;color:var(--dim);line-height:1.55;margin-top:10px}
+  .note b{color:var(--txt)}
+</style>
+</head>
+<body data-mode="a">
+  <h1>Free vs ticketed — “mark the exception”</h1>
+  <p class="sub">Most bndy gigs are free, so free stays the clean default and <b>ticketed is what gets inked</b>: a perforated ticket stub in the gig row (tap = straight to tickets), and a £ glyph on the map pin. Toggle the treatments below.</p>
+
+  <div class="ctl">
+    <button class="on" data-m="a" onclick="mode('a',this)">A · stub on ticketed only</button>
+    <button data-m="b" onclick="mode('b',this)">B · stub both (£ree heritage)</button>
+    <button data-m="meta" onclick="mode('meta',this)">C · whisper in meta line</button>
+    <span style="flex:1"></span>
+    <button id="sk" onclick="skin()">print run</button>
+  </div>
+
+  <h2>Artist / venue page rows (same component on both)</h2>
+  <div class="band"><span>September 2026</span><span>3 gigs</span></div>
+
+  <div class="row">
+    <div class="date"><div class="dw">Fri</div><div class="dn">4</div><div class="mo">Sep</div></div>
+    <div class="info">
+      <div class="vn">UPSTAIRS INVERNESS <span class="in">In 5 weeks</span> <span class="stub">Tickets<i>£12</i></span></div>
+      <div class="meta">Inverness · 297 mi · 7pm <span class="tikmeta">· £12 tickets ↗</span></div>
+    </div>
+    <div class="chev">›</div>
+  </div>
+
+  <div class="row">
+    <div class="date"><div class="dw">Sat</div><div class="dn">5</div><div class="mo">Sep</div></div>
+    <div class="info">
+      <div class="vn">Krakatoa <span class="in">In 5 weeks</span> <span class="stub free">£ree</span></div>
+      <div class="meta">Aberdeen · 262 mi · 8pm</div>
+    </div>
+    <div class="chev">›</div>
+  </div>
+
+  <div class="row">
+    <div class="date"><div class="dw">Sun</div><div class="dn">27</div><div class="mo">Sep</div></div>
+    <div class="info">
+      <div class="vn">Marchon Sports &amp; Social Club <span class="in">In 9 weeks</span> <span class="stub">Tickets</span></div>
+      <div class="meta">Whitehaven · 103 mi · 3pm <span class="tikmeta">· ticketed ↗</span></div>
+    </div>
+    <div class="chev">›</div>
+  </div>
+
+  <p class="note"><b>Stub anatomy:</b> acc2 fill (cyan — already the app's "ticketed" colour, AA on all skins), punched notches, dashed divider before the price. With a <b>ticketUrl</b> the stub is a direct tap-through (row chevron still opens the gig sheet). Price shows when we have it — the app DTO currently carries <code>ticketed</code>+<code>ticketUrl</code> only, so price means one small backend field (<code>ticketPrice</code>) added to the event + transform.</p>
+
+  <h2>Gig map pins</h2>
+  <div class="maprow">
+    <div class="pinbox"><div class="pin z13"></div><div class="cap">Free (default)</div></div>
+    <div class="pinbox"><div class="pin z13"><b>£</b></div><div class="cap">Ticketed z≥12</div></div>
+    <div class="pinbox"><div class="pin z16"><b>£</b></div><div class="cap">Ticketed z16</div></div>
+    <div class="pinbox"><div class="pin z10"></div><div class="cap">z&lt;12 — no glyph (too small; sheet reveals)</div></div>
+    <div class="pinbox"><div class="pin z13"><span class="ring"></span><b>£</b></div><div class="cap">Tonight + ticketed</div></div>
+  </div>
+  <p class="note"><b>Implementation:</b> one extra symbol layer (`g-tik`, text-field "£", filter ticketed, minzoom 12, text-allow-overlap) riding the existing gig source — pins stay filled accent circles on every skin, the glyph is the same white/on-acc as cluster counts. No new marker shapes, no colour semantics stolen from tonight/live.</p>
+
+<script>
+  function mode(m,btn){document.body.dataset.mode=m;document.querySelectorAll('.ctl button[data-m]').forEach(b=>b.classList.toggle('on',b===btn))}
+  function skin(){const h=document.documentElement;const p=h.dataset.skin==='print';h.dataset.skin=p?'dark':'print';document.getElementById('sk').textContent=p?'print run':'bndy dark'}
+</script>
+</body>
+</html>

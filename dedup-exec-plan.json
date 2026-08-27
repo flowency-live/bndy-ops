@@ -1,0 +1,2704 @@
+{
+ "cutoff": "2026-06-01",
+ "groups": 101,
+ "held7": [
+  [
+   "Cover-Up",
+   "The Cover-Up",
+   "2025-03-04"
+  ],
+  [
+   "Cry Havoc",
+   "Cry Havoc",
+   "2025-02-14"
+  ],
+  [
+   "Foxed Up",
+   "Foxed Up",
+   "2025-02-14"
+  ],
+  [
+   "Jack Woodward",
+   "Jack Woodward",
+   "2025-03-13"
+  ],
+  [
+   "Jane and the Hurricanes",
+   "Jane And The Hurricanes",
+   "2025-02-14"
+  ],
+  [
+   "Pretty Weeds",
+   "Pretty Weeds",
+   "2026-04-28"
+  ],
+  [
+   "Rock Machine",
+   "Rock Machine",
+   "2026-04-28"
+  ]
+ ],
+ "plan": [
+  {
+   "group": "damien lodrick",
+   "keeper": "eeddccb6-8c17-45fd-97df-e7c9b61fc6a0",
+   "keeper_name": "The Damien Lodrick Band",
+   "enrich": {
+    "genres": [
+     "rock",
+     "pop"
+    ]
+   },
+   "add_external_ids": [
+    {
+     "source": "sceniceye-daily-import",
+     "id": "artist_damien-lodrick"
+    },
+    {
+     "source": "sceniceye",
+     "id": "artist-damien-lodrick"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "87a09669-033b-45b5-b12b-cdc8ddef8a6e",
+     "from": "1f455af7-129f-4829-ab70-e6cc896ae09e",
+     "title": "Damien Lodrick @ The Exchange"
+    },
+    {
+     "op": "delete-event",
+     "event": "69ef46af-3024-4d94-8f19-456292dcdb0c",
+     "from": "b9e731fb-f2dd-4c09-a8e0-39885c129ad6",
+     "title": "Damien Lodrick @ The Exchange"
+    }
+   ],
+   "delete_artists": [
+    "1f455af7-129f-4829-ab70-e6cc896ae09e",
+    "b9e731fb-f2dd-4c09-a8e0-39885c129ad6",
+    "3071ea1c-3dc3-4a6d-91be-a41d44ef3ede"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "star breaker",
+   "keeper": "244d6bba-ddaa-48d9-ab39-5d056bc2dc98",
+   "keeper_name": "Star Breaker",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "id": "artist_star-breaker",
+     "source": "onthecase-daily-import"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "cb42e3e4-d68e-485a-98a6-d89e0c8e6400",
+     "from": "33a54e7c-0165-4a60-9ab1-7d95bee4eb53",
+     "title": "Star Breaker @ Live Lounge"
+    },
+    {
+     "op": "reassign",
+     "event": "1b7a2f1c-f918-4096-8c7d-150ee4382972",
+     "to": "244d6bba-ddaa-48d9-ab39-5d056bc2dc98",
+     "from": "5a264791-9d39-49da-b1ca-50823429a1ea",
+     "title": "Star Breaker @ Crown and Cannon"
+    },
+    {
+     "op": "delete-event",
+     "event": "bbe33a3a-01c6-4971-bff4-2ae31d4e51cd",
+     "from": "77ae1e93-3f37-4c40-a5f8-b3f83d9e63b9",
+     "title": "Star Breaker @ Bebside Inn"
+    }
+   ],
+   "delete_artists": [
+    "33a54e7c-0165-4a60-9ab1-7d95bee4eb53",
+    "5a264791-9d39-49da-b1ca-50823429a1ea",
+    "77ae1e93-3f37-4c40-a5f8-b3f83d9e63b9"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "zone",
+   "keeper": "2b832e36-e476-4e53-b80f-8f69a4b8ff1a",
+   "keeper_name": "The Zone",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "id": "artist_the-zone",
+     "source": "onthecase-daily-import"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "reassign",
+     "event": "50fdcae7-8739-4c5b-a588-87f8c48ab765",
+     "to": "2b832e36-e476-4e53-b80f-8f69a4b8ff1a",
+     "from": "d2317957-7c70-454e-89d7-f6e900a4b928",
+     "title": "The Zone @ The Red Lion"
+    },
+    {
+     "op": "reassign",
+     "event": "1d0c0a27-d63e-4ef4-a0cf-81a09fb23583",
+     "to": "2b832e36-e476-4e53-b80f-8f69a4b8ff1a",
+     "from": "d2317957-7c70-454e-89d7-f6e900a4b928",
+     "title": "The Zone @ Live Lounge"
+    },
+    {
+     "op": "reassign",
+     "event": "4c0e1c35-6105-4e2c-add6-80c8b3a5532e",
+     "to": "2b832e36-e476-4e53-b80f-8f69a4b8ff1a",
+     "from": "d2317957-7c70-454e-89d7-f6e900a4b928",
+     "title": "The Zone @ Live Lounge"
+    },
+    {
+     "op": "reassign",
+     "event": "f09ad304-151d-4715-8141-d0b84a9846b2",
+     "to": "2b832e36-e476-4e53-b80f-8f69a4b8ff1a",
+     "from": "d2317957-7c70-454e-89d7-f6e900a4b928",
+     "title": "The Zone @ The Red Lion"
+    },
+    {
+     "op": "reassign",
+     "event": "9b21dcfd-4803-45e4-927c-2f4ca9ce3563",
+     "to": "2b832e36-e476-4e53-b80f-8f69a4b8ff1a",
+     "from": "822370d4-94fc-44eb-bb7e-cfcc23291df1",
+     "title": "The Zone @ The Prior"
+    },
+    {
+     "op": "reassign",
+     "event": "0ac0f463-5aa5-47f9-a144-38f700c38057",
+     "to": "2b832e36-e476-4e53-b80f-8f69a4b8ff1a",
+     "from": "822370d4-94fc-44eb-bb7e-cfcc23291df1",
+     "title": "The Zone @ The Red Lion"
+    },
+    {
+     "op": "delete-event",
+     "event": "2137711a-37cc-4818-9a61-e05cc3ff8206",
+     "from": "822370d4-94fc-44eb-bb7e-cfcc23291df1",
+     "title": "The Zone @ Crook Hotel"
+    },
+    {
+     "op": "reassign",
+     "event": "d2247abf-05b2-4171-a24b-5e79bcf8ae68",
+     "to": "2b832e36-e476-4e53-b80f-8f69a4b8ff1a",
+     "from": "017c397e-0eb0-4cb1-88d2-d75501c3bc30",
+     "title": "The Zone @ Seahorse Sports Bar"
+    }
+   ],
+   "delete_artists": [
+    "d2317957-7c70-454e-89d7-f6e900a4b928",
+    "822370d4-94fc-44eb-bb7e-cfcc23291df1",
+    "017c397e-0eb0-4cb1-88d2-d75501c3bc30"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "a called malice",
+   "keeper": "4092017b-c3ce-4886-be63-9e77a0855c99",
+   "keeper_name": "A Band Called Malice",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "id": "artist_a-band-called-malice",
+     "source": "sceniceye-daily-import"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "b8429628-5c96-4993-a352-806725db4add",
+     "from": "eefcdb78-1493-4d6c-b307-47f95ac9d3f2",
+     "title": "A Band Called Malice @ Cowplain Social Club"
+    },
+    {
+     "op": "delete-event",
+     "event": "92923d4a-4e6e-4624-95de-cf77063a89f8",
+     "from": "f392a07b-ec31-4560-9a73-ee32f6617676",
+     "title": "A Band Called Malice @ Cowplain Social Club"
+    }
+   ],
+   "delete_artists": [
+    "eefcdb78-1493-4d6c-b307-47f95ac9d3f2",
+    "f392a07b-ec31-4560-9a73-ee32f6617676"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "ace tones",
+   "keeper": "dc590e43-8acc-4f7d-8a17-35b95dd1ace7",
+   "keeper_name": "The Ace Tones",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "id": "artist_ace-tones",
+     "source": "sceniceye-daily-import"
+    },
+    {
+     "source": "sceniceye-daily-import",
+     "id": "artist_the-ace-tones"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "reassign",
+     "event": "df0738ee-9450-48f6-afa1-57f0a4f1f9d7",
+     "to": "dc590e43-8acc-4f7d-8a17-35b95dd1ace7",
+     "from": "5dc4c847-b1c9-43ff-89f5-adb3e800b0b4",
+     "title": "Ace Tones @ Golden Lion"
+    },
+    {
+     "op": "delete-event",
+     "event": "686286d1-7ef0-4a80-bb40-84e9c4fa71be",
+     "from": "34f44578-a923-4ad9-8c14-f4576413d2b4",
+     "title": "The Ace Tones @ The Heroes, Waterlooville"
+    }
+   ],
+   "delete_artists": [
+    "5dc4c847-b1c9-43ff-89f5-adb3e800b0b4",
+    "34f44578-a923-4ad9-8c14-f4576413d2b4"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "adam ede",
+   "keeper": "074864c6-be80-4657-a28f-eadff08fcdc3",
+   "keeper_name": "Adam Ede",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "source": "sceniceye-daily-import",
+     "id": "artist_adam-ede"
+    },
+    {
+     "id": "artist-adam-ede",
+     "source": "sceniceye"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "bbfae9dd-d302-4ca7-92a5-c8e7d123e24d",
+     "from": "db21c0b9-f2ff-4cbc-8f4a-21f2841f602e",
+     "title": "Adam Ede @ The Crown Inn Emsworth"
+    }
+   ],
+   "delete_artists": [
+    "db21c0b9-f2ff-4cbc-8f4a-21f2841f602e",
+    "75d6088a-0b4e-4957-b126-e5375f7aa8d8"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "ben staz",
+   "keeper": "06a00b90-7cc2-488c-889e-1a2bb32c42c3",
+   "keeper_name": "Ben Staz",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "source": "klma-stoke-gig-list",
+     "id": "klma-artist-4335e4198960"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "80c5218f-0ba9-4242-8a97-45b94580fe2c",
+     "from": "73ec8afa-d41f-4f95-9dc9-e8073809fffa",
+     "title": "Ben Staz @ Norton Central Social Club"
+    },
+    {
+     "op": "reassign",
+     "event": "e552603e-9815-45d2-bc2f-63b7367750ef",
+     "to": "06a00b90-7cc2-488c-889e-1a2bb32c42c3",
+     "from": "73ec8afa-d41f-4f95-9dc9-e8073809fffa",
+     "title": "Ben Staz @ Norton Central Social Club"
+    },
+    {
+     "op": "delete-event",
+     "event": "4436694c-d530-438e-aa70-5e4c778c188a",
+     "from": "4ccdac26-eda5-4cf0-8522-b8e69bf65e42",
+     "title": "Ben Staz @ The Signalman"
+    }
+   ],
+   "delete_artists": [
+    "73ec8afa-d41f-4f95-9dc9-e8073809fffa",
+    "4ccdac26-eda5-4cf0-8522-b8e69bf65e42"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "danny brab",
+   "keeper": "FIT600aoQ5lpNSejGctN",
+   "keeper_name": "Danny Brab",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "id": "klma-artist-f7d7f2a92f79",
+     "source": "klma-stoke-gig-list"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "reassign",
+     "event": "cd1eace6-6934-4cba-8257-c94226021423",
+     "to": "FIT600aoQ5lpNSejGctN",
+     "from": "211e504a-0830-4518-812b-b2b855b7bf01",
+     "title": "Danny Brab @ Miners Arms"
+    },
+    {
+     "op": "reassign",
+     "event": "1c1be37c-72b3-4ea9-81fc-5bc0bdfebadd",
+     "to": "FIT600aoQ5lpNSejGctN",
+     "from": "211e504a-0830-4518-812b-b2b855b7bf01",
+     "title": "Danny Brab @ Coolock Irish Bar Shrewsbury"
+    },
+    {
+     "op": "reassign",
+     "event": "8756eded-b802-42c2-9e56-4d84f3aba58f",
+     "to": "FIT600aoQ5lpNSejGctN",
+     "from": "211e504a-0830-4518-812b-b2b855b7bf01",
+     "title": "Danny Brab @ Greyhound Inn"
+    },
+    {
+     "op": "delete-event",
+     "event": "76cf1908-1790-40fe-8fa5-5c06e7962a24",
+     "from": "f6c766d5-1986-4135-9729-6db57efaea86",
+     "title": "Danny Brab @ PAU Cafe"
+    }
+   ],
+   "delete_artists": [
+    "211e504a-0830-4518-812b-b2b855b7bf01",
+    "f6c766d5-1986-4135-9729-6db57efaea86"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "gone country",
+   "keeper": "qUMdHwEKaSVwAgl2oXtb",
+   "keeper_name": "Gone country",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "id": "klma-artist-620224c18b52",
+     "source": "klma-stoke-gig-list"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "b287ca79-144e-41de-a1f9-6d6f2a40f8a4",
+     "from": "167b14d5-90c0-4d9c-ba3a-286e44142d54",
+     "title": "Gone Country Live Duo @ Holditch Miners Welfare Club"
+    },
+    {
+     "op": "delete-event",
+     "event": "22819892-7a01-4c78-b05b-fe7f326d41cc",
+     "from": "0ba94103-ce20-4bed-9f5c-f87636d5f55e",
+     "title": "Gone Country Live Duo @ Holditch Miners Welfare Club"
+    }
+   ],
+   "delete_artists": [
+    "167b14d5-90c0-4d9c-ba3a-286e44142d54",
+    "0ba94103-ce20-4bed-9f5c-f87636d5f55e"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "helen spooner",
+   "keeper": "3cfacff3-3657-448f-8def-31e4bfbcab29",
+   "keeper_name": "Helen Spooner",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "source": "sceniceye-daily-import",
+     "id": "artist_helen-spooner"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "reassign",
+     "event": "1a683e89-f00d-4317-a254-469ef654d1b1",
+     "to": "3cfacff3-3657-448f-8def-31e4bfbcab29",
+     "from": "c8edb2fc-267c-4695-a721-8a6a167f6b56",
+     "title": "Helen Spooner @ Blue Bell"
+    },
+    {
+     "op": "delete-event",
+     "event": "63a04d85-7d7c-4cb5-b7ad-a5891e710411",
+     "from": "a14a292d-f41b-4963-9a9f-24835cfbf84f",
+     "title": "Helen Spooner @ Blue Bell"
+    }
+   ],
+   "delete_artists": [
+    "c8edb2fc-267c-4695-a721-8a6a167f6b56",
+    "a14a292d-f41b-4963-9a9f-24835cfbf84f"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "mike and floorfillers",
+   "keeper": "3eg14QpWlx1NTnLoJ5y1",
+   "keeper_name": "Mike & The Floorfillers",
+   "enrich": {
+    "genres": [
+     "indie",
+     "britpop",
+     "ska",
+     "classic rock",
+     "soul",
+     "motown"
+    ],
+    "actType": [
+     "covers"
+    ]
+   },
+   "add_external_ids": [
+    {
+     "id": "klma-artist-0b233d6c2464",
+     "source": "klma-stoke-gig-list"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "reassign",
+     "event": "9ee1fa7b-7c3d-4615-80ca-a6c77dfb296b",
+     "to": "3eg14QpWlx1NTnLoJ5y1",
+     "from": "15d6142f-b0ba-4ff1-9151-6a23d9f83342",
+     "title": "Mike & The Floorfillers @ Catchems Corner"
+    },
+    {
+     "op": "delete-event",
+     "event": "d34663f0-a888-4e1a-b552-40418984adf9",
+     "from": "108f13ba-95e0-48f7-95b9-c5bae5aaf8ad",
+     "title": "Mike & The Floorfillers @ Catchems Corner"
+    }
+   ],
+   "delete_artists": [
+    "15d6142f-b0ba-4ff1-9151-6a23d9f83342",
+    "108f13ba-95e0-48f7-95b9-c5bae5aaf8ad"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "mutton dressed as glam",
+   "keeper": "a3b7b769-c1cf-48f4-a49f-9a0ab8e5cb89",
+   "keeper_name": "Mutton Dressed As Glam",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "source": "klma-stoke-gig-list",
+     "id": "klma-artist-0d2228e5d04e"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "reassign",
+     "event": "03b7a076-6c0b-4f64-a93d-bc799df39359",
+     "to": "a3b7b769-c1cf-48f4-a49f-9a0ab8e5cb89",
+     "from": "261bd9ad-e139-425a-b41f-effd940884a5",
+     "title": "Mutton Dressed As Glam @ Norton Central Social Club"
+    },
+    {
+     "op": "delete-event",
+     "event": "21682ff8-866c-49d3-9e51-ec98e7ded048",
+     "from": "472d0d1d-dc85-4a29-a133-01a351734d0a",
+     "title": "Mutton Dressed as Glam @ The Furlong"
+    }
+   ],
+   "delete_artists": [
+    "261bd9ad-e139-425a-b41f-effd940884a5",
+    "472d0d1d-dc85-4a29-a133-01a351734d0a"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "native way",
+   "keeper": "e5ikgvWu8HHNApkQiPoy",
+   "keeper_name": "Native Way",
+   "enrich": {
+    "instagramUrl": "https://www.instagram.com/nativewayofficial/",
+    "actType": [
+     "covers"
+    ]
+   },
+   "add_external_ids": [
+    {
+     "id": "artist-native-way-acoustic-duo",
+     "source": "klma-stoke-gig-list"
+    },
+    {
+     "id": "klma-artist-cea7256717dd",
+     "source": "klma-stoke-gig-list"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "reassign",
+     "event": "c6334add-e044-4c9a-bb8f-a6d980904f4d",
+     "to": "e5ikgvWu8HHNApkQiPoy",
+     "from": "30959345-3ee7-4753-98c4-2ca0a517949f",
+     "title": "Native Way Acoustic Duo @ The Furlong"
+    },
+    {
+     "op": "delete-event",
+     "event": "7fc17336-939c-4b8f-b8b3-53757fc02b38",
+     "from": "bd7f8718-60cc-40a6-a50f-768fb6bb2c15",
+     "title": "Native Way (Duo) @ The Furlong"
+    }
+   ],
+   "delete_artists": [
+    "30959345-3ee7-4753-98c4-2ca0a517949f",
+    "bd7f8718-60cc-40a6-a50f-768fb6bb2c15"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "notorious 80s",
+   "keeper": "83bd1e96-7b05-49dc-986a-941043532411",
+   "keeper_name": "Notorious 80s Band",
+   "enrich": {
+    "actType": [
+     "covers"
+    ]
+   },
+   "add_external_ids": [
+    {
+     "id": "klma-artist-7dfac0ee8fc4",
+     "source": "klma-stoke-gig-list"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "6d541f9b-1840-4e2f-94eb-8afdeb858ad2",
+     "from": "e233cc4c-2fb1-4faf-8f97-01bc59db7d79",
+     "title": "Notorious 80s @ The Old Post Office"
+    },
+    {
+     "op": "reassign",
+     "event": "5b055b3b-89d0-4cec-842d-e9c2338409f6",
+     "to": "83bd1e96-7b05-49dc-986a-941043532411",
+     "from": "a25b974c-8192-4418-a792-d7736c23645a",
+     "title": "Notorious 80s @ Cosey Club"
+    }
+   ],
+   "delete_artists": [
+    "e233cc4c-2fb1-4faf-8f97-01bc59db7d79",
+    "a25b974c-8192-4418-a792-d7736c23645a"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "rob black",
+   "keeper": "fd67b15a-8c49-40a2-a95b-7fac745d7b42",
+   "keeper_name": "Rob Black",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "source": "klma-stoke-gig-list",
+     "id": "klma-artist-6294d5dba1cf"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "reassign",
+     "event": "77367995-8e64-4a5a-b6d6-d8206e13eaae",
+     "to": "fd67b15a-8c49-40a2-a95b-7fac745d7b42",
+     "from": "133373b6-87ee-4be0-8dbb-17b62907db6c",
+     "title": "Rob Black @ The John Marston"
+    },
+    {
+     "op": "reassign",
+     "event": "f502103b-d978-452a-ace9-f5355cdef702",
+     "to": "fd67b15a-8c49-40a2-a95b-7fac745d7b42",
+     "from": "c363854f-1afd-40fd-88be-a2a5211bca14",
+     "title": "Rob Black @ Sir Robert Peel"
+    }
+   ],
+   "delete_artists": [
+    "133373b6-87ee-4be0-8dbb-17b62907db6c",
+    "c363854f-1afd-40fd-88be-a2a5211bca14"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "roy pimmy",
+   "keeper": "b5c6f545-86be-4881-befe-f35babd136da",
+   "keeper_name": "Roy Pimmy",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "id": "artist_roy-pimmy",
+     "source": "gigs-news-daily-import"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "09464b40-648d-403c-ac82-055fc13da899",
+     "from": "692f14d8-fd4b-4e29-b4a0-427605c3e379",
+     "title": "Roy Pimmy @ The White Hart"
+    },
+    {
+     "op": "delete-event",
+     "event": "fff8e984-fc28-4ad5-bba2-114c99fca5e9",
+     "from": "08dbb952-9d2d-4d0f-9e59-a890655d7f9f",
+     "title": "Roy Pimmy @ The White Hart"
+    }
+   ],
+   "delete_artists": [
+    "692f14d8-fd4b-4e29-b4a0-427605c3e379",
+    "08dbb952-9d2d-4d0f-9e59-a890655d7f9f"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "trilogy",
+   "keeper": "5fa2d40b-035c-4859-b86f-6c5a23618b5e",
+   "keeper_name": "Trilogy",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "id": "artist_trilogy",
+     "source": "onthecase-daily-import"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "reassign",
+     "event": "ec711e46-fc84-4d4e-831f-e50834dff253",
+     "to": "5fa2d40b-035c-4859-b86f-6c5a23618b5e",
+     "from": "0a62b677-e848-4321-90e7-480d13383f18",
+     "title": "Trilogy @ Crown and Cannon"
+    },
+    {
+     "op": "reassign",
+     "event": "29c24642-3bb0-4a61-8f67-fee1ef4b22bb",
+     "to": "5fa2d40b-035c-4859-b86f-6c5a23618b5e",
+     "from": "0a62b677-e848-4321-90e7-480d13383f18",
+     "title": "Trilogy @ The Blacksmiths Arms"
+    },
+    {
+     "op": "delete-event",
+     "event": "2979747c-7283-4ffd-bc6c-b09d774f720a",
+     "from": "3433dec8-eb2b-4d34-9bc8-123482becd61",
+     "title": "Trilogy @ The Blacksmiths Arms"
+    }
+   ],
+   "delete_artists": [
+    "0a62b677-e848-4321-90e7-480d13383f18",
+    "3433dec8-eb2b-4d34-9bc8-123482becd61"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "tubesnake",
+   "keeper": "f8aa9069-a885-4934-b2bf-b35728444422",
+   "keeper_name": "Tubesnake",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "source": "onthecase-daily-import",
+     "id": "artist_tubesnake"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "a4294117-00d2-4fa5-a83d-decac0a56ad2",
+     "from": "f698cb43-9573-4293-b105-982f7a141dcc",
+     "title": "Tubesnake @ The Three Tuns"
+    },
+    {
+     "op": "delete-event",
+     "event": "83882628-4e28-48eb-903c-d29716c8b4e4",
+     "from": "c3ddaa45-8b08-4885-bf8b-71ae6f55cda3",
+     "title": "Tubesnake @ The Moorcock"
+    }
+   ],
+   "delete_artists": [
+    "f698cb43-9573-4293-b105-982f7a141dcc",
+    "c3ddaa45-8b08-4885-bf8b-71ae6f55cda3"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "6ix ways 2 sunday",
+   "keeper": "d7cdc094-35f9-4123-8721-a2bb65deba2a",
+   "keeper_name": "6ix Ways 2 Sunday",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "id": "artist_6ix-ways-2-sunday",
+     "source": "onthecase-daily-import"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "reassign",
+     "event": "3b167784-c05f-4184-80fa-39af885289d5",
+     "to": "d7cdc094-35f9-4123-8721-a2bb65deba2a",
+     "from": "cbb0b4ba-eb3d-4e92-bc08-73c40f2c8c8f",
+     "title": "6ix Ways 2 Sunday @ Crown and Cannon"
+    }
+   ],
+   "delete_artists": [
+    "cbb0b4ba-eb3d-4e92-bc08-73c40f2c8c8f"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "7 sins",
+   "keeper": "f1903d5b-c5ea-49bc-bca3-d57c641b4d83",
+   "keeper_name": "7 Sins",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "source": "onthecase-daily-import",
+     "id": "artist_7-sins"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "ad98dfbd-8505-4f04-9686-0e7c299a6970",
+     "from": "737cc16a-86bc-49ca-8600-aebf7ec6fea1",
+     "title": "7 Sins @ The George Stephenson Bar & Kitchen"
+    }
+   ],
+   "delete_artists": [
+    "737cc16a-86bc-49ca-8600-aebf7ec6fea1"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "adam austin",
+   "keeper": "42417674-6c05-48d0-91d1-3bc8e8a05630",
+   "keeper_name": "Adam Austin",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "id": "klma-artist-72f53ce1a4ea",
+     "source": "klma-stoke-gig-list"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "reassign",
+     "event": "8b14cfaf-6fcf-4aa7-b063-dc176091b093",
+     "to": "42417674-6c05-48d0-91d1-3bc8e8a05630",
+     "from": "77bcaeab-4b94-4338-878d-ea788362985b",
+     "title": "Adam Austin @ Norton Central Social Club"
+    }
+   ],
+   "delete_artists": [
+    "77bcaeab-4b94-4338-878d-ea788362985b"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "and then some",
+   "keeper": "7d78f309-8b46-4fdd-8e0f-c5e0e1435726",
+   "keeper_name": "And Then Some",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "source": "onthecase-daily-import",
+     "id": "artist_and-then-some"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "9ee33f26-9dc3-4974-8db1-a0b75d44d4d6",
+     "from": "a38416d1-9c95-45d6-9f4f-e1c68f75cb7b",
+     "title": "And Then Some @ The Crook Hotel"
+    }
+   ],
+   "delete_artists": [
+    "a38416d1-9c95-45d6-9f4f-e1c68f75cb7b"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "ant clowes",
+   "keeper": "X8nI6ptSlLGoHh8XW51N",
+   "keeper_name": "Ant Clowes Duo",
+   "enrich": {
+    "websiteUrl": "https://antclowesmusicduo.co.uk",
+    "actType": [
+     "covers"
+    ]
+   },
+   "add_external_ids": [],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "8c2a6e36-3878-49f2-9676-ab5fb8f54511",
+     "from": "925a6259-5a3e-4944-bcfc-8de437d781aa",
+     "title": "Ant Clowes Duo @ The Shamrock, Macclesfield"
+    }
+   ],
+   "delete_artists": [
+    "925a6259-5a3e-4944-bcfc-8de437d781aa"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "audio jacks",
+   "keeper": "9b0a93fe-5fcf-4063-af2a-50b3a116cb35",
+   "keeper_name": "Audio Jacks",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "source": "onthecase-daily-import",
+     "id": "artist_audio-jacks"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "reassign",
+     "event": "18431105-ae24-4091-a98f-fe3d056be3c7",
+     "to": "9b0a93fe-5fcf-4063-af2a-50b3a116cb35",
+     "from": "e3bf9e2c-8532-4b04-9081-a0e3a7d35a3a",
+     "title": "Audio Jacks @ The White Swan"
+    }
+   ],
+   "delete_artists": [
+    "e3bf9e2c-8532-4b04-9081-a0e3a7d35a3a"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "baxtrax",
+   "keeper": "1896acb0-b4be-434f-b002-08d366c0b68e",
+   "keeper_name": "Baxtrax",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "source": "sceniceye-daily-import",
+     "id": "artist_baxtrax"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "reassign",
+     "event": "78d661a7-ed86-4859-b13c-93b94502cd49",
+     "to": "1896acb0-b4be-434f-b002-08d366c0b68e",
+     "from": "c07326a9-4f78-49c7-9369-0d0bc404d0ee",
+     "title": "Baxtrax @ The Old House at Home, Havant"
+    }
+   ],
+   "delete_artists": [
+    "c07326a9-4f78-49c7-9369-0d0bc404d0ee"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "beatles for sale",
+   "keeper": "ccedf866-5923-4890-bf6e-e9fb023bbdb7",
+   "keeper_name": "Beatles For Sale",
+   "enrich": {},
+   "add_external_ids": [],
+   "event_ops": [
+    {
+     "op": "reassign",
+     "event": "8e8f7136-2ee9-4ba2-aefd-7ec7089bf5a1",
+     "to": "ccedf866-5923-4890-bf6e-e9fb023bbdb7",
+     "from": "ad2a64fc-1dc5-4208-968d-922d7a99041a",
+     "title": "The Beatles For Sale (Beatles tribute) @ Trackside - Buxton Brewery"
+    }
+   ],
+   "delete_artists": [
+    "ad2a64fc-1dc5-4208-968d-922d7a99041a"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "blind 90",
+   "keeper": "fd1aea7d-5840-40a6-a920-6e1c25dc1445",
+   "keeper_name": "Blind 90",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "id": "artist_blind-90",
+     "source": "onthecase-daily-import"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "reassign",
+     "event": "b8f84a87-d7c9-4a4c-8830-30d6c0c030f2",
+     "to": "fd1aea7d-5840-40a6-a920-6e1c25dc1445",
+     "from": "c80548ed-246a-4de1-82e3-519ce130ae25",
+     "title": "Blind 90 @ Bebside Inn"
+    }
+   ],
+   "delete_artists": [
+    "c80548ed-246a-4de1-82e3-519ce130ae25"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "blind tiger",
+   "keeper": "LEaHULH3pxKD5Kk2g32C",
+   "keeper_name": "Blind Tiger",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "source": "gigs-news-daily-import",
+     "id": "artist_blind-tiger"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "332b7960-91b0-4486-8e8f-1120273dc8b7",
+     "from": "1f856469-71d7-4596-934b-442bfb2ba27b",
+     "title": "Blind Tiger @ Duke Of York"
+    }
+   ],
+   "delete_artists": [
+    "1f856469-71d7-4596-934b-442bfb2ba27b"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "blindsided",
+   "keeper": "83f7c3dc-b644-4c26-8599-f1dbe3bcd963",
+   "keeper_name": "Blindsided",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "source": "klma-stoke-gig-list",
+     "id": "klma-artist-266de86db036"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "reassign",
+     "event": "2fa6f3f8-85d2-4503-a3bb-537eb8c659e2",
+     "to": "83f7c3dc-b644-4c26-8599-f1dbe3bcd963",
+     "from": "14261eba-efa0-4e51-bdcf-26538663ca68",
+     "title": "Blindsided @ Green Star"
+    }
+   ],
+   "delete_artists": [
+    "14261eba-efa0-4e51-bdcf-26538663ca68"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "blistered molly",
+   "keeper": "2e69a57e-4088-496c-8ce2-ab1bf67fc05d",
+   "keeper_name": "Blistered Molly",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "id": "artist_blistered-molly",
+     "source": "onthecase-daily-import"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "9f4da207-3c57-4c6e-83f4-12ea20c01087",
+     "from": "5fb8a877-5487-4a28-8a12-f3da1830caf1",
+     "title": "Blistered Molly @ The White Swan"
+    }
+   ],
+   "delete_artists": [
+    "5fb8a877-5487-4a28-8a12-f3da1830caf1"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "blue ridge",
+   "keeper": "70e29c87-6afc-487d-a4a5-6d30356466cd",
+   "keeper_name": "Blue Ridge Band",
+   "enrich": {
+    "genres": [
+     "rock",
+     "pop"
+    ]
+   },
+   "add_external_ids": [],
+   "event_ops": [],
+   "delete_artists": [
+    "e4d07ecb-8fd2-4b9c-9647-57fe59b8766c"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "brit pack",
+   "keeper": "4c113f21-28f7-437e-8153-e1f64bd68b90",
+   "keeper_name": "The Brit Pack",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "id": "artist_brit-pack",
+     "source": "onthecase-daily-import"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "reassign",
+     "event": "fc72d19b-5564-401a-9c30-4e55bd97cceb",
+     "to": "4c113f21-28f7-437e-8153-e1f64bd68b90",
+     "from": "b02a25bc-2658-4024-8dca-f6a71ca4b762",
+     "title": "Brit Pack @ The Moorcock"
+    },
+    {
+     "op": "delete-event",
+     "event": "f378d126-ddc1-4b6f-8424-534be5b47409",
+     "from": "b02a25bc-2658-4024-8dca-f6a71ca4b762",
+     "title": "Brit Pack @ Crown and Cannon"
+    }
+   ],
+   "delete_artists": [
+    "b02a25bc-2658-4024-8dca-f6a71ca4b762"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "brydon",
+   "keeper": "9638e2c5-74e7-44c8-8fe3-3f54117a8ca5",
+   "keeper_name": "Brydon Trio",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "source": "onthecase-daily-import",
+     "id": "artist_brydon"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "reassign",
+     "event": "071353d5-bc6e-4006-9cdb-fbc3b483ec82",
+     "to": "9638e2c5-74e7-44c8-8fe3-3f54117a8ca5",
+     "from": "d9c3a4cc-edf5-4cd6-9b3d-375ce2cdba82",
+     "title": "Brydon Trio @ The Prior"
+    }
+   ],
+   "delete_artists": [
+    "d9c3a4cc-edf5-4cd6-9b3d-375ce2cdba82"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "cadency",
+   "keeper": "f5bb8d4f-4b3e-4fc6-8310-f08a6712f9b7",
+   "keeper_name": "Cadency",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "source": "sceniceye-daily-import",
+     "id": "artist_cadency"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "reassign",
+     "event": "4968e80a-d5de-4a57-8da7-d6275d680caf",
+     "to": "f5bb8d4f-4b3e-4fc6-8310-f08a6712f9b7",
+     "from": "8e56529a-b164-4571-b44f-da02c52129a1",
+     "title": "Cadency @ Cowplain Social Club"
+    }
+   ],
+   "delete_artists": [
+    "8e56529a-b164-4571-b44f-da02c52129a1"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "candc",
+   "keeper": "GfYlNk9J3qqdWrxSnRPW",
+   "keeper_name": "C&C Duo",
+   "enrich": {
+    "actType": [
+     "covers"
+    ]
+   },
+   "add_external_ids": [],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "fd847b1a-828a-4a20-9c9c-c58474abfe66",
+     "from": "956d324b-8618-41b1-80d0-51259abb4617",
+     "title": "C&C Duo @ The Bridge Inn, Stone"
+    }
+   ],
+   "delete_artists": [
+    "956d324b-8618-41b1-80d0-51259abb4617"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "catalyst",
+   "keeper": "9e3abec3-2ed9-4a37-9e84-91a429fb7a27",
+   "keeper_name": "Catalyst",
+   "enrich": {
+    "genres": [
+     "pop",
+     "rock"
+    ],
+    "actType": [
+     "covers"
+    ]
+   },
+   "add_external_ids": [],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "5a219739-12ea-4394-bf3c-8cf855d3163f",
+     "from": "606e259f-1399-4866-aa8d-06fddc4d6067",
+     "title": "Catalyst @ The Offley Arms, Madeley"
+    }
+   ],
+   "delete_artists": [
+    "606e259f-1399-4866-aa8d-06fddc4d6067"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "chase",
+   "keeper": "09c5d121-9cfc-482f-88b0-4c26132dda45",
+   "keeper_name": "The Chase",
+   "enrich": {},
+   "add_external_ids": [],
+   "event_ops": [],
+   "delete_artists": [
+    "97445235-27f8-4950-8b68-67ad690d203a"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "craig foster",
+   "keeper": "536687db-6f5d-4c2b-ac7e-6d70f5a69041",
+   "keeper_name": "Craig Foster",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "source": "sceniceye-daily-import",
+     "id": "artist_craig-foster"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "289a4023-1446-4dc4-b861-7a4e0ea1c7e0",
+     "from": "e8879a0b-5a0a-4dd4-bd0e-d9206476df9f",
+     "title": "Craig Foster @ Number 73 Bar and Kitchen"
+    }
+   ],
+   "delete_artists": [
+    "e8879a0b-5a0a-4dd4-bd0e-d9206476df9f"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "crosshair",
+   "keeper": "5M2OlxTbMCg7LdmCqLDx",
+   "keeper_name": "Crosshair",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "source": "klma-stoke-gig-list",
+     "id": "klma-artist-5cd8054740cc"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "3d2f9047-17b4-4aca-ae30-59b842c1343d",
+     "from": "80260793-71c1-4fb7-a25a-fb2a153f29d4",
+     "title": "Crosshair @ Potters Bar"
+    },
+    {
+     "op": "delete-event",
+     "event": "7fe2944c-09fd-4d9b-bb2a-dcc2a4e14df6",
+     "from": "80260793-71c1-4fb7-a25a-fb2a153f29d4",
+     "title": "Crosshair @ Ye Olde Crown"
+    },
+    {
+     "op": "delete-event",
+     "event": "69ab6902-582d-46c3-ba70-f4694800dc73",
+     "from": "80260793-71c1-4fb7-a25a-fb2a153f29d4",
+     "title": "Crosshair @ Stone Cricket Club"
+    }
+   ],
+   "delete_artists": [
+    "80260793-71c1-4fb7-a25a-fb2a153f29d4"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "danny and friends night",
+   "keeper": "54ca695a-4145-461f-8940-255b2e7f4e1a",
+   "keeper_name": "Danny & Friends (acoustic Night)",
+   "enrich": {},
+   "add_external_ids": [],
+   "event_ops": [
+    {
+     "op": "reassign",
+     "event": "c987e314-ac39-4bf6-9e7b-4957c9a9b43d",
+     "to": "54ca695a-4145-461f-8940-255b2e7f4e1a",
+     "from": "247458d8-30a7-47b9-b917-5ec23b7e5563",
+     "title": "Danny & Friends (acoustic night) @ Greyhound Inn"
+    }
+   ],
+   "delete_artists": [
+    "247458d8-30a7-47b9-b917-5ec23b7e5563"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "dog in a box",
+   "keeper": "e9e0b454-daf9-4044-a0d1-5f508eb87abf",
+   "keeper_name": "Dog In A Box",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "source": "onthecase-daily-import",
+     "id": "artist_dog-in-a-box"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "4e5457c5-260f-49f0-8da9-563a4e6909f6",
+     "from": "0b85886f-9974-4491-afab-8e8294183686",
+     "title": "Dog In A Box @ The Crook Hotel"
+    }
+   ],
+   "delete_artists": [
+    "0b85886f-9974-4491-afab-8e8294183686"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "dreadnought",
+   "keeper": "eaecc12b-cf3c-4572-a17e-da2b4fe8f2d2",
+   "keeper_name": "Dreadnought",
+   "enrich": {
+    "actType": [
+     "covers"
+    ]
+   },
+   "add_external_ids": [
+    {
+     "id": "dreadnought",
+     "source": "onthecasemusic"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "eae657e9-aef6-4cbf-a7b8-25bd904e19b7",
+     "from": "ad417bfd-e6a0-4e5c-95e2-835ce031e73e",
+     "title": "Dreadnought @ Clousden Hill"
+    }
+   ],
+   "delete_artists": [
+    "ad417bfd-e6a0-4e5c-95e2-835ce031e73e"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "eaton park",
+   "keeper": "HOifh16xNRfedOMgSkG1",
+   "keeper_name": "Eaton Park",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "id": "klma-artist-d5a4f5819d9f",
+     "source": "klma-stoke-gig-list"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "reassign",
+     "event": "23ee3112-e11b-4567-8175-c6bc37552d33",
+     "to": "HOifh16xNRfedOMgSkG1",
+     "from": "e5c3daab-7dc5-4217-ab4d-4583f5fd8ccd",
+     "title": "Eaton Park Duo @ R&G's Tap House"
+    }
+   ],
+   "delete_artists": [
+    "e5c3daab-7dc5-4217-ab4d-4583f5fd8ccd"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "eva iglestas",
+   "keeper": "6a34efb0-a210-4dde-a71a-15deb7960dbc",
+   "keeper_name": "Eva Iglestas",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "source": "sceniceye-daily-import",
+     "id": "artist_eva-iglestas"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "33af13ba-6d12-48ef-8e81-05a0fc2d96f3",
+     "from": "3f9ef775-1f10-4373-a83f-9da11f7298f5",
+     "title": "Eva Iglestas @ The Crown Inn Emsworth"
+    }
+   ],
+   "delete_artists": [
+    "3f9ef775-1f10-4373-a83f-9da11f7298f5"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "faye carpenter",
+   "keeper": "015261a6-6adf-4fc1-bedb-a05feeb6286c",
+   "keeper_name": "Faye Carpenter",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "source": "sceniceye-daily-import",
+     "id": "artist_faye-carpenter"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "reassign",
+     "event": "aa1a24f2-7d1e-4e5b-b6f9-d53e7b93348d",
+     "to": "015261a6-6adf-4fc1-bedb-a05feeb6286c",
+     "from": "4be5ea9a-f3f2-478d-98ea-4dd7e9b4900b",
+     "title": "Faye Carpenter @ The Exchange"
+    }
+   ],
+   "delete_artists": [
+    "4be5ea9a-f3f2-478d-98ea-4dd7e9b4900b"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "finley simpson",
+   "keeper": "532ae312-6dcf-4bdd-9f41-9c3ae2f339ce",
+   "keeper_name": "Finley Simpson",
+   "enrich": {},
+   "add_external_ids": [],
+   "event_ops": [
+    {
+     "op": "reassign",
+     "event": "86746bb8-89e2-4b03-97f4-3c6455494653",
+     "to": "532ae312-6dcf-4bdd-9f41-9c3ae2f339ce",
+     "from": "4c5c482f-f99a-43d5-8847-082d96222e0d",
+     "title": "Finley Simpson @ The Bridge Ashbourne"
+    }
+   ],
+   "delete_artists": [
+    "4c5c482f-f99a-43d5-8847-082d96222e0d"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "four letter word",
+   "keeper": "aadc0f12-b30b-48fd-a712-4e725bfca388",
+   "keeper_name": "Four Letter Word",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "source": "onthecase-daily-import",
+     "id": "artist_four-letter-word"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "530db3d9-1a8a-4af9-9a3a-1ce6684a1e9b",
+     "from": "12930034-7a32-48f4-98fd-aa12b1d6e42c",
+     "title": "Four Letter Word @ The Crook Hotel"
+    }
+   ],
+   "delete_artists": [
+    "12930034-7a32-48f4-98fd-aa12b1d6e42c"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "george michael tribute",
+   "keeper": "c31ea75c-7d2e-4991-b0ea-53a44252b75a",
+   "keeper_name": "George Michael Tribute",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "id": "artist_george-michael-tribute",
+     "source": "sceniceye-daily-import"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "4ba219fc-f960-4182-a9e4-c8d9d3c68036",
+     "from": "87ca7982-664b-4711-aa11-8b402e177e4f",
+     "title": "George Michael - Tribute @ The Southbourne Club"
+    }
+   ],
+   "delete_artists": [
+    "87ca7982-664b-4711-aa11-8b402e177e4f"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "grey dogs",
+   "keeper": "yuV0A0YFWdAx8WQJvG5P",
+   "keeper_name": "Grey Dogs",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "source": "gigs-news-daily-import",
+     "id": "artist_the-grey-dogs"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "reassign",
+     "event": "65b2636f-5de5-465a-afa7-47188dd65fa1",
+     "to": "yuV0A0YFWdAx8WQJvG5P",
+     "from": "8305789e-0f55-4dff-98ea-9cb9687d2ccb",
+     "title": "the Grey Dogs @ The Flying Coach"
+    }
+   ],
+   "delete_artists": [
+    "8305789e-0f55-4dff-98ea-9cb9687d2ccb"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "guitar monkey",
+   "keeper": "7FDaYyPgFt7HzALIhTdk",
+   "keeper_name": "Guitar Monkey",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "id": "klma-artist-ea9ccd3f8a5e",
+     "source": "klma-stoke-gig-list"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "d89747ed-f279-4b80-8c27-b02eeb07e957",
+     "from": "8096982c-73e6-4c37-9a9e-7d292fcea646",
+     "title": "Guitar Monkey @ The Cheshire Cheese"
+    }
+   ],
+   "delete_artists": [
+    "8096982c-73e6-4c37-9a9e-7d292fcea646"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "harrison rhys",
+   "keeper": "e262e794-5b20-4ce1-8caf-f1db66dbf795",
+   "keeper_name": "Harrison Rhys",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "id": "artist_harrison-rhys",
+     "source": "sceniceye-daily-import"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "reassign",
+     "event": "2916124b-e47e-475f-8a27-c9328af32f4e",
+     "to": "e262e794-5b20-4ce1-8caf-f1db66dbf795",
+     "from": "a4f67375-4a3b-48e6-88ed-c14ef304edf9",
+     "title": "Harrison Rhys @ The Robin Hood"
+    }
+   ],
+   "delete_artists": [
+    "a4f67375-4a3b-48e6-88ed-c14ef304edf9"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "hayley di rito",
+   "keeper": "7120bd3a-be92-4d3a-b1f9-7bf02b831518",
+   "keeper_name": "Live Music! Hayley Di Rito",
+   "enrich": {},
+   "add_external_ids": [],
+   "event_ops": [
+    {
+     "op": "reassign",
+     "event": "de21e196-0f49-4427-b543-603275655653",
+     "to": "7120bd3a-be92-4d3a-b1f9-7bf02b831518",
+     "from": "0cd9944d-534d-4061-b48b-1b619c479f95",
+     "title": "Hayley Di Rito @ House Of Beer Ashbourne"
+    }
+   ],
+   "delete_artists": [
+    "0cd9944d-534d-4061-b48b-1b619c479f95"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "hybrids",
+   "keeper": "1c2bff07-453a-45c0-ba73-0e133b9f92ae",
+   "keeper_name": "Hybrids",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "source": "onthecase-daily-import",
+     "id": "artist_hybrids"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "1f642347-fdf4-44e8-9697-d8dcab37bf24",
+     "from": "bcccacd8-a089-42c4-8436-f015e4a9ba4d",
+     "title": "Hybrids @ Bebside Inn"
+    }
+   ],
+   "delete_artists": [
+    "bcccacd8-a089-42c4-8436-f015e4a9ba4d"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "infamy",
+   "keeper": "AXcIcTtYiOjaUbTJiHI9",
+   "keeper_name": "Infamy",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "source": "klma-stoke-gig-list",
+     "id": "klma-artist-60ee3b0bd43b"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "9761cb66-7507-4722-b198-a6b0bbeb8944",
+     "from": "4cb2a0d2-e568-435c-a4f7-30bbbe6a82af",
+     "title": "INFAMY @ The Old Post Office"
+    }
+   ],
+   "delete_artists": [
+    "4cb2a0d2-e568-435c-a4f7-30bbbe6a82af"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "isn t it alanis",
+   "keeper": "aafc96f5-7a22-457e-9c0b-3ea7bab4fcef",
+   "keeper_name": "Isn't It Alanis",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "id": "klma-artist-cc2b3c7c2f84",
+     "source": "klma-stoke-gig-list"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "ea1f6664-76b4-4276-88fb-1c2364389877",
+     "from": "ca8edc8a-0e15-4e51-b87c-59e80be95680",
+     "title": "Isn't it Alanis @ The Sugarmill"
+    }
+   ],
+   "delete_artists": [
+    "ca8edc8a-0e15-4e51-b87c-59e80be95680"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "iwan mitchell",
+   "keeper": "fbd7ec9d-412a-4a74-9c33-3c60a92a2871",
+   "keeper_name": "Iwan Mitchell",
+   "enrich": {},
+   "add_external_ids": [],
+   "event_ops": [],
+   "delete_artists": [
+    "9e5f0717-d8d3-47b7-8881-c6fa0b392ecc"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "james michael",
+   "keeper": "59392f4f-bb11-47ee-aef5-83b2e264e70c",
+   "keeper_name": "James Michael",
+   "enrich": {},
+   "add_external_ids": [],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "182d8949-7246-4cc9-9a8f-62b01c1dacd9",
+     "from": "911b0b5c-326f-4e6a-bc2b-5146a3ee7241",
+     "title": "James Michael @ Blurton Club"
+    }
+   ],
+   "delete_artists": [
+    "911b0b5c-326f-4e6a-bc2b-5146a3ee7241"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "jason keady",
+   "keeper": "3643838e-faf9-4647-93b3-5e302b38e2c7",
+   "keeper_name": "Jason Keady",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "id": "klma-artist-a0dd502fa641",
+     "source": "klma-stoke-gig-list"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "4eba2a3a-1dae-4f34-bb5f-397620129520",
+     "from": "4398e652-2cf1-4ca9-8304-a016139311d2",
+     "title": "Jason Keady @ The Cock Inn"
+    }
+   ],
+   "delete_artists": [
+    "4398e652-2cf1-4ca9-8304-a016139311d2"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "jo safina",
+   "keeper": "8fb8ef15-5b2a-45c3-add3-2e738ff649b6",
+   "keeper_name": "Jo Safina",
+   "enrich": {
+    "actType": [
+     "covers"
+    ]
+   },
+   "add_external_ids": [],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "1e337d2b-fa20-480c-899a-fae948de9eec",
+     "from": "a0d275d8-f7c6-482f-aba2-037efe0d076f",
+     "title": "Jo Safina @ The Rose &amp; Crown, Stanley"
+    }
+   ],
+   "delete_artists": [
+    "a0d275d8-f7c6-482f-aba2-037efe0d076f"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "joe mcshane",
+   "keeper": "647f14af-f6c0-4fbc-8194-d4b2d197162e",
+   "keeper_name": "Joe McShane",
+   "enrich": {
+    "actType": [
+     "covers"
+    ]
+   },
+   "add_external_ids": [],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "7df8033b-030a-4793-88fc-810d685260e7",
+     "from": "69b46066-a469-40a1-ac49-2a466bd0853d",
+     "title": "Joe McShane @ The Dog Inn"
+    }
+   ],
+   "delete_artists": [
+    "69b46066-a469-40a1-ac49-2a466bd0853d"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "justified",
+   "keeper": "JUHqGvjcPBCmKjqNfk0X",
+   "keeper_name": "Music Justified",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "id": "klma-artist-f2ee8554103c",
+     "source": "klma-stoke-gig-list"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "cacc8f3a-3f80-4f00-8240-657f2c763e39",
+     "from": "f36bfe6b-f072-4883-98db-3191bed2bd70",
+     "title": "Music Justified @ Rose & Crown"
+    }
+   ],
+   "delete_artists": [
+    "f36bfe6b-f072-4883-98db-3191bed2bd70"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "kilns",
+   "keeper": "76b890e7-7df1-42ec-aec1-c823fc109749",
+   "keeper_name": "The Kilns",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "source": "klma-stoke-gig-list",
+     "id": "klma-artist-24beff0bf45d"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "b846321e-be57-4682-98b7-3f94b9767f03",
+     "from": "f439453f-c4d9-47e5-a187-27299dc82ff7",
+     "title": "The Kilns @ The Carlton"
+    }
+   ],
+   "delete_artists": [
+    "f439453f-c4d9-47e5-a187-27299dc82ff7"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "kindred spirit",
+   "keeper": "3a9a7a3f-4627-4cb1-be77-3593d6a6a41c",
+   "keeper_name": "Kindred Spirit",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "source": "onthecase-daily-import",
+     "id": "artist_kindred-spirit"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "5f9bf985-63a6-4046-acbd-b5a1cd97d1e2",
+     "from": "eced1c7a-cddc-4674-b932-ea106be4945d",
+     "title": "Kindred Spirit @ The Crook Hotel"
+    }
+   ],
+   "delete_artists": [
+    "eced1c7a-cddc-4674-b932-ea106be4945d"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "kloe louise",
+   "keeper": "H3OZRJMOjRpZUrotAKke",
+   "keeper_name": "Kloe Louise",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "id": "klma-artist-e18a484b13da",
+     "source": "klma-stoke-gig-list"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "reassign",
+     "event": "4336233c-c876-4719-ba5b-042045bb8526",
+     "to": "H3OZRJMOjRpZUrotAKke",
+     "from": "5a4c9407-8b2e-4f49-9a49-c3728d7f13a6",
+     "title": "Kloe Louise @ Berry Hill Club"
+    }
+   ],
+   "delete_artists": [
+    "5a4c9407-8b2e-4f49-9a49-c3728d7f13a6"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "lemonade",
+   "keeper": "8d25337a-daf2-4d84-9539-950d6be95571",
+   "keeper_name": "Lemonade",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "source": "gigs-news-daily-import",
+     "id": "artist_lemonade"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "c8189fa0-d384-4b0e-a6bc-e6893c3adf66",
+     "from": "918fccf9-7706-4933-93a2-f73e9edd833b",
+     "title": "Lemonade @ The Railway, Greenfield"
+    },
+    {
+     "op": "reassign",
+     "event": "1d1eeb30-e61e-4851-8b1a-1949dac88299",
+     "to": "8d25337a-daf2-4d84-9539-950d6be95571",
+     "from": "918fccf9-7706-4933-93a2-f73e9edd833b",
+     "title": "Lemonade @ Railway Inn"
+    }
+   ],
+   "delete_artists": [
+    "918fccf9-7706-4933-93a2-f73e9edd833b"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "lisa marie",
+   "keeper": "36270a7b-0703-4874-af0f-c63f575dde89",
+   "keeper_name": "Lisa Marie",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "source": "sceniceye-daily-import",
+     "id": "artist_lisa-marie"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "2e4f51c1-7755-42c3-903d-81956f8422c9",
+     "from": "ab7f336e-4ccd-4508-b5c2-5f4ad5a453bc",
+     "title": "Lisa Marie @ The Crown Inn Emsworth"
+    }
+   ],
+   "delete_artists": [
+    "ab7f336e-4ccd-4508-b5c2-5f4ad5a453bc"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "lori",
+   "keeper": "12ae7407-d517-4f83-9aef-7e6ab15e159e",
+   "keeper_name": "Lori",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "id": "klma-artist-90874be4f513",
+     "source": "klma-stoke-gig-list"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "84d78dc0-160f-4efb-bd13-11b0c53ac63c",
+     "from": "0051a3e3-3615-4583-8362-0a250f1140c5",
+     "title": "Lori Music @ Hogg Nogginns"
+    }
+   ],
+   "delete_artists": [
+    "0051a3e3-3615-4583-8362-0a250f1140c5"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "louise sevier",
+   "keeper": "77b0c192-a9bc-46a1-80d2-7250762cb854",
+   "keeper_name": "Louise Sevier",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "source": "sceniceye-daily-import",
+     "id": "artist_louise-sevier"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "reassign",
+     "event": "46ab3711-9ef0-401b-935d-07adbad72f62",
+     "to": "77b0c192-a9bc-46a1-80d2-7250762cb854",
+     "from": "3563e8bd-b341-4866-8d9a-708b0ca137ad",
+     "title": "Louise Sevier @ The Fox & Hounds"
+    }
+   ],
+   "delete_artists": [
+    "3563e8bd-b341-4866-8d9a-708b0ca137ad"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "magic beans",
+   "keeper": "0e7b6ed5-3d39-4493-9d59-81e5e1b5a69b",
+   "keeper_name": "The Magic Beans",
+   "enrich": {
+    "genres": [
+     "mod",
+     "indie",
+     "punk",
+     "covers"
+    ],
+    "actType": [
+     "covers"
+    ]
+   },
+   "add_external_ids": [],
+   "event_ops": [
+    {
+     "op": "reassign",
+     "event": "75f34b2a-bc5d-496d-a3a0-8f7aaf94bea4",
+     "to": "0e7b6ed5-3d39-4493-9d59-81e5e1b5a69b",
+     "from": "9a92c516-46e5-434c-bbab-98a124a9dfe6",
+     "title": "Magic Beans @ Crown and Cannon"
+    }
+   ],
+   "delete_artists": [
+    "9a92c516-46e5-434c-bbab-98a124a9dfe6"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "magnetic jellyfish",
+   "keeper": "zQdNXfDcXxeUCDIDmjXy",
+   "keeper_name": "The Magnetic Jellyfish",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "id": "klma-artist-e95bef39f8ed",
+     "source": "klma-stoke-gig-list"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "reassign",
+     "event": "d022280a-d134-4351-b116-2eec33ed5de7",
+     "to": "zQdNXfDcXxeUCDIDmjXy",
+     "from": "0fdc1941-07a4-461c-917b-5ea4c323683a",
+     "title": "The Magnetic Jellyfish @ The Ashwood"
+    }
+   ],
+   "delete_artists": [
+    "0fdc1941-07a4-461c-917b-5ea4c323683a"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "martin stephenson and daintees",
+   "keeper": "52dcf502-854a-42c3-b03d-0369a6a62612",
+   "keeper_name": "Martin Stephenson & The Daintees",
+   "enrich": {},
+   "add_external_ids": [],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "1dbb1e63-2597-4544-9ae7-375a85636a80",
+     "from": "2ca47718-c756-4a41-b59d-76b6c08b33ef",
+     "title": "Martin Stephenson Daintees Trio @ Artisan Tap"
+    }
+   ],
+   "delete_artists": [
+    "2ca47718-c756-4a41-b59d-76b6c08b33ef"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "marvilles",
+   "keeper": "b526b214-d80c-4175-89fa-37e5e47b0182",
+   "keeper_name": "The Marvilles",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "source": "sceniceye-daily-import",
+     "id": "artist_the-marvilles"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "fa02a893-bb25-45c0-98c5-a2ba73923b5a",
+     "from": "21658180-c890-4d65-ad96-a4deac18ddcb",
+     "title": "The Marvilles @ The Heroes, Waterlooville"
+    }
+   ],
+   "delete_artists": [
+    "21658180-c890-4d65-ad96-a4deac18ddcb"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "md",
+   "keeper": "a8e3c25d-6d20-4310-9094-843961273cb0",
+   "keeper_name": "MD Duo",
+   "enrich": {
+    "genres": [
+     "rock",
+     "pop"
+    ],
+    "actType": [
+     "covers"
+    ]
+   },
+   "add_external_ids": [],
+   "event_ops": [
+    {
+     "op": "reassign",
+     "event": "f99389b6-645c-4f3e-90c4-0ed04f84ed6e",
+     "to": "a8e3c25d-6d20-4310-9094-843961273cb0",
+     "from": "d22fb45f-44cc-4f16-b17d-2ddc0ed59ff8",
+     "title": "The MD Duo @ Portchester Social Club"
+    }
+   ],
+   "delete_artists": [
+    "d22fb45f-44cc-4f16-b17d-2ddc0ed59ff8"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "mick taylor",
+   "keeper": "67a1e340-66ae-4b46-97a3-26b73b4ea7b1",
+   "keeper_name": "Mick Taylor",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "source": "klma-stoke-gig-list",
+     "id": "klma-artist-10f3fd25e791"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "reassign",
+     "event": "f22cb246-82a0-4089-9dc4-85d51f121aed",
+     "to": "67a1e340-66ae-4b46-97a3-26b73b4ea7b1",
+     "from": "14431eb2-3199-46f5-943a-9e3ea2380d25",
+     "title": "Mick Taylor @ The Bridge Inn"
+    }
+   ],
+   "delete_artists": [
+    "14431eb2-3199-46f5-943a-9e3ea2380d25"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "mike wooldridge",
+   "keeper": "46c31f48-2ed2-4f11-b2f2-a1daf660f961",
+   "keeper_name": "Mike Wooldridge",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "source": "sceniceye-daily-import",
+     "id": "artist_mike-wooldridge"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "44c4ee30-9379-437f-99a5-de4bd7bd07ea",
+     "from": "9f0b9a3f-b721-4876-b5c6-7a84c757d8a0",
+     "title": "Mike Wooldridge @ The Old House at Home, Havant"
+    }
+   ],
+   "delete_artists": [
+    "9f0b9a3f-b721-4876-b5c6-7a84c757d8a0"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "mugshot",
+   "keeper": "49a44817-cd55-4f94-8290-c4feff794739",
+   "keeper_name": "Mugshot",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "id": "artist_mugshot",
+     "source": "onthecase-daily-import"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "166282c5-45b3-4b31-8047-fba4e3a46fe3",
+     "from": "02823656-b4ea-44a6-b624-0737b8deddd4",
+     "title": "Mugshot @ Live Lounge"
+    }
+   ],
+   "delete_artists": [
+    "02823656-b4ea-44a6-b624-0737b8deddd4"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "no on tonight",
+   "keeper": "d80e3e0a-78ca-4b8c-ae55-4b270b85930a",
+   "keeper_name": "No band on tonight",
+   "enrich": {},
+   "add_external_ids": [],
+   "event_ops": [
+    {
+     "op": "reassign",
+     "event": "ed1f126f-0fe8-4937-8439-c951ff19b4c1",
+     "to": "d80e3e0a-78ca-4b8c-ae55-4b270b85930a",
+     "from": "253a1c38-4228-4959-9771-8ccd061ed237",
+     "title": "No band on tonight @ Crown and Cannon"
+    }
+   ],
+   "delete_artists": [
+    "253a1c38-4228-4959-9771-8ccd061ed237"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "panthers",
+   "keeper": "95b4a3fa-b85f-4f51-a611-e15432352f56",
+   "keeper_name": "The Panthers",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "id": "artist_the-panthers",
+     "source": "onthecase-daily-import"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "reassign",
+     "event": "c42dadca-b7ca-4907-84d0-7410abafbbcc",
+     "to": "95b4a3fa-b85f-4f51-a611-e15432352f56",
+     "from": "af594384-c1aa-4c48-984e-69f2a0285c5e",
+     "title": "The Panthers @ Bebside Inn"
+    }
+   ],
+   "delete_artists": [
+    "af594384-c1aa-4c48-984e-69f2a0285c5e"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "peppermint soul",
+   "keeper": "078cc0fa-ce00-4f84-b26d-d56d0162e952",
+   "keeper_name": "Peppermint Soul Band",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "source": "sceniceye-daily-import",
+     "id": "artist_peppermint-soul"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "6aa2c609-4b8d-4df9-bbe0-de1f19c78a13",
+     "from": "4dd461ea-9d1d-4de1-85b8-02a62222c468",
+     "title": "Peppermint Soul Band @ The Heroes, Waterlooville"
+    }
+   ],
+   "delete_artists": [
+    "4dd461ea-9d1d-4de1-85b8-02a62222c468"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "perfect storm",
+   "keeper": "8b725158-7b81-4a18-9751-380024e1e088",
+   "keeper_name": "Perfect Storm",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "source": "onthecase-daily-import",
+     "id": "artist_perfect-storm"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "reassign",
+     "event": "a1dfb04a-0baf-4c32-a625-615fb5369d3e",
+     "to": "8b725158-7b81-4a18-9751-380024e1e088",
+     "from": "e974f863-aade-4b06-8210-4747a9e26425",
+     "title": "Perfect Storm @ Bebside Inn"
+    }
+   ],
+   "delete_artists": [
+    "e974f863-aade-4b06-8210-4747a9e26425"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "pierrepoint",
+   "keeper": "5d80a090-729b-48ef-a274-2dddc441fc5e",
+   "keeper_name": "Pierrepoint",
+   "enrich": {
+    "actType": [
+     "covers"
+    ]
+   },
+   "add_external_ids": [],
+   "event_ops": [
+    {
+     "op": "reassign",
+     "event": "5951c35e-c892-400b-addf-fb5f766e8681",
+     "to": "5d80a090-729b-48ef-a274-2dddc441fc5e",
+     "from": "17b51101-4158-4f7a-964d-fcda63656bb6",
+     "title": "Pierrepoint @ Arden Arms"
+    }
+   ],
+   "delete_artists": [
+    "17b51101-4158-4f7a-964d-fcda63656bb6"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "pluckers",
+   "keeper": "TImPL5aG808KCZhAtwSh",
+   "keeper_name": "The Pluckers Acoustic Duo",
+   "enrich": {
+    "actType": [
+     "covers"
+    ]
+   },
+   "add_external_ids": [],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "f5cc49be-7cba-4335-85a6-e7db876780a8",
+     "from": "01d4d26a-2be0-411b-8223-934a7bf83249",
+     "title": "The Pluckers @ The Roebuck, Forsbrook"
+    }
+   ],
+   "delete_artists": [
+    "01d4d26a-2be0-411b-8223-934a7bf83249"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "rebel radio",
+   "keeper": "cdedd99b-befe-47f7-9ab9-a0db6ac7e349",
+   "keeper_name": "Rebel Radio",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "id": "artist_rebel-radio",
+     "source": "onthecase-daily-import"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "adbfbdb1-6902-4e0c-ad56-d6464a982b29",
+     "from": "3569edaa-a963-4e64-a50b-e6c4b30f6b09",
+     "title": "Rebel Radio @ Live Lounge"
+    }
+   ],
+   "delete_artists": [
+    "3569edaa-a963-4e64-a50b-e6c4b30f6b09"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "rosie",
+   "keeper": "9ba90439-c5ab-48d1-881f-51a384636311",
+   "keeper_name": "Rosie",
+   "enrich": {},
+   "add_external_ids": [],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "388456f6-67f6-4d68-acbe-6b8cf74b2988",
+     "from": "731b02da-7b76-4246-b761-68efe8f38245",
+     "title": "Rosie @ Blurton Club"
+    }
+   ],
+   "delete_artists": [
+    "731b02da-7b76-4246-b761-68efe8f38245"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "rubber souls",
+   "keeper": "101dc4f7-0f1e-4655-898c-5f7f17e2a24a",
+   "keeper_name": "The Rubber Souls",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "id": "artist_the-rubber-souls",
+     "source": "sceniceye-daily-import"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "cecaebe4-5dc8-49b9-9df0-05b177c1e96d",
+     "from": "75257a29-b472-47e4-868d-c28b3306073e",
+     "title": "The Rubber Souls @ Ember Woodpecker"
+    }
+   ],
+   "delete_artists": [
+    "75257a29-b472-47e4-868d-c28b3306073e"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "russell keith",
+   "keeper": "ca732c7c-aa1e-45ea-9708-ed54999b2633",
+   "keeper_name": "Russell Keith",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "id": "artist_russell-keith",
+     "source": "sceniceye-daily-import"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "reassign",
+     "event": "9916de10-9b91-4ec7-8c7e-98ee6e9d1742",
+     "to": "ca732c7c-aa1e-45ea-9708-ed54999b2633",
+     "from": "2eb6e531-6b8e-485a-becf-169b033098e1",
+     "title": "Russell Keith @ Golden Lion"
+    }
+   ],
+   "delete_artists": [
+    "2eb6e531-6b8e-485a-becf-169b033098e1"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "sarah thomas",
+   "keeper": "e53ecf44-2035-4147-a665-377520118b55",
+   "keeper_name": "Sarah Thomas",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "id": "artist_sarah-thomas",
+     "source": "sceniceye-daily-import"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "d47f079a-4e87-49e7-a867-ae52f5eb1415",
+     "from": "7bf20de5-ef9e-4010-ad9e-b8b6ecf3509b",
+     "title": "Sarah Thomas @ Stansted Park Garden Centre"
+    }
+   ],
+   "delete_artists": [
+    "7bf20de5-ef9e-4010-ad9e-b8b6ecf3509b"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "savage budgiez",
+   "keeper": "y8AmPUaIfXJmA6roG7S3",
+   "keeper_name": "Savage Budgiez",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "source": "klma-stoke-gig-list",
+     "id": "klma-artist-27e8104f56b4"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "3c431669-41f1-42bb-bb33-b34dabd64a0c",
+     "from": "e0d39574-92d7-40ba-9510-fe940e6a0809",
+     "title": "Savage Budgiez @ Queen's Hotel"
+    }
+   ],
+   "delete_artists": [
+    "e0d39574-92d7-40ba-9510-fe940e6a0809"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "scarlett fever",
+   "keeper": "88b5ddff-2a7e-498f-abda-da2ea08a85ec",
+   "keeper_name": "Scarlett Fever",
+   "enrich": {},
+   "add_external_ids": [],
+   "event_ops": [
+    {
+     "op": "collab-manual",
+     "event": "235a5d6c-a250-4cf8-85b2-bdb68b994c24",
+     "from": "c9badf89-6acb-464f-a25b-0ea4fabe3a4a",
+     "title": "FESTIVAL: Alsager Music Festival 2026 @ Milton Park (4 stages, 21 live acts)"
+    }
+   ],
+   "delete_artists": [
+    "c9badf89-6acb-464f-a25b-0ea4fabe3a4a"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "sean sings elvis",
+   "keeper": "268c62a6-d4a5-45c0-a284-5f5eca5ca483",
+   "keeper_name": "Sean Sings Elvis",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "source": "sceniceye-daily-import",
+     "id": "artist_sean-sings-elvis"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "reassign",
+     "event": "97ad2394-74a2-43e5-801d-7b01f2b57897",
+     "to": "268c62a6-d4a5-45c0-a284-5f5eca5ca483",
+     "from": "94f3e358-81e1-477b-98cb-e90b9e303803",
+     "title": "Sean Sings Elvis @ The Crown Inn Emsworth"
+    }
+   ],
+   "delete_artists": [
+    "94f3e358-81e1-477b-98cb-e90b9e303803"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "select committee",
+   "keeper": "PNJ6TclgY1pH26h2orEa",
+   "keeper_name": "The Select Committee",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "id": "artist_the-select-committee",
+     "source": "gigs-news-daily-import"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "9336af5e-ab6d-45b8-977b-efabf5a70ddb",
+     "from": "6e00cc46-03c6-4ad4-9e71-be9202e4c0f7",
+     "title": "the Select Committee @ The Boars Head"
+    }
+   ],
+   "delete_artists": [
+    "6e00cc46-03c6-4ad4-9e71-be9202e4c0f7"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "shio",
+   "keeper": "b61485bf-873f-4735-a25b-ccfa1ab85be9",
+   "keeper_name": "Shio",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "source": "klma-stoke-gig-list",
+     "id": "klma-artist-dba7651c74f9"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "reassign",
+     "event": "9e22aed6-d11e-4149-8a9c-5c5d705da5d9",
+     "to": "b61485bf-873f-4735-a25b-ccfa1ab85be9",
+     "from": "53d70bcd-87c2-4ba2-b5c3-35c9fc0b57ae",
+     "title": "Shio UK @ Nags Head"
+    }
+   ],
+   "delete_artists": [
+    "53d70bcd-87c2-4ba2-b5c3-35c9fc0b57ae"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "six nowt",
+   "keeper": "64d5e261-c075-4926-b0c7-9307284cad3b",
+   "keeper_name": "Six Nowt",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "source": "onthecase-daily-import",
+     "id": "artist_six-nowt"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "reassign",
+     "event": "e03e0d3b-9fe8-47c6-89ed-0a70f95ae33b",
+     "to": "64d5e261-c075-4926-b0c7-9307284cad3b",
+     "from": "8b4f58d6-c21f-423e-a841-a8a9f4fd0953",
+     "title": "Six Nowt @ Bebside Inn"
+    }
+   ],
+   "delete_artists": [
+    "8b4f58d6-c21f-423e-a841-a8a9f4fd0953"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "sticky fingers",
+   "keeper": "efd30563-be14-481e-a964-00e32324cff5",
+   "keeper_name": "Sticky Fingers",
+   "enrich": {
+    "websiteUrl": "https://www.lemonrock.com/stickyfingers"
+   },
+   "add_external_ids": [
+    {
+     "source": "onthecasemusic",
+     "id": "sticky-fingers"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "4915cfd3-91d5-42c6-80f7-52f22ebd12fe",
+     "from": "017c863f-4790-4e00-9fbe-c55f8aea06f9",
+     "title": "Sticky Fingers @ Seahorse Sports Bar"
+    }
+   ],
+   "delete_artists": [
+    "017c863f-4790-4e00-9fbe-c55f8aea06f9"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "tommy p and crew",
+   "keeper": "50a4267f-0eb6-449e-baac-034c53eed664",
+   "keeper_name": "Tommy P & the Crew",
+   "enrich": {},
+   "add_external_ids": [],
+   "event_ops": [
+    {
+     "op": "reassign",
+     "event": "0f7b0eb1-6bf5-4ffe-b16b-4d009b714f83",
+     "to": "50a4267f-0eb6-449e-baac-034c53eed664",
+     "from": "18ceb7cb-b4ac-425b-8997-fcb10864e4aa",
+     "title": "Tommy P & the Crew @ The Railway"
+    }
+   ],
+   "delete_artists": [
+    "18ceb7cb-b4ac-425b-8997-fcb10864e4aa"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "trevor john",
+   "keeper": "289454b3-e299-4086-aed2-0a0126ee3260",
+   "keeper_name": "Trevor John Band",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "source": "sceniceye-daily-import",
+     "id": "artist_trevor-john"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "d46d0cbf-dda7-45ef-aa91-3503f76065ca",
+     "from": "4ab3f3e2-a9ad-4a10-83e7-ebc4290c4ac6",
+     "title": "Trevor John Band @ The Heroes, Waterlooville"
+    }
+   ],
+   "delete_artists": [
+    "4ab3f3e2-a9ad-4a10-83e7-ebc4290c4ac6"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "trilo3y",
+   "keeper": "qnPMZq8vTzPATVmFEjld",
+   "keeper_name": "Trilo3y",
+   "enrich": {
+    "actType": [
+     "covers"
+    ]
+   },
+   "add_external_ids": [],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "1a20239a-aa05-41cd-a98d-86bb200b5845",
+     "from": "3d90ae0d-cd27-4194-8461-bde794301c66",
+     "title": "Trilo3y @ The Railway, Greenfield"
+    }
+   ],
+   "delete_artists": [
+    "3d90ae0d-cd27-4194-8461-bde794301c66"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "vehicle",
+   "keeper": "ada252ae-e81c-477d-961d-ae715a90fa5f",
+   "keeper_name": "The Band Vehicle",
+   "enrich": {},
+   "add_external_ids": [],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "5ff05274-19d7-464f-930b-d4dfb7bf9949",
+     "from": "f85127c4-1a8d-4fd3-85bc-9e3b41729566",
+     "title": "Vehicle @ The Acoustic Lounge"
+    }
+   ],
+   "delete_artists": [
+    "f85127c4-1a8d-4fd3-85bc-9e3b41729566"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "warehouse blues",
+   "keeper": "LqNhG6aHxJGB6FP6lLrR",
+   "keeper_name": "The Warehouse Blues Band",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "id": "klma-artist-964d101d8141",
+     "source": "klma-stoke-gig-list"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "reassign",
+     "event": "ca77c45a-488d-46c5-a53a-b4f1db6d95b6",
+     "to": "LqNhG6aHxJGB6FP6lLrR",
+     "from": "eb48dacd-3835-4a3c-ba7d-429c034b96d8",
+     "title": "The Warehouse Blues Band @ The Albert"
+    }
+   ],
+   "delete_artists": [
+    "eb48dacd-3835-4a3c-ba7d-429c034b96d8"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "we 3 colonels",
+   "keeper": "5484ad43-86d2-4ab4-9db2-646734914981",
+   "keeper_name": "We 3 Colonels",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "source": "onthecase-daily-import",
+     "id": "artist_we-3-colonels"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "reassign",
+     "event": "fd7c97e4-a70e-47a6-9e00-2367472a9984",
+     "to": "5484ad43-86d2-4ab4-9db2-646734914981",
+     "from": "55b75666-318b-406d-9b57-c93a7b65d133",
+     "title": "We 3 Colonels @ Bebside Inn"
+    }
+   ],
+   "delete_artists": [
+    "55b75666-318b-406d-9b57-c93a7b65d133"
+   ],
+   "held_old": []
+  },
+  {
+   "group": "white line",
+   "keeper": "8d58852e-9eb7-4631-be8f-e889c738faf0",
+   "keeper_name": "The White Line",
+   "enrich": {},
+   "add_external_ids": [
+    {
+     "source": "onthecase-daily-import",
+     "id": "artist_the-white-line"
+    }
+   ],
+   "event_ops": [
+    {
+     "op": "delete-event",
+     "event": "27de347d-b177-47be-9450-03777015d1d8",
+     "from": "706316a5-d004-4bb3-9408-0a7486c6f366",
+     "title": "The White Line @ The Prior"
+    }
+   ],
+   "delete_artists": [
+    "706316a5-d004-4bb3-9408-0a7486c6f366"
+   ],
+   "held_old": []
+  }
+ ]
+}

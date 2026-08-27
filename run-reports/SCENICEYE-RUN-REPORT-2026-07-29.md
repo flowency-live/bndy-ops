@@ -1,0 +1,12 @@
+# SCENIC EYE SUPERVISED RUN — 2026-07-29 ~23:50 — STALE SOURCE WEEK (correct stop)
+
+Source read via Chrome at scenicmind.co.uk/sceniceye (frameset bypassed per task file). Guide header: **"23 July – 29 July 2026"** — the expiring week. All listed dates are past (Thu 23 – Sun 26 gigs, Mon/Wed "No gigs listed", Tue 28 past). Per SCENICEYE-TASK-v2 stale-week trap + runbook §0.14: **ZERO imports, run stopped cleanly.** This is the first live firing of the trap — the 2026-07-12 duplicate incident came from this source importing stale/duplicated data; tonight the rule held.
+
+## Outcome
+- Created: 0 artists, 0 venues, 0 events. Bounces: 0. Staged: 0.
+- Snapshot written (sceniceye-last-page.txt) with the 23–29 Jul edition so the next run's diff surfaces the new week cleanly.
+- Next: the 30 Jul – 5 Aug edition is expected Thursday. Scenic Eye's REAL qualification run happens supervised on that edition; scheduling remains Jason-only after it passes.
+
+## Discovery leads (NOT imported — §5.5 historic-as-leads)
+**Hi Fest (Hayling Island festival, 25–26 Jul)** — ~40 named acts across The Olive Leaf / Inn On The Beach / The Lifeboat Inn / The Infinity Bar / Groves Restaurant / The Driftwood, incl.: Island Shanty, Southern Comfort, The Prostates Gland Band, Westingway, Wood Wire & Words, Angel Jones, Framptunes, Iscalis, Plastic Shamrocks, The Wave Band, Karen Barnet, SKK@T, The Groovz, Igloo Music, The Rambling Dooburys, Freddie Rose Band, Lightning Slingers, Scott Hodges, Friday Street, Temple, Jack & Saul, Philips Accoustiverse, Tea With Florance, Mark & Tone, Nashville Nights, ToyTown, Save The Cheerleader, Small Town Jacks, Uncle Dave & Pat, Ross Buckingham, Red Light Spies, Fantastic Planet, Splinter, Woodruff, Cazayley and the Capos, Ellabishlive, Jane and the Jam Factory, The Monk, Fleeting Hearts, Navaeh, Force 10 Shanty Crew, Fool Moon, Cowboy Mike & The Outlaws, Mojo Swing, Ocean Arcade, The Ukes of Hazard, Harry Kemish, Katie Fid, LouLu V, The Southerlies, The Ford Mondeos. Plus weekly-circuit acts: Overtime, Ricky Zalez, The Marvilles, The Wishing Well Band, Rewind, Sugar Fly, Tasmin Escott, Kate Heaney, Lauren Potter, Phil Gooding, Sarah Saville, Britpop Revolution, Herding Cats, Namoni Harris, James Westerby.
+These are the Hayling/Havant scene map for the future discovery-spider pass — artists and venue relationships to enrich when the intelligence layer lands.

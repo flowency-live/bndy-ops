@@ -1,0 +1,898 @@
+{
+  "activePhase": 3,
+  "phaseLabel": "Corridor -> Artisan Tap diary closed + Leek crawled (already covered) - 2026-08-27",
+  "seeded": true,
+  "sweepComplete": true,
+  "browserIdentity": {
+    "verifiedDeviceId": "7ad060c3-b3e0-41c9-9dd4-a8097db94bfa",
+    "verifiedAs": "Jason Jones (Disley) — bndy Facebook-logged-in Chrome, confirmed 2026-07-09 via facebook.com/me",
+    "note": "Extension reports GENERIC display names ('Browser 1'/'Browser 2') so name-matching fails unattended. FIX: on a scheduled run, if this deviceId is among list_connected_browsers, select_browser it, then VERIFY by navigating facebook.com/me and confirming the profile reads 'Jason Jones' before ANY public write. If the deviceId is absent OR identity check fails OR 2+ browsers present and none verifiable -> HALT the browser portion as before. deviceId is stable across restarts but changes on extension reinstall/profile recreate.",
+    "humanFix": "Best permanent fix: keep only the bndy Chrome running the Claude extension during the 01:00 window, and/or rename that Chrome profile to contain 'bndy' so the display name is identifiable."
+  },
+  "spiderRules": {
+    "noSpiderTouring": "NEVER spider FROM a national/international touring ORIGINAL act (list their gig w/ ticket info, don't trawl them). Only LOCAL/REGIONAL acts + local tribute/covers bands trigger the artist-spider.",
+    "ticketInfo": "create_event accepts ticketUrl. Ticketed OK for small independent venues. STRINES 13 events need ticketUrl backfill (https://www.seetickets.com/venue/the-strines-nightingale/33333)."
+  },
+  "frontier": [],
+  "postSweep": {
+    "nextPhases": "1) FB-avatar enrichment pass for all ~61 discovery artists (genres+actType done, facebookUrl/profileImageUrl pending). 2) Artist-spider (spiderable-regional acts only) -> discovers out-of-SK venues -> grows beyond SK. 3) Then hand the daily sweep to the 07:00 scheduled task.",
+    "stagedReview": "discovery-review.jsonl: John Angus Band @ Hazel Grove Social Club, Chadkirk Unplugged @ Chadkirk Chapel. Skipped/uncertain: Queen's Hotel charity 3-band gig (date conflict Jan31 vs Sep5), Bridge Fest + Nestival + Buxton Fringe (festivals).",
+    "ticketUrlBackfill": "Strines 13 events."
+  },
+  "stats": {
+    "venuesChecked": 27,
+    "eventsCreated": 67,
+    "eventsStaged": 2,
+    "venuesCreated": 0,
+    "artistsCreated": 61,
+    "dedupSkipped": 8,
+    "rejected": 15
+  },
+  "notes": "SK SWEEP COMPLETE. 27 venues (26 SK + Spinning Top). GIGS by venue: Acoustic Lounge(20), Arden Arms(3), Crown(1), Moor Club(1), Bull's Head(2), Reddish Con(1), Strines(13), Crystal Ballroom Glossop(2), Holy Diver(6), Spinning Top(13), Rock Tavern(2), Trackside Buxton(1), Puss in Boots(1), Cock & Pheasant(1). Correct 0-gig: Fiveways, Platform One, White Hart, White House, Bohemian, Stock Dove(dedup), Masons Arms, Millers Bar(sports bar), The Railway(undated), Buxton WMC(open session), Miners Arms(undated), Pack Horse(sports pub), Queen's Hotel(Select Committee dedup). Zero duplicates created; dedup gate blocked 8 re-creates. Ready for post-sweep phases (enrichment, spider) then automation.",
+  "corridorRun": {
+    "date": "2026-07-02",
+    "townsCrawled": [
+      "Congleton (festival+publishers)",
+      "Sandbach",
+      "Alsager",
+      "Kidsgrove",
+      "Crewe (+Bhurtpore Aston/Nantwich)"
+    ],
+    "townsRemaining": [
+      "Middlewich",
+      "Holmes Chapel",
+      "Biddulph",
+      "Leek",
+      "Stoke towns (Hanley/Burslem/Longton/Fenton/Tunstall)"
+    ],
+    "newVenues": {
+      "Congleton Town Hall": "a6852a52-1696-49d2-8ce1-1b0992f950b8",
+      "The Black Bear (Congleton)": "6c096edd-5618-4243-8d8f-e3680edc71dc",
+      "Swan & Chequers (Sandbach)": "74a085bd-010c-46f4-acdd-e1464006047b",
+      "Sandbach Town Hall": "8e1075b2-6a7e-44f1-8ee4-e5178374f2d0",
+      "Thirteen Club (Alsager)": "cc95485a-8625-41db-ac0d-efe3b8878e68",
+      "The Plough Inn (Kidsgrove)": "778a937c-f743-4ac1-a6e1-df62f8b2eb37",
+      "The Blue Bell Inn (Kidsgrove)": "fef5a51c-5c3f-4e9d-84c1-c394b0f4e337",
+      "Canal Tavern (Kidsgrove)": "367490c2-6382-4bca-8d9a-f0ed3584dfe2",
+      "The Bhurtpore Inn (Aston, Nantwich)": "a88c1b8f-1f59-4245-9a5e-f97002627266"
+    },
+    "newArtists": {
+      "Jane and the Hurricanes": "b644679e-6b0e-4d3a-aedd-996e74849940",
+      "Logan Paul Murphy": "6bda6c78-1202-4800-ac08-54e00abfbe32",
+      "Swan & Chequers Big Band": "077fc5a9-4e48-48e4-a1aa-c88eec9cb0b2",
+      "The Great Pretenders": "7716db5d-d40c-4c03-969a-2535d41482e6",
+      "Six Towns": "599e44f9-668a-44cb-bf6e-7bfc00c4a56f",
+      "Andy Gowers Guns for Hire": "3847cf06-b672-46db-94cd-f123ce249084",
+      "Lady Ska-lett & The Rude Boys": "8993abc7-3983-473c-95cb-b35d04889823",
+      "Casino (sixties tribute)": "6316ef91-1e97-41a9-b66c-57e093479e63",
+      "No Favors": "f6185465-1ea3-4646-a6a3-1ef52da06212",
+      "The Tyler Kent Trio": "b2742666-2abe-4ee5-a578-147680bc133e",
+      "Beth McCann": "b60a9870-e392-46f2-8c5b-e0673044f705"
+    },
+    "noFbPrecision": [
+      "Swan & Chequers Big Band",
+      "Andy Gowers Guns for Hire",
+      "No Favors"
+    ],
+    "enrichmentBackfill": [
+      "The Pronounced (6823b1af) FB+avatar+insta+website"
+    ],
+    "stats": {
+      "newVenues": 9,
+      "venuesDeduped": 10,
+      "newArtists": 11,
+      "eventsCreated": 16,
+      "dupEventsBlocked": 1,
+      "staged": 8,
+      "rejected": "jams/unnamed/panto/past — see dashboard"
+    },
+    "keyFindings": [
+      "AI Mode area query per town keeps working: 9 genuinely new venues on the sparse edge",
+      "KLMA covers Eleven (Stoke) only partially — gap-fill opportunity (staged)",
+      "Festivals queued: CJAB lineup not yet published (re-crawl mid-July), AMF 11 Jul (25+ acts, staged), Crewe Rocks 29-30 Aug (staged), BachFest 18 Jul (staged)",
+      "Walk-in pubs (Lion Sandbach, Mere Inn, Plough Kidsgrove) publish acts weekly on FB only -> FB pass or skip"
+    ],
+    "dashboardArtifact": "discovery-crawler-nw",
+    "session2": {
+      "date": "2026-07-02 late",
+      "elevenGapFill": {
+        "done": "ALL dated Jul+Aug gigs created (21 events; 3 near-term were KLMA dups, confirming KLMA only covers ~2-3 weeks ahead). 22 new artists created, FB+avatar on 15, blank-on-precision: Shania & Country Legends, Atomic, The Hit Parade, Teddy Slims, Mantra, Rag n Bone Sam(insta+web only).",
+        "remaining_sep_dec": "elevenmusicvenue.co.uk/gigs — ~28 dated gigs 4.9.26→5.12.26 still to create (A Foreigners Journey, Floyd in the Flesh, AC/DShe+Statease Quo, Bravado, Nickelback UK, Xodus, Elton & the Jets, Popestars, Teachers Pet 20.9(artist exists d7791d78), Hi On Maiden, Ultimate RnB, Taylor Forevermore, FM Songbook, Katie Wilson Adele, Moretallica, Dan Budd Robbie, Collapser+Mufunta+Redeem, Tasha Leaper Madonna, Maet Live, Blaze Bayley 18.10(noSpider), Whitesnake UK, Love Distraction, Van Roth, The Devout, Simple Plan UK bill, Antarctic Monkeys, Vicky Jackson Pink, TEN, David Live, Oasish, Holy Diva, Eleven-at-10 fest 21.11(FM/Demon/Tygers/Midnite City/Gin Annie), Kick up the 80s, Stereotonics, Sabbotage, Myke Gray, ELO Encounter, Dirty DC). Venue 8Pky4flebxSt2s36ub3o, doors 19:00 eve / 15:00 Sun matinee, ticket247 links on venue page."
+      },
+      "festivals": {
+        "AMF": "event 235a5d6c @ Milton Park dd463507, 21 live acts linked, all enriched-or-attempted. NOTE: The Blue Yellows created (b032a03d) but NOT linked to event (edit_event can't append artistIds — API gap for Jason's mini-festival work).",
+        "BachFest": "event 1522a9cc @ Sandbach Cricket Club b21e4651 (Kno Duo + Oliver Hawkins linked; tribute sets unnamed)",
+        "CreweRocks": "3 per-venue events w/ full set times: Borough Arms b4b15350 (venue NEW 88193286), Tom's Tap bed5b18e, Arena finale 161c4966. 14 acts, 12 new."
+      },
+      "apiFindings": [
+        "create_event REQUIRES artistId/artistIds/isOpenMic (400 otherwise)",
+        "edit_event has artistId (single) only — cannot append to artistIds array",
+        "DUPLICATE_EVENT gate again 100% (4 blocked total)"
+      ],
+      "enrichmentPending": [
+        "QUALITY AUDIT PASS DONE 2026-07-02 late: every new artist now has an enrichment ATTEMPT + actType (+acoustic where relevant).",
+        "Attempted but NO confident UK match (blank socials, precision-over-recall — candidates for venue-FB cross-ref): Shania & Country Legends, Atomic, The Hit Parade, Teddy Slims, Mantra, Pressure Drop, Brand New Bag, Unit 17, These Towns, Scarlett Fever, Hannah Sophie, Kno Duo, Oliver Hawkins, Danny James, Steve Robinson, Baxter, Harry Holmes, Violet Cry, Smalltown Boy, Parker Barrow, No Favors, Swan & Chequers Big Band, Andy Gowers Guns for Hire, Georgia Nevada(FIXED: FB found)",
+        "Website/Insta-only (no FB page exists): Stoney and the Dogs, Matthew Frederick, Anne-Marie Allen, Medusa Luna, Erymaie, Rag n Bone Sam",
+        "Audit fixes applied: FB+avatar added to Cosmic Queen, Georgia Nevada, Sheena Shine, Something Followed Me Home, Oli Ng, Andy Mac, Bluesmakers All-Stars (=The Bluesmakers, John Waterhouse's Leek band); actType set on 35 artists that were missing it",
+        "VENUES: all 15 new venues have Google place_id + coords (core bar met). None have socials/website set — enrich_venue pass not in the flow yet; add to scheduled job spec."
+      ],
+      "dupToMerge": [
+        "Ant Clowes (925a6259, Staffs, no img) vs Ant Clowes Duo (X8nI6ptSlLGoHh8XW51N, has FB) — used the latter for Crewe Rocks"
+      ],
+      "townsRemaining": [
+        "Middlewich",
+        "Holmes Chapel",
+        "Leek (pubs: Wellington Inn, Red Lion)",
+        "Stoke towns remaining: Longton, Fenton, Tunstall",
+        "Nantwich (Railway Hotel/Globe/Bank Stage/Sacred Orchard venue creates outstanding)"
+      ],
+      "spiderQueue": "AMF/Crewe Rocks enriched locals (Rivia, Foxglove, Avian, Katie & The Bad Sign, Two Rivers Deep, Six Towns, Turvey, Jane and the Hurricanes) — '<artist> gigs 2026' crawls not yet run",
+      "foxloweDone": "2026-07-03 scheduled run: all 7 TIMED Foxlowe diary gigs created (Pentangle, Chadwick, McAloon, Letz Zep x2, Karnataka, Bramwell). Remaining Foxlowe (no time published): GONG 8 Aug, Curved Air 4 Sep, Otway 19 Sep, Wakeman 6 Nov, Soft Machine 20 Nov.",
+      "undergroundQueue": "The Underground, Hanley (vzWTYVGllln9h8WQCaNf) - 3 dated+timed 2026 gigs remain, ALL blocked on act identity not on source: PROM + HAN SANDY 3 Sep 19:00; BLOOD GUTTER 19 Sep 18:30 (5-act bill); SUNAMI 1 Dec 19:00 (US, foreign gate). THISTLE 29 Aug event IS created (32b4da2e) but the headline act record could not be made. Source: musicmaniauk.com/events/category/the-underground/"
+    }
+  },
+  "scheduledRuns": [
+    {
+      "date": "2026-07-03",
+      "task": "discovery-crawler-nw",
+      "browser": "HALT - 2 connected browsers, both generic names (Browser 1/Browser 2); bndy profile unidentifiable unattended. No AI Mode / new ground this run.",
+      "webFetch": "provenance-restricted this session; venue diary pages unreadable. Worked only pre-verified queue items with confirmed date+time.",
+      "work": "Foxlowe Arts Centre (e75a745c-a108-4e81-a7a8-c92d25e2ee53) timed-diary gap-fill",
+      "newArtists": {
+        "Jacqui McShee's Pentangle": "b1ac04fe-5b0c-4db1-a2cf-b27085ea441d",
+        "Mark Chadwick": "641c5008-7c27-4d2c-afcd-9cb17069cb08",
+        "Martin McAloon": "bd14e1d1-4f12-4317-b573-861ed1e0033c",
+        "Letz Zep": "7bffc7e5-67df-468c-a374-67ee8bc72261",
+        "Karnataka": "10424c6f-1be0-415d-bf80-ef1887c04b0b"
+      },
+      "reusedArtists": {
+        "John Bramwell": "4c8d9d09-27ca-41f4-ae5e-d2d14510cca5"
+      },
+      "eventsCreated": [
+        "aae726b5 JMP 2026-09-05 19:30",
+        "93bb7152 Mark Chadwick 2026-09-20 20:00",
+        "ad20fbf9 Martin McAloon 2026-10-10 20:00",
+        "abc32c61 Letz Zep 2026-10-30 19:00",
+        "38c7c78f Letz Zep 2026-10-31 19:00",
+        "abde5d24 Karnataka 2026-11-13 19:30 (time corrected 20:00->19:30 per ticketle listing)",
+        "82cf04f6 John Bramwell 2026-11-14 19:30"
+      ],
+      "enrichment": "5/5 FB+avatar+actType at creation (all noSpider touring leaf nodes); acoustic on Chadwick+McAloon",
+      "stats": {
+        "newVenues": 0,
+        "newArtists": 5,
+        "eventsCreated": 7,
+        "dedupSkipped": 0,
+        "rejected": 0,
+        "staged": 0
+      },
+      "foxloweStillQueued_noPublishedTime": [
+        "GONG 2026-08-08",
+        "Curved Air 2026-09-04",
+        "John Otway & Wild Willy Barrett 2026-09-19",
+        "Oliver Wakeman 2026-11-06",
+        "Soft Machine 2026-11-20"
+      ],
+      "elevenSepDec": "untouched - needs page read (browser blocked, web_fetch provenance-blocked)"
+    },
+    {
+      "date": "2026-07-04",
+      "task": "discovery-crawler-nw",
+      "browser": "HALT - 2 connected browsers, both generic (Browser 1 / Browser 2); bndy Facebook-logged-in profile UNIDENTIFIABLE in a non-interactive scheduled run. Per task rule: never write public events from wrong/logged-out browser. Same block as 2026-07-03.",
+      "webFetch": "provenance-restricted again (URLs from state file are not in provenance set) - venue diary pages (Eleven/Foxlowe/Biddulph) unreadable this run.",
+      "work": "NONE - no verified source available. No AI Mode (browser), no diary page reads (web_fetch blocked). Did not fabricate times or write events on unverified data (precision-over-recall).",
+      "stats": {
+        "newVenues": 0,
+        "newArtists": 0,
+        "eventsCreated": 0,
+        "dedupSkipped": 0,
+        "rejected": 0,
+        "staged": 0
+      },
+      "remainingBlocked": [
+        "Eleven Sep-Dec diary (~28 gigs) - dates captured in corridorRun.session2.elevenGapFill.remaining_sep_dec but per-event times + ticket247 links need page read",
+        "Foxlowe untimed: GONG 8 Aug, Curved Air 4 Sep, Otway 19 Sep, Wakeman 6 Nov, Soft Machine 20 Nov",
+        "Biddulph Up In Arms: John Blek 28 Oct, While & Matthews 29 Oct, Sarah McQuaid 25 Nov (times via wegottickets)",
+        "New corridor towns (Nantwich/Middlewich/Holmes Chapel/Newcastle-u-Lyme/Stoke) - all need AI Mode = browser"
+      ],
+      "recommendation": "Browser identification is now the blocker on 2 consecutive scheduled runs. Rename one Chrome profile to include 'bndy', OR run this task interactively so the browser can be pinned, OR pre-load the Eleven/Foxlowe diary URLs into a chat message so web_fetch provenance allows reading them."
+    },
+    {
+      "date": "2026-07-09",
+      "task": "discovery-crawler-nw",
+      "browser": "STARTED BLOCKED (3rd consecutive: 2 generic-named Chromes). Mid-run Jason attended + asked to fix it; second Chrome had closed leaving one browser (7ad060c3), which was pinned and VERIFIED as Jason Jones's FB profile via facebook.com/me. Recorded in browserIdentity for future runs.",
+      "webFetch": "provenance-blocked again (Eleven/Foxlowe diary URLs not in provenance set).",
+      "method": "No AI Mode/new ground (browser only confirmed late). Worked pre-verified queue via WebSearch to confirm start times, then created events reusing EXISTING enriched artists (zero new artists = zero enrichment risk).",
+      "eventsCreated": [
+        "e9185513 Curved Air @ Foxlowe 2026-09-04 19:30 (WebSearch 7:30pm)",
+        "58a60732 John Otway & Wild Willy Barrett @ Foxlowe 2026-09-19 20:00 (wegottickets 564940: doors 7:30/start 8pm, £18adv/£21door)",
+        "fefc5c98 John Blek @ St Lawrence's Biddulph 2026-10-28 20:00 (BUIA venue-standard doors7:30/start8pm; support Evangeline Gentle noted in desc)",
+        "f9e2483f While & Matthews @ St Lawrence's Biddulph 2026-10-29 20:00",
+        "0f04d992 Sarah McQuaid @ St Lawrence's Biddulph 2026-11-25 20:00"
+      ],
+      "artistsReused": {
+        "Curved Air": "fffdeab4-6fba-4c65-8fd6-70f25ada9822",
+        "John Otway & Wild Willy Barrett": "55321a33-cd5b-4a31-9f2a-c701a5db524a",
+        "John Blek": "e52e4cc8-790d-4c64-b6a4-a11feaab1302",
+        "While & Matthews": "f0422943-bf27-44eb-a08c-b8b8d164533a",
+        "Sarah McQuaid": "bae1c5c2-a121-40ad-8e58-d77c63d564b7"
+      },
+      "venueResolved": "St. Lawrence's Parish Church, Biddulph 27024589-638e-43c3-b13d-a1748031c1e8 (create_venue matched existing by place_id)",
+      "stillStaged_noPublishedTime": [
+        "Foxlowe GONG 2026-08-08",
+        "Foxlowe Oliver Wakeman 2026-11-06",
+        "Foxlowe Soft Machine 2026-11-20"
+      ],
+      "stats": {
+        "newVenues": 0,
+        "newArtists": 0,
+        "eventsCreated": 5,
+        "dedupSkipped": 0,
+        "rejected": 0,
+        "staged": 0
+      },
+      "remainingBlocked": [
+        "Eleven Sep-Dec diary (~28 gigs) - still needs per-event times + ticket247 links (browser AI Mode or diary page read)",
+        "New corridor towns (Nantwich/Middlewich/Holmes Chapel/Newcastle-u-Lyme/Stoke) - need AI Mode = browser (now pinnable)"
+      ],
+      "note": "Browser now verified + recorded, so next run (attended or scheduled) can proceed to AI Mode new-ground corridor discovery."
+    },
+    {
+      "date": "2026-07-10",
+      "task": "discovery-crawler-nw",
+      "browser": "OK - sole connected browser 7ad060c3 pinned + VERIFIED as Jason Jones (Disley, fb id 100028859839122) via facebook.com/me before any write. First fully-unblocked scheduled run.",
+      "method": "Pre-verified queue (Eleven diary page read via Chrome) FIRST, then new-ground AI Mode: Newcastle-under-Lyme + Nantwich.",
+      "elevenSepSlice": {
+        "venue": "8Pky4flebxSt2s36ub3o",
+        "newArtists": {
+          "A Foreigners Journey": "ecf4ea0b-9c1a-4d6c-94c1-aceab96299ce",
+          "Floyd in the Flesh": "5858c442-2af5-49bf-8a68-1a7945e8e131",
+          "Bravado": "e63f18aa-67ca-4f39-9ab9-3dcb2d17ebfd",
+          "Nickelback UK": "ea21f6f2-0cdd-4a39-8d95-ee4347d1e1bb",
+          "Elton & the Jets": "b2ffab38-6806-4f6c-8c4e-e8327b54a69a"
+        },
+        "reusedArtist": {
+          "Teachers Pet Rock Show": "d7791d78-ea69-4a9b-b75a-019db3768c86"
+        },
+        "eventsCreated": [
+          "76b48282 A Foreigners Journey 2026-09-04 19:00 £18",
+          "625fd577 Floyd in the Flesh 2026-09-05 19:00 £15",
+          "03213130 Bravado(Rush) 2026-09-11 19:00 £15",
+          "1af2d25f Nickelback UK 2026-09-12 19:00 £12",
+          "f6664e52 Elton & the Jets 2026-09-18 19:00 £15",
+          "b568feaf Teachers Pet 2026-09-20 14:00 £8 (reuse)"
+        ],
+        "enrichment": "5/5 new artists actType=tribute + FB at creation; avatar on 4 (Bravado FB is a GROUP -> website planetbravado.com + insta instead, no graph avatar). All doors: eve 19:00 / matinee 14:00 per venue standard.",
+        "elevenRemaining_sep_dec": "OCT 2-17 DONE (2026-07-12 run: FM Songbook, Katie Wilson Adele, Moretallica, Dan Budd Robbie, Tasha Leaper Madonna, Maet Live — 6 events, ticket247 URLs on each). ~21 remain Oct-Dec: 11.10 Collapser+Mufunta+Redeem 2-6pm £5 t247/533654 (3 artists — deferred for enrichment budget), 18.10 Blaze Bayley 3pm £25 t247/457514 (noSpider),23.10 Whitesnake UK £15 wegottickets/693054, 24.10 Love Distraction £15, 25.10 Van Roth £12, 31.10 The Devout £18, 1.11 Simple Plan UK+Courtnay Reddy Avril+Me You at Six matinee £18 (skiddle), 6.11 Antarctic Monkeys £18, 7.11 Vicky Jackson Pink £18, 8.11 TEN 3-7pm £25, 13.11 David Live £18, 14.11 Oasish £18, 15.11 Holy Diva matinee £12, 21.11 Eleven-at-10 fest 2pm £40 (FM/Demon/Tygers/Midnite City/Gin Annie), 22.11 Kick up the 80s matinee £12, 26.11 Hawklords £19 (NEW on diary), 27.11 Stereotonics £15, 28.11 Sabbotage £15, 29.11 Myke Gray ft Kim Jennett 3-7pm £20, 4.12 ELO Encounter £18, 5.12 Dirty DC £16. Times = eve 19:00 / matinee 15:00. ticket247 links on elevenmusicvenue.co.uk/gigs."
+      },
+      "newGround": {
+        "Newcastle-under-Lyme": "Core venues ALREADY in bndy (Rigger YOMsEVdj9Y7OMMy88HFV, Boulevard a7c157f1, Carlton d79f6582 - all isNew:false). Rigger diary partly imported. NEW gig: The Varukers @ Rigger 4 Sep 19:00 (event 7192e8ce, artist 202dccb9 NEW originals+FB thevarukers). Ben Ottewell 2 Oct + Fiend Club Band 24 Oct = DUPLICATE_EVENT (already had them). Rigger gig-guide has gigantic URLs w/ embedded times for a full timed pass.",
+        "Nantwich": "Genuinely under-covered new area. NEW venues created: Ebenezer's (Crewe roots room) d2823194-97f5-4714-8a2f-1f2bde11455b; Nantwich Civic Hall 374f99f4-b4d1-46a3-8eb0-116e1dcfc35c (created from a 'The Bank Stage/Market St' query that mis-geocoded to the Civic Hall - kept as valid real venue; The Bank Stage proper still uncreated). Dated named gigs found but NO published times -> staged."
+      },
+      "newArtistsCount": 6,
+      "newVenuesCount": 2,
+      "stats": {
+        "newVenues": 2,
+        "newArtists": 6,
+        "eventsCreated": 7,
+        "dedupSkipped": 2,
+        "rejected": 1,
+        "staged": "see discovery-review.jsonl 2026-07-10 x2"
+      },
+      "selfAudit": "PASS - all 6 new artists (5 Eleven tributes + Varukers) have actType + FB enrichment attempt recorded; avatar on 5/6 (Bravado group-only, website+insta instead).",
+      "runawayFlag": "none - frontier not expanded; corridor bounded.",
+      "note": "First unblocked scheduled run since browser fix. Newcastle-under-Lyme proven already-covered (spend budget elsewhere). Nantwich/Crewe = live new-area edge (Ebenezer's, plus Railway/Globe/Bank Stage/Sacred Orchard still to create with precise addresses)."
+    },
+    {
+      "date": "2026-07-11",
+      "task": "discovery-crawler-nw",
+      "browser": "OK - sole browser 7ad060c3 pinned, verified via facebook.com/me -> profile.php?id=100028859839122 (Jason Jones) before any write.",
+      "method": "Pre-verified queue only: Eleven diary page read via Chrome (elevenmusicvenue.co.uk/gigs), completed the September slice. No new ground this run (budget spent on queue as task mandates).",
+      "elevenSepComplete": {
+        "venue": "8Pky4flebxSt2s36ub3o",
+        "newArtists": {
+          "Xodus": "9cfea5c6-8af1-4fd1-82bd-3469dddbdcf5",
+          "Popestars": "74f0d6ed-32d0-4fde-b070-562dad8c4f16",
+          "Hi On Maiden": "181b0e5a-00b4-4fd8-a599-625bb437e7b7",
+          "Ultimate RnB": "ce3b0c9a-af31-4526-a7ed-44d5d83907c5",
+          "Taylor Forevermore": "ac84069d-b056-4654-b970-16880ef6f35c"
+        },
+        "reusedArtists": {
+          "AC/DShe": "rsKoCAcEPQ3FVbvGwSa2",
+          "Statease Quo": "FugkBu8ZOFpV5rq18CsZ"
+        },
+        "eventsCreated": [
+          "726a33d4 AC/DShe + Statease Quo 2026-09-06 15:00 £12 (co-bill, both reused)",
+          "1880aa97 Xodus 2026-09-13 15:00 £15",
+          "865ae2f9 Popestars 2026-09-19 19:00 £12",
+          "7ee6bd95 Hi On Maiden 2026-09-25 19:00 £15",
+          "4774d2d0 Ultimate RnB 2026-09-26 19:00 £16",
+          "0409dcc6 Taylor Forevermore 2026-09-27 15:00 £12"
+        ],
+        "enrichment": "5/5 actType set at creation. FB+avatar: Xodus (no1bobmarleytribute, Birmingham), Popestars (PopestarsUK, Nottingham), Ultimate RnB (ultimaternb, Midlands). Website-only: Hi On Maiden (hionmaiden.com - official FB is a GROUP, no graph avatar). Attempted-no-match: Taylor Forevermore (only agency/venue FB posts found, no own page - venue-FB cross-ref candidate)."
+      },
+      "stats": {
+        "newVenues": 0,
+        "newArtists": 5,
+        "eventsCreated": 6,
+        "dedupSkipped": 0,
+        "rejected": 0,
+        "staged": 0
+      },
+      "selfAudit": "PASS - all 5 new artists have actType + recorded enrichment attempt; avatars on 3/5 (2 legitimately blank on precision).",
+      "runawayFlag": "none - frontier not expanded; all created acts are noSpider leaf tributes.",
+      "note": "Eleven September slice DONE (Sep 4-27 now fully in bndy incl. prior run's 6). Next run: continue Eleven Oct slice (~10 gigs) or open Middlewich/Holmes Chapel/Stoke towns via AI Mode; Nantwich timed pass (5 staged gigs w/ dates, need times) also ready."
+    },
+    {
+      "date": "2026-07-12",
+      "task": "discovery-crawler-nw",
+      "browser": "OK - sole browser 7ad060c3 pinned, verified via facebook.com/me -> profile.php?id=100028859839122 (Jason Jones) before any write.",
+      "method": "Pre-verified queue only: Eleven diary page read via Chrome, October slice Oct 2-17. Per-event ticket247 links captured from the gigs page (viewport-scoped interactive reads; row alignment verified by opening t247/527617 = Katie Wilson Adele matinee 15:00-19:00, and by wegottickets/693054 anchoring Whitesnake 23.10). No new ground this run (queue-first rule; 6-artist enrichment budget = cap).",
+      "elevenOctSlice": {
+        "venue": "8Pky4flebxSt2s36ub3o",
+        "newArtists": {
+          "The FM Songbook": "8336f7cd-3f89-43f0-b9e8-9530cce8a5c5",
+          "Katie Wilson - Tribute to Adele": "cf62164b-ec6c-46a2-ad72-2032bd298e36",
+          "Moretallica": "ed735020-d0d3-451f-89cb-4e51a50f6daf",
+          "Dan Budd as Robbie Williams": "961f478f-606b-4061-a21a-49e162d8655f",
+          "Tasha Leaper as Madonna": "3cb91bd0-e69c-4b2d-84ae-8b46396521dd",
+          "Maet Live": "58d4804e-268f-4ce0-aa89-2ff63e7278c8"
+        },
+        "eventsCreated": [
+          "1e87ad5c The FM Songbook 2026-10-02 19:00 £18 t247/528592",
+          "00054e79 Katie Wilson Adele 2026-10-04 15:00-19:00 £12 t247/527617 (matinee)",
+          "e9fcd49f Moretallica 2026-10-09 19:00 £15 t247/528929",
+          "1b07661f Dan Budd as Robbie Williams 2026-10-10 19:00 £15 t247/531139",
+          "e6cbd665 Tasha Leaper as Madonna 2026-10-16 19:00 £15 t247/536253",
+          "3f92fe43 Maet Live 2026-10-17 19:00 £15 t247/536254"
+        ],
+        "enrichment": "6/6 FB+avatar+actType=tribute+genres AT creation: FMSongbook (Devon, +fmsongbook.com), Katie-Wilson-Tribute-to-Adele/100083381615738 (Essex), moretallicaUK (Leicester, +insta), dbasrw (Stoke-on-Trent, +insta db_as_rw), Tasha-Leaper-as-Madonna-100063650164288 (+tashaleaper.co.uk), MaetLIVE (+maetlive.co.uk). Zero blanks this run.",
+        "ticketIdsCapturedForNextRuns": {
+          "11.10 Collapser+Mufunta+Redeem": "t247/533654",
+          "18.10 Blaze Bayley": "t247/457514",
+          "23.10 Whitesnake UK": "wegottickets/693054",
+          "24.10 Love Distraction": "t247/536839",
+          "25.10 Van Roth": "t247/539569",
+          "31.10 The Devout": "t247/536840",
+          "1.11 Simple Plan UK bill": "skiddle/42134583",
+          "6.11 Antarctic Monkeys": "t247/538006",
+          "7.11 Vicky Jackson Pink": "t247/540481",
+          "8.11 TEN": "t247/494633",
+          "13.11 David Live": "t247/538007"
+        }
+      },
+      "stats": {
+        "newVenues": 0,
+        "newArtists": 6,
+        "eventsCreated": 6,
+        "dedupSkipped": 0,
+        "rejected": 0,
+        "staged": 0
+      },
+      "selfAudit": "PASS - 6/6 new artists have actType=tribute + FB page + graph avatar set at creation; all searched at minConfidence 25 incl. variants before create (no matches).",
+      "runawayFlag": "none - frontier not expanded; all created acts are noSpider leaf tributes.",
+      "note": "Next run: finish Eleven Oct (Collapser triple-bill 11.10 + Blaze Bayley 18.10) then Oct 23-31 (~4 gigs, ticket ids above), or Nantwich timed pass (5 staged), or open Middlewich/Holmes Chapel/Stoke towns via AI Mode."
+    },
+    {
+      "date": "2026-07-13",
+      "task": "discovery-crawler-nw",
+      "browser": "OK - sole browser 7ad060c3 pinned, verified via facebook.com/me -> profile.php?id=100028859839122 (Jason Jones) before any write.",
+      "method": "Pre-verified queue: Eleven diary page re-read via Chrome (confirmed unchanged vs captured queue), completed the ENTIRE remaining October slice (Oct 11-31). Van Roth 25.10 time VERIFIED on ticket247/539569 = Sunday MATINEE 15:00-19:00 (diary row had no matinee marker - would have been wrong at 19:00). No new ground this run (queue-first rule).",
+      "elevenOctComplete": {
+        "venue": "8Pky4flebxSt2s36ub3o",
+        "newArtists": {
+          "Collapser": "e900ed1a-3835-4728-a7b1-3037ee0d8fc6",
+          "Mufunta": "70d8cac8-4af2-481b-9195-5a8afea6da9b",
+          "Redeemon": "102ca280-4203-4045-ac80-79dbb1215ee8",
+          "Van Roth": "3dc18b73-a374-4d62-bf1e-affa7f5d4bc6"
+        },
+        "reusedArtists": {
+          "BLAZE BAYLEY": "310480e9-7e12-4630-8a18-2277a119b587",
+          "Whitesnake UK": "6263df36-9887-4391-ae5e-d5e4b878afe3",
+          "Love Distraction": "37b710cd-d01e-4075-b48c-0fad4e8f1bad",
+          "The Devout": "22736540-2465-4cc6-9228-3e0fa186826f"
+        },
+        "eventsCreated": [
+          "f82b1a91 Collapser Album Launch + Mufunta & Redeemon 2026-10-11 14:00-18:00 £5 t247/533654 (3-artist co-bill linked at creation)",
+          "334db338 Blaze Bayley (Iron Maiden Anniversary tour) 2026-10-18 15:00 £25 t247/457514 (reuse, noSpider)",
+          "a75ea24a Whitesnake UK 2026-10-23 19:00 £15 wegottickets/693054 (reuse)",
+          "636c777b Love Distraction 2026-10-24 19:00 £15 t247/536839 (reuse)",
+          "2f3a26e6 Van Roth 2026-10-25 15:00-19:00 £12 t247/539569 (NEW, matinee verified)",
+          "d6ad3027 The Devout Halloween special 2026-10-31 19:00 £18 t247/536840 (reuse)"
+        ],
+        "enrichment": "4/4 new artists FB+avatar+genres AT creation + actType via edit_artist: Collapser (collapserukband, Stoke groove/doom, originals), Mufunta (Mufunta, Stoke sludge metal, originals), Redeemon (redeemon, Manchester ska-metal, originals - diary says 'Redeem' but web confirms act is Redeemon), Van Roth (fb /p/ 61575813873456, tribute). Zero blanks this run.",
+        "dupNote": "Vanz Roxx (67%) REJECTED as match for Van Roth - different act (Stoke covers band vs Van Halen/DLR tribute)."
+      },
+      "elevenRemaining_nov_dec": "~15 gigs Nov-Dec (all dates/prices/ticket ids captured in 2026-07-10 + 2026-07-12 entries): 1.11 Simple Plan UK+Courtnay Reddy+Me You at Six matinee £18 skiddle/42134583, 6.11 Antarctic Monkeys £18 t247/538006, 7.11 Vicky Jackson Pink £18 t247/540481, 8.11 TEN 15:00-19:00 £25 t247/494633, 13.11 David Live £18 t247/538007, 14.11 Oasish £18 t247/538009, 15.11 Holy Diva matinee £12 t247/538010, 21.11 Eleven-at-10 fest 14:00 £40 t247/531142 (FM/Demon/Tygers of Pan Tang/Midnite City/Gin Annie - multi-artist, link full bill at creation), 22.11 Kick up the 80s matinee £12 t247/539745, 26.11 Hawklords £19 t247/544722, 27.11 Stereotonics £15 t247/539746, 28.11 Sabbotage £15 t247/539747, 29.11 Myke Gray ft Kim Jennett 15:00-19:00 £20 t247/543246, 4.12 ELO Encounter £18 t247/540482, 5.12 Dirty DC £16 t247/540483. Times = eve 19:00 / matinee 15:00 unless noted.",
+      "stats": {
+        "newVenues": 0,
+        "newArtists": 4,
+        "eventsCreated": 6,
+        "dedupSkipped": 0,
+        "rejected": 0,
+        "staged": 0
+      },
+      "selfAudit": "PASS - 4/4 new artists have actType + FB page + graph avatar at creation; all searched at minConfidence 25 incl. bare-core/variant (Redeem->Redeemon spelling resolved via web) before create.",
+      "runawayFlag": "none - frontier not expanded. Collapser/Mufunta/Redeemon are spiderable-regional originals acts (spider queue candidates); Van Roth = noSpider leaf tribute.",
+      "note": "ELEVEN OCTOBER SLICE COMPLETE (Oct 2-31 all in bndy). Next run: Eleven Nov slice (~8 gigs incl. Eleven-at-10 festival multi-bill 21.11), or Nantwich timed pass (5 staged gigs need times), or open Middlewich/Holmes Chapel/Stoke towns via AI Mode."
+    },
+    {
+      "date": "2026-07-14",
+      "task": "discovery-crawler-nw",
+      "browser": "OK - sole browser 7ad060c3 pinned, verified via facebook.com/me -> profile.php?id=100028859839122 (Jason Jones) before any write.",
+      "method": "Pre-verified queue: Eleven diary page re-read via Chrome (Nov rows confirmed unchanged; all 4 Sunday shows carry explicit matinee markers). Completed Nov 1-15 slice. No new ground (queue-first rule; 7-artist enrichment budget = cap).",
+      "elevenNov1to15": {
+        "venue": "8Pky4flebxSt2s36ub3o",
+        "newArtists": {
+          "Courtnay Reddy as Avril Lavigne": "4a506ff0-990e-4dc8-87f6-690d3793a14d",
+          "Me You At Six": "a080a48d-fdc0-48ae-9a98-287e873bd5bd",
+          "Antarctic Monkeys": "47bfee8d-22f2-48dd-a7e8-119ccb6a69e4",
+          "TEN": "c06ba200-f9fb-4ff8-b78b-f999cad1df7d",
+          "David Live": "ab440800-f60d-47a7-886c-afa94adfbfe1",
+          "Oasish": "2533123b-aafe-45d0-89de-7b127660deb7",
+          "Holy Diva": "28d92f2e-0964-461f-89e2-7c8453e21eaf"
+        },
+        "reusedArtists": {
+          "Simple Plan UK": "daf5f02c-bd1b-429d-bab5-cb94b9b7c661 (pre-existing, 100% match - NOTE: no profileImageUrl, backfill candidate)",
+          "Pink With Vicky Jackson And Her Band": "782805ba-748e-4744-8430-94f8116b43ae (has FB+avatar)"
+        },
+        "eventsCreated": [
+          "1e63cd05 Simple Plan UK + Courtnay Reddy Avril + Me You At Six 2026-11-01 15:00-19:00 GBP18 skiddle/42134583 (3-artist co-bill linked at creation, matinee)",
+          "51c15be2 Antarctic Monkeys 2026-11-06 19:00 GBP18 t247/538006",
+          "cbc6b8ff Pink with Vicky Jackson & Her Band 2026-11-07 19:00 GBP18 t247/540481 (reuse)",
+          "5b13f5bd TEN 2026-11-08 15:00-19:00 GBP25 t247/494633 (Sunday matinee marker on diary)",
+          "1d36062e David Live (Bowie) 2026-11-13 19:00 GBP18 t247/538007",
+          "d1fac48a Oasish 2026-11-14 19:00 GBP18 t247/538009",
+          "1596b825 Holy Diva 2026-11-15 15:00-19:00 GBP12 t247/538010 (matinee)"
+        ],
+        "enrichment": "7/7 FB+avatar+genres AT creation + actType via edit_artist: Courtnay Reddy (avrillavignetributeuk +insta, tribute solo), Me You At Six (YouMeAtSixTribute, tribute), Antarctic Monkeys (antarcticmonkeys +antarcticmonkeys.com, tribute), TEN (TenOfficial Manchester +tenofficial.com, ORIGINALS, noSpider national melodic rock), David Live (DavidLiveUK London +davidbowietribute.co.uk, tribute), Oasish (oasishtributeband +oasish.co.uk, tribute), Holy Diva (RainbowsandWizards7510 Leeds +holydiva.co.uk, tribute - disambiguated from Brazilian holydivaband page). Zero blanks this run."
+      },
+      "elevenRemaining_nov_dec": "8 gigs left: 21.11 Eleven-at-10 fest 14:00 GBP40 t247/531142 (FM/Demon/Tygers of Pan Tang/Midnite City/Gin Annie - multi-artist, link full bill at creation), 22.11 Kick up the 80s matinee 15:00 GBP12 t247/539745, 26.11 Hawklords GBP19 t247/544722, 27.11 Stereotonics GBP15 t247/539746, 28.11 Sabbotage GBP15 t247/539747, 29.11 Myke Gray ft Kim Jennett 15:00-19:00 GBP20 t247/543246, 4.12 ELO Encounter GBP18 t247/540482, 5.12 Dirty DC GBP16 t247/540483.",
+      "stats": {
+        "newVenues": 0,
+        "newArtists": 7,
+        "eventsCreated": 7,
+        "dedupSkipped": 0,
+        "rejected": 0,
+        "staged": 0
+      },
+      "selfAudit": "PASS - 7/7 new artists have actType + FB page + graph avatar at creation; all searched at minConfidence 25 incl. variants before create (Simple Plan UK + Vicky Jackson found and reused).",
+      "runawayFlag": "none - frontier not expanded; TEN is noSpider (national touring originals), rest are noSpider leaf tributes.",
+      "note": "ELEVEN NOV 1-15 COMPLETE. Next run: finish Eleven (Eleven-at-10 fest 21.11 multi-bill + 7 remaining Nov-Dec gigs - fest artists FM/Demon/Tygers/Midnite City/Gin Annie need search+create+enrich first), or Nantwich timed pass (5 staged), or open Middlewich/Holmes Chapel/Stoke towns via AI Mode. ALSO: mount size-clamp bit this file again on 2026-07-14 Edit - repaired via python; always verify tail after Edit."
+    },
+    {
+      "date": "2026-07-15",
+      "task": "discovery-crawler-nw",
+      "browser": "OK - sole browser 7ad060c3 pinned, verified via facebook.com/me -> profile.php?id=100028859839122 (Jason Jones) before any write.",
+      "method": "Pre-verified queue: Eleven diary page re-read via Chrome (rows unchanged incl. all ticket ids). Completed Nov 21-28 slice incl. the Eleven-at-10 anniversary festival multi-bill. Myke Gray/ELO Encounter/Dirty DC deferred (6-artist enrichment budget = cap). No new ground.",
+      "elevenNov21to28": {
+        "venue": "8Pky4flebxSt2s36ub3o",
+        "newArtists": {
+          "Tygers of Pan Tang": "e0723651-e7e0-49cf-ba2d-7db3025c3d3a",
+          "Midnite City": "2fc03371-1abc-49f1-843b-02b69d7787d7",
+          "Gin Annie": "842d5428-6e32-4b28-ba71-dcb4af220634",
+          "Kick Up The 80s": "f28121ea-0de4-4a7c-a533-4634449a553e",
+          "Hawklords": "dedbdcc3-1a38-4b9c-a976-90a5b7fc1d76",
+          "Stereotonics": "9edc1e4a-513b-4357-9812-ef26ce471e0d"
+        },
+        "reusedArtists": {
+          "FM": "baa46764-ab58-4f04-8b6c-6aa126debb47",
+          "Demon": "d9acfd50-59d4-4a6c-8d42-4f418dd39eff",
+          "Sabbotage": "1149603b-2924-4f9b-8f13-f437bae98681"
+        },
+        "eventsCreated": [
+          "2d737618 FESTIVAL: Eleven at 10 2026-11-21 14:00 GBP40 t247/531142 (5-artist bill FM+Demon+Tygers+Midnite City+Gin Annie linked at creation, 'and more' in desc)",
+          "6939cd46 Kick Up The 80s 2026-11-22 15:00-19:00 GBP12 t247/539745 (matinee)",
+          "43ef0cef Hawklords 2026-11-26 19:00 GBP19 t247/544722",
+          "97704da4 Stereotonics 2026-11-27 19:00 GBP15 t247/539746",
+          "67db0c57 Sabbotage 2026-11-28 19:00 GBP15 t247/539747 (reuse)"
+        ],
+        "enrichment": "6/6 FB+avatar+genres at creation + actType+website via edit_artist: Tygers of Pan Tang (tygersofpantangofficial, Whitley Bay NWOBHM, originals, noSpider), Midnite City (midnitecityuk Nottingham +insta+midnitecity.com, originals, noSpider), Gin Annie (GinAnnieUK Wolverhampton +ginannie.co.uk, originals, noSpider), Kick Up The 80s (kickuptheeighties Walsall +kickupthe80s.com +insta, tribute - disambiguated from 'A Kick Up The 80s' showband via official site FB link), Hawklords (TheHawklords, space rock originals, noSpider Hawkwind offshoot), Stereotonics (stereotonics +stereotonics.co.uk, tribute - DISTINCT from 'Stereotonic' Hampshire 2a93745d, 92% name match rejected as different act/different region).",
+        "dupNote": "Stereotonic (Hampshire, 2a93745d) 92% match REJECTED - different act; Eleven booking is the national Kelly Jones-endorsed Stereotonics."
+      },
+      "elevenRemaining": "3 gigs left = venue COMPLETE after next run: 29.11 Myke Gray ft Kim Jennett 15:00-19:00 GBP20 t247/543246, 4.12 ELO Encounter 19:00 GBP18 t247/540482, 5.12 Dirty DC 19:00 GBP16 t247/540483 (all 3 artists NEW, need enrichment).",
+      "stats": {
+        "newVenues": 0,
+        "newArtists": 6,
+        "eventsCreated": 5,
+        "dedupSkipped": 0,
+        "rejected": 0,
+        "staged": 0
+      },
+      "selfAudit": "PASS - 6/6 new artists have actType + FB page + graph avatar at creation; all searched at minConfidence 25 before create (FM/Demon/Sabbotage found and reused).",
+      "runawayFlag": "none - frontier not expanded; all new acts are noSpider national touring or leaf tributes.",
+      "note": "Next run: finish Eleven (3 gigs -> venue diary 100% in bndy), then Nantwich timed pass (5 staged) or open Middlewich/Holmes Chapel/Stoke towns via AI Mode."
+    },
+    {
+      "date": "2026-07-16",
+      "task": "discovery-crawler-nw",
+      "browser": "OK - sole browser 7ad060c3 pinned, verified via facebook.com/me -> profile.php?id=100028859839122 (Jason Jones) before any write.",
+      "method": "Queue-first: (1) Eleven diary re-read via Chrome, final 3 gigs created -> ELEVEN VENUE DIARY 100% COMPLETE. (2) Nantwich timed pass: all 5 staged gigs resolved via tickettailor.com/events/wordsmusicfestival (Words & Music Festival 12-18 Oct, exact times + per-event ticket URLs) + 2 bonus gigs found on same page (Ward Thomas 16.10, Rumer 18.10 matinee). Roger McGough 17.10 rejected (poetry, not live music).",
+      "elevenFinal3_venueComplete": {
+        "venue": "8Pky4flebxSt2s36ub3o",
+        "newArtists": {
+          "Myke Gray": "bd91fe17-3e6a-4d52-8c31-2b34fbdad4ed",
+          "ELO Encounter": "1a207cb1-6886-478f-87c1-015c902575e3",
+          "Dirty DC": "a0eb238d-042a-49bc-a570-6d0bcb40c02f"
+        },
+        "eventsCreated": [
+          "ace868fd Myke Gray ft Kim Jennett 2026-11-29 15:00-19:00 GBP20 t247/543246 (matinee; Kim Jennett in title+desc, single artist record)",
+          "0b57eabe ELO Encounter 2026-12-04 19:00 GBP18 t247/540482",
+          "e7243669 Dirty DC 2026-12-05 19:00 GBP16 t247/540483"
+        ],
+        "enrichment": "3/3 FB+avatar+genres at creation + actType+website via edit_artist: Myke Gray (MykeGrayMusician, originals, mykegray.rocks, noSpider), ELO Encounter (eloencounter, tribute, elo-encounter.co.uk), Dirty DC (DirtyDC verified via thedirtydc.com site link + insta dirtydcband, tribute). Dirty Deeds Derby 64% correctly rejected as different act."
+      },
+      "nantwichWMF": {
+        "note": "Words & Music Festival, Nantwich 12-18 Oct 2026 - tickettailor page had ALL times, superseding the 5 staged items. 2 gigs found beyond the staged list.",
+        "newVenues": {
+          "St Mary's Church, Nantwich": "3e7e8ace-c343-422c-bba2-dfeb1d11e236",
+          "Nantwich Town Football Club (Swansway Stadium)": "12073206-4f7c-452c-a26f-3cd3c9f4ce6a"
+        },
+        "newArtists": {
+          "Ralph McTell": "45478b14-c731-4938-87b9-f091996bdc77",
+          "Kezia Gill": "58f0f977-5533-4b87-8595-fb8d0e674853",
+          "Ward Thomas": "748ccbbb-12f3-4270-bbd7-9537432c7e92",
+          "The Slow Readers Club": "e832be60-434e-4692-9594-01885efd9f90",
+          "When Rivers Meet": "b12da22c-ca9f-4d5b-b140-e03badb1dfa8",
+          "Rumer": "e18600c3-58a3-4670-a44b-955871026206"
+        },
+        "eventsCreated": [
+          "9294acdd Ralph McTell @ St Mary's Church 2026-10-14 19:00 (SOLD OUT noted in desc)",
+          "a113736d Kezia Gill @ Nantwich Town FC 2026-10-15 19:30",
+          "cc50485f Ward Thomas @ Civic Hall 2026-10-16 19:30",
+          "ea28bfc6 The Slow Readers Club @ Civic Hall 2026-10-17 19:30",
+          "3f084a1b Rumer @ Civic Hall 2026-10-18 13:00-15:30 (acoustic matinee)",
+          "1e6e0f65 When Rivers Meet @ Civic Hall 2026-10-18 19:00"
+        ],
+        "enrichment": "6/6 FB+avatar+genres at creation + actType+website via edit_artist: Ralph McTell (OfficialRalphMcTell, originals+acoustic), Kezia Gill (keziagillmusic, originals), Ward Thomas (WardThomasMusic, originals), Slow Readers Club (theslowreadersclub, originals), When Rivers Meet (whenriversmeet, originals), Rumer (rumerofficial, originals+acoustic). All noSpider national touring leaf nodes.",
+        "rejected": [
+          "Roger McGough 17.10 13:00 Civic Hall - poet/spoken word, not live music"
+        ]
+      },
+      "stats": {
+        "newVenues": 2,
+        "newArtists": 9,
+        "eventsCreated": 9,
+        "dedupSkipped": 0,
+        "rejected": 1,
+        "staged": 0
+      },
+      "selfAudit": "PASS - 9/9 new artists have actType + FB page + graph avatar at creation; all searched at minConfidence 25 incl. variants before create (Dirty Deeds 64%, Sarah Thomas 75%, Two Rivers Deep 63% all correctly rejected as different acts).",
+      "runawayFlag": "none - frontier not expanded; all 9 new acts are noSpider national touring or leaf tributes.",
+      "note": "ELEVEN MUSIC VENUE DIARY 100% COMPLETE (every dated 2026 gig Jul-Dec now in bndy). NANTWICH staged timed-pass CLEARED (5 staged + 2 bonus, 1 reject). Remaining Nantwich: Sara Milonovich & Greg Anderson @ Ebenezer's 5 Nov (still no published time - check ebenezers/wegottickets); venue creates Railway Hotel/Globe/Bank Stage/Sacred Orchard need precise addresses. Next run: open Middlewich/Holmes Chapel/Stoke towns via AI Mode, or Foxlowe untimed x3 (GONG 8 Aug, Wakeman 6 Nov, Soft Machine 20 Nov), or spider queue (Rivia, Foxglove, Avian, Katie & The Bad Sign, Two Rivers Deep, Six Towns, Turvey, Jane and the Hurricanes, Demon)."
+    },
+    {
+      "date": "2026-07-18",
+      "task": "discovery-crawler-nw",
+      "browser": "HALT - zero connected browsers at run window (list_connected_browsers = [], confirmed twice). No AI Mode / new ground. Browser portion skipped per rule.",
+      "method": "WebSearch + web_fetch fallback (2026-07-09 precedent). wegottickets.com/location/9311 (from search results, provenance OK) gave the FULL Foxlowe diary with times -> cleared all 3 untimed queue items + bonus gigs. ebenezers.co.uk event page gave Sara Milonovich time (8pm GBP10).",
+      "foxloweQueueCleared": {
+        "venue": "e75a745c-a108-4e81-a7a8-c92d25e2ee53",
+        "newArtists": {
+          "Gong": "c3cac488-2002-4fed-af5d-6f53d4b5f663",
+          "Oliver Wakeman": "e2a216a6-fede-4efb-9027-ebdceae2a772",
+          "Soft Machine": "564a5ac9-2caa-4bd4-8b88-3d1fc72e93c7",
+          "Ozric Tentacles": "b0b1b848-fdee-4d0f-8c5a-a6434db5f001",
+          "Laura Aston": "d84b6d69-482b-4846-8b1d-9a371f7d3191"
+        },
+        "reusedArtists": {
+          "Kira Mac": "3e6acd15-2a8c-4edd-a1f3-8fbc95c5a883",
+          "Georgia Nevada (support on Laura Aston bill)": "d6907319-44e5-4b20-97e6-fded74e2fc99"
+        },
+        "eventsCreated": [
+          "bfce9e1e Gong 2026-08-08 20:00 (doors 19:30, Bright Spirit Tour) wegottickets/f/16828",
+          "cf9552ed Ozric Tentacles 2026-09-17 20:00 wegottickets/f/20839",
+          "4b0561ed Laura Aston + Georgia Nevada support 2026-09-23 20:00 wegottickets/f/16788 (co-bill linked at creation)",
+          "000576a9 Oliver Wakeman and His Band 2026-11-06 20:00 wegottickets/f/15656",
+          "5da5ee3d Soft Machine (Thirteen Tour) 2026-11-20 20:00 wegottickets/event/695680",
+          "3f9f559c Kira Mac 2026-11-26 20:00 wegottickets/f/23501 (reuse)"
+        ],
+        "dupBlocked": [
+          "Parker Barrow + Georgia Nevada 2026-07-23 -> existing 99cbc42a (DUPLICATE_EVENT gate)"
+        ]
+      },
+      "ebenezersSara": {
+        "event": "2e9e2b12 Sara Milonovich & Greg Anderson @ Ebenezer's (d2823194) 2026-11-05 20:00 GBP10 (Roots livestream, 30 tickets)",
+        "newArtist": {
+          "Sara Milonovich & Greg Anderson": "23d1e0e2-e29d-4e1f-9d18-37219b47ace4"
+        },
+        "note": "US act created on explicit queue precedent; foreign-act policy question flagged in review.jsonl for Bob Log III / Kristin Hersh / Skating Polly / Ebenezers Roots diary"
+      },
+      "enrichment": "6/6 new artists FB+avatar+genres at creation + actType+website via edit_artist: Gong (officialgong, originals, gongband.com), Oliver Wakeman (OliverWakeman, originals, oliverwakeman.co.uk), Soft Machine (softmachinelegacy, originals, softmachine.org), Sara Milonovich & Greg Anderson (daisycuttermusic, originals+acoustic, saramilonovich.com), Ozric Tentacles (OfficialOzricTentacles, originals, ozrics.com +insta), Laura Aston (lauraaston1993 314k likes, originals+covers, lauraaston.com). Zero blanks this run. All noSpider touring leaf nodes.",
+      "stats": {
+        "newVenues": 0,
+        "newArtists": 6,
+        "eventsCreated": 8,
+        "dedupSkipped": 1,
+        "rejected": "Foxlowe comedy x6 + open mic + Simon Hough Band 15 Aug (CANCELLED on wegottickets)",
+        "staged": 4
+      },
+      "selfAudit": "PASS - 6/6 new artists have actType + FB page + graph avatar at creation; all searched at minConfidence 25 before create (Parker Barrow/Georgia Nevada/Kira Mac found and reused; Rock Machine 75% correctly rejected for Soft Machine).",
+      "runawayFlag": "none - frontier not expanded; all new acts noSpider touring leaf nodes.",
+      "remainingBlocked": [
+        "New corridor towns (Middlewich/Holmes Chapel/Stoke towns) - need AI Mode = browser; ZERO browsers connected this run (regression from 07-10..07-16 runs when 7ad060c3 was up)"
+      ],
+      "note": "FOXLOWE UNTIMED QUEUE CLEARED (GONG/Wakeman/Soft Machine) + Sara Milonovich DONE via wegottickets/ebenezers page fetches - no browser needed. Foxlowe diary now near-complete in bndy; remaining UK items staged w/ times (see review.jsonl 2026-07-18). Next run: staged Foxlowe batch (~8 artists/6 events) or corridor towns if browser back."
+    },
+    {
+      "date": "2026-08-18",
+      "task": "discovery-crawler-nw",
+      "browser": "HALT - zero connected browsers at run window (list_connected_browsers = []). No AI Mode / new-town discovery. Browser portion skipped per rule (same as 2026-07-18).",
+      "method": "WebSearch + web_fetch fallback on PRE-VERIFIED queue. wegottickets.com/location/9311 gave the full timed Foxlowe diary; gigantic.com/venue/newcastle-under-lyme/the-rigger gave the full timed Rigger diary (door times per event). Both pages reached via WebSearch results so provenance allowed.",
+      "foxloweDiaryClosed": {
+        "venue": "e75a745c-a108-4e81-a7a8-c92d25e2ee53",
+        "finding": "Most of the 2026-07-18 staged Foxlowe batch was ALREADY created in an unrecorded run: Solstice+Leoni Jane Kennedy 19.8 (8abca550), Cosmic Queen 22.8 (e35d126a), Seamus Fogarty 29.8 (38aa33da), Chic Out 25.9 (d5d31d90), James Walsh & Ben Ottewell 8.11 (a351c1c8) all present. State file was behind reality.",
+        "newArtists": {
+          "Ancient Infinity Orchestra": "b751b88e-6bf9-4af7-b3be-f6844d280be7",
+          "RuMac": "4d4dd0f0-50ca-4766-bcb0-048c1d0d57a1"
+        },
+        "eventsCreated": [
+          "832aa263 Ancient Infinity Orchestra 2026-09-11 20:00 (doors 19:30) wegottickets/f/24012",
+          "ec97e00c RuMac 2026-11-21 20:00 (doors 19:30) GBP18 wegottickets/f/24643"
+        ],
+        "rejected": [
+          "Blitz Music Presents: Say Hello, Wave Goodbye 12-13 Sep - DJ tribute night (DJ-set reject rule), not a live act",
+          "Foxlowe comedy/theatre rows (Karen Bayley, Alfie Moore x2, Ian Stone, Simon Evans, Tom Stade, Rob Rouse, George and the Drag Queen, Ragged Trousered Philanthropists, Santa's Christmas Cakes, ONE KISS)"
+        ],
+        "status": "FOXLOWE UK MUSIC DIARY 100% COMPLETE for 2026. Only foreign-gate + 2027 rows remain."
+      },
+      "riggerDiaryPass": {
+        "venue": "YOMsEVdj9Y7OMMy88HFV",
+        "source": "https://www.gigantic.com/venue/newcastle-under-lyme/the-rigger (list view; publishes DOOR time per event - door time used as startTime per 2026-07-10 Varukers precedent)",
+        "newArtists": {
+          "The Madchester Experience": "955b63c0-edc0-4232-b19d-82752b9c98c4"
+        },
+        "reusedArtists": {
+          "Nu Call": "c488fd88-1c9f-4f15-abad-3c93a53dbddb"
+        },
+        "eventsCreated": [
+          "d5834646 Nu Call 2026-08-21 20:00 gigantic (reuse; artist backfilled actType=tribute + genres + insta nucalltribute)",
+          "9d728e12 The Madchester Experience 2026-11-14 20:00 gigantic"
+        ],
+        "dupBlocked": [
+          "Riskee And The Ridicule 2026-09-18 -> 5126279e",
+          "Inner Terrestrials + The Dirt 2026-09-25 -> 416e058f",
+          "InMe 2026-11-06 -> e9ba695f",
+          "The King Blues 2026-11-07 -> cd2ac790",
+          "Hung Like Hanratty 2026-10-17 -> 028b8ec5",
+          "Beans on Toast 2026-12-06 -> 5e391394"
+        ],
+        "finding": "The Rigger is far better covered than state suggested - 6 of 8 attempted creates were blocked by the dedup gate. Only Nu Call and Madchester Experience were genuine gaps.",
+        "rejected": [
+          "Comedy Night 12 comedian Gong Show 23 Sep - comedy",
+          "Mike Garry 13 Dec - Manchester poet / spoken word (same rule as Roger McGough)"
+        ]
+      },
+      "newGroundAttempt": "Middlewich searched via WebSearch (browser down = no AI Mode). Zero dated named gigs surfaced; WebSearch is a poor substitute for AI Mode area queries. Middlewich/Holmes Chapel/Stoke towns remain uncrawled and NEED the browser.",
+      "enrichment": "3/3 new artists actType + FB/socials + avatar at creation and confirmed via edit_artist: Ancient Infinity Orchestra (facebook.com/ancientinfinityorchestra, Leeds spiritual-jazz collective, originals, +bandcamp +insta), RuMac (facebook.com/Rumacmusic, Ullapool accordion solo, originals+covers, +rumacmusic.com +insta rumac_music), The Madchester Experience (facebook.com/themadchesterexperience, Manchester, tribute, +insta madchestertribute). Zero blanks. PLUS backfill on existing Nu Call (actType+genres+insta; no official FB page found, avatar still blank).",
+      "stats": {
+        "newVenues": 0,
+        "newArtists": 3,
+        "eventsCreated": 4,
+        "dedupSkipped": 6,
+        "rejected": 4,
+        "staged": 3
+      },
+      "selfAudit": "PASS - 3/3 new artists have actType + a recorded enrichment attempt + FB page + graph avatar; all searched at minConfidence 25 incl. bare-core/variants before create (Nu Call 86%, Riskee 100%, Inner Terrestrials 100%, The Dirt 100%, InMe 100%, King Blues 100%, Beans on Toast 100%, Hung Like Hanratty 100% all found and reused).",
+      "runawayFlag": "none - frontier not expanded.",
+      "foreignGateStaged": [
+        "Cinema Stereo @ Foxlowe 2026-11-28 20:00 wegottickets/f/19576 - Nashville US",
+        "Molly Vulpyne Band @ The Rigger 2026-09-26 19:00 gigantic - Dublin IE (facebook.com/mollyvulpyne)",
+        "Kristin Hersh @ Foxlowe 2026-10-16 20:00 wegottickets/f/17278 - US",
+        "Skating Polly + Lord Friday the 13th @ Foxlowe 2026-10-17 20:00 wegottickets/f/19933 - US"
+      ],
+      "remainingBlocked": [
+        "Middlewich / Holmes Chapel / Stoke towns (Hanley/Burslem/Longton/Fenton/Tunstall) - AI Mode = browser required; ZERO browsers connected this run",
+        "Rigger: Headsticks Revolution Gathering 2026-12-05 13:00 - 10-artist bill (Headsticks, Jess Silk, The Dirt, The Endings, Sally Pepper, not quite dead yet, sweetpool, Uncle Dad and the Day Drinkers, Oli Ng, Cherry B) - needs a dedicated sub-run, link full bill at creation",
+        "Rigger: Tony Wright 2026-12-04 - gigantic URL slug says 18:00 but body text says doors 19:00; resolve before create",
+        "Rigger 2027 (beyond horizon): Pistol Whipped + Total Clash 29.1, 999 10.4, Buzzkocks + Jamish 30.4",
+        "Foxlowe 2027 (beyond horizon): Rob Rouse 21.1, Pete Roth Trio ft Bill Bruford 27.1, Vikki Clayton 19.2, Cam Cole 20.2, Angie Palmer 26.2, Curved Air farewell 3.9.2027",
+        "Co-bill gap: existing Varukers event (7192e8ce, 2026-09-04) does not carry Blitzkrieg + The Thirteenth Turn; edit_event cannot append artistIds"
+      ],
+      "note": "Two venue diaries now closed for 2026 (Foxlowe UK music, Rigger except the 5 Dec multi-bill). The binding constraint is now the BROWSER, not the queue: every remaining item is either new-town AI Mode work or a foreign-act policy call. Recommend Jason keeps one Chrome with the extension running in the 01:00 window."
+    },
+    {
+      "date": "2026-08-21",
+      "task": "discovery-crawler-nw",
+      "browser": "OK - sole browser 7ad060c3 (the recorded verifiedDeviceId) pinned, then VERIFIED via facebook.com/me -> profile.php?id=100028859839122 (Jason Jones, Disley) before any write.",
+      "method": "Queue-first: (1) Rigger queue cleared via gigantic venue + event pages. (2) New ground: AI Mode area query on the Stoke towns (Hanley/Burslem/Hartshill), then the Underground timed diary on musicmaniauk.com.",
+      "riggerQueueCleared": {
+        "venue": "YOMsEVdj9Y7OMMy88HFV",
+        "finding": "BOTH queued Rigger items ALREADY EXISTED, created by the klma-stoke-gig-list runner on 2026-08-08 / 2026-08-12. State file was behind reality for the third run running. Both carried a DEFAULTED 21:00 start time that was materially wrong.",
+        "headsticksBill": "All 11 live acts on the Revolution Gathering bill already exist in bndy and are already enriched: Headsticks 6bffce2b, Steve Ignorant's Slice Of Life 4c02476c, Abdoujaparov fe8d0f12, Jess Silk a02566d5, The Dirt bbf9861b, The Endings b142111d, Sally Pepper 3da9bf3c, Sweetpool 633f4826, Uncle Dad & The Day Drinkers 36f90ec9 (90% match, Staffordshire, reused), Oli Ng 8c4bd940, Not Quite Dead Yet b1f3a5d6. ZERO new artists needed. Cherry B is the COMPERE, not a live act - description-only per the unnamed-act rule.",
+        "eventsCorrected": [
+          "41dbd09d Revolution Gathering @ The Rigger 2026-12-05: startTime 21:00 -> 13:00, endTime 00:00 -> 23:00, full 11-act bill + compere + 14+ policy into description, gigantic ticketUrl, cowork-discovery externalId added",
+          "4034f783 Tony Wright @ The Rigger 2026-12-04: startTime 21:00 -> 19:00 (CONFLICT RESOLVED: gigantic URL slug says 18-00 but the page title and body both say 19:00 - slug is a listing artefact), description with GBP15 face / GBP16.50 inc fees, gigantic ticketUrl, cowork-discovery externalId added"
+        ],
+        "dupBlocked": [
+          "Revolution Gathering create -> 41dbd09d (DUPLICATE_EVENT)",
+          "Tony Wright create -> 4034f783 (DUPLICATE_EVENT)"
+        ],
+        "stillOpen": "The 11-act bill CANNOT be linked to 41dbd09d because edit_event cannot append artistIds. Same gap as the Varukers co-bill. The full bill is now at least readable in the event description."
+      },
+      "newGround": {
+        "query": "AI Mode: 'grass roots live music pubs gigs bands Burslem Hanley Stoke-on-Trent 2026' - first Stoke-towns crawl, previously blocked on the browser for 3 runs",
+        "venues": {
+          "The Underground (2 Morley St, Hanley ST1 4LS)": "vzWTYVGllln9h8WQCaNf - EXISTING (place_id), but its diary had NEVER been imported. Biggest find of the run.",
+          "The Old Post Office (12 Wedgwood St, Burslem ST6 4JH)": "ocqMyrVLWZkxk5zEjJ2w - EXISTING (place_id). Weekend bands, free entry, Facebook-only listings.",
+          "Moorland Inn (Moorland Rd, Burslem ST6 1JP)": "14d737bc-3891-4512-8ccb-22d2d83eae0b - NEW",
+          "Albion (Hanley ST1 1QS)": "e5da55ea-44a6-4cc0-a321-08aec6054956 - NEW"
+        },
+        "alreadyCovered": "The Sugarmill and Artisan Tap both already in bndy (national-act venues per runbook VA.9).",
+        "undergroundDiary": {
+          "source": "musicmaniauk.com/events/category/the-underground/ - publishes date AND start time per event; 12 dated timed 2026 gigs found",
+          "newArtists": {
+            "The Exploited": "13500b43-36fc-4970-8327-41e3bc0bc9c5",
+            "Anti-Nowhere League": "a6f3f055-62fc-4934-b11a-adf93827c366",
+            "The Beat": "aa4f75f7-56c4-47ba-b5a8-4dc9ddec42e7",
+            "The Macc Lads": "f0c9f8f7-5181-4ee3-ad23-00bb88f7e397"
+          },
+          "eventsCreated": [
+            "a1fee2d9 The Exploited 2026-10-23 19:00-23:00",
+            "3bd1417f Anti-Nowhere League 2026-11-13 19:00-23:00 (undergroundstoke.co.uk ticketUrl)",
+            "27e3df2a The Beat featuring Ranking Junior 2026-11-21 19:00-23:00",
+            "3d04c304 The Macc Lads 2026-12-05 19:00-23:00"
+          ],
+          "enrichment": "4/4 official UK Facebook + graph avatar + genres + actType=originals + website, all confirmed via edit_artist follow-up. The Exploited (theexploitedofficial, Edinburgh, +the-exploited.net +insta), Anti-Nowhere League (antinowhereleague, Royal Tunbridge Wells, +antinowhereleague.com), The Beat (TheBeat 131k likes, Birmingham, +thebeatofficial.com +insta thebeat), The Macc Lads (TheMaccLads, Macclesfield, +themacclads.co.uk). Zero blanks.",
+          "apiFinding": "create_artist 422 'name failed data-quality validation' on 'The Beat featuring Ranking Jnr' - the descriptor tail is rejected, and verifiedSourceName:true + facebookUrl did NOT bypass it (contrary to the tool description). Resolved by creating the act as its own FB page name 'The Beat' with the billing tails as nameVariants, and the billing kept verbatim in the event title + description. nameVariants were dropped by create_artist and had to be re-applied via edit_artist - the known silent-drop defect.",
+          "dupNote": "Rejected as different acts: 'The Allbeats' 67% and 'The Beatniks' 67% for The Beat; 'Mac 3' 44% for The Macc Lads; 'Ant Clowes Duo' 42% for Anti-Nowhere League; 'This Machine' 42% for Thistle."
+        }
+      },
+      "stats": {
+        "newVenues": 2,
+        "venuesDeduped": 2,
+        "newArtists": 4,
+        "eventsCreated": 4,
+        "eventsCorrected": 2,
+        "dedupSkipped": 2,
+        "artistsReusedOrConfirmedExisting": 12,
+        "rejected": 1,
+        "staged": 3
+      },
+      "rejected": [
+        "Cherry B (Revolution Gathering) - compere, not a live music act; kept in the event description only"
+      ],
+      "selfAudit": "PASS - 4/4 new artists have actType=originals + a recorded, successful enrichment attempt (official UK Facebook, graph avatar, genres, website). All searched at minConfidence 25 including bare-core variants before create. Thistle was NOT created precisely because enrichment found only a Canadian same-name act - it is staged rather than created half-enriched.",
+      "runawayFlag": "none - frontier not expanded. All 4 new acts are noSpider national touring originals (The Macc Lads are Macclesfield-origin but a national touring name, treated as a leaf).",
+      "remainingBlocked": [
+        "The Underground: 8 dated+timed 2026 gigs remain (see review.jsonl 2026-08-21) - held for run cap only",
+        "Moorland Inn + Albion: created but zero events; their listings are Facebook-weekly",
+        "Artisan Tap: Club Brat + Dead Bird Lady 26 Sep, Noise Of Angels + Holden, Dirt Road Band - need a timed pass via ents24/jambase",
+        "Middlewich / Holmes Chapel / Leek / Longton / Fenton / Tunstall - still uncrawled",
+        "edit_event cannot append artistIds: blocks the Revolution Gathering 11-act bill (41dbd09d) and the Varukers co-bill (7192e8ce)",
+        "Foreign-act gate: 4 staged items unchanged, awaiting Jason's ruling"
+      ],
+      "note": "STOKE TOWNS OPENED - first successful AI Mode crawl of Hanley/Burslem after three browser-blocked runs. The single biggest find is that The Underground was already a bndy venue with an entirely unimported diary: a timed, well-published 18-event source sitting inside the corridor. Prioritise finishing it next run. Recurring theme for the third run: the state file lags the database because the klma-stoke-gig-list runner writes the same corridor - ALWAYS attempt the create and let the dedup gate answer, and check startTime on anything the runner made (it defaults to 21:00)."
+    },
+    {
+      "date": "2026-08-21 (run 2)",
+      "task": "discovery-crawler-nw",
+      "browser": "OK - sole browser 7ad060c3 (recorded verifiedDeviceId) pinned, then VERIFIED via facebook.com/me -> profile.php?id=100028859839122 (Jason Jones) before any write.",
+      "method": "Queue-first, no new ground. Worked the pre-verified UNDERGROUND queue from musicmaniauk.com/events/category/the-underground/ (12 events listed, 4 already imported by run 1). Read each event page for the full billing, doors, price and age policy.",
+      "undergroundSlice2": {
+        "venue": "vzWTYVGllln9h8WQCaNf",
+        "newArtists": {
+          "Mishikui": "cf030f9d-5df8-4e92-b95d-dcaa1813ba7b",
+          "South Walk": "58b3b3b0-5638-4bd1-9bc2-56288f2c6ab9",
+          "Ska-Boom UK": "17feb9f3-fb68-4315-81e3-5662fea6fc8b",
+          "Stampin' Ground": "920bd883-61ec-4662-8f1e-066fdaab170d",
+          "Formal Sppeedwear": "49d9a889-fe5f-4090-8153-8869f4dd54e9"
+        },
+        "eventsCreated": [
+          "32b4da2e THISTLE + MISHIKUI + SOUTHWALK 2026-08-29 19:30-23:00 GBP11.50 (Mishikui + South Walk linked; THISTLE unresolved, see below)",
+          "df4791bd FORMAL SPPEEDWEAR album release 2026-09-11 19:30 GBP11.50 (support CHRISTIAN MUSIC description-only; proceeds to RSPCA)",
+          "701a2a00 SKA BOOM matinee 2026-09-27 15:00 GBP13.50",
+          "437df2d1 STAMPING GROUND 2026-11-27 19:00-23:00 GBP17 (supports CRUELTY, INVASION, VOID OF LIFE, CLAYMORE description-only)",
+          "38e4130e THUNDER HAMMER - HALLOWEEN SPOOKTACKULAR 2026-10-30 19:30-23:00 GBP20 (Monsters of Rock show; artist reused + enrichment backfilled)"
+        ],
+        "enrichment": "5/5 new artists have actType + a recorded enrichment attempt. FB + graph avatar: South Walk (SouthWalkUK, Stoke midwest emo), Ska-Boom UK (profile.php?id=61566541768618, Redcar ska tribute, +skaboomuk.wordpress.com), Stampin' Ground (stampinground, Cheltenham UKHC, 6.2K followers). Website-only, no FB page exists: Mishikui (mishikui1.bandcamp.com, North London), Formal Sppeedwear (formalsppeedwear.bandcamp.com, Stoke - FB page search returned zero results).",
+        "rejectedForeign": "Kimura - the only 'Kimura' band page (facebook.com/Kimura.live) is FRENCH ('Groupe aux multiples influences'). Rejected under the never-foreign rule. The Underground's KIMURA is unidentified.",
+        "thistleUnresolved": "THISTLE could not be created. create_artist returns LOCATION_UNRESOLVABLE without a resolvable town, and no confident identification exists. Candidate 'thistle.' (Northampton, thistle.band, songkick 499651) plays the same Midlands circuit (Bodega 21 Aug, Charles Bradlaugh 13 Sep, Firebug 27 Sep) but its own site lists NO upcoming shows and Songkick does not carry the 29 Aug Stoke date. Facebook post cross-ref returned only a pub page (thistleparktavern). Blank beats wrong: the event carries the verbatim billing in title + description instead.",
+        "reusedArtists": {
+          "Thunder Hammer": "f858859b-efad-4a87-a908-9a5990efeaff (100% match, Stoke-on-Trent, pre-existing from klma-stoke-gig-list; BACKFILLED this run with FB ThunderHammerBand + graph avatar + thunderhammer.co.uk + actType=tribute + genres + bio - it had no image and no actType)"
+        }
+      },
+      "apiFindings": [
+        "create_artist requires a RESOLVABLE location - 'UK' is rejected with LOCATION_UNRESOLVABLE. An act whose town is unknown cannot be created at all.",
+        "edit_artist genres enum is MISSING 'Hardcore' and 'Punk'-adjacent values that create_artist accepts. create_artist takes Hardcore, edit_artist rejects it. Two different enums on the same field.",
+        "create_artist 500 fail-closed again on a payload carrying nameVariants (South Walk). Same payload without nameVariants succeeded. nameVariants must be applied via edit_artist.",
+        "create_artist silently drops genres/actType/facebookUrl/profileImageUrl - every field re-applied via edit_artist and verified with get_by_id."
+      ],
+      "stats": {
+        "newVenues": 0,
+        "newArtists": 5,
+        "artistsReused": 1,
+        "artistsBackfilled": 1,
+        "eventsCreated": 5,
+        "dedupSkipped": 0,
+        "rejected": 1,
+        "staged": 4
+      },
+      "selfAudit": "PASS - 5/5 new artists verified to carry actType plus a recorded enrichment attempt (3 with FB + graph avatar, 2 website-only where no FB page exists; Mishikui and Formal Sppeedwear confirmed via get_by_id). The 1 reused artist (Thunder Hammer) was BACKFILLED to the same bar. All searched at minConfidence 25 including bare-core variants before create.",
+      "runawayFlag": "none - frontier not expanded.",
+      "undergroundRemaining": [
+        "PROM + HAN SANDY 2026-09-03 19:00-23:00 GBP11.50 - co-headline, supports SOUTHWALK (exists 58b3b3b0) + KIMURA. PROM is a UK touring act (songkick 81580, toured with Mishikui Aug 2026) but has no findable FB; HAN SANDY unidentifiable (page title says HAN SANDY, body says HAD SANDY); KIMURA foreign-page rejected.",
+        "BLOOD GUTTER 2026-09-19 18:30-23:00 GBP11.50 - supports OUTLIVE, COMBAT EVOLVED, CLAYMORE, CONSCI... (5-act bill, needs a dedicated sub-run)",
+        "SUNAMI 2026-12-01 19:00-23:00 GBP28 - supports MISSING LINK, DESOLATED, EXTINGUISH, SMOTHER. SUNAMI is a US hardcore band -> FOREIGN GATE."
+      ],
+      "note": "THE UNDERGROUND is now 9 of 12 listed events imported. The three left are all blocked on ACT IDENTITY, not on the source: the venue books DIY hardcore and emo bills whose support acts have no web presence at all. Two structural blockers surfaced this run: create_artist will not accept an act without a resolvable town, and create_artist/edit_artist disagree on the genres enum. Thunder Hammer is a reminder to always check pre-existing klma-stoke-gig-list artists for missing actType/avatar."
+    },
+    {
+      "date": "2026-08-27",
+      "task": "discovery-crawler-nw",
+      "browser": "OK - sole browser 7ad060c3 (recorded verifiedDeviceId) pinned, then VERIFIED via facebook.com/me -> profile.php?id=100028859839122 (Jason Jones) before any write.",
+      "method": "Queue-first: Artisan Tap timed pass via jambase venue + show pages (ents24 venue page carries zero listings; jambase is the better source for this venue). Then new ground: AI Mode area query on LEEK, the last uncrawled Staffordshire Moorlands town.",
+      "artisanTapQueueCleared": {
+        "venue": "CoS3G3Jr9djE4WSWQqkz",
+        "source": "jambase.com/venue/artisan-tap (2 listed 2026 shows, both timed and priced on their show pages)",
+        "newArtists": {
+          "Club Brat": "6843f3e8-8033-47cd-9ff4-56ddec672bcc",
+          "David Ford": "13c1a236-b4de-4f45-84e5-1420239fc29f"
+        },
+        "eventsCreated": [
+          "b02d9d69 Club Brat 2026-09-26 19:30 GBP11.00 See Tickets UK",
+          "b8e16382 David Ford 2026-11-26 20:00 GBP22.00 See Tickets UK"
+        ],
+        "enrichment": "2/2 official UK Facebook + graph avatar + genres + actType=originals at creation and re-applied via edit_artist. Club Brat (facebook.com/p/CLUB-BRAT-61553507870947, Peterborough punk/noise pop, +insta club.brat), David Ford (facebook.com/davidfordmusic, Eastbourne singer-songwriter, +davidfordmusic.com). Zero blanks.",
+        "note": "Dead Bird Lady (the support act named in the 2026-08-21 staged note) is NOT on the jambase listing and was not confirmed elsewhere - not written. Artisan Tap now has its full published 2026 diary in bndy."
+      },
+      "newGround": {
+        "query": "AI Mode: 'grass roots live music pubs gigs bands Leek Staffordshire 2026'",
+        "finding": "LEEK IS ALREADY WELL COVERED. Every Leek venue AI Mode surfaced already existed in bndy by google_place_id, and 3 of 5 gig creates were blocked by the dedup gate. Fourth run in a row where the state file lagged the database.",
+        "venuesAllExisting": {
+          "The Roebuck (18 Derby St)": "QbvafQDh5wCl0UmDB1u6",
+          "The Red Lion (7 Market Pl)": "26c85b35-d474-49f0-9245-6faece7f47f7",
+          "Wilkes Head (16 St Edward St)": "04e2d803-baf2-45ea-a75c-50f99216c8e9",
+          "The Winking Man country pub (Upper Hulme)": "7a390659-ae19-4406-ba27-f2fda23c74da",
+          "The Cock Inn (29 Derby St)": "ty1aOZiIsEDpFBBPM6m5",
+          "Foxlowe Arts Centre": "e75a745c-a108-4e81-a7a8-c92d25e2ee53"
+        },
+        "newArtists": {
+          "Sinini Ngwenya": "5850faa8-e2cb-41aa-9353-6acedf3ee75a"
+        },
+        "reusedArtists": {
+          "Chasing Twisters": "f307ef46-b8bc-4bf1-81a4-1189e4d1c6d1",
+          "Ozric Tentacles": "b0b1b848-fdee-4d0f-8c5a-a6434db5f001",
+          "Ant Clowes Duo": "X8nI6ptSlLGoHh8XW51N",
+          "Electromantics": "881914c9-8071-489a-be43-164c41d43c8d"
+        },
+        "eventsCreated": [
+          "97ba1042 Chasing Twisters @ The Red Lion 2026-09-05 20:30 (reuse)",
+          "84e75542 Sinini Ngwenya @ The Cock Inn 2026-08-30 15:00 afternoon"
+        ],
+        "dupBlocked": [
+          "Ozric Tentacles @ Foxlowe 2026-09-17 -> cf9552ed (existing 20:00, doors 19:30, wegottickets/f/20839 - jambase says 7pm but the venue ticket agent is authoritative, left unchanged)",
+          "Ant Clowes @ The Roebuck 2026-08-31 -> 047f71d8 'Ant Clowes Duo @ The Roebuck' 14:00 (klma-stoke-gig-list, start time already correct - no 21:00 default defect this time)",
+          "Electromantics @ The Winking Man 2026-10-10 -> 710929c2 'Back to the 80s: Electromantics + Smalltown Boy @ The Winking Man'"
+        ],
+        "enrichment": "1/1 new artist: Sinini Ngwenya actType=originals + acoustic + genres + Spotify + Instagram + bio. FB ATTEMPTED and deliberately left blank: the only Facebook presence is a PERSONAL PROFILE (sinini.ngwenya.9), not an official artist page, so no graph avatar is available. Location Sheffield, evidenced by a thestar.co.uk interview; he busks and gigs Leek regularly but is not Leek-based.",
+        "antClowesDupNote": "Billed at The Roebuck as 'Ant Clowes' (solo). Reused the existing 'Ant Clowes Duo' record per ADR-023 (Duo qualifier is an act signal, not a new artist). The old duplicate 'Ant Clowes' 925a6259 no longer appears in search_artist at minConfidence 25 - looks merged or removed."
+      },
+      "stats": {
+        "newVenues": 0,
+        "venuesDeduped": 6,
+        "newArtists": 3,
+        "artistsReused": 4,
+        "eventsCreated": 4,
+        "dedupSkipped": 3,
+        "rejected": 0,
+        "staged": 3
+      },
+      "selfAudit": "PASS - 3/3 new artists carry actType plus a recorded enrichment attempt, verified with get_by_id after the edit_artist follow-up. Club Brat and David Ford have official UK Facebook + graph avatar; Sinini Ngwenya is attempted-no-official-page (personal profile only) with Spotify + Instagram instead. All searched at minConfidence 25 including bare-core variants before create.",
+      "runawayFlag": "none - frontier not expanded.",
+      "staged": [
+        "U WOT M8 #9 Festival @ Wilkes Head, Leek 2026-09-05 15:00 - 5 named acts (Large Father, Dog Train, Desekrated, Machine Mafia, Negentrop) + 'and more'. ALL FIVE are new to bndy (searched). Held for a dedicated sub-run: 5 obscure grassroots metal acts cannot be enriched inside this run's cap, and the rule is create fewer artists rather than un-enriched ones.",
+        "Acoustic Anarchy @ The Blue Mugge, Leek 2026-09-25 - 'raw acoustic covers night featuring Phil Jackson'. Act identity ambiguous (is Acoustic Anarchy the night or the act?), no published start time, venue not yet created.",
+        "Leek Blues & Moorlands Americana Festival - first weekend of October, based at The Cock Inn. Lineup not captured."
+      ],
+      "remainingBlocked": [
+        "The Underground, Hanley: 3 gigs still blocked on act identity (PROM + HAN SANDY 3 Sep, BLOOD GUTTER 19 Sep, SUNAMI 1 Dec foreign gate)",
+        "Moorland Inn + Albion, Burslem: created, zero events, Facebook-weekly listings",
+        "Middlewich / Holmes Chapel / Longton / Fenton / Tunstall - still uncrawled",
+        "edit_event cannot append artistIds: Revolution Gathering 41dbd09d and Varukers 7192e8ce co-bills still unlinked",
+        "Foreign-act gate: 5 staged items, awaiting Jason's ruling"
+      ],
+      "note": "LEEK OPENED AND CLOSED IN ONE RUN. The town is materially already in bndy: 6 of 6 venues matched by google_place_id, 3 of 5 event creates hit the dedup gate. The pattern is now consistent across four runs - the corridor is better covered than the state file records, so ALWAYS attempt the create and let the gate answer. Real remaining value in Leek is the U WOT M8 festival bill and the October blues festival, both multi-artist and both needing a dedicated enrichment run. ents24 venue pages return empty listings; jambase and bandsintown are the productive timed sources for this corridor."
+    }
+  ]
+}

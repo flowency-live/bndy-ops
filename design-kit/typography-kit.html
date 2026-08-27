@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>bndy — Neon Typography Kit</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oswald:wght@500;600&display=swap');
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', system-ui, sans-serif; background: #070a12; color: #e6e9f0; padding: 36px 24px 80px; }
+.kit-header { text-align: center; margin-bottom: 8px; }
+.kit-header .logo { font-size: 36px; font-weight: 800; color: #ff7a1a; letter-spacing: -1px; }
+.kit-sub { text-align:center; color:#5d6678; font-size:13px; margin-bottom: 32px; }
+h2 { font-size: 13px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: #19d3f5; margin: 0 auto 6px; max-width: 1180px; }
+.h2-note { color: #8b93a7; font-size: 13px; margin: 0 auto 16px; max-width: 1180px; line-height: 1.5; }
+section { margin: 0 auto 52px; max-width: 1180px; }
+.duo { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 900px) { .duo { grid-template-columns: 1fr; } }
+.panel { border-radius: 16px; border: 1px solid #1b2233; background: #0b0f1a; padding: 22px; }
+.panel-tag { display:inline-block; font-size: 10px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; margin-bottom: 16px; padding: 4px 10px; border-radius: 99px; }
+.tag-bad { color: #ff9d9d; background: rgba(255,80,80,.1); border: 1px solid rgba(255,80,80,.35); }
+.tag-good { color: #6dff9c; background: rgba(109,255,156,.08); border: 1px solid rgba(109,255,156,.35); }
+
+:root {
+  --orange: #ff7a1a; --cyan: #19d3f5; --green: #6dff9c;
+  --surface: rgba(255,255,255,.04); --rule: rgba(255,255,255,.08);
+  --t1: #f2f5fa; --t2: #c6cddb; --t3: #8b93a7;
+}
+
+/* ===== month header (shared furniture, both versions) ===== */
+.mon-head { display:flex; align-items:center; gap: 14px; margin: 18px 0 12px; }
+.mon-rule { flex:1; height:1px; background: linear-gradient(90deg, transparent, rgba(255,122,26,.5), transparent); box-shadow: 0 0 8px rgba(255,122,26,.3); }
+.mon-name { font-size: 15px; font-weight: 800; letter-spacing: 3px; color: var(--t1); }
+.mon-count { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; color: var(--t3); }
+
+/* ===== A: CURRENT — colored caps + same-color glow ===== */
+.rowA { display:flex; align-items:center; gap: 14px; padding: 13px 4px; border-bottom: 1px solid var(--rule); }
+.dateA .d1 { font-family: 'Oswald', Impact, sans-serif; font-size: 22px; font-weight: 600; color: var(--t1); text-transform: uppercase; line-height: 1; }
+.dateA .d2 { font-family: ui-monospace, monospace; font-size: 9px; letter-spacing: 2px; color: var(--t3); }
+.dateA { width: 76px; flex: none; }
+.barA { width: 3px; align-self: stretch; background: var(--orange); border-radius: 2px; flex: none; }
+.timeA { font-family: ui-monospace, monospace; font-size: 13px; font-weight: 700; color: var(--cyan); letter-spacing: 1px; flex: none; }
+.nameA { font-family: 'Oswald', Impact, sans-serif; font-size: 17px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--orange);
+  text-shadow: 0 0 6px rgba(255,122,26,.8), 0 0 16px rgba(255,122,26,.5);
+  flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.nameA.cyan { color: var(--cyan); text-shadow: 0 0 6px rgba(25,211,245,.8), 0 0 16px rgba(25,211,245,.5); }
+.stubA { font-family: 'Oswald', sans-serif; font-size: 12px; letter-spacing: 1px; color: var(--green);
+  border: 1px dashed var(--green); background: rgba(109,255,156,.08); padding: 3px 10px; flex: none; }
+
+/* ===== B: RECOMMENDED — white text, neon furniture ===== */
+.rowB { display:flex; align-items:center; gap: 12px; padding: 10px 12px; margin-bottom: 8px;
+  background: var(--surface); border: 1px solid var(--rule); border-radius: 14px; transition: all 140ms; cursor: pointer; }
+.rowB:hover { border-color: rgba(255,122,26,.45); background: rgba(255,122,26,.05); box-shadow: 0 0 18px rgba(255,122,26,.12); }
+.gig-date { flex:none; width: 46px; text-align:center; padding: 6px 0 7px; border-radius: 10px;
+  background: rgba(10,14,24,.5); border: 1px solid var(--rule); border-left: 3px solid var(--orange);
+  box-shadow: inset 0 0 12px rgba(255,122,26,.07); }
+.gig-date .dw { display:block; font-size: 9px; font-weight: 700; letter-spacing: 1.2px; color: var(--orange); }
+.gig-date .dy { display:block; font-size: 17px; font-weight: 800; color: var(--t1); line-height: 1.1; }
+.gig-date .mn { display:block; font-size: 9px; font-weight: 600; color: var(--t3); }
+.infB { flex: 1; min-width: 0; }
+.nameB { display:block; font-size: 15px; font-weight: 700; color: var(--t1);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.rowB:hover .nameB { color: var(--orange); }
+.metaB { display:block; font-size: 12px; color: var(--t3); margin-top: 1px; }
+.metaB b { color: var(--t2); font-weight: 600; }
+.freeB { font-size: 10px; font-weight: 800; letter-spacing: 1px; color: #073018; background: var(--green);
+  padding: 3px 10px; border-radius: 99px; box-shadow: 0 0 12px rgba(109,255,156,.4); flex: none; }
+.chevB { color: var(--t3); flex: none; }
+
+/* ===== hero name treatments ===== */
+.hero-strip { display:flex; flex-direction: column; gap: 26px; padding: 26px 22px;
+  background: radial-gradient(ellipse 60% 80% at 30% 0%, #141024 0%, #0b0f1a 70%); border-radius: 16px; border: 1px solid #1b2233; }
+.hn-label { font-size: 9.5px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; color: var(--t3); margin-bottom: 6px; }
+.hn-a { font-family: 'Oswald', Impact, sans-serif; font-size: 38px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;
+  color: var(--orange); text-shadow: 0 0 8px rgba(255,122,26,.8), 0 0 24px rgba(255,122,26,.5); }
+.hn-b { font-size: 34px; font-weight: 800; letter-spacing: -.5px; color: var(--t1); }
+.hn-c { font-size: 34px; font-weight: 800; letter-spacing: -.3px;
+  color: #fff8f2;
+  text-shadow: 0 0 14px rgba(255,122,26,.55), 0 0 34px rgba(255,122,26,.3); }
+.hn-c.pink { color: #fff5f9; text-shadow: 0 0 14px rgba(255,46,136,.5), 0 0 34px rgba(255,46,136,.28); }
+
+/* mobile width demo */
+.mobile-frame { max-width: 390px; }
+</style>
+</head>
+<body>
+
+<div class="kit-header"><div class="logo">bndy</div></div>
+<div class="kit-sub">Neon Typography Kit — why the rows don't read, and the fix</div>
+
+<!-- ============ 1. SIDE BY SIDE ROWS ============ -->
+<section>
+  <h2>1 · The same gigs, two treatments</h2>
+  <p class="h2-note">Left: current — colored condensed caps with same-color glow. The glow bleeds into the letterforms (halation), orange-on-ink is ~4:1 contrast vs white's ~15:1, and tracking + caps shrink the letter counters the glow then fills. Right: the recipe everywhere else in the app — names in white 700, the neon moved to furniture: date-block edge, row hover, FREE pill, month rule.</p>
+  <div class="duo">
+
+    <div class="panel">
+      <span class="panel-tag tag-bad">A · Current — neon letterforms</span>
+      <div class="mon-head"><span class="mon-rule"></span><span class="mon-name">AUGUST 2026</span><span class="mon-count">4 GIGS</span><span class="mon-rule"></span></div>
+      <div class="rowA">
+        <div class="dateA"><div class="d1">FRI 14</div><div class="d2">AUG 2026</div></div>
+        <div class="barA"></div>
+        <span class="timeA">21:00</span>
+        <span class="nameA">Blind Tiger</span>
+        <span class="stubA">£ree</span>
+      </div>
+      <div class="rowA">
+        <div class="dateA"><div class="d1">FRI 21</div><div class="d2">AUG 2026</div></div>
+        <div class="barA"></div>
+        <span class="timeA">21:00</span>
+        <span class="nameA cyan">The Crown Inn</span>
+        <span class="stubA">£ree</span>
+      </div>
+      <div class="rowA" style="border-bottom:none">
+        <div class="dateA"><div class="d1">FRI 28</div><div class="d2">AUG 2026</div></div>
+        <div class="barA"></div>
+        <span class="timeA">21:00</span>
+        <span class="nameA">Hilda's Flying Ducks</span>
+        <span class="stubA">£ree</span>
+      </div>
+    </div>
+
+    <div class="panel">
+      <span class="panel-tag tag-good">B · Recommended — neon furniture, white words</span>
+      <div class="mon-head"><span class="mon-rule"></span><span class="mon-name">AUGUST 2026</span><span class="mon-count">4 GIGS</span><span class="mon-rule"></span></div>
+      <div class="rowB">
+        <div class="gig-date"><span class="dw">FRI</span><span class="dy">14</span><span class="mn">AUG</span></div>
+        <div class="infB">
+          <span class="nameB">Blind Tiger</span>
+          <span class="metaB">Stockport · <b>9:00 PM</b></span>
+        </div>
+        <span class="freeB">FREE</span>
+        <span class="chevB">›</span>
+      </div>
+      <div class="rowB">
+        <div class="gig-date"><span class="dw">FRI</span><span class="dy">21</span><span class="mn">AUG</span></div>
+        <div class="infB">
+          <span class="nameB">The Crown Inn</span>
+          <span class="metaB">Stockport · <b>9:00 PM</b></span>
+        </div>
+        <span class="freeB">FREE</span>
+        <span class="chevB">›</span>
+      </div>
+      <div class="rowB">
+        <div class="gig-date"><span class="dw">FRI</span><span class="dy">28</span><span class="mn">AUG</span></div>
+        <div class="infB">
+          <span class="nameB">Hilda's Flying Ducks</span>
+          <span class="metaB">Stockport · <b>9:00 PM</b></span>
+        </div>
+        <span class="freeB">FREE</span>
+        <span class="chevB">›</span>
+      </div>
+      <p class="h2-note" style="margin-top:12px; font-size:12px;">Hover a row — the neon answers your cursor instead of shouting all the time.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2. MOBILE ============ -->
+<section>
+  <h2>2 · Same comparison at phone width</h2>
+  <div class="duo">
+    <div class="panel mobile-frame">
+      <span class="panel-tag tag-bad">A · Current @ 390px</span>
+      <div class="rowA" style="gap:10px">
+        <div class="dateA" style="width:64px"><div class="d1" style="font-size:18px">FRI 14</div><div class="d2">AUG</div></div>
+        <div class="barA"></div>
+        <div style="flex:1;min-width:0">
+          <span class="timeA" style="font-size:11px">21:00</span>
+          <span class="nameA" style="display:block;font-size:15px">Blind Tiger</span>
+        </div>
+        <span class="stubA" style="font-size:10px">£ree</span>
+      </div>
+      <div class="rowA" style="gap:10px;border-bottom:none">
+        <div class="dateA" style="width:64px"><div class="d1" style="font-size:18px">SAT 05</div><div class="d2">DEC</div></div>
+        <div class="barA"></div>
+        <div style="flex:1;min-width:0">
+          <span class="timeA" style="font-size:11px">20:00</span>
+          <span class="nameA cyan" style="display:block;font-size:15px">The Gladstone Club</span>
+        </div>
+        <span class="stubA" style="font-size:10px">£ree</span>
+      </div>
+    </div>
+    <div class="panel mobile-frame">
+      <span class="panel-tag tag-good">B · Recommended @ 390px</span>
+      <div class="rowB">
+        <div class="gig-date"><span class="dw">FRI</span><span class="dy">14</span><span class="mn">AUG</span></div>
+        <div class="infB">
+          <span class="nameB">Blind Tiger</span>
+          <span class="metaB">Stockport · <b>9:00 PM</b></span>
+        </div>
+        <span class="freeB">FREE</span>
+      </div>
+      <div class="rowB" style="margin-bottom:0">
+        <div class="gig-date"><span class="dw">SAT</span><span class="dy">05</span><span class="mn">DEC</span></div>
+        <div class="infB">
+          <span class="nameB">The Gladstone Club</span>
+          <span class="metaB">Stockport · <b>8:00 PM</b></span>
+        </div>
+        <span class="freeB">FREE</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. HERO NAME ============ -->
+<section>
+  <h2>3 · The one place neon text CAN live: the hero name</h2>
+  <p class="h2-note">Real neon tubes are white-hot in the middle — the colour lives in the halo. Treatment C puts the glow <b style="color:#c6cddb">around</b> near-white letters instead of colouring the letters themselves. One per page, never in lists.</p>
+  <div class="hero-strip">
+    <div>
+      <div class="hn-label">A · current — colored letterforms + glow (hard to read)</div>
+      <div class="hn-a">The Roseline</div>
+    </div>
+    <div>
+      <div class="hn-label">B · plain white (readable, but no neon character)</div>
+      <div class="hn-b">The Roseline</div>
+    </div>
+    <div>
+      <div class="hn-label">C · recommended — white-hot core, orange halo (reads like a sign)</div>
+      <div class="hn-c">The Roseline</div>
+    </div>
+    <div>
+      <div class="hn-label">C · venue variant — pink halo</div>
+      <div class="hn-c pink">The Friendship</div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

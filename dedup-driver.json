@@ -1,0 +1,1425 @@
+[
+ {
+  "k": "eeddccb6-8c17-45fd-97df-e7c9b61fc6a0",
+  "kn": "The Damien Lodrick Band",
+  "dupes": [
+   "1f455af7-129f-4829-ab70-e6cc896ae09e",
+   "b9e731fb-f2dd-4c09-a8e0-39885c129ad6",
+   "3071ea1c-3dc3-4a6d-91be-a41d44ef3ede"
+  ],
+  "enrich": {
+   "genres": [
+    "rock",
+    "pop"
+   ]
+  },
+  "ext": [
+   {
+    "source": "sceniceye-daily-import",
+    "id": "artist_damien-lodrick"
+   },
+   {
+    "source": "sceniceye",
+    "id": "artist-damien-lodrick"
+   }
+  ]
+ },
+ {
+  "k": "244d6bba-ddaa-48d9-ab39-5d056bc2dc98",
+  "kn": "Star Breaker",
+  "dupes": [
+   "33a54e7c-0165-4a60-9ab1-7d95bee4eb53",
+   "5a264791-9d39-49da-b1ca-50823429a1ea",
+   "77ae1e93-3f37-4c40-a5f8-b3f83d9e63b9"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "id": "artist_star-breaker",
+    "source": "onthecase-daily-import"
+   }
+  ]
+ },
+ {
+  "k": "2b832e36-e476-4e53-b80f-8f69a4b8ff1a",
+  "kn": "The Zone",
+  "dupes": [
+   "d2317957-7c70-454e-89d7-f6e900a4b928",
+   "822370d4-94fc-44eb-bb7e-cfcc23291df1",
+   "017c397e-0eb0-4cb1-88d2-d75501c3bc30"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "id": "artist_the-zone",
+    "source": "onthecase-daily-import"
+   }
+  ]
+ },
+ {
+  "k": "4092017b-c3ce-4886-be63-9e77a0855c99",
+  "kn": "A Band Called Malice",
+  "dupes": [
+   "eefcdb78-1493-4d6c-b307-47f95ac9d3f2",
+   "f392a07b-ec31-4560-9a73-ee32f6617676"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "id": "artist_a-band-called-malice",
+    "source": "sceniceye-daily-import"
+   }
+  ]
+ },
+ {
+  "k": "dc590e43-8acc-4f7d-8a17-35b95dd1ace7",
+  "kn": "The Ace Tones",
+  "dupes": [
+   "5dc4c847-b1c9-43ff-89f5-adb3e800b0b4",
+   "34f44578-a923-4ad9-8c14-f4576413d2b4"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "id": "artist_ace-tones",
+    "source": "sceniceye-daily-import"
+   },
+   {
+    "source": "sceniceye-daily-import",
+    "id": "artist_the-ace-tones"
+   }
+  ]
+ },
+ {
+  "k": "074864c6-be80-4657-a28f-eadff08fcdc3",
+  "kn": "Adam Ede",
+  "dupes": [
+   "db21c0b9-f2ff-4cbc-8f4a-21f2841f602e",
+   "75d6088a-0b4e-4957-b126-e5375f7aa8d8"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "source": "sceniceye-daily-import",
+    "id": "artist_adam-ede"
+   },
+   {
+    "id": "artist-adam-ede",
+    "source": "sceniceye"
+   }
+  ]
+ },
+ {
+  "k": "06a00b90-7cc2-488c-889e-1a2bb32c42c3",
+  "kn": "Ben Staz",
+  "dupes": [
+   "73ec8afa-d41f-4f95-9dc9-e8073809fffa",
+   "4ccdac26-eda5-4cf0-8522-b8e69bf65e42"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "source": "klma-stoke-gig-list",
+    "id": "klma-artist-4335e4198960"
+   }
+  ]
+ },
+ {
+  "k": "FIT600aoQ5lpNSejGctN",
+  "kn": "Danny Brab",
+  "dupes": [
+   "211e504a-0830-4518-812b-b2b855b7bf01",
+   "f6c766d5-1986-4135-9729-6db57efaea86"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "id": "klma-artist-f7d7f2a92f79",
+    "source": "klma-stoke-gig-list"
+   }
+  ]
+ },
+ {
+  "k": "qUMdHwEKaSVwAgl2oXtb",
+  "kn": "Gone country",
+  "dupes": [
+   "167b14d5-90c0-4d9c-ba3a-286e44142d54",
+   "0ba94103-ce20-4bed-9f5c-f87636d5f55e"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "id": "klma-artist-620224c18b52",
+    "source": "klma-stoke-gig-list"
+   }
+  ]
+ },
+ {
+  "k": "3cfacff3-3657-448f-8def-31e4bfbcab29",
+  "kn": "Helen Spooner",
+  "dupes": [
+   "c8edb2fc-267c-4695-a721-8a6a167f6b56",
+   "a14a292d-f41b-4963-9a9f-24835cfbf84f"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "source": "sceniceye-daily-import",
+    "id": "artist_helen-spooner"
+   }
+  ]
+ },
+ {
+  "k": "3eg14QpWlx1NTnLoJ5y1",
+  "kn": "Mike & The Floorfillers",
+  "dupes": [
+   "15d6142f-b0ba-4ff1-9151-6a23d9f83342",
+   "108f13ba-95e0-48f7-95b9-c5bae5aaf8ad"
+  ],
+  "enrich": {
+   "genres": [
+    "indie",
+    "britpop",
+    "ska",
+    "classic rock",
+    "soul",
+    "motown"
+   ],
+   "actType": [
+    "covers"
+   ]
+  },
+  "ext": [
+   {
+    "id": "klma-artist-0b233d6c2464",
+    "source": "klma-stoke-gig-list"
+   }
+  ]
+ },
+ {
+  "k": "a3b7b769-c1cf-48f4-a49f-9a0ab8e5cb89",
+  "kn": "Mutton Dressed As Glam",
+  "dupes": [
+   "261bd9ad-e139-425a-b41f-effd940884a5",
+   "472d0d1d-dc85-4a29-a133-01a351734d0a"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "source": "klma-stoke-gig-list",
+    "id": "klma-artist-0d2228e5d04e"
+   }
+  ]
+ },
+ {
+  "k": "e5ikgvWu8HHNApkQiPoy",
+  "kn": "Native Way",
+  "dupes": [
+   "30959345-3ee7-4753-98c4-2ca0a517949f",
+   "bd7f8718-60cc-40a6-a50f-768fb6bb2c15"
+  ],
+  "enrich": {
+   "instagramUrl": "https://www.instagram.com/nativewayofficial/",
+   "actType": [
+    "covers"
+   ]
+  },
+  "ext": [
+   {
+    "id": "artist-native-way-acoustic-duo",
+    "source": "klma-stoke-gig-list"
+   },
+   {
+    "id": "klma-artist-cea7256717dd",
+    "source": "klma-stoke-gig-list"
+   }
+  ]
+ },
+ {
+  "k": "83bd1e96-7b05-49dc-986a-941043532411",
+  "kn": "Notorious 80s Band",
+  "dupes": [
+   "e233cc4c-2fb1-4faf-8f97-01bc59db7d79",
+   "a25b974c-8192-4418-a792-d7736c23645a"
+  ],
+  "enrich": {
+   "actType": [
+    "covers"
+   ]
+  },
+  "ext": [
+   {
+    "id": "klma-artist-7dfac0ee8fc4",
+    "source": "klma-stoke-gig-list"
+   }
+  ]
+ },
+ {
+  "k": "fd67b15a-8c49-40a2-a95b-7fac745d7b42",
+  "kn": "Rob Black",
+  "dupes": [
+   "133373b6-87ee-4be0-8dbb-17b62907db6c",
+   "c363854f-1afd-40fd-88be-a2a5211bca14"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "source": "klma-stoke-gig-list",
+    "id": "klma-artist-6294d5dba1cf"
+   }
+  ]
+ },
+ {
+  "k": "b5c6f545-86be-4881-befe-f35babd136da",
+  "kn": "Roy Pimmy",
+  "dupes": [
+   "692f14d8-fd4b-4e29-b4a0-427605c3e379",
+   "08dbb952-9d2d-4d0f-9e59-a890655d7f9f"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "id": "artist_roy-pimmy",
+    "source": "gigs-news-daily-import"
+   }
+  ]
+ },
+ {
+  "k": "5fa2d40b-035c-4859-b86f-6c5a23618b5e",
+  "kn": "Trilogy",
+  "dupes": [
+   "0a62b677-e848-4321-90e7-480d13383f18",
+   "3433dec8-eb2b-4d34-9bc8-123482becd61"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "id": "artist_trilogy",
+    "source": "onthecase-daily-import"
+   }
+  ]
+ },
+ {
+  "k": "f8aa9069-a885-4934-b2bf-b35728444422",
+  "kn": "Tubesnake",
+  "dupes": [
+   "f698cb43-9573-4293-b105-982f7a141dcc",
+   "c3ddaa45-8b08-4885-bf8b-71ae6f55cda3"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "source": "onthecase-daily-import",
+    "id": "artist_tubesnake"
+   }
+  ]
+ },
+ {
+  "k": "d7cdc094-35f9-4123-8721-a2bb65deba2a",
+  "kn": "6ix Ways 2 Sunday",
+  "dupes": [
+   "cbb0b4ba-eb3d-4e92-bc08-73c40f2c8c8f"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "id": "artist_6ix-ways-2-sunday",
+    "source": "onthecase-daily-import"
+   }
+  ]
+ },
+ {
+  "k": "f1903d5b-c5ea-49bc-bca3-d57c641b4d83",
+  "kn": "7 Sins",
+  "dupes": [
+   "737cc16a-86bc-49ca-8600-aebf7ec6fea1"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "source": "onthecase-daily-import",
+    "id": "artist_7-sins"
+   }
+  ]
+ },
+ {
+  "k": "42417674-6c05-48d0-91d1-3bc8e8a05630",
+  "kn": "Adam Austin",
+  "dupes": [
+   "77bcaeab-4b94-4338-878d-ea788362985b"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "id": "klma-artist-72f53ce1a4ea",
+    "source": "klma-stoke-gig-list"
+   }
+  ]
+ },
+ {
+  "k": "7d78f309-8b46-4fdd-8e0f-c5e0e1435726",
+  "kn": "And Then Some",
+  "dupes": [
+   "a38416d1-9c95-45d6-9f4f-e1c68f75cb7b"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "source": "onthecase-daily-import",
+    "id": "artist_and-then-some"
+   }
+  ]
+ },
+ {
+  "k": "X8nI6ptSlLGoHh8XW51N",
+  "kn": "Ant Clowes Duo",
+  "dupes": [
+   "925a6259-5a3e-4944-bcfc-8de437d781aa"
+  ],
+  "enrich": {
+   "websiteUrl": "https://antclowesmusicduo.co.uk",
+   "actType": [
+    "covers"
+   ]
+  },
+  "ext": []
+ },
+ {
+  "k": "9b0a93fe-5fcf-4063-af2a-50b3a116cb35",
+  "kn": "Audio Jacks",
+  "dupes": [
+   "e3bf9e2c-8532-4b04-9081-a0e3a7d35a3a"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "source": "onthecase-daily-import",
+    "id": "artist_audio-jacks"
+   }
+  ]
+ },
+ {
+  "k": "1896acb0-b4be-434f-b002-08d366c0b68e",
+  "kn": "Baxtrax",
+  "dupes": [
+   "c07326a9-4f78-49c7-9369-0d0bc404d0ee"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "source": "sceniceye-daily-import",
+    "id": "artist_baxtrax"
+   }
+  ]
+ },
+ {
+  "k": "ccedf866-5923-4890-bf6e-e9fb023bbdb7",
+  "kn": "Beatles For Sale",
+  "dupes": [
+   "ad2a64fc-1dc5-4208-968d-922d7a99041a"
+  ],
+  "enrich": {},
+  "ext": []
+ },
+ {
+  "k": "fd1aea7d-5840-40a6-a920-6e1c25dc1445",
+  "kn": "Blind 90",
+  "dupes": [
+   "c80548ed-246a-4de1-82e3-519ce130ae25"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "id": "artist_blind-90",
+    "source": "onthecase-daily-import"
+   }
+  ]
+ },
+ {
+  "k": "LEaHULH3pxKD5Kk2g32C",
+  "kn": "Blind Tiger",
+  "dupes": [
+   "1f856469-71d7-4596-934b-442bfb2ba27b"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "source": "gigs-news-daily-import",
+    "id": "artist_blind-tiger"
+   }
+  ]
+ },
+ {
+  "k": "83f7c3dc-b644-4c26-8599-f1dbe3bcd963",
+  "kn": "Blindsided",
+  "dupes": [
+   "14261eba-efa0-4e51-bdcf-26538663ca68"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "source": "klma-stoke-gig-list",
+    "id": "klma-artist-266de86db036"
+   }
+  ]
+ },
+ {
+  "k": "2e69a57e-4088-496c-8ce2-ab1bf67fc05d",
+  "kn": "Blistered Molly",
+  "dupes": [
+   "5fb8a877-5487-4a28-8a12-f3da1830caf1"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "id": "artist_blistered-molly",
+    "source": "onthecase-daily-import"
+   }
+  ]
+ },
+ {
+  "k": "70e29c87-6afc-487d-a4a5-6d30356466cd",
+  "kn": "Blue Ridge Band",
+  "dupes": [
+   "e4d07ecb-8fd2-4b9c-9647-57fe59b8766c"
+  ],
+  "enrich": {
+   "genres": [
+    "rock",
+    "pop"
+   ]
+  },
+  "ext": []
+ },
+ {
+  "k": "4c113f21-28f7-437e-8153-e1f64bd68b90",
+  "kn": "The Brit Pack",
+  "dupes": [
+   "b02a25bc-2658-4024-8dca-f6a71ca4b762"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "id": "artist_brit-pack",
+    "source": "onthecase-daily-import"
+   }
+  ]
+ },
+ {
+  "k": "9638e2c5-74e7-44c8-8fe3-3f54117a8ca5",
+  "kn": "Brydon Trio",
+  "dupes": [
+   "d9c3a4cc-edf5-4cd6-9b3d-375ce2cdba82"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "source": "onthecase-daily-import",
+    "id": "artist_brydon"
+   }
+  ]
+ },
+ {
+  "k": "f5bb8d4f-4b3e-4fc6-8310-f08a6712f9b7",
+  "kn": "Cadency",
+  "dupes": [
+   "8e56529a-b164-4571-b44f-da02c52129a1"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "source": "sceniceye-daily-import",
+    "id": "artist_cadency"
+   }
+  ]
+ },
+ {
+  "k": "GfYlNk9J3qqdWrxSnRPW",
+  "kn": "C&C Duo",
+  "dupes": [
+   "956d324b-8618-41b1-80d0-51259abb4617"
+  ],
+  "enrich": {
+   "actType": [
+    "covers"
+   ]
+  },
+  "ext": []
+ },
+ {
+  "k": "9e3abec3-2ed9-4a37-9e84-91a429fb7a27",
+  "kn": "Catalyst",
+  "dupes": [
+   "606e259f-1399-4866-aa8d-06fddc4d6067"
+  ],
+  "enrich": {
+   "genres": [
+    "pop",
+    "rock"
+   ],
+   "actType": [
+    "covers"
+   ]
+  },
+  "ext": []
+ },
+ {
+  "k": "09c5d121-9cfc-482f-88b0-4c26132dda45",
+  "kn": "The Chase",
+  "dupes": [
+   "97445235-27f8-4950-8b68-67ad690d203a"
+  ],
+  "enrich": {},
+  "ext": []
+ },
+ {
+  "k": "536687db-6f5d-4c2b-ac7e-6d70f5a69041",
+  "kn": "Craig Foster",
+  "dupes": [
+   "e8879a0b-5a0a-4dd4-bd0e-d9206476df9f"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "source": "sceniceye-daily-import",
+    "id": "artist_craig-foster"
+   }
+  ]
+ },
+ {
+  "k": "5M2OlxTbMCg7LdmCqLDx",
+  "kn": "Crosshair",
+  "dupes": [
+   "80260793-71c1-4fb7-a25a-fb2a153f29d4"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "source": "klma-stoke-gig-list",
+    "id": "klma-artist-5cd8054740cc"
+   }
+  ]
+ },
+ {
+  "k": "54ca695a-4145-461f-8940-255b2e7f4e1a",
+  "kn": "Danny & Friends (acoustic Night)",
+  "dupes": [
+   "247458d8-30a7-47b9-b917-5ec23b7e5563"
+  ],
+  "enrich": {},
+  "ext": []
+ },
+ {
+  "k": "e9e0b454-daf9-4044-a0d1-5f508eb87abf",
+  "kn": "Dog In A Box",
+  "dupes": [
+   "0b85886f-9974-4491-afab-8e8294183686"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "source": "onthecase-daily-import",
+    "id": "artist_dog-in-a-box"
+   }
+  ]
+ },
+ {
+  "k": "eaecc12b-cf3c-4572-a17e-da2b4fe8f2d2",
+  "kn": "Dreadnought",
+  "dupes": [
+   "ad417bfd-e6a0-4e5c-95e2-835ce031e73e"
+  ],
+  "enrich": {
+   "actType": [
+    "covers"
+   ]
+  },
+  "ext": [
+   {
+    "id": "dreadnought",
+    "source": "onthecasemusic"
+   }
+  ]
+ },
+ {
+  "k": "HOifh16xNRfedOMgSkG1",
+  "kn": "Eaton Park",
+  "dupes": [
+   "e5c3daab-7dc5-4217-ab4d-4583f5fd8ccd"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "id": "klma-artist-d5a4f5819d9f",
+    "source": "klma-stoke-gig-list"
+   }
+  ]
+ },
+ {
+  "k": "6a34efb0-a210-4dde-a71a-15deb7960dbc",
+  "kn": "Eva Iglestas",
+  "dupes": [
+   "3f9ef775-1f10-4373-a83f-9da11f7298f5"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "source": "sceniceye-daily-import",
+    "id": "artist_eva-iglestas"
+   }
+  ]
+ },
+ {
+  "k": "015261a6-6adf-4fc1-bedb-a05feeb6286c",
+  "kn": "Faye Carpenter",
+  "dupes": [
+   "4be5ea9a-f3f2-478d-98ea-4dd7e9b4900b"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "source": "sceniceye-daily-import",
+    "id": "artist_faye-carpenter"
+   }
+  ]
+ },
+ {
+  "k": "532ae312-6dcf-4bdd-9f41-9c3ae2f339ce",
+  "kn": "Finley Simpson",
+  "dupes": [
+   "4c5c482f-f99a-43d5-8847-082d96222e0d"
+  ],
+  "enrich": {},
+  "ext": []
+ },
+ {
+  "k": "aadc0f12-b30b-48fd-a712-4e725bfca388",
+  "kn": "Four Letter Word",
+  "dupes": [
+   "12930034-7a32-48f4-98fd-aa12b1d6e42c"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "source": "onthecase-daily-import",
+    "id": "artist_four-letter-word"
+   }
+  ]
+ },
+ {
+  "k": "c31ea75c-7d2e-4991-b0ea-53a44252b75a",
+  "kn": "George Michael Tribute",
+  "dupes": [
+   "87ca7982-664b-4711-aa11-8b402e177e4f"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "id": "artist_george-michael-tribute",
+    "source": "sceniceye-daily-import"
+   }
+  ]
+ },
+ {
+  "k": "yuV0A0YFWdAx8WQJvG5P",
+  "kn": "Grey Dogs",
+  "dupes": [
+   "8305789e-0f55-4dff-98ea-9cb9687d2ccb"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "source": "gigs-news-daily-import",
+    "id": "artist_the-grey-dogs"
+   }
+  ]
+ },
+ {
+  "k": "7FDaYyPgFt7HzALIhTdk",
+  "kn": "Guitar Monkey",
+  "dupes": [
+   "8096982c-73e6-4c37-9a9e-7d292fcea646"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "id": "klma-artist-ea9ccd3f8a5e",
+    "source": "klma-stoke-gig-list"
+   }
+  ]
+ },
+ {
+  "k": "e262e794-5b20-4ce1-8caf-f1db66dbf795",
+  "kn": "Harrison Rhys",
+  "dupes": [
+   "a4f67375-4a3b-48e6-88ed-c14ef304edf9"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "id": "artist_harrison-rhys",
+    "source": "sceniceye-daily-import"
+   }
+  ]
+ },
+ {
+  "k": "7120bd3a-be92-4d3a-b1f9-7bf02b831518",
+  "kn": "Live Music! Hayley Di Rito",
+  "dupes": [
+   "0cd9944d-534d-4061-b48b-1b619c479f95"
+  ],
+  "enrich": {},
+  "ext": []
+ },
+ {
+  "k": "1c2bff07-453a-45c0-ba73-0e133b9f92ae",
+  "kn": "Hybrids",
+  "dupes": [
+   "bcccacd8-a089-42c4-8436-f015e4a9ba4d"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "source": "onthecase-daily-import",
+    "id": "artist_hybrids"
+   }
+  ]
+ },
+ {
+  "k": "AXcIcTtYiOjaUbTJiHI9",
+  "kn": "Infamy",
+  "dupes": [
+   "4cb2a0d2-e568-435c-a4f7-30bbbe6a82af"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "source": "klma-stoke-gig-list",
+    "id": "klma-artist-60ee3b0bd43b"
+   }
+  ]
+ },
+ {
+  "k": "aafc96f5-7a22-457e-9c0b-3ea7bab4fcef",
+  "kn": "Isn't It Alanis",
+  "dupes": [
+   "ca8edc8a-0e15-4e51-b87c-59e80be95680"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "id": "klma-artist-cc2b3c7c2f84",
+    "source": "klma-stoke-gig-list"
+   }
+  ]
+ },
+ {
+  "k": "fbd7ec9d-412a-4a74-9c33-3c60a92a2871",
+  "kn": "Iwan Mitchell",
+  "dupes": [
+   "9e5f0717-d8d3-47b7-8881-c6fa0b392ecc"
+  ],
+  "enrich": {},
+  "ext": []
+ },
+ {
+  "k": "59392f4f-bb11-47ee-aef5-83b2e264e70c",
+  "kn": "James Michael",
+  "dupes": [
+   "911b0b5c-326f-4e6a-bc2b-5146a3ee7241"
+  ],
+  "enrich": {},
+  "ext": []
+ },
+ {
+  "k": "3643838e-faf9-4647-93b3-5e302b38e2c7",
+  "kn": "Jason Keady",
+  "dupes": [
+   "4398e652-2cf1-4ca9-8304-a016139311d2"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "id": "klma-artist-a0dd502fa641",
+    "source": "klma-stoke-gig-list"
+   }
+  ]
+ },
+ {
+  "k": "8fb8ef15-5b2a-45c3-add3-2e738ff649b6",
+  "kn": "Jo Safina",
+  "dupes": [
+   "a0d275d8-f7c6-482f-aba2-037efe0d076f"
+  ],
+  "enrich": {
+   "actType": [
+    "covers"
+   ]
+  },
+  "ext": []
+ },
+ {
+  "k": "647f14af-f6c0-4fbc-8194-d4b2d197162e",
+  "kn": "Joe McShane",
+  "dupes": [
+   "69b46066-a469-40a1-ac49-2a466bd0853d"
+  ],
+  "enrich": {
+   "actType": [
+    "covers"
+   ]
+  },
+  "ext": []
+ },
+ {
+  "k": "JUHqGvjcPBCmKjqNfk0X",
+  "kn": "Music Justified",
+  "dupes": [
+   "f36bfe6b-f072-4883-98db-3191bed2bd70"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "id": "klma-artist-f2ee8554103c",
+    "source": "klma-stoke-gig-list"
+   }
+  ]
+ },
+ {
+  "k": "76b890e7-7df1-42ec-aec1-c823fc109749",
+  "kn": "The Kilns",
+  "dupes": [
+   "f439453f-c4d9-47e5-a187-27299dc82ff7"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "source": "klma-stoke-gig-list",
+    "id": "klma-artist-24beff0bf45d"
+   }
+  ]
+ },
+ {
+  "k": "3a9a7a3f-4627-4cb1-be77-3593d6a6a41c",
+  "kn": "Kindred Spirit",
+  "dupes": [
+   "eced1c7a-cddc-4674-b932-ea106be4945d"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "source": "onthecase-daily-import",
+    "id": "artist_kindred-spirit"
+   }
+  ]
+ },
+ {
+  "k": "H3OZRJMOjRpZUrotAKke",
+  "kn": "Kloe Louise",
+  "dupes": [
+   "5a4c9407-8b2e-4f49-9a49-c3728d7f13a6"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "id": "klma-artist-e18a484b13da",
+    "source": "klma-stoke-gig-list"
+   }
+  ]
+ },
+ {
+  "k": "8d25337a-daf2-4d84-9539-950d6be95571",
+  "kn": "Lemonade",
+  "dupes": [
+   "918fccf9-7706-4933-93a2-f73e9edd833b"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "source": "gigs-news-daily-import",
+    "id": "artist_lemonade"
+   }
+  ]
+ },
+ {
+  "k": "36270a7b-0703-4874-af0f-c63f575dde89",
+  "kn": "Lisa Marie",
+  "dupes": [
+   "ab7f336e-4ccd-4508-b5c2-5f4ad5a453bc"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "source": "sceniceye-daily-import",
+    "id": "artist_lisa-marie"
+   }
+  ]
+ },
+ {
+  "k": "12ae7407-d517-4f83-9aef-7e6ab15e159e",
+  "kn": "Lori",
+  "dupes": [
+   "0051a3e3-3615-4583-8362-0a250f1140c5"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "id": "klma-artist-90874be4f513",
+    "source": "klma-stoke-gig-list"
+   }
+  ]
+ },
+ {
+  "k": "77b0c192-a9bc-46a1-80d2-7250762cb854",
+  "kn": "Louise Sevier",
+  "dupes": [
+   "3563e8bd-b341-4866-8d9a-708b0ca137ad"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "source": "sceniceye-daily-import",
+    "id": "artist_louise-sevier"
+   }
+  ]
+ },
+ {
+  "k": "0e7b6ed5-3d39-4493-9d59-81e5e1b5a69b",
+  "kn": "The Magic Beans",
+  "dupes": [
+   "9a92c516-46e5-434c-bbab-98a124a9dfe6"
+  ],
+  "enrich": {
+   "genres": [
+    "mod",
+    "indie",
+    "punk",
+    "covers"
+   ],
+   "actType": [
+    "covers"
+   ]
+  },
+  "ext": []
+ },
+ {
+  "k": "zQdNXfDcXxeUCDIDmjXy",
+  "kn": "The Magnetic Jellyfish",
+  "dupes": [
+   "0fdc1941-07a4-461c-917b-5ea4c323683a"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "id": "klma-artist-e95bef39f8ed",
+    "source": "klma-stoke-gig-list"
+   }
+  ]
+ },
+ {
+  "k": "52dcf502-854a-42c3-b03d-0369a6a62612",
+  "kn": "Martin Stephenson & The Daintees",
+  "dupes": [
+   "2ca47718-c756-4a41-b59d-76b6c08b33ef"
+  ],
+  "enrich": {},
+  "ext": []
+ },
+ {
+  "k": "b526b214-d80c-4175-89fa-37e5e47b0182",
+  "kn": "The Marvilles",
+  "dupes": [
+   "21658180-c890-4d65-ad96-a4deac18ddcb"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "source": "sceniceye-daily-import",
+    "id": "artist_the-marvilles"
+   }
+  ]
+ },
+ {
+  "k": "a8e3c25d-6d20-4310-9094-843961273cb0",
+  "kn": "MD Duo",
+  "dupes": [
+   "d22fb45f-44cc-4f16-b17d-2ddc0ed59ff8"
+  ],
+  "enrich": {
+   "genres": [
+    "rock",
+    "pop"
+   ],
+   "actType": [
+    "covers"
+   ]
+  },
+  "ext": []
+ },
+ {
+  "k": "67a1e340-66ae-4b46-97a3-26b73b4ea7b1",
+  "kn": "Mick Taylor",
+  "dupes": [
+   "14431eb2-3199-46f5-943a-9e3ea2380d25"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "source": "klma-stoke-gig-list",
+    "id": "klma-artist-10f3fd25e791"
+   }
+  ]
+ },
+ {
+  "k": "46c31f48-2ed2-4f11-b2f2-a1daf660f961",
+  "kn": "Mike Wooldridge",
+  "dupes": [
+   "9f0b9a3f-b721-4876-b5c6-7a84c757d8a0"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "source": "sceniceye-daily-import",
+    "id": "artist_mike-wooldridge"
+   }
+  ]
+ },
+ {
+  "k": "49a44817-cd55-4f94-8290-c4feff794739",
+  "kn": "Mugshot",
+  "dupes": [
+   "02823656-b4ea-44a6-b624-0737b8deddd4"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "id": "artist_mugshot",
+    "source": "onthecase-daily-import"
+   }
+  ]
+ },
+ {
+  "k": "d80e3e0a-78ca-4b8c-ae55-4b270b85930a",
+  "kn": "No band on tonight",
+  "dupes": [
+   "253a1c38-4228-4959-9771-8ccd061ed237"
+  ],
+  "enrich": {},
+  "ext": []
+ },
+ {
+  "k": "95b4a3fa-b85f-4f51-a611-e15432352f56",
+  "kn": "The Panthers",
+  "dupes": [
+   "af594384-c1aa-4c48-984e-69f2a0285c5e"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "id": "artist_the-panthers",
+    "source": "onthecase-daily-import"
+   }
+  ]
+ },
+ {
+  "k": "078cc0fa-ce00-4f84-b26d-d56d0162e952",
+  "kn": "Peppermint Soul Band",
+  "dupes": [
+   "4dd461ea-9d1d-4de1-85b8-02a62222c468"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "source": "sceniceye-daily-import",
+    "id": "artist_peppermint-soul"
+   }
+  ]
+ },
+ {
+  "k": "8b725158-7b81-4a18-9751-380024e1e088",
+  "kn": "Perfect Storm",
+  "dupes": [
+   "e974f863-aade-4b06-8210-4747a9e26425"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "source": "onthecase-daily-import",
+    "id": "artist_perfect-storm"
+   }
+  ]
+ },
+ {
+  "k": "5d80a090-729b-48ef-a274-2dddc441fc5e",
+  "kn": "Pierrepoint",
+  "dupes": [
+   "17b51101-4158-4f7a-964d-fcda63656bb6"
+  ],
+  "enrich": {
+   "actType": [
+    "covers"
+   ]
+  },
+  "ext": []
+ },
+ {
+  "k": "TImPL5aG808KCZhAtwSh",
+  "kn": "The Pluckers Acoustic Duo",
+  "dupes": [
+   "01d4d26a-2be0-411b-8223-934a7bf83249"
+  ],
+  "enrich": {
+   "actType": [
+    "covers"
+   ]
+  },
+  "ext": []
+ },
+ {
+  "k": "cdedd99b-befe-47f7-9ab9-a0db6ac7e349",
+  "kn": "Rebel Radio",
+  "dupes": [
+   "3569edaa-a963-4e64-a50b-e6c4b30f6b09"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "id": "artist_rebel-radio",
+    "source": "onthecase-daily-import"
+   }
+  ]
+ },
+ {
+  "k": "9ba90439-c5ab-48d1-881f-51a384636311",
+  "kn": "Rosie",
+  "dupes": [
+   "731b02da-7b76-4246-b761-68efe8f38245"
+  ],
+  "enrich": {},
+  "ext": []
+ },
+ {
+  "k": "101dc4f7-0f1e-4655-898c-5f7f17e2a24a",
+  "kn": "The Rubber Souls",
+  "dupes": [
+   "75257a29-b472-47e4-868d-c28b3306073e"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "id": "artist_the-rubber-souls",
+    "source": "sceniceye-daily-import"
+   }
+  ]
+ },
+ {
+  "k": "ca732c7c-aa1e-45ea-9708-ed54999b2633",
+  "kn": "Russell Keith",
+  "dupes": [
+   "2eb6e531-6b8e-485a-becf-169b033098e1"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "id": "artist_russell-keith",
+    "source": "sceniceye-daily-import"
+   }
+  ]
+ },
+ {
+  "k": "e53ecf44-2035-4147-a665-377520118b55",
+  "kn": "Sarah Thomas",
+  "dupes": [
+   "7bf20de5-ef9e-4010-ad9e-b8b6ecf3509b"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "id": "artist_sarah-thomas",
+    "source": "sceniceye-daily-import"
+   }
+  ]
+ },
+ {
+  "k": "y8AmPUaIfXJmA6roG7S3",
+  "kn": "Savage Budgiez",
+  "dupes": [
+   "e0d39574-92d7-40ba-9510-fe940e6a0809"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "source": "klma-stoke-gig-list",
+    "id": "klma-artist-27e8104f56b4"
+   }
+  ]
+ },
+ {
+  "k": "88b5ddff-2a7e-498f-abda-da2ea08a85ec",
+  "kn": "Scarlett Fever",
+  "dupes": [
+   "c9badf89-6acb-464f-a25b-0ea4fabe3a4a"
+  ],
+  "enrich": {},
+  "ext": []
+ },
+ {
+  "k": "268c62a6-d4a5-45c0-a284-5f5eca5ca483",
+  "kn": "Sean Sings Elvis",
+  "dupes": [
+   "94f3e358-81e1-477b-98cb-e90b9e303803"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "source": "sceniceye-daily-import",
+    "id": "artist_sean-sings-elvis"
+   }
+  ]
+ },
+ {
+  "k": "PNJ6TclgY1pH26h2orEa",
+  "kn": "The Select Committee",
+  "dupes": [
+   "6e00cc46-03c6-4ad4-9e71-be9202e4c0f7"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "id": "artist_the-select-committee",
+    "source": "gigs-news-daily-import"
+   }
+  ]
+ },
+ {
+  "k": "b61485bf-873f-4735-a25b-ccfa1ab85be9",
+  "kn": "Shio",
+  "dupes": [
+   "53d70bcd-87c2-4ba2-b5c3-35c9fc0b57ae"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "source": "klma-stoke-gig-list",
+    "id": "klma-artist-dba7651c74f9"
+   }
+  ]
+ },
+ {
+  "k": "64d5e261-c075-4926-b0c7-9307284cad3b",
+  "kn": "Six Nowt",
+  "dupes": [
+   "8b4f58d6-c21f-423e-a841-a8a9f4fd0953"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "source": "onthecase-daily-import",
+    "id": "artist_six-nowt"
+   }
+  ]
+ },
+ {
+  "k": "efd30563-be14-481e-a964-00e32324cff5",
+  "kn": "Sticky Fingers",
+  "dupes": [
+   "017c863f-4790-4e00-9fbe-c55f8aea06f9"
+  ],
+  "enrich": {
+   "websiteUrl": "https://www.lemonrock.com/stickyfingers"
+  },
+  "ext": [
+   {
+    "source": "onthecasemusic",
+    "id": "sticky-fingers"
+   }
+  ]
+ },
+ {
+  "k": "50a4267f-0eb6-449e-baac-034c53eed664",
+  "kn": "Tommy P & the Crew",
+  "dupes": [
+   "18ceb7cb-b4ac-425b-8997-fcb10864e4aa"
+  ],
+  "enrich": {},
+  "ext": []
+ },
+ {
+  "k": "289454b3-e299-4086-aed2-0a0126ee3260",
+  "kn": "Trevor John Band",
+  "dupes": [
+   "4ab3f3e2-a9ad-4a10-83e7-ebc4290c4ac6"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "source": "sceniceye-daily-import",
+    "id": "artist_trevor-john"
+   }
+  ]
+ },
+ {
+  "k": "qnPMZq8vTzPATVmFEjld",
+  "kn": "Trilo3y",
+  "dupes": [
+   "3d90ae0d-cd27-4194-8461-bde794301c66"
+  ],
+  "enrich": {
+   "actType": [
+    "covers"
+   ]
+  },
+  "ext": []
+ },
+ {
+  "k": "ada252ae-e81c-477d-961d-ae715a90fa5f",
+  "kn": "The Band Vehicle",
+  "dupes": [
+   "f85127c4-1a8d-4fd3-85bc-9e3b41729566"
+  ],
+  "enrich": {},
+  "ext": []
+ },
+ {
+  "k": "LqNhG6aHxJGB6FP6lLrR",
+  "kn": "The Warehouse Blues Band",
+  "dupes": [
+   "eb48dacd-3835-4a3c-ba7d-429c034b96d8"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "id": "klma-artist-964d101d8141",
+    "source": "klma-stoke-gig-list"
+   }
+  ]
+ },
+ {
+  "k": "5484ad43-86d2-4ab4-9db2-646734914981",
+  "kn": "We 3 Colonels",
+  "dupes": [
+   "55b75666-318b-406d-9b57-c93a7b65d133"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "source": "onthecase-daily-import",
+    "id": "artist_we-3-colonels"
+   }
+  ]
+ },
+ {
+  "k": "8d58852e-9eb7-4631-be8f-e889c738faf0",
+  "kn": "The White Line",
+  "dupes": [
+   "706316a5-d004-4bb3-9408-0a7486c6f366"
+  ],
+  "enrich": {},
+  "ext": [
+   {
+    "source": "onthecase-daily-import",
+    "id": "artist_the-white-line"
+   }
+  ]
+ }
+]

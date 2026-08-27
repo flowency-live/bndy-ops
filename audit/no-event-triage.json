@@ -1,0 +1,576 @@
+{
+  "total": 94,
+  "toDelete": [],
+  "toKeep": [
+    {
+      "id": "102ca280-4203-4045-ac80-79dbb1215ee8",
+      "name": "Redeemon",
+      "reason": "Recent artist with external ID"
+    },
+    {
+      "id": "2fc03371-1abc-49f1-843b-02b69d7787d7",
+      "name": "Midnite City",
+      "reason": "Multiple external IDs - legitimate artist"
+    },
+    {
+      "id": "ecba743a-3f5d-4661-bac4-16c60bae613c",
+      "name": "Johnny Nice Painter",
+      "reason": "Recent artist with external ID"
+    },
+    {
+      "id": "40f714aa-712a-432a-9756-88a22371e206",
+      "name": "Greg Murray & The Seven Wonders",
+      "reason": "Recent artist with external ID"
+    },
+    {
+      "id": "dbf7563d-faca-4958-a2ee-3c981662f373",
+      "name": "Not Guilty",
+      "reason": "Rich profile data - legitimate artist"
+    },
+    {
+      "id": "35ab3482-e53e-48c9-9772-cf09a4fa8a56",
+      "name": "Putan Club",
+      "reason": "Recent artist with external ID"
+    },
+    {
+      "id": "3dc18b73-a374-4d62-bf1e-affa7f5d4bc6",
+      "name": "Van Roth",
+      "reason": "Recent artist with external ID"
+    },
+    {
+      "id": "9edc1e4a-513b-4357-9812-ef26ce471e0d",
+      "name": "Stereotonics",
+      "reason": "Multiple external IDs - legitimate artist"
+    },
+    {
+      "id": "b5d22b11-197f-47ba-be4e-d3f491775748",
+      "name": "White Knuckle Ride",
+      "reason": "Recent artist with external ID"
+    },
+    {
+      "id": "b0b1b848-fdee-4d0f-8c5a-a6434db5f001",
+      "name": "Ozric Tentacles",
+      "reason": "Multiple external IDs - legitimate artist"
+    },
+    {
+      "id": "a84fb66e-4195-4220-9e28-4dc3404ce481",
+      "name": "Acrylic",
+      "reason": "Recent artist with external ID"
+    },
+    {
+      "id": "c06ba200-f9fb-4ff8-b78b-f999cad1df7d",
+      "name": "TEN",
+      "reason": "Multiple external IDs - legitimate artist"
+    },
+    {
+      "id": "a0eb238d-042a-49bc-a570-6d0bcb40c02f",
+      "name": "Dirty DC",
+      "reason": "Multiple external IDs - legitimate artist"
+    },
+    {
+      "id": "8336f7cd-3f89-43f0-b9e8-9530cce8a5c5",
+      "name": "The FM Songbook",
+      "reason": "Multiple external IDs - legitimate artist"
+    },
+    {
+      "id": "e832be60-434e-4692-9594-01885efd9f90",
+      "name": "The Slow Readers Club",
+      "reason": "Multiple external IDs - legitimate artist"
+    },
+    {
+      "id": "842d5428-6e32-4b28-ba71-dcb4af220634",
+      "name": "Gin Annie",
+      "reason": "Multiple external IDs - legitimate artist"
+    },
+    {
+      "id": "a67b95c5-9393-42bc-a7bc-9e040482ddfc",
+      "name": "Wish We Were Pink Floyd",
+      "reason": "Recent artist with external ID"
+    },
+    {
+      "id": "e47a2297-cd45-46c5-9e41-4e5574dfeee8",
+      "name": "Nuromantica",
+      "reason": "Recent artist with external ID"
+    },
+    {
+      "id": "ab440800-f60d-47a7-886c-afa94adfbfe1",
+      "name": "David Live",
+      "reason": "Multiple external IDs - legitimate artist"
+    },
+    {
+      "id": "e900ed1a-3835-4728-a7b1-3037ee0d8fc6",
+      "name": "Collapser",
+      "reason": "Recent artist with external ID"
+    },
+    {
+      "id": "28d92f2e-0964-461f-89e2-7c8453e21eaf",
+      "name": "Holy Diva",
+      "reason": "Multiple external IDs - legitimate artist"
+    },
+    {
+      "id": "bd91fe17-3e6a-4d52-8c31-2b34fbdad4ed",
+      "name": "Myke Gray",
+      "reason": "Multiple external IDs - legitimate artist"
+    },
+    {
+      "id": "cf8a49d5-b5ea-4015-9374-bc048e4f073a",
+      "name": "The Paul Rose Band",
+      "reason": "Multiple external IDs - legitimate artist"
+    },
+    {
+      "id": "564a5ac9-2caa-4bd4-8b88-3d1fc72e93c7",
+      "name": "Soft Machine",
+      "reason": "Multiple external IDs - legitimate artist"
+    },
+    {
+      "id": "1f293b5a-3b15-4664-b2cb-3fa51820aec7",
+      "name": "Flint Fire",
+      "reason": "Recent artist with external ID"
+    },
+    {
+      "id": "23d1e0e2-e29d-4e1f-9d18-37219b47ace4",
+      "name": "Sara Milonovich & Greg Anderson",
+      "reason": "Multiple external IDs - legitimate artist"
+    },
+    {
+      "id": "ed735020-d0d3-451f-89cb-4e51a50f6daf",
+      "name": "Moretallica",
+      "reason": "Multiple external IDs - legitimate artist"
+    },
+    {
+      "id": "748ccbbb-12f3-4270-bbd7-9537432c7e92",
+      "name": "Ward Thomas",
+      "reason": "Multiple external IDs - legitimate artist"
+    },
+    {
+      "id": "a080a48d-fdc0-48ae-9a98-287e873bd5bd",
+      "name": "Me You At Six",
+      "reason": "Recent artist with external ID"
+    },
+    {
+      "id": "c039493a-ca27-43c1-8249-accacf97b667",
+      "name": "Xtine & The Reckless Hearts",
+      "reason": "Recent artist with external ID"
+    },
+    {
+      "id": "6df66198-f953-4e2e-9931-4c95723b477b",
+      "name": "Honeybox",
+      "reason": "Recent artist with external ID"
+    },
+    {
+      "id": "e0723651-e7e0-49cf-ba2d-7db3025c3d3a",
+      "name": "Tygers of Pan Tang",
+      "reason": "Multiple external IDs - legitimate artist"
+    },
+    {
+      "id": "d09c3801-4000-418c-8e50-9c46ccda7c19",
+      "name": "The Petites",
+      "reason": "Recent artist with external ID"
+    },
+    {
+      "id": "dedbdcc3-1a38-4b9c-a976-90a5b7fc1d76",
+      "name": "Hawklords",
+      "reason": "Recent artist with external ID"
+    },
+    {
+      "id": "1a207cb1-6886-478f-87c1-015c902575e3",
+      "name": "ELO Encounter",
+      "reason": "Multiple external IDs - legitimate artist"
+    },
+    {
+      "id": "2533123b-aafe-45d0-89de-7b127660deb7",
+      "name": "Oasish",
+      "reason": "Multiple external IDs - legitimate artist"
+    },
+    {
+      "id": "70d8cac8-4af2-481b-9195-5a8afea6da9b",
+      "name": "Mufunta",
+      "reason": "Recent artist with external ID"
+    },
+    {
+      "id": "b12da22c-ca9f-4d5b-b140-e03badb1dfa8",
+      "name": "When Rivers Meet",
+      "reason": "Multiple external IDs - legitimate artist"
+    },
+    {
+      "id": "b2582e2a-594f-4df1-8129-b8e65fe9769d",
+      "name": "Angel Of Harlem",
+      "reason": "Rich profile data - legitimate artist"
+    },
+    {
+      "id": "58d4804e-268f-4ce0-aa89-2ff63e7278c8",
+      "name": "Maet Live",
+      "reason": "Multiple external IDs - legitimate artist"
+    },
+    {
+      "id": "47bfee8d-22f2-48dd-a7e8-119ccb6a69e4",
+      "name": "Antarctic Monkeys",
+      "reason": "Multiple external IDs - legitimate artist"
+    },
+    {
+      "id": "c9bfad89-79ae-4ad8-983c-eb304cf79bdb",
+      "name": "Continental Lovers",
+      "reason": "Recent artist with external ID"
+    },
+    {
+      "id": "c3cac488-2002-4fed-af5d-6f53d4b5f663",
+      "name": "Gong",
+      "reason": "Multiple external IDs - legitimate artist"
+    },
+    {
+      "id": "66a87a51-effa-4657-ad22-665cadbea5c5",
+      "name": "Ego King",
+      "reason": "Recent artist with external ID"
+    },
+    {
+      "id": "f28121ea-0de4-4a7c-a533-4634449a553e",
+      "name": "Kick Up The 80s",
+      "reason": "Multiple external IDs - legitimate artist"
+    }
+  ],
+  "needsJason": [
+    {
+      "id": "a775ef0f-e56f-4121-a360-f7c6727ae8ea",
+      "name": "SoOasis",
+      "location": "Staffordshire UK",
+      "externalIds": 0,
+      "reason": ""
+    },
+    {
+      "id": "183482de-2210-4b97-9c9c-2862ae75d79f",
+      "name": "Marblehead Britpop - Ultimate Britpop Experience!!",
+      "location": "Staffordshire UK",
+      "externalIds": 0,
+      "reason": ""
+    },
+    {
+      "id": "22e11261-335f-4ccf-a2d4-5fbb4d915891",
+      "name": "The Zoinks",
+      "location": "North East England UK",
+      "externalIds": 0,
+      "reason": ""
+    },
+    {
+      "id": "fb704aa1-8fe6-43d1-b6e3-c4bd5b4aeeb8",
+      "name": "the Grey Dogs",
+      "location": "Greater Manchester UK",
+      "externalIds": 0,
+      "reason": ""
+    },
+    {
+      "id": "0d825645-273f-433a-8a0c-668fa70e9484",
+      "name": "Fools Messizh",
+      "location": "Staffordshire UK",
+      "externalIds": 0,
+      "reason": ""
+    },
+    {
+      "id": "aa8057d1-9c28-4771-907a-8294a1def5ac",
+      "name": "Overtime",
+      "location": "Hampshire UK",
+      "externalIds": 0,
+      "reason": ""
+    },
+    {
+      "id": "ef2a8a58-1927-4fea-9583-e16c58fee80e",
+      "name": "Trilo3y",
+      "location": "Greater Manchester UK",
+      "externalIds": 0,
+      "reason": ""
+    },
+    {
+      "id": "1a36df25-d96f-48b8-adac-d91128836e36",
+      "name": "Cyril Blake 60s & 70s Band",
+      "location": "Cheshire UK",
+      "externalIds": 0,
+      "reason": ""
+    },
+    {
+      "id": "2fa10219-019c-4fda-a6b9-68cbde3e7c26",
+      "name": "Brassmonkees - 9pc Soul/motown/ska/disco Party Band",
+      "location": "Staffordshire UK",
+      "externalIds": 0,
+      "reason": ""
+    },
+    {
+      "id": "35b50b23-0d9f-4b1f-ae40-aabe73075886",
+      "name": "Xclusive",
+      "location": "Staffordshire UK",
+      "externalIds": 0,
+      "reason": ""
+    },
+    {
+      "id": "9b365b35-c6f1-4816-8162-932e529d9d26",
+      "name": "The Pop Pickers",
+      "location": "Hampshire UK",
+      "externalIds": 0,
+      "reason": ""
+    },
+    {
+      "id": "24523613-0a88-4144-8f6b-37c4af261825",
+      "name": "Paul McDowell",
+      "location": "Hampshire UK",
+      "externalIds": 0,
+      "reason": ""
+    },
+    {
+      "id": "b0ee3a79-87d7-4f6c-824a-7b1204c6c8d0",
+      "name": "Mercy Seeds",
+      "location": "Hampshire UK",
+      "externalIds": 0,
+      "reason": ""
+    },
+    {
+      "id": "2ed085e7-d145-44af-9053-52e17f2ec37b",
+      "name": "Jessie James",
+      "location": "Staffordshire UK",
+      "externalIds": 0,
+      "reason": ""
+    },
+    {
+      "id": "0cf5ff11-cb1e-40cd-8069-ab642eafa263",
+      "name": "Phil Gooding",
+      "location": "Hampshire UK",
+      "externalIds": 0,
+      "reason": ""
+    },
+    {
+      "id": "ff5c2869-8849-40ce-bd0e-997b5784e51b",
+      "name": "Manny Fagnet",
+      "location": "North East England UK",
+      "externalIds": 0,
+      "reason": ""
+    },
+    {
+      "id": "b36b4872-6593-4869-aa28-0c51cb1d10b0",
+      "name": "Ancient Infinity Orchestra",
+      "location": "Staffordshire UK",
+      "externalIds": 0,
+      "reason": ""
+    },
+    {
+      "id": "462e0fd9-9582-42c3-8993-2312e8573f63",
+      "name": "Komaro",
+      "location": "Hampshire UK",
+      "externalIds": 0,
+      "reason": ""
+    },
+    {
+      "id": "8b0542fe-8a6a-4195-893c-5417b363aff9",
+      "name": "Ezzy Isbourne",
+      "location": "Staffordshire UK",
+      "externalIds": 0,
+      "reason": ""
+    },
+    {
+      "id": "4fa3b99d-f2b5-4984-9d6e-c4d6ae198765",
+      "name": "Hope City Rockers",
+      "location": "North East England UK",
+      "externalIds": 0,
+      "reason": ""
+    },
+    {
+      "id": "6eabae93-8f25-4a11-a4a6-d53053b46e19",
+      "name": "The Tom Foolery Band",
+      "location": "Hampshire UK",
+      "externalIds": 0,
+      "reason": ""
+    },
+    {
+      "id": "78ac5bff-29e0-4ea0-a86d-7650caddfd86",
+      "name": "Resonare",
+      "location": "Staffordshire UK",
+      "externalIds": 0,
+      "reason": ""
+    },
+    {
+      "id": "71171b95-3b43-4782-9e62-63c8ad11a66b",
+      "name": "Vavoom!! - Rock'n'roll Rampage",
+      "location": "Staffordshire UK",
+      "externalIds": 0,
+      "reason": ""
+    },
+    {
+      "id": "5814c9b0-63ac-4971-acdd-cd90f0f1a849",
+      "name": "The Arctic Stereo Killers - Fab Indie/britpop Covers",
+      "location": "Staffordshire UK",
+      "externalIds": 0,
+      "reason": ""
+    },
+    {
+      "id": "b33fdc71-2a1f-4e37-86f3-d045712ea49f",
+      "name": "Roy Pimmy",
+      "location": "Greater Manchester UK",
+      "externalIds": 0,
+      "reason": ""
+    },
+    {
+      "id": "0b1fe293-15b0-4494-bb0e-bc5093b123a2",
+      "name": "Scratch",
+      "location": "North East England UK",
+      "externalIds": 0,
+      "reason": ""
+    },
+    {
+      "id": "be6b0060-29f6-481c-8d07-8be769e3b861",
+      "name": "The Edison",
+      "location": "Staffordshire UK",
+      "externalIds": 0,
+      "reason": ""
+    },
+    {
+      "id": "ccb9438c-164f-4668-a618-4b822eefbebe",
+      "name": "The Wishing Well Band",
+      "location": "Hampshire UK",
+      "externalIds": 0,
+      "reason": ""
+    },
+    {
+      "id": "1a9c6a31-0bbd-4514-898e-916245a9259e",
+      "name": "Bad penny",
+      "location": "Staffordshire UK",
+      "externalIds": 0,
+      "reason": ""
+    },
+    {
+      "id": "944ce2c0-d9a7-4e58-be1b-32e8f9630081",
+      "name": "Harrison Rhys",
+      "location": "Hampshire UK",
+      "externalIds": 0,
+      "reason": ""
+    },
+    {
+      "id": "8423049c-1c09-4932-858a-fd72969fb88e",
+      "name": "Jeffrey Alexander & The Heavy Lidders",
+      "location": "Hartshill",
+      "externalIds": 0,
+      "reason": ""
+    },
+    {
+      "id": "cc54215f-1e75-4649-99c1-8c0f6cf5e3e7",
+      "name": "The Itch",
+      "location": "Staffordshire UK",
+      "externalIds": 0,
+      "reason": ""
+    },
+    {
+      "id": "5bdf5bca-7f7b-4ebc-be6e-3f36f44b635a",
+      "name": "Supertronics",
+      "location": "Hampshire UK",
+      "externalIds": 0,
+      "reason": ""
+    },
+    {
+      "id": "a838a060-1749-4704-8fdc-383780a5b364",
+      "name": "Magic Soul Andy",
+      "location": "Staffordshire UK",
+      "externalIds": 0,
+      "reason": ""
+    },
+    {
+      "id": "72928da0-0805-4927-9972-dbfca79298eb",
+      "name": "The Jackdaws",
+      "location": "North East England UK",
+      "externalIds": 0,
+      "reason": ""
+    },
+    {
+      "id": "efd25cdb-654c-4c6a-90a3-d3dc38753324",
+      "name": "Beer Monkeys",
+      "location": "North East England UK",
+      "externalIds": 0,
+      "reason": ""
+    },
+    {
+      "id": "5ba1be40-1e53-4531-b398-eb5899cf140d",
+      "name": "The Crisis - Popular Rock/pop 70s/80s/90s Covers *1st Time",
+      "location": "Staffordshire UK",
+      "externalIds": 0,
+      "reason": ""
+    },
+    {
+      "id": "f92acd12-e2d0-49e5-90c3-26aceddad5d3",
+      "name": "Distant Suns",
+      "location": "North East England UK",
+      "externalIds": 0,
+      "reason": ""
+    },
+    {
+      "id": "81d66a51-f47e-44db-924d-9b264993fca5",
+      "name": "So Oasis",
+      "location": "Staffordshire UK",
+      "externalIds": 0,
+      "reason": ""
+    },
+    {
+      "id": "1dcddcb0-399a-40e0-acec-7b8ab1792663",
+      "name": "Foster & Harris",
+      "location": "Hampshire UK",
+      "externalIds": 0,
+      "reason": ""
+    },
+    {
+      "id": "5e2046ac-75c8-4458-bd7f-eec426149503",
+      "name": "Dirty Jezebels",
+      "location": "Stockport, UK",
+      "externalIds": 0,
+      "reason": ""
+    },
+    {
+      "id": "ad56bbbf-7cbb-4945-b93d-40e0bdfa8aa4",
+      "name": "Ricky Zalez",
+      "location": "Hampshire UK",
+      "externalIds": 0,
+      "reason": ""
+    },
+    {
+      "id": "3a31a081-8d20-45a9-8502-d7b08785fbc3",
+      "name": "The 88.6",
+      "location": "Staffordshire UK",
+      "externalIds": 0,
+      "reason": ""
+    },
+    {
+      "id": "e6ea78b0-0b23-469e-b37a-e44c0f003d85",
+      "name": "Terri and the Waders",
+      "location": "Staffordshire UK",
+      "externalIds": 0,
+      "reason": ""
+    },
+    {
+      "id": "53a5813a-c6f4-44fa-98bf-e329a3d79c98",
+      "name": "The Punk Pirates",
+      "location": "Hampshire UK",
+      "externalIds": 0,
+      "reason": ""
+    },
+    {
+      "id": "fa121f85-6253-40f0-b112-fdd6a3da4d9b",
+      "name": "Lynch Mob",
+      "location": "North East England UK",
+      "externalIds": 0,
+      "reason": ""
+    },
+    {
+      "id": "b3469e4d-6846-435a-b9f3-52ef42770908",
+      "name": "Rewind",
+      "location": "Hampshire UK",
+      "externalIds": 0,
+      "reason": ""
+    },
+    {
+      "id": "931d462f-3483-4276-b868-37650aa1f6df",
+      "name": "Whiskey Rebel",
+      "location": "Staffordshire UK",
+      "externalIds": 0,
+      "reason": ""
+    },
+    {
+      "id": "0ee27019-6c32-4720-b68c-73f979d3a352",
+      "name": "Kimera",
+      "location": "North East England UK",
+      "externalIds": 0,
+      "reason": ""
+    }
+  ]
+}

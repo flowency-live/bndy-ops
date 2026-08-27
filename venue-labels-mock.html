@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>bndy — venue name pills mock</title>
+<!-- ============================================================
+  MOCK: venue name pills on the venues map view.
+  Real-implementation mapping (bndy-app):
+  · Pill = canvas nine-patch image registered like the diamonds
+    (skinMap.ts registerDiamonds pattern), stretchX/stretchY + content,
+    colours from --card/--txt/--acc2/--pin-bd tokens.
+  · Label layer = SECOND symbol layer on the same venues source,
+    filter: !point_count (clusters never labelled),
+    icon-image: pill nine-patch, icon-text-fit:'both' (pill hugs text),
+    text-anchor:'top' + text-offset → pill hangs below the diamond,
+    minzoom = LABEL_MINZOOM (slider below picks the value),
+    default collision detection drops whole pill+text units that clash —
+    diamonds themselves NEVER disappear (separate layer).
+  · symbol-sort-key: live venues win label priority over idle ones.
+  ============================================================ -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.min.js"></script>
+<style>
+  html,body{margin:0;height:100%;font-family:Inter,system-ui,sans-serif}
+  #map{position:absolute;inset:0}
+  .panel{position:absolute;top:14px;right:14px;z-index:10;width:230px;background:rgba(15,23,41,.88);backdrop-filter:blur(8px);border:1px solid #334155;border-radius:14px;padding:14px 16px;color:#F1F5F9}
+  .panel h1{margin:0 0 2px;font-size:13px;font-weight:800;letter-spacing:.4px}
+  .panel p{margin:0 0 10px;font-size:11px;color:#94A3B8;line-height:1.45}
+  .row{display:flex;align-items:center;justify-content:space-between;margin-top:10px;font-size:11.5px;font-weight:700}
+  .row output{font-variant-numeric:tabular-nums;color:#06B6D4}
+  input[type=range]{width:100%;accent-color:#F97316;margin-top:4px}
+  .btns{display:flex;gap:6px;margin-top:12px}
+  .btns button{flex:1;padding:6px 0;border-radius:8px;border:1px solid #334155;background:transparent;color:#94A3B8;font-size:11px;font-weight:800;cursor:pointer}
+  .btns button.on{background:#F97316;border-color:#F97316;color:#fff}
+  .zoom{position:absolute;left:14px;bottom:14px;z-index:10;background:rgba(15,23,41,.88);border:1px solid #334155;border-radius:10px;padding:7px 12px;color:#94A3B8;font-size:11px;font-weight:800}
+  .zoom b{color:#06B6D4;font-variant-numeric:tabular-nums}
+</style>
+</head>
+<body>
+<div id="map"></div>
+
+<div class="panel">
+  <h1>Venue name pills</h1>
+  <p>Pills on single venues only — never clusters. Pills try below → above → right → left of the marker before giving up; only then does the lowest-priority one drop (live venues win, diamonds always stay). The next-door buttons jump to venues ~10–20m apart.</p>
+  <div class="row"><span>Labels from zoom</span><output id="zv">11.0</output></div>
+  <input id="mz" type="range" min="9" max="14" step="0.5" value="11" />
+  <div class="btns">
+    <button id="b-dark" class="on">bndy dark</button>
+    <button id="b-print">print run</button>
+  </div>
+  <div class="btns">
+    <button id="b-trio">next-door ×3</button>
+    <button id="b-pair">next-door ×2</button>
+  </div>
+</div>
+<div class="zoom">zoom <b id="zr">—</b></div>
+
+<script>
+/* ---------------- sample venues: Marple / New Mills / Whaley Bridge patch ---------------- */
+const VENUES = [
+  ["The Navigation",        -2.0621, 53.3958, 1],
+  ["The Regent",            -2.0598, 53.4012, 0],
+  ["Printers Arms",         -2.0570, 53.4005, 1],   // ~90m from The Regent → collision demo
+  ["Hatters Tavern",        -2.0655, 53.3939, 0],
+  ["The Ring o' Bells",     -2.0455, 53.3990, 0],
+  ["Hawk Green Social",     -2.0521, 53.3862, 1],
+  ["The Midland",           -2.0378, 53.3571, 1],
+  ["Rams Head",             -2.0392, 53.3563, 0],   // tight pair in Disley
+  ["White Lion",            -2.0791, 53.3629, 0],
+  ["The Horsfield",         -2.0810, 53.3641, 1],
+  ["Royal Scot",            -2.1108, 53.3752, 0],
+  ["The Grapes Hotel",      -2.1121, 53.3738, 1],
+  ["Bulls Head",            -2.1042, 53.3691, 0],
+  ["The Torrs Taproom",     -1.9989, 53.3672, 1],
+  ["Pride of the Peaks",    -1.9964, 53.3665, 1],   // New Mills tight pair
+  ["Beehive Vaults",        -1.9942, 53.3679, 0],
+  ["Queens Arms",           -1.9871, 53.3648, 0],
+  ["The Furness Vale",      -2.0028, 53.3505, 0],
+  ["Drum & Monkey",         -1.9822, 53.3312, 1],
+  ["The Goyt Inn",          -1.9838, 53.3299, 0],   // Whaley Bridge pair
+  ["Shepherds Arms",        -1.9791, 53.3284, 0],
+  ["The Soldier Dick",      -2.0075, 53.3438, 0],
+  ["Strines Social Club",   -2.0330, 53.3789, 1],
+  ["The Windsor Castle",    -2.0942, 53.3856, 0],
+  ["Poynton Legion",        -2.1219, 53.3498, 1],
+  ["The Boars Head",        -2.1195, 53.3512, 0],
+  ["Little Mill Inn",       -2.0243, 53.3921, 1],
+  ["The Crossings",         -1.9905, 53.3585, 0],
+  /* NEXT-DOOR demo — Market St, New Mills: three venues within ~20m */
+  ["The Masons Arms",        -1.99615, 53.36575, 1],
+  ["Old Bank Tap",           -1.99595, 53.36570, 0],
+  ["The Vault",              -1.99605, 53.36590, 0],
+  /* NEXT-DOOR pair — shared building, Marple */
+  ["Corner House",           -2.06230, 53.39770, 1],
+  ["Corner House Cellar",    -2.06228, 53.39762, 0],
+];
+const gj = { type:"FeatureCollection", features: VENUES.map(([name,lng,lat,live],i)=>({
+  type:"Feature", properties:{ name, live }, geometry:{ type:"Point", coordinates:[lng,lat] }, id:i })) };
+
+/* ---------------- skins (token subset) ---------------- */
+const SKINS = {
+  dark:  { style:"https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json",
+           acc2:"#06B6D4", idle:"#64748B", pinBd:"rgba(255,255,255,.85)",
+           pillBg:"#101B2D", pillTxt:"#F1F5F9", pillBdLive:"rgba(6,182,212,.75)", pillBdIdle:"rgba(100,116,139,.6)",
+           clFill:"rgba(28,38,55,.92)", clRing:"#06B6D4", clTxt:"#F1F5F9", halo:"#0F1729" },
+  print: { style:"https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json",
+           acc2:"#2A46E8", idle:"#8B8170", pinBd:"#181309",
+           pillBg:"#FDFBF5", pillTxt:"#181309", pillBdLive:"#2A46E8", pillBdIdle:"#181309",
+           clFill:"rgba(253,251,245,.95)", clRing:"#F03A21", clTxt:"#181309", halo:"#FDFBF5" },
+};
+let skin = "dark";
+let labelMinzoom = 11;
+
+/* ---------------- canvas images: diamond + pill nine-patch ---------------- */
+function diamond(fill, border){
+  const px = 60, cv = document.createElement("canvas"); cv.width = cv.height = px;
+  const ctx = cv.getContext("2d"); const c = px/2;
+  ctx.translate(c,c); ctx.rotate(Math.PI/4);
+  const side = px*0.36*Math.SQRT2*0.78, rad = px*0.09;
+  const draw = s => { ctx.beginPath(); ctx.roundRect(-s/2,-s/2,s,s,rad); };
+  draw(side); ctx.fillStyle = border; ctx.fill();
+  draw(side - px*0.085); ctx.fillStyle = fill; ctx.fill();
+  return ctx.getImageData(0,0,px,px);
+}
+function pill(bg, bd){
+  const w=64, h=32, r=14, cv=document.createElement("canvas"); cv.width=w; cv.height=h;
+  const ctx=cv.getContext("2d");
+  ctx.beginPath(); ctx.roundRect(1.5,1.5,w-3,h-3,r);
+  ctx.fillStyle=bg; ctx.fill(); ctx.lineWidth=2.5; ctx.strokeStyle=bd; ctx.stroke();
+  return { img: ctx.getImageData(0,0,w,h),
+           opts: { pixelRatio:2, stretchX:[[24,40]], stretchY:[[14,18]], content:[10,7,54,25] } };
+}
+function registerImages(map, s){
+  const imgs = {
+    "dia-live": [diamond(s.acc2, s.pinBd), {pixelRatio:2}],
+    "dia-idle": [diamond(s.idle, s.pinBd), {pixelRatio:2}],
+  };
+  for (const [n,[img,o]] of Object.entries(imgs)) { if (map.hasImage(n)) map.removeImage(n); map.addImage(n,img,o); }
+  for (const [n,bd] of [["pill-live",s.pillBdLive],["pill-idle",s.pillBdIdle]]){
+    const p = pill(s.pillBg, bd);
+    if (map.hasImage(n)) map.removeImage(n); map.addImage(n, p.img, p.opts);
+  }
+}
+
+/* ---------------- map + layers ---------------- */
+const map = new maplibregl.Map({ container:"map", style:SKINS.dark.style, center:[-2.03,53.37], zoom:11.4, attributionControl:{compact:true} });
+map.addControl(new maplibregl.NavigationControl({showCompass:false}), "bottom-right");
+
+function addLayers(){
+  const s = SKINS[skin];
+  registerImages(map, s);
+  map.addSource("venues", { type:"geojson", data:gj, cluster:true, clusterRadius:46, clusterMaxZoom:13 });
+
+  map.addLayer({ id:"v-cluster", type:"circle", source:"venues", filter:["has","point_count"],
+    paint:{ "circle-color":s.clFill, "circle-radius":["step",["get","point_count"],14,5,18,10,22],
+            "circle-stroke-width":2, "circle-stroke-color":s.clRing } });
+  map.addLayer({ id:"v-cluster-n", type:"symbol", source:"venues", filter:["has","point_count"],
+    layout:{ "text-field":["get","point_count_abbreviated"], "text-font":["Montserrat Medium"], "text-size":12 },
+    paint:{ "text-color":s.clTxt } });
+
+  /* diamonds — never collide away */
+  map.addLayer({ id:"v-core", type:"symbol", source:"venues", filter:["!",["has","point_count"]],
+    layout:{ "icon-image":["case",["==",["get","live"],1],"dia-live","dia-idle"], "icon-size":0.5,
+             "icon-allow-overlap":true, "icon-ignore-placement":true } });
+
+  /* name pills — singles only, drop on clash, live venues get priority */
+  map.addLayer({ id:"v-label", type:"symbol", source:"venues", filter:["!",["has","point_count"]],
+    minzoom: labelMinzoom,
+    layout:{ "icon-image":["case",["==",["get","live"],1],"pill-live","pill-idle"],
+             "icon-text-fit":"both", "icon-text-fit-padding":[3,9,3,9],
+             "text-field":["get","name"], "text-font":["Montserrat Medium"],
+             "text-size":["interpolate",["linear"],["zoom"],11,10.5,14,12.5],
+             "text-variable-anchor":["top","bottom","left","right"], "text-radial-offset":1.05,
+             "symbol-sort-key":["case",["==",["get","live"],1],0,1] },
+    paint:{ "text-color":s.pillTxt } });
+
+  /* cursor affordance */
+  for (const id of ["v-core","v-label"]) {
+    map.on("mouseenter", id, ()=> map.getCanvas().style.cursor="pointer");
+    map.on("mouseleave", id, ()=> map.getCanvas().style.cursor="");
+  }
+}
+map.on("load", addLayers);
+
+/* self-heal after style switches (mock-grade version of the app's idle reconcile) */
+map.on("idle", ()=>{ if (map.isStyleLoaded() && !map.getSource("venues")) addLayers(); });
+
+/* ---------------- controls ---------------- */
+const zr = document.getElementById("zr");
+map.on("move", ()=> zr.textContent = map.getZoom().toFixed(1));
+map.on("load", ()=> zr.textContent = map.getZoom().toFixed(1));
+
+document.getElementById("mz").addEventListener("input", (e)=>{
+  labelMinzoom = Number(e.target.value);
+  document.getElementById("zv").textContent = labelMinzoom.toFixed(1);
+  if (map.getLayer("v-label")) map.setLayerZoomRange("v-label", labelMinzoom, 24);
+});
+
+document.getElementById("b-trio").addEventListener("click", ()=> map.flyTo({center:[-1.99605,53.36578], zoom:17, speed:1.6}));
+document.getElementById("b-pair").addEventListener("click", ()=> map.flyTo({center:[-2.06229,53.39766], zoom:17.5, speed:1.6}));
+
+for (const k of ["dark","print"]){
+  document.getElementById("b-"+k).addEventListener("click", ()=>{
+    if (skin===k) return; skin = k;
+    document.querySelectorAll(".btns button").forEach(b=>b.classList.remove("on"));
+    document.getElementById("b-"+k).classList.add("on");
+    map.setStyle(SKINS[k].style); // idle self-heal re-adds source+layers with new skin images
+  });
+}
+</script>
+</body>
+</html>

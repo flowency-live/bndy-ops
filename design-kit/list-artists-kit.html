@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>bndy — Gig List + Artists Kit v1</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', system-ui, sans-serif; background: #070a12; color: #e6e9f0; padding: 36px 24px 80px; }
+.kit-header { text-align: center; margin-bottom: 8px; }
+.kit-header .logo { font-size: 36px; font-weight: 800; color: #ff7a1a; letter-spacing: -1px; }
+.kit-sub { text-align:center; color:#5d6678; font-size:13px; margin-bottom: 32px; }
+h2 { font-size: 13px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: #19d3f5; margin: 0 auto 6px; max-width: 1280px; }
+.h2-note { color: #8b93a7; font-size: 13px; margin: 0 auto 16px; max-width: 1280px; line-height: 1.5; }
+section { margin: 0 auto 56px; max-width: 1280px; }
+
+.panel { border-radius: 16px; border: 1px solid #1b2233; background: #0b0f1a; padding: 24px; }
+.panel.light { background: #f4f5f7; border-color: #d8dce3; color: #1a2030; }
+.duo { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 980px) { .duo { grid-template-columns: 1fr; } }
+.panel-tag { font-size: 10px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; color: #5d6678; margin-bottom: 16px; }
+.panel.light .panel-tag { color: #9aa1ae; }
+
+/* ============================================================
+   SHARED PRIMITIVES (the future bndy-ui.css)
+   ============================================================ */
+:root {
+  --bndy-orange: #ff7a1a;
+  --bndy-pink: #ff2e88;
+  --bndy-cyan: #19d3f5;
+  --free-green: #6dff9c;
+  --ink: rgba(13, 17, 27, .94);
+  --glass-row: rgba(255,255,255,.04);
+  --glass-border: rgba(255,255,255,.08);
+  --txt-1: #f2f5fa; --txt-2: #c6cddb; --txt-3: #8b93a7;
+}
+.light {
+  --glass-row: #ffffff;
+  --glass-border: rgba(15,20,30,.1);
+  --txt-1: #171c26; --txt-2: #3d4452; --txt-3: #6b7382;
+}
+
+/* ---------- search + filter bar ---------- */
+.lk-search { display:flex; align-items:center; gap:10px; padding: 11px 16px; border-radius: 12px;
+  background: var(--glass-row); border: 1px solid var(--glass-border); color: var(--txt-3); font-size: 13.5px; margin-bottom: 12px; }
+.light .lk-search { box-shadow: 0 1px 3px rgba(15,20,30,.06); }
+.lk-filterbar { display:flex; align-items:center; gap:14px; margin-bottom: 22px; font-size: 12px; color: var(--txt-3); }
+.lk-loc-chip { display:inline-flex; align-items:center; gap:7px; padding: 7px 12px; border-radius: 99px;
+  border: 1px solid rgba(255,122,26,.45); color: var(--txt-2); font-weight:600; background: rgba(255,122,26,.08); }
+.lk-loc-chip .x { color: var(--txt-3); cursor:pointer; }
+.lk-range { flex:1; display:flex; align-items:center; gap:10px; }
+.lk-range .track { flex:1; height: 3px; border-radius: 99px; background: var(--glass-border); position: relative; }
+.lk-range .track::after { content:''; position:absolute; left:0; top:0; bottom:0; width: 18%; border-radius: 99px;
+  background: var(--bndy-orange); box-shadow: 0 0 8px rgba(255,122,26,.6); }
+.lk-range .thumb { position:absolute; left: 18%; top: 50%; transform: translate(-50%,-50%);
+  width: 14px; height: 14px; border-radius: 50%; background: var(--bndy-orange);
+  box-shadow: 0 0 10px rgba(255,122,26,.7), 0 0 0 3px rgba(255,122,26,.2); }
+
+/* ---------- section headers (collapsible) ---------- */
+.lk-section-head { display:flex; align-items:center; gap: 12px; width: 100%; background: transparent; border: none;
+  font-family: inherit; cursor: pointer; padding: 8px 2px; margin-top: 10px; }
+.lk-section-name { font-size: 13px; font-weight: 800; letter-spacing: 2.4px; text-transform: uppercase;
+  color: var(--bndy-orange); text-shadow: 0 0 14px rgba(255,122,26,.4); }
+.light .lk-section-name { text-shadow: none; }
+.lk-section-rule { flex: 1; height: 1px; background: linear-gradient(90deg, rgba(255,122,26,.4), var(--glass-border) 60%); }
+.lk-section-count { font-size: 11px; font-weight: 600; color: var(--txt-3); letter-spacing: .5px; }
+.lk-chev { color: var(--txt-3); font-size: 13px; transition: transform 180ms; }
+.lk-section-head.closed .lk-chev { transform: rotate(-90deg); }
+
+.lk-date-label { font-size: 10.5px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase;
+  color: var(--txt-3); margin: 12px 0 8px 2px; }
+.lk-date-label b { color: var(--txt-2); }
+
+/* ---------- event rows ---------- */
+.lk-row { display:flex; align-items:center; gap: 12px; width:100%; text-align:left; font-family: inherit;
+  background: var(--glass-row); border: 1px solid var(--glass-border); border-radius: 14px;
+  padding: 10px 12px; cursor: pointer; transition: all 140ms ease; margin-bottom: 8px; }
+.lk-row:hover { border-color: rgba(255,122,26,.45); background: rgba(255,122,26,.05);
+  box-shadow: 0 0 18px rgba(255,122,26,.12); transform: translateY(-1px); }
+.light .lk-row { box-shadow: 0 1px 3px rgba(15,20,30,.06); }
+.light .lk-row:hover { background: #fff; box-shadow: 0 4px 14px rgba(255,122,26,.18); }
+.lk-avatar { flex:none; width: 44px; height: 44px; border-radius: 50%; overflow:hidden;
+  display:flex; align-items:center; justify-content:center; font-size: 17px; font-weight: 800; color:#fff;
+  border: 2px solid rgba(255,255,255,.14);
+  box-shadow: 0 0 10px rgba(255,122,26,.3);
+  background: linear-gradient(145deg, #ffa45c 0%, #c2410c 100%); }
+.light .lk-avatar { border-color: #fff; box-shadow: 0 2px 8px rgba(255,122,26,.3); }
+.lk-avatar.photo1 { background: radial-gradient(circle at 30% 25%, #7a4dff 0%, #1a1040 75%); }
+.lk-avatar.photo2 { background: radial-gradient(circle at 70% 30%, #ff4d88 0%, #2d0a1f 75%); }
+.lk-avatar.photo3 { background: radial-gradient(circle at 45% 60%, #19d3f5 0%, #06222b 75%); }
+.lk-info { flex:1; min-width:0; }
+.lk-name { display:block; font-size: 14.5px; font-weight: 700; color: var(--txt-1);
+  white-space: nowrap; overflow:hidden; text-overflow: ellipsis; }
+.lk-venue { display:block; font-size: 12px; font-weight: 600; color: var(--bndy-cyan); margin-top: 1px; }
+.light .lk-venue { color: #0e90ab; }
+.lk-meta { display:block; font-size: 11.5px; color: var(--txt-3); margin-top: 1px; white-space: nowrap; }
+.lk-meta b { color: var(--txt-2); font-weight: 600; }
+.lk-right { flex:none; display:flex; flex-direction:column; align-items:flex-end; gap: 5px; }
+.lk-free { font-size: 10px; font-weight: 800; letter-spacing: 1px; color: #073018;
+  background: var(--free-green); padding: 3px 9px; border-radius: 99px;
+  box-shadow: 0 0 12px rgba(109,255,156,.4); }
+.lk-price { font-size: 11px; font-weight: 800; color: var(--txt-2);
+  border: 1px solid var(--glass-border); padding: 3px 9px; border-radius: 99px; }
+.lk-tonight { font-size: 9px; font-weight: 800; letter-spacing: 1px; color: #06222b;
+  background: var(--bndy-cyan); padding: 2px 7px; border-radius: 99px; margin-left: 6px; vertical-align: 1px;
+  box-shadow: 0 0 10px rgba(25,211,245,.5); }
+.lk-chev2 { color: var(--txt-3); }
+
+/* desktop date-column grid (concept) */
+.lk-grid { display:grid; grid-template-columns: 1fr 1fr; gap: 0 24px; }
+@media (max-width: 760px) { .lk-grid { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   ARTIST TILES
+   ============================================================ */
+.ak-grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px; }
+.ak-tile { position: relative; aspect-ratio: 1; border-radius: 16px; overflow: hidden; cursor: pointer;
+  border: 1px solid var(--glass-border);
+  transition: all 160ms ease; }
+.ak-tile:hover { transform: translateY(-3px); border-color: rgba(255,122,26,.55);
+  box-shadow: 0 0 24px rgba(255,122,26,.22), 0 12px 28px rgba(0,0,0,.45); }
+.light .ak-tile { box-shadow: 0 1px 4px rgba(15,20,30,.08); }
+.light .ak-tile:hover { box-shadow: 0 8px 24px rgba(255,122,26,.25); }
+.ak-img { position:absolute; inset:0; }
+.ak-img.p1 { background: radial-gradient(circle at 30% 25%, #8a5dff 0%, #150b35 80%); }
+.ak-img.p2 { background: radial-gradient(circle at 70% 35%, #ff4d88 0%, #2b0a1e 80%); }
+.ak-img.p3 { background: radial-gradient(circle at 40% 65%, #ffb84d 0%, #36140a 80%); }
+.ak-img.p4 { background: radial-gradient(circle at 60% 30%, #19d3f5 0%, #06222b 80%); }
+.ak-grad { position:absolute; inset: auto 0 0 0; height: 60%;
+  background: linear-gradient(to top, rgba(7,10,16,.92) 0%, rgba(7,10,16,.45) 55%, transparent 100%); }
+.ak-name { position:absolute; left: 12px; right: 12px; bottom: 10px;
+  font-size: 13.5px; font-weight: 800; color: #fff; line-height: 1.2;
+  text-shadow: 0 1px 6px rgba(0,0,0,.6); }
+.ak-type { position:absolute; left: 12px; bottom: 30px;
+  font-size: 8.5px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;
+  color: rgba(255,255,255,.85); background: rgba(10,14,24,.55); padding: 2px 7px; border-radius: 99px;
+  border: 1px solid rgba(255,255,255,.18); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
+.ak-gigging { position:absolute; top: 10px; right: 10px; width: 11px; height: 11px; border-radius: 50%;
+  background: var(--bndy-pink); border: 2px solid rgba(255,255,255,.6);
+  box-shadow: 0 0 10px var(--bndy-pink), 0 0 18px rgba(255,46,136,.5);
+  animation: ak-breathe 2.4s ease-in-out infinite; }
+@keyframes ak-breathe { 0%,100% { opacity: 1; } 50% { opacity: .5; } }
+
+/* fallback option A: uniform brand gradient */
+.ak-fall-a { position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+  font-size: 34px; font-weight: 800; color: rgba(255,255,255,.92);
+  background:
+    radial-gradient(ellipse 120% 90% at 20% 0%, rgba(255,122,26,.4) 0%, transparent 55%),
+    radial-gradient(ellipse 100% 90% at 90% 100%, rgba(25,211,245,.18) 0%, transparent 60%),
+    linear-gradient(160deg, #161d2e 0%, #0b0f19 100%);
+  text-shadow: 0 0 24px rgba(255,122,26,.5); }
+.light .ak-fall-a { background:
+    radial-gradient(ellipse 120% 90% at 20% 0%, rgba(255,122,26,.35) 0%, transparent 55%),
+    linear-gradient(160deg, #e7eaef 0%, #d4d9e2 100%);
+  color: #3d4452; text-shadow: none; }
+
+/* fallback option B: tri-accent rotation */
+.ak-fall-b { position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+  font-size: 34px; font-weight: 800; color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,.35); }
+.ak-fall-b.o { background: linear-gradient(150deg, #ff944 0%, #b34a05 100%); }
+.ak-fall-b.p { background: linear-gradient(150deg, #ff5ba4 0%, #99174f 100%); }
+.ak-fall-b.c { background: linear-gradient(150deg, #4adef7 0%, #0e7287 100%); }
+
+/* filters + alpha rail */
+.ak-filters { display:flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
+.ak-select { display:inline-flex; align-items:center; gap: 8px; font-size: 12px; font-weight: 600; color: var(--txt-2);
+  background: var(--glass-row); border: 1px solid var(--glass-border); border-radius: 10px; padding: 8px 13px; cursor:pointer; }
+.ak-select:hover { border-color: rgba(25,211,245,.45); }
+.ak-select .car { color: var(--txt-3); font-size: 10px; }
+.ak-rail { position: absolute; right: 6px; top: 90px; bottom: 20px; width: 18px;
+  display:flex; flex-direction:column; align-items:center; justify-content:space-between;
+  font-size: 9px; font-weight: 700; color: var(--txt-3); }
+.ak-rail span { cursor: pointer; padding: 1px 3px; border-radius: 4px; }
+.ak-rail span.on { color: #06222b; background: var(--bndy-orange); box-shadow: 0 0 8px rgba(255,122,26,.6); }
+.ak-letter { font-size: 13px; font-weight: 800; letter-spacing: 2.4px; color: var(--bndy-orange);
+  text-shadow: 0 0 14px rgba(255,122,26,.4); margin: 18px 0 10px 2px; }
+.light .ak-letter { text-shadow: none; }
+</style>
+</head>
+<body>
+
+<div class="kit-header"><div class="logo">bndy</div></div>
+<div class="kit-sub">Gig List + Artists Kit · v1 · extends the neon glass system (markers + overlays)</div>
+
+<!-- ============ 1. GIG LIST ============ -->
+<section>
+  <h2>1 · Gig List — restyled rows, headers &amp; filters (dark / light)</h2>
+  <p class="h2-note">Same logic and structure as List View V2 (collapsible sections kept, desktop date-column grid kept) — re-skinned onto the overlay primitives. One orange. Section headers swap the boxed bars for the neon caps + hairline used in the cards. Rows: ringed avatar · name (TONIGHT badge when today) · venue in cyan · single-line meta — no more wrapped "3↵mi" · FREE as the green glow pill, prices as quiet outline pills. Click the TODAY header — collapse works.</p>
+  <div class="duo">
+
+    <!-- DARK -->
+    <div class="panel">
+      <div class="panel-tag">Dark</div>
+      <div class="lk-search">🔍&nbsp; Search artist or venue…</div>
+      <div class="lk-filterbar">
+        <span class="lk-loc-chip">📍 Current Location <span class="x">✕</span></span>
+        <div class="lk-range">
+          <span>Within <b style="color:var(--txt-1)">5 mi</b></span>
+          <div class="track"><div class="thumb"></div></div>
+        </div>
+      </div>
+
+      <button class="lk-section-head" onclick="this.classList.toggle('closed'); var n=this.nextElementSibling; n.style.display = n.style.display==='none' ? '' : 'none';">
+        <span class="lk-section-name">Today</span>
+        <span class="lk-section-rule"></span>
+        <span class="lk-section-count">2 events</span>
+        <span class="lk-chev">▾</span>
+      </button>
+      <div>
+        <div class="lk-date-label"><b>THU 11 JUN</b> · Today</div>
+        <div class="lk-row">
+          <span class="lk-avatar photo2">S</span>
+          <span class="lk-info">
+            <span class="lk-name">Starscreen<span class="lk-tonight">TONIGHT</span></span>
+            <span class="lk-venue">Golden Eagle pub</span>
+            <span class="lk-meta">Derby · <b>4 mi</b> · <b>8:00 PM</b></span>
+          </span>
+          <span class="lk-right"><span class="lk-free">FREE</span><span class="lk-chev2">›</span></span>
+        </div>
+        <div class="lk-row">
+          <span class="lk-avatar">R</span>
+          <span class="lk-info">
+            <span class="lk-name">The Retros<span class="lk-tonight">TONIGHT</span></span>
+            <span class="lk-venue">The Flying Coach</span>
+            <span class="lk-meta">Stockport · <b>2 mi</b> · <b>9:00 PM</b></span>
+          </span>
+          <span class="lk-right"><span class="lk-price">£5</span><span class="lk-chev2">›</span></span>
+        </div>
+      </div>
+
+      <button class="lk-section-head" onclick="this.classList.toggle('closed'); var n=this.nextElementSibling; n.style.display = n.style.display==='none' ? '' : 'none';">
+        <span class="lk-section-name">Tomorrow</span>
+        <span class="lk-section-rule"></span>
+        <span class="lk-section-count">3 events</span>
+        <span class="lk-chev">▾</span>
+      </button>
+      <div>
+        <div class="lk-date-label"><b>FRI 12 JUN</b></div>
+        <div class="lk-grid">
+          <div class="lk-row">
+            <span class="lk-avatar photo1">T</span>
+            <span class="lk-info">
+              <span class="lk-name">Tom Hingley</span>
+              <span class="lk-venue">The Acoustic Lounge</span>
+              <span class="lk-meta">Stockport · <b>3 mi</b> · <b>6:00 PM</b></span>
+            </span>
+            <span class="lk-right"><span class="lk-free">FREE</span><span class="lk-chev2">›</span></span>
+          </div>
+          <div class="lk-row">
+            <span class="lk-avatar photo3">E</span>
+            <span class="lk-info">
+              <span class="lk-name">Electric Landlady</span>
+              <span class="lk-venue">The Railway</span>
+              <span class="lk-meta">Whaley Bridge · <b>3 mi</b> · <b>8:00 PM</b></span>
+            </span>
+            <span class="lk-right"><span class="lk-free">FREE</span><span class="lk-chev2">›</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LIGHT -->
+    <div class="panel light">
+      <div class="panel-tag">Light</div>
+      <div class="lk-search">🔍&nbsp; Search artist or venue…</div>
+      <div class="lk-filterbar">
+        <span class="lk-loc-chip">📍 Current Location <span class="x">✕</span></span>
+        <div class="lk-range">
+          <span>Within <b style="color:var(--txt-1)">5 mi</b></span>
+          <div class="track"><div class="thumb"></div></div>
+        </div>
+      </div>
+
+      <button class="lk-section-head">
+        <span class="lk-section-name">Today</span>
+        <span class="lk-section-rule"></span>
+        <span class="lk-section-count">2 events</span>
+        <span class="lk-chev">▾</span>
+      </button>
+      <div>
+        <div class="lk-date-label"><b>THU 11 JUN</b> · Today</div>
+        <div class="lk-row">
+          <span class="lk-avatar photo2">S</span>
+          <span class="lk-info">
+            <span class="lk-name">Starscreen<span class="lk-tonight">TONIGHT</span></span>
+            <span class="lk-venue">Golden Eagle pub</span>
+            <span class="lk-meta">Derby · <b>4 mi</b> · <b>8:00 PM</b></span>
+          </span>
+          <span class="lk-right"><span class="lk-free">FREE</span><span class="lk-chev2">›</span></span>
+        </div>
+        <div class="lk-row">
+          <span class="lk-avatar">R</span>
+          <span class="lk-info">
+            <span class="lk-name">The Retros<span class="lk-tonight">TONIGHT</span></span>
+            <span class="lk-venue">The Flying Coach</span>
+            <span class="lk-meta">Stockport · <b>2 mi</b> · <b>9:00 PM</b></span>
+          </span>
+          <span class="lk-right"><span class="lk-price">£5</span><span class="lk-chev2">›</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2. ARTISTS ============ -->
+<section>
+  <h2>2 · Artists — tiles, gigging dot, filters, A–Z rail (dark / light)</h2>
+  <p class="h2-note">Names move INSIDE the tiles over a bottom gradient. Pink breathing dot = artist has upcoming gigs (same language as live venues on the map). Act-type chip from <code style="color:#ffb36b">actType</code>. Two fallback options for artists without photos shown side by side in each theme — <b style="color:#c6cddb">Option A:</b> uniform ink + orange wash (calm, brandy) · <b style="color:#c6cddb">Option B:</b> rotation through the three bndy accents (livelier, still on-palette). Right edge: A–Z jump rail.</p>
+  <div class="duo">
+
+    <!-- DARK -->
+    <div class="panel" style="position:relative; padding-right: 34px;">
+      <div class="panel-tag">Dark</div>
+      <div class="ak-filters">
+        <span class="ak-select">All Types <span class="car">▾</span></span>
+        <span class="ak-select">All Genres <span class="car">▾</span></span>
+        <span class="ak-select">All Act Types <span class="car">▾</span></span>
+        <span class="ak-select">Group: A–Z <span class="car">▾</span></span>
+      </div>
+      <div class="ak-letter">0–9</div>
+      <div class="ak-grid">
+        <div class="ak-tile">
+          <div class="ak-img p1"></div>
+          <div class="ak-grad"></div>
+          <span class="ak-gigging"></span>
+          <span class="ak-type">Covers</span>
+          <span class="ak-name">101</span>
+        </div>
+        <div class="ak-tile">
+          <div class="ak-img p2"></div>
+          <div class="ak-grad"></div>
+          <span class="ak-type">Tribute</span>
+          <span class="ak-name">8Ts</span>
+        </div>
+        <div class="ak-tile">
+          <div class="ak-fall-a">3M</div>
+          <div class="ak-grad"></div>
+          <span class="ak-gigging"></span>
+          <span class="ak-type">Covers</span>
+          <span class="ak-name">3 Minute Warning</span>
+        </div>
+        <div class="ak-tile">
+          <div class="ak-fall-a">5A</div>
+          <div class="ak-grad"></div>
+          <span class="ak-name">5am</span>
+        </div>
+        <div class="ak-tile">
+          <div class="ak-fall-b o">3R</div>
+          <div class="ak-grad"></div>
+          <span class="ak-gigging"></span>
+          <span class="ak-type">Originals</span>
+          <span class="ak-name">33 REVS</span>
+        </div>
+        <div class="ak-tile">
+          <div class="ak-fall-b c">2H</div>
+          <div class="ak-grad"></div>
+          <span class="ak-name">25th Hour</span>
+        </div>
+        <div class="ak-tile">
+          <div class="ak-fall-b p">7F</div>
+          <div class="ak-grad"></div>
+          <span class="ak-type">Covers</span>
+          <span class="ak-name">70s Funk Stars</span>
+        </div>
+        <div class="ak-tile">
+          <div class="ak-img p4"></div>
+          <div class="ak-grad"></div>
+          <span class="ak-gigging"></span>
+          <span class="ak-type">Acoustic</span>
+          <span class="ak-name">7 Sins</span>
+        </div>
+      </div>
+      <div class="ak-rail">
+        <span>#</span><span class="on">A</span><span>B</span><span>C</span><span>D</span><span>E</span><span>F</span><span>G</span><span>H</span><span>J</span><span>K</span><span>L</span><span>M</span><span>N</span><span>P</span><span>R</span><span>S</span><span>T</span><span>V</span><span>W</span><span>Z</span>
+      </div>
+    </div>
+
+    <!-- LIGHT -->
+    <div class="panel light" style="position:relative; padding-right: 34px;">
+      <div class="panel-tag">Light</div>
+      <div class="ak-filters">
+        <span class="ak-select">All Types <span class="car">▾</span></span>
+        <span class="ak-select">All Genres <span class="car">▾</span></span>
+        <span class="ak-select">All Act Types <span class="car">▾</span></span>
+        <span class="ak-select">Group: A–Z <span class="car">▾</span></span>
+      </div>
+      <div class="ak-letter">0–9</div>
+      <div class="ak-grid">
+        <div class="ak-tile">
+          <div class="ak-img p1"></div>
+          <div class="ak-grad"></div>
+          <span class="ak-gigging"></span>
+          <span class="ak-type">Covers</span>
+          <span class="ak-name">101</span>
+        </div>
+        <div class="ak-tile">
+          <div class="ak-fall-a">3M</div>
+          <span class="ak-gigging"></span>
+        </div>
+        <div class="ak-tile">
+          <div class="ak-fall-b o">3R</div>
+          <div class="ak-grad"></div>
+          <span class="ak-type">Originals</span>
+          <span class="ak-name">33 REVS</span>
+        </div>
+        <div class="ak-tile">
+          <div class="ak-fall-b c">2H</div>
+          <div class="ak-grad"></div>
+          <span class="ak-name">25th Hour</span>
+        </div>
+      </div>
+      <div class="ak-rail">
+        <span>#</span><span class="on">A</span><span>B</span><span>C</span><span>D</span><span>E</span><span>F</span><span>G</span><span>H</span><span>J</span><span>K</span><span>L</span><span>M</span><span>N</span><span>P</span><span>R</span><span>S</span><span>T</span><span>V</span><span>W</span><span>Z</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. NOTES ============ -->
+<section>
+  <h2>3 · Implementation notes (after sign-off)</h2>
+  <p class="h2-note">
+    Step 1 extracts these primitives + the overlay vol-/eo- styles into <code style="color:#ffb36b">src/styles/bndy-ui.css</code> with light-theme variants keyed off the existing theme class. Step 2 re-skins ListView (lv-* tokens remapped, TicketStub → FREE/price pills, EventRowV2 markup adjusted, sections + date grid kept). Step 3 re-skins ArtistBrowseClient + ArtistCard (name-in-tile, fallback per chosen option, gigging dot from the public events query, dark-glass selects, A–Z rail). Logic, hooks, grouping and routing untouched throughout.
+  </p>
+</section>
+
+</body>
+</html>

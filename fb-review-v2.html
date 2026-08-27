@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FB Review — v2 sweep (14 candidates)</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f4f0; color: #1a1a1a; font-size: 14px; }
+
+  header { background: #fff; border-bottom: 1px solid #e0e0e0; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+  header h1 { font-size: 16px; font-weight: 600; }
+  #prog { font-size: 13px; color: #666; }
+
+  .toolbar { background: #fff; border-bottom: 1px solid #e0e0e0; padding: 10px 24px; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; position: sticky; top: 53px; z-index: 99; }
+  .filter-btn { font-size: 12px; padding: 4px 12px; border: 1px solid #ccc; border-radius: 20px; background: #f5f4f0; cursor: pointer; color: #555; }
+  .filter-btn.active { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
+  .spacer { flex: 1; }
+  .btn-download { font-size: 13px; padding: 7px 18px; border: 1px solid #1a1a1a; border-radius: 6px; background: #1a1a1a; color: #fff; cursor: pointer; font-weight: 500; }
+  .btn-download:hover { background: #333; }
+
+  main { max-width: 820px; margin: 0 auto; padding: 20px 24px 80px; }
+
+  .card { background: #fff; border: 1px solid #e0e0e0; border-radius: 10px; padding: 16px 18px; margin-bottom: 10px; }
+  .card.decided-approve { border-left: 3px solid #16a34a; background: #f0fdf4; }
+  .card.decided-edit   { border-left: 3px solid #2563eb; background: #eff6ff; }
+  .card.decided-reject { border-left: 3px solid #dc2626; background: #fef2f2; opacity: 0.7; }
+
+  .card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; margin-bottom: 8px; }
+  .artist-name { font-size: 15px; font-weight: 600; }
+
+  .badges { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 8px; }
+  .badge { font-size: 11px; padding: 2px 8px; border-radius: 12px; font-weight: 500; }
+  .badge-loc   { background: #dbeafe; color: #1e3a8a; }
+  .badge-decided { font-size: 11px; padding: 2px 10px; border-radius: 12px; font-weight: 600; white-space: nowrap; }
+  .bd-approve { background: #dcfce7; color: #14532d; }
+  .bd-edit    { background: #dbeafe; color: #1e3a8a; }
+  .bd-reject  { background: #fee2e2; color: #7f1d1d; }
+
+  .fb-link { display: inline-flex; align-items: center; gap: 5px; color: #1877f2; text-decoration: none; font-size: 13px; word-break: break-all; margin-bottom: 6px; }
+  .fb-link:hover { text-decoration: underline; }
+
+  .reasoning  { font-size: 12px; color: #555; line-height: 1.5; margin-bottom: 6px; }
+  .alternates { font-size: 11px; color: #888; margin-bottom: 8px; }
+  .alternates a { color: #2563eb; text-decoration: none; }
+  .alternates a:hover { text-decoration: underline; }
+
+  .actions { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+  .btn { font-size: 12px; padding: 6px 14px; border-radius: 6px; border: 1px solid #ccc; cursor: pointer; font-weight: 500; background: #fff; }
+  .btn:hover { opacity: 0.85; }
+  .btn-approve { background: #16a34a; color: #fff; border-color: #16a34a; }
+  .btn-reject  { background: #dc2626; color: #fff; border-color: #dc2626; }
+  .btn-edit    { background: #2563eb; color: #fff; border-color: #2563eb; }
+
+  .edit-row { display: flex; gap: 6px; margin-top: 8px; }
+  .edit-row input { flex: 1; padding: 6px 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 13px; }
+  .edit-row button { padding: 6px 14px; border-radius: 6px; border: none; background: #2563eb; color: #fff; cursor: pointer; font-size: 13px; font-weight: 500; }
+  .edit-row button:hover { background: #1d4ed8; }
+
+  .empty { text-align: center; color: #999; padding: 60px 20px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>FB Review — v2 sweep</h1>
+  <span id="prog"></span>
+</header>
+
+<div class="toolbar">
+  <button class="filter-btn active" onclick="setFilter('all')">All</button>
+  <button class="filter-btn" onclick="setFilter('pending')">Pending</button>
+  <button class="filter-btn" onclick="setFilter('approve')">Approved</button>
+  <button class="filter-btn" onclick="setFilter('edit')">Edited</button>
+  <button class="filter-btn" onclick="setFilter('reject')">Rejected</button>
+  <div class="spacer"></div>
+  <button class="btn-download" onclick="downloadDecisions()">Download decisions JSON</button>
+</div>
+
+<main id="main"></main>
+
+<script>
+const STORAGE_KEY = 'fbReview_v2_sweep';
+
+const candidates = [
+  {
+    id: "9ba34d16-b6dd-4c36-8c31-d6a019f6d9dc",
+    name: "Sharnna-Rose",
+    facebookUrl: "https://www.facebook.com/sharnnalunttorbaysinger/",
+    reasoning: "A Facebook page for 'Sharnna' exists as a UK singer (Torbay, South Devon), with the stage name closely matching 'Sharnna-Rose'. The input location is 'North West UK' which does not match Torbay, so corroboration is partial.",
+    alternates: []
+  },
+  {
+    id: "23c68d1e-2e8f-4449-a238-1c088a441bff",
+    name: "The Rockerfellas",
+    facebookUrl: "https://www.facebook.com/therockerfellaslive/",
+    reasoning: "Multiple Rockerfellas Facebook pages exist; facebook.com/therockerfellaslive describes playing nationwide with 50s-current music, a plausible match, but no explicit North West England location was confirmed in snippets.",
+    alternates: ["https://www.facebook.com/therockerfellas/", "https://www.facebook.com/RockerfellasRock/"]
+  },
+  {
+    id: "L2R6qpDMjMQYSln8gKjZ",
+    name: "Soulplay",
+    facebookUrl: "https://www.facebook.com/SoulPlayFunctionBand/",
+    reasoning: "SoulPlay Function Band is a confirmed UK soul/funk/motown function band with a Facebook page and website at soulplay.co.uk; however the artist record has no location so cannot confirm this is the same Soulplay, and the band is described as London-based.",
+    alternates: ["https://www.facebook.com/soulplaymusic"]
+  },
+  {
+    id: "f0054a85-71de-4e29-ab70-fff6abaa7d28",
+    name: "The Hustlers",
+    facebookUrl: "https://www.facebook.com/thehustlersrock/",
+    reasoning: "Facebook page 'thehustlersrock' exists and is a rock band, which aligns with genre. Appeared alongside North East gig guide results suggesting regional relevance, but no snippet directly confirms North East England location.",
+    alternates: ["https://www.facebook.com/p/The-Hustlers-100063982058026/"]
+  },
+  {
+    id: "8b725158-7b81-4a18-9751-380024e1e088",
+    name: "Perfect Storm",
+    facebookUrl: "https://www.facebook.com/perfectstorm1878/",
+    reasoning: "Facebook page confirmed with named members: Scott Eaton (vocals), Martin Black (lead guitar), Dave Barber (rhythm guitar), Dave Reid (drums). Four named members is strong corroboration for a real band; North East location is plausible but not explicitly confirmed in snippets.",
+    alternates: ["https://www.facebook.com/theperfectstorm.band"]
+  },
+  {
+    id: "1fddf887-7a5a-41b4-801d-a0f2b85ef86a",
+    name: "Reece Sales",
+    facebookUrl: "https://www.facebook.com/reece.sales.7/",
+    reasoning: "A Facebook profile for Reece Sales was found (reece.sales.7), described as a digital creator studying at Teesside University and living in Newcastle upon Tyne, who has noted he will be putting out original music. Newcastle location matches and musician context fits, though this is a personal profile rather than an artist page.",
+    alternates: []
+  },
+  {
+    id: "76dc6287-654e-48db-87ad-eb9eca279ed5",
+    name: "Dilemma",
+    facebookUrl: "https://www.facebook.com/dilemmabandmusic/",
+    reasoning: "A Facebook page for Dilemma Band (dilemmabandmusic) with 120 likes was found, described as a UK rock covers band. Separately, a Dilemma band was mentioned in Derbyshire Times gig listings playing at The Gate Inn, Loscoe (Derbyshire), which aligns with the Ripley, Derbyshire location in the dataset.",
+    alternates: ["https://www.facebook.com/WeAreDilemma/"]
+  },
+  {
+    id: "cf696c32-5629-400e-8ea8-f802382ac57b",
+    name: "DEJA VU",
+    facebookUrl: "https://www.facebook.com/Thedejavuband/",
+    reasoning: "A Facebook page for Deja Vu (Thedejavuband) was found, described as a live five-piece melodic rock band with a website at thedejavuband.co.uk. This is a UK band, but no specific Derbyshire mention appeared in snippets to firmly corroborate the location match.",
+    alternates: ["https://www.facebook.com/DVTB5/", "https://www.facebook.com/DejaVuSuffolk/"]
+  },
+  {
+    id: "8955c2a1-edb7-41b8-a397-09739daf5d1f",
+    name: "Freddie Purvis",
+    facebookUrl: "https://www.facebook.com/fred.purvis/",
+    reasoning: "Freddie Purvis is listed on On The Case Music (a North East UK music platform) as a rock covers musician with a 0191 phone number, confirming a North East location. A Facebook profile for Fred Purvis was found; this is likely the same person, though the profile URL uses 'Fred' not 'Freddie' and no direct corroboration links the FB profile to the musician listing.",
+    alternates: ["https://www.facebook.com/frederickpurvis/"]
+  },
+  {
+    id: "mSNBIIKg2GnrFMXoRC3W",
+    name: "Memory Lane",
+    facebookUrl: "https://www.facebook.com/memorylane.banduk/",
+    reasoning: "facebook.com/memorylane.banduk is a UK covers band (West Yorkshire) playing indie/rock hits. No location given for this artist record so cannot confirm region match, but it is the strongest UK band match among multiple competing Memory Lane pages.",
+    alternates: ["https://www.facebook.com/memorylanelive/", "https://www.facebook.com/memorylanduk/", "https://www.facebook.com/MLB3020/"]
+  },
+  {
+    id: "dff456cb-657a-4219-b682-51157c91499a",
+    name: "Mistaken For Strangers",
+    facebookUrl: "https://www.facebook.com/M4SBand/",
+    reasoning: "facebook.com/M4SBand is confirmed as the Mistaken for Strangers band page, but search snippets place the band in Rochester, New Hampshire (US) rather than the North East UK; possible this is a different UK act sharing the name with no distinct UK page found.",
+    alternates: []
+  },
+  {
+    id: "e5d44f8c-bf4a-4830-abc8-dd259d4a0bf0",
+    name: "Stephen White",
+    facebookUrl: "https://www.facebook.com/stephenwhitemusic/",
+    reasoning: "facebook.com/stephenwhitemusic is a musician page for Stephen White (singer/songwriter); MusicGlue profile confirms the name and music activity, but location is described as Stafford rather than North West UK, so region corroboration is weak.",
+    alternates: []
+  },
+  {
+    id: "0f5aba47-fc7b-454c-957c-22530e8542c3",
+    name: "The Devil's Share",
+    facebookUrl: "https://www.facebook.com/TheDevilsShareBand/",
+    reasoning: "A Facebook page titled 'The Devil's Share' was returned as the top result for the Derbyshire band search. Name match is exact but the snippet described it as a Progressive Bluegrass/Americana band from Colorado; Derbyshire connection unconfirmed — likely a wrong match.",
+    alternates: []
+  },
+  {
+    id: "647f14af-f6c0-4fbc-8194-d4b2d197162e",
+    name: "Joe McShane",
+    facebookUrl: "https://www.facebook.com/joemcshanemusic1/",
+    reasoning: "Facebook page at joemcshanemusic1 found for a musician named Joe McShane. Name match is clear but the Joe McShane found in snippets appears to be Ireland-based; North West UK connection not confirmed.",
+    alternates: ["https://www.facebook.com/joemcshanesongwriter/"]
+  }
+];
+
+let decisions = {};
+let currentFilter = 'all';
+
+function load() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) decisions = JSON.parse(saved);
+  } catch(e) {}
+}
+
+function save() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(decisions));
+}
+
+function decide(id, decision, url) {
+  decisions[id] = { decision, facebookUrl: url || null };
+  save();
+  render();
+}
+
+function saveEdit(id, origUrl) {
+  const inp = document.getElementById('edit-' + id);
+  const url = inp ? inp.value.trim() : origUrl;
+  decide(id, 'approve', url);
+}
+
+function setFilter(f) {
+  currentFilter = f;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  render();
+}
+
+function render() {
+  const main = document.getElementById('main');
+  const total = candidates.length;
+  const decided = candidates.filter(c => decisions[c.id]).length;
+  document.getElementById('prog').textContent = `${decided} / ${total} decided`;
+
+  const visible = candidates.filter(c => {
+    const d = decisions[c.id];
+    if (currentFilter === 'all') return true;
+    if (currentFilter === 'pending') return !d;
+    return d && d.decision === currentFilter;
+  });
+
+  if (visible.length === 0) {
+    main.innerHTML = '<div class="empty">No candidates match this filter.</div>';
+    return;
+  }
+
+  main.innerHTML = visible.map(c => {
+    const d = decisions[c.id];
+    const dec = d ? d.decision : null;
+    const activeUrl = (d && d.facebookUrl) || c.facebookUrl;
+
+    let badgeHtml = '';
+    if (dec) {
+      const cls = dec === 'approve' ? 'bd-approve' : dec === 'edit' ? 'bd-edit' : 'bd-reject';
+      const label = dec === 'approve' ? '✓ Approved' : dec === 'edit' ? '✎ Edited' : '✗ Rejected';
+      badgeHtml = `<span class="badge-decided ${cls}">${label}</span>`;
+    }
+
+    const altsHtml = c.alternates.length
+      ? '<div class="alternates">Alternates: ' + c.alternates.map(a => `<a href="${a}" target="_blank">${a}</a>`).join(' · ') + '</div>'
+      : '';
+
+    const editRow = `
+      <div class="edit-row" id="editrow-${c.id}" style="display:none">
+        <input id="edit-${c.id}" type="text" value="${activeUrl}" placeholder="Paste corrected Facebook URL" />
+        <button onclick="saveEdit('${c.id}', '${c.facebookUrl}')">Save</button>
+      </div>`;
+
+    return `
+      <div class="card ${dec ? 'decided-' + dec : ''}">
+        <div class="card-head">
+          <span class="artist-name">${c.name}</span>
+          ${badgeHtml}
+        </div>
+        <a class="fb-link" href="${activeUrl}" target="_blank">🔗 ${activeUrl}</a>
+        <div class="reasoning">${c.reasoning}</div>
+        ${altsHtml}
+        ${editRow}
+        <div class="actions">
+          <button class="btn btn-approve" onclick="decide('${c.id}','approve','${c.facebookUrl}')">✓ Approve</button>
+          <button class="btn btn-edit" onclick="document.getElementById('editrow-${c.id}').style.display='flex'">✎ Edit URL</button>
+          <button class="btn btn-reject" onclick="decide('${c.id}','reject',null)">✗ Reject</button>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+function downloadDecisions() {
+  const output = candidates.map(c => {
+    const d = decisions[c.id] || { decision: 'skip', facebookUrl: null };
+    return {
+      id: c.id,
+      name: c.name,
+      decision: d.decision,
+      facebookUrl: d.facebookUrl
+    };
+  });
+  const blob = new Blob([JSON.stringify(output, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'fb-review-v2-decisions.json';
+  a.click();
+}
+
+load();
+render();
+</script>
+</body>
+</html>

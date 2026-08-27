@@ -1,0 +1,126 @@
+[
+  {
+    "name": "wish we were pink floyd",
+    "confidence": "likely",
+    "keeper": {
+      "id": "a67b95c5-9393-42bc-a7bc-9e040482ddfc",
+      "score": 7,
+      "location": "Hampshire UK",
+      "bio": "",
+      "genres": [
+        "rock"
+      ],
+      "eventCount": 0,
+      "created": "2026-07-16T13:09:43.976Z",
+      "facebookUrl": "https://www.facebook.com/pompeyfloyd/",
+      "instagramUrl": "",
+      "websiteUrl": ""
+    },
+    "duplicate": {
+      "id": "44a3f105-d3f2-438d-9277-826e61309d56",
+      "score": 3,
+      "location": "Hampshire UK",
+      "bio": "",
+      "genres": [],
+      "eventCount": 0,
+      "created": "2026-07-17T08:31:13.483Z",
+      "facebookUrl": "",
+      "instagramUrl": "",
+      "websiteUrl": ""
+    },
+    "reason": ""
+  },
+  {
+    "name": "the inmates",
+    "confidence": "likely",
+    "keeper": {
+      "id": "9171ccad-d78d-4c01-9140-5e7fc30df227",
+      "score": 8,
+      "location": "North East",
+      "bio": "",
+      "genres": [
+        "Rock"
+      ],
+      "eventCount": 5,
+      "created": "2026-04-28T21:09:21.993Z",
+      "facebookUrl": "https://www.facebook.com/Inmatesnortheast/",
+      "instagramUrl": "",
+      "websiteUrl": ""
+    },
+    "duplicate": {
+      "id": "f0c22a3e-28b0-4e84-b110-0faae4f8f75f",
+      "score": 4,
+      "location": "North East England UK",
+      "bio": "",
+      "genres": [],
+      "eventCount": 1,
+      "created": "2026-07-08T03:05:55.298Z",
+      "facebookUrl": "",
+      "instagramUrl": "",
+      "websiteUrl": ""
+    },
+    "reason": ""
+  },
+  {
+    "name": "the zone",
+    "confidence": "likely",
+    "keeper": {
+      "id": "2b832e36-e476-4e53-b80f-8f69a4b8ff1a",
+      "score": 9,
+      "location": "North East",
+      "bio": "",
+      "genres": [
+        "Rock"
+      ],
+      "eventCount": 37,
+      "created": "2026-04-28T21:09:44.961Z",
+      "facebookUrl": "https://www.facebook.com/p/The-ZONE-Ne-Uk-61583203395598/",
+      "instagramUrl": "",
+      "websiteUrl": ""
+    },
+    "duplicate": {
+      "id": "0b9c688c-e5b8-4467-8c0a-6da073bfaaa4",
+      "score": 4,
+      "location": "North East England UK",
+      "bio": "",
+      "genres": [],
+      "eventCount": 1,
+      "created": "2026-07-11T03:05:55.031Z",
+      "facebookUrl": "",
+      "instagramUrl": "",
+      "websiteUrl": ""
+    },
+    "reason": ""
+  },
+  {
+    "name": "the zone",
+    "confidence": "likely",
+    "keeper": {
+      "id": "2b832e36-e476-4e53-b80f-8f69a4b8ff1a",
+      "score": 9,
+      "location": "North East",
+      "bio": "",
+      "genres": [
+        "Rock"
+      ],
+      "eventCount": 37,
+      "created": "2026-04-28T21:09:44.961Z",
+      "facebookUrl": "https://www.facebook.com/p/The-ZONE-Ne-Uk-61583203395598/",
+      "instagramUrl": "",
+      "websiteUrl": ""
+    },
+    "duplicate": {
+      "id": "cf03302e-bae0-409b-98be-40b3936046d7",
+      "score": 4,
+      "location": "North East England UK",
+      "bio": "",
+      "genres": [],
+      "eventCount": 1,
+      "created": "2026-07-07T03:05:56.587Z",
+      "facebookUrl": "",
+      "instagramUrl": "",
+      "websiteUrl": ""
+    },
+    "reason": ""
+  }
+]

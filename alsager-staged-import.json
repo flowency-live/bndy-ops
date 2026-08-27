@@ -1,0 +1,62 @@
+{
+  "purpose": "Staged Alsager Music Festival 2026 import — fires when backlog #97a (PATCH /festivals 500) is fixed",
+  "crawledAt": "2026-07-03",
+  "sources": ["https://alsagermusicfestival.co.uk/lineup/", "https://alsagermusicfestival.co.uk/"],
+  "festivalId": "13232f64-a821-4ccb-b845-c45e40a88265",
+  "slug": "alsager-music-festival-2026",
+  "primaryVenueId": "dd463507-2da1-4fe2-b870-ef5c80be896a",
+  "pendingEditFestival": {
+    "stages": [
+      { "name": "Stath's Stage" },
+      { "name": "Marquee" },
+      { "name": "Sunken Garden" },
+      { "name": "Concrete", "note": "DJ stage — all 10 DJs play here" }
+    ],
+    "price": "Ticketed — see Skiddle",
+    "ticketed": true
+  },
+  "notes": [
+    "NO set times or headliner tiers published — slots go in with billing unset; child events per stage need times (recheck site/FB nearer the date; fest runs 11:00-21:00 per discovery)",
+    "Sunday 12 Jul = Alsager pubs takeover, lineups NOT yet published — separate crawl needed",
+    "Discovery jsonl listed Infrared etc. as acts — homepage confirms all Concrete names are DJs (artistType dj)",
+    "Extra act seen on FB feed: The Rose Stem Crystals ('return next Saturday') — NOT on lineup page, verify before adding",
+    "32 acts here vs 24 in discovery-review.jsonl — site is newer/fuller"
+  ],
+  "liveActs": [
+    { "displayName": "Brand New Bag", "stage": "Stath's Stage" },
+    { "displayName": "Pressure Drop", "stage": "Stath's Stage" },
+    { "displayName": "Fine Lines", "stage": "Stath's Stage" },
+    { "displayName": "Raj Mahal and The Beatroots", "stage": "Stath's Stage" },
+    { "displayName": "Stoney and the Dogs", "stage": "Stath's Stage" },
+    { "displayName": "Medusa Luna", "stage": "Stath's Stage" },
+    { "displayName": "Teachers Pet Rock Show", "stage": "Stath's Stage" },
+    { "displayName": "Katie & The Bad Sign", "stage": "Marquee", "fbNote": "Manchester; Americana/blues/rock'n'roll per AMF FB post" },
+    { "displayName": "Foxglove", "stage": "Marquee" },
+    { "displayName": "Avian", "stage": "Marquee" },
+    { "displayName": "Rivia", "stage": "Marquee" },
+    { "displayName": "Anne-Marie Allen", "stage": "Marquee" },
+    { "displayName": "Unit 17", "stage": "Marquee" },
+    { "displayName": "These Towns", "stage": "Marquee" },
+    { "displayName": "Scarlett Fever", "stage": "Marquee", "warning": "dedup memory: Scarlett Fever had a collaboratingArtistIds complication — check before resolving" },
+    { "displayName": "Two Rivers Deep", "stage": "Sunken Garden" },
+    { "displayName": "Matthew Frederick", "stage": "Sunken Garden" },
+    { "displayName": "The Blue Yellows", "stage": "Sunken Garden" },
+    { "displayName": "Eve Buckley", "stage": "Sunken Garden" },
+    { "displayName": "Scott Walklate", "stage": "Sunken Garden" },
+    { "displayName": "Hannah Sophie", "stage": "Sunken Garden" },
+    { "displayName": "Erymaie", "stage": "Sunken Garden" }
+  ],
+  "djs": [
+    { "displayName": "Infrared", "stage": "Concrete" },
+    { "displayName": "DJ Shrike", "stage": "Concrete" },
+    { "displayName": "Judge Jacko", "stage": "Concrete" },
+    { "displayName": "Adam Element", "stage": "Concrete" },
+    { "displayName": "Tekkaz", "stage": "Concrete" },
+    { "displayName": "John Home", "stage": "Concrete" },
+    { "displayName": "Jess FX", "stage": "Concrete" },
+    { "displayName": "Sammy Mac", "stage": "Concrete" },
+    { "displayName": "Neil Brown", "stage": "Concrete" },
+    { "displayName": "Si Davies", "stage": "Concrete" }
+  ],
+  "allSlotsDay": "2026-07-11"
+}

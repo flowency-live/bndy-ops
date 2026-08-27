@@ -1,0 +1,138 @@
+{
+ "note": "MCP edit_event(artistId) did NOT persist; these events are orphaned (artistId points to a now-deleted duplicate). Set artistId AND artistIds=[newArtistId] directly in DynamoDB bndy-events.",
+ "count": 33,
+ "remap": [
+  {
+   "eventId": "1b7a2f1c-f918-4096-8c7d-150ee4382972",
+   "newArtistId": "244d6bba-ddaa-48d9-ab39-5d056bc2dc98"
+  },
+  {
+   "eventId": "50fdcae7-8739-4c5b-a588-87f8c48ab765",
+   "newArtistId": "2b832e36-e476-4e53-b80f-8f69a4b8ff1a"
+  },
+  {
+   "eventId": "4c0e1c35-6105-4e2c-add6-80c8b3a5532e",
+   "newArtistId": "2b832e36-e476-4e53-b80f-8f69a4b8ff1a"
+  },
+  {
+   "eventId": "1d0c0a27-d63e-4ef4-a0cf-81a09fb23583",
+   "newArtistId": "2b832e36-e476-4e53-b80f-8f69a4b8ff1a"
+  },
+  {
+   "eventId": "f09ad304-151d-4715-8141-d0b84a9846b2",
+   "newArtistId": "2b832e36-e476-4e53-b80f-8f69a4b8ff1a"
+  },
+  {
+   "eventId": "0ac0f463-5aa5-47f9-a144-38f700c38057",
+   "newArtistId": "2b832e36-e476-4e53-b80f-8f69a4b8ff1a"
+  },
+  {
+   "eventId": "9b21dcfd-4803-45e4-927c-2f4ca9ce3563",
+   "newArtistId": "2b832e36-e476-4e53-b80f-8f69a4b8ff1a"
+  },
+  {
+   "eventId": "d2247abf-05b2-4171-a24b-5e79bcf8ae68",
+   "newArtistId": "2b832e36-e476-4e53-b80f-8f69a4b8ff1a"
+  },
+  {
+   "eventId": "e552603e-9815-45d2-bc2f-63b7367750ef",
+   "newArtistId": "06a00b90-7cc2-488c-889e-1a2bb32c42c3"
+  },
+  {
+   "eventId": "8756eded-b802-42c2-9e56-4d84f3aba58f",
+   "newArtistId": "FIT600aoQ5lpNSejGctN"
+  },
+  {
+   "eventId": "cd1eace6-6934-4cba-8257-c94226021423",
+   "newArtistId": "FIT600aoQ5lpNSejGctN"
+  },
+  {
+   "eventId": "1c1be37c-72b3-4ea9-81fc-5bc0bdfebadd",
+   "newArtistId": "FIT600aoQ5lpNSejGctN"
+  },
+  {
+   "eventId": "9ee1fa7b-7c3d-4615-80ca-a6c77dfb296b",
+   "newArtistId": "3eg14QpWlx1NTnLoJ5y1"
+  },
+  {
+   "eventId": "03b7a076-6c0b-4f64-a93d-bc799df39359",
+   "newArtistId": "a3b7b769-c1cf-48f4-a49f-9a0ab8e5cb89"
+  },
+  {
+   "eventId": "5b055b3b-89d0-4cec-842d-e9c2338409f6",
+   "newArtistId": "83bd1e96-7b05-49dc-986a-941043532411"
+  },
+  {
+   "eventId": "29c24642-3bb0-4a61-8f67-fee1ef4b22bb",
+   "newArtistId": "5fa2d40b-035c-4859-b86f-6c5a23618b5e"
+  },
+  {
+   "eventId": "3b167784-c05f-4184-80fa-39af885289d5",
+   "newArtistId": "d7cdc094-35f9-4123-8721-a2bb65deba2a"
+  },
+  {
+   "eventId": "8b14cfaf-6fcf-4aa7-b063-dc176091b093",
+   "newArtistId": "42417674-6c05-48d0-91d1-3bc8e8a05630"
+  },
+  {
+   "eventId": "18431105-ae24-4091-a98f-fe3d056be3c7",
+   "newArtistId": "9b0a93fe-5fcf-4063-af2a-50b3a116cb35"
+  },
+  {
+   "eventId": "8e8f7136-2ee9-4ba2-aefd-7ec7089bf5a1",
+   "newArtistId": "ccedf866-5923-4890-bf6e-e9fb023bbdb7"
+  },
+  {
+   "eventId": "b8f84a87-d7c9-4a4c-8830-30d6c0c030f2",
+   "newArtistId": "fd1aea7d-5840-40a6-a920-6e1c25dc1445"
+  },
+  {
+   "eventId": "2fa6f3f8-85d2-4503-a3bb-537eb8c659e2",
+   "newArtistId": "83f7c3dc-b644-4c26-8599-f1dbe3bcd963"
+  },
+  {
+   "eventId": "071353d5-bc6e-4006-9cdb-fbc3b483ec82",
+   "newArtistId": "9638e2c5-74e7-44c8-8fe3-3f54117a8ca5"
+  },
+  {
+   "eventId": "c987e314-ac39-4bf6-9e7b-4957c9a9b43d",
+   "newArtistId": "54ca695a-4145-461f-8940-255b2e7f4e1a"
+  },
+  {
+   "eventId": "4336233c-c876-4719-ba5b-042045bb8526",
+   "newArtistId": "H3OZRJMOjRpZUrotAKke"
+  },
+  {
+   "eventId": "f99389b6-645c-4f3e-90c4-0ed04f84ed6e",
+   "newArtistId": "a8e3c25d-6d20-4310-9094-843961273cb0"
+  },
+  {
+   "eventId": "ed1f126f-0fe8-4937-8439-c951ff19b4c1",
+   "newArtistId": "d80e3e0a-78ca-4b8c-ae55-4b270b85930a"
+  },
+  {
+   "eventId": "c42dadca-b7ca-4907-84d0-7410abafbbcc",
+   "newArtistId": "95b4a3fa-b85f-4f51-a611-e15432352f56"
+  },
+  {
+   "eventId": "a1dfb04a-0baf-4c32-a625-615fb5369d3e",
+   "newArtistId": "8b725158-7b81-4a18-9751-380024e1e088"
+  },
+  {
+   "eventId": "5951c35e-c892-400b-addf-fb5f766e8681",
+   "newArtistId": "5d80a090-729b-48ef-a274-2dddc441fc5e"
+  },
+  {
+   "eventId": "9e22aed6-d11e-4149-8a9c-5c5d705da5d9",
+   "newArtistId": "b61485bf-873f-4735-a25b-ccfa1ab85be9"
+  },
+  {
+   "eventId": "e03e0d3b-9fe8-47c6-89ed-0a70f95ae33b",
+   "newArtistId": "64d5e261-c075-4926-b0c7-9307284cad3b"
+  },
+  {
+   "eventId": "fd7c97e4-a70e-47a6-9e00-2367472a9984",
+   "newArtistId": "5484ad43-86d2-4ab4-9db2-646734914981"
+  }
+ ]
+}

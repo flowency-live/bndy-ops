@@ -1,0 +1,8 @@
+FANTASTICAL LIBRARY SNAPSHOT (captured 2026-07-29 late, facebook.com/fantasticallibrary/events, UNSCROLLED — first scheduled run must scroll to exhaustion)
+FORMAT: date | act | venue | time | organiser
+2026-08-08 | Mod Story | The Bell & Harp, Little Eaton, Derby | 19:00 | Mod Story [+1 more date unresolved]
+2026-09-19 | Mod Story | The Miners Arms, Alfreton | 20:00 | Mod Story
+2026-08-14 | Carl North | The Last Post, 1 Uttoxeter Old Road, Derby DE1 1GA | 20:00 | The Last Post [+1 more date unresolved]
+2026-10-16 | Luke Wall | The Last Post, Derby | 20:00 | The Last Post
+2026-08-28 | Mod Story | The Vine, Mickleover, Derby | 20:30 | Mod Story
+2026-10-02 | Donovylan | The Last Post, Derby | 20:00 | The Last Post

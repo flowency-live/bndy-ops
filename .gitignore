@@ -1,0 +1,28 @@
+# Heavy data dumps and DB backups - keep on disk, out of git
+dedup-artists-dump.json
+dedup-artists-dump-raw.json
+dedup-events-dump.json
+dedup-worksheet.json
+full-audit-report.json
+audit/backup-*.json
+audit/deep-audit-*.json
+audit/node_modules/
+audit/package-lock.json
+
+# Prototype HTML (MB-scale, superseded by bndy-app)
+bndy-live-map.html
+bndy-mockup.html
+map-v2-prototype.html
+bndy-skins-*.html
+bndy-fresh-prototype.html
+bndy-printrun-prototype.html
+bndy-landing-restyle.html
+
+# Scratch / pending deletion
+_to_delete/
+_snap2/
+node_modules/
+
+# OS noise
+Thumbs.db
+desktop.ini

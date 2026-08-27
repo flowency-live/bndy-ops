@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>bndy — Venue Modal Kit v1</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', system-ui, sans-serif; background: #070a12; color: #e6e9f0; padding: 36px 24px 80px; }
+
+.kit-header { text-align: center; margin-bottom: 8px; }
+.kit-header .logo { font-size: 36px; font-weight: 800; color: #ff7a1a; letter-spacing: -1px; }
+.kit-sub { text-align:center; color:#5d6678; font-size:13px; margin-bottom: 32px; }
+h2 { font-size: 13px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: #19d3f5; margin: 0 auto 6px; max-width: 1180px; }
+.h2-note { color: #8b93a7; font-size: 13px; margin: 0 auto 16px; max-width: 1180px; line-height: 1.5; }
+section { margin: 0 auto 56px; max-width: 1180px; }
+
+/* fake map panel */
+.map-panel {
+  position: relative; border-radius: 16px; overflow: hidden; border: 1px solid #1b2233;
+  background:
+    radial-gradient(ellipse 80% 60% at 30% 20%, #11182a 0%, transparent 60%),
+    radial-gradient(ellipse 70% 50% at 75% 80%, #0e1524 0%, transparent 60%),
+    repeating-linear-gradient(105deg, transparent 0 90px, rgba(120,140,180,.05) 90px 91px),
+    repeating-linear-gradient(15deg, transparent 0 120px, rgba(120,140,180,.04) 120px 121px),
+    #0b0f1a;
+  display: flex; gap: 48px; align-items: center; justify-content: center;
+  padding: 48px 24px; flex-wrap: wrap;
+}
+
+/* small neon dot to anchor cards visually */
+.mini-dot { position:absolute; width: 18px; height: 18px; border-radius: 50%;
+  background: radial-gradient(circle at 50% 42%, #ffc2dd 0%, #ff2e88 58%, #99174f 100%);
+  border: 1.5px solid #ff80b6;
+  box-shadow: 0 0 7px rgba(255,46,136,.9), 0 0 18px rgba(255,46,136,.55), 0 0 38px rgba(255,46,136,.28); }
+
+/* ============================================================
+   VENUE CARD — desktop floating overlay (Option A)
+   ============================================================ */
+.vcard {
+  --accent: #ff2e88;
+  --accent-soft: rgba(255, 46, 136, .35);
+  position: relative;
+  width: 372px;
+  border-radius: 20px;
+  background: rgba(13, 17, 27, .94);
+  border: 1px solid var(--accent-soft);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.04) inset,
+    0 0 44px color-mix(in srgb, var(--accent) 14%, transparent),
+    0 28px 64px rgba(0, 0, 0, .6);
+  -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
+  overflow: hidden;
+}
+.vcard.idle { --accent: #19d3f5; --accent-soft: rgba(25, 211, 245, .32); }
+
+/* hero */
+.vcard-hero {
+  position: relative; height: 116px;
+  background:
+    radial-gradient(ellipse 90% 130% at 20% 0%, color-mix(in srgb, var(--accent) 38%, transparent) 0%, transparent 55%),
+    radial-gradient(ellipse 80% 120% at 85% 100%, rgba(25,211,245,.25) 0%, transparent 60%),
+    linear-gradient(160deg, #141b2c 0%, #0c1019 100%);
+}
+.vcard-hero::after { /* bottom fade into card */
+  content:''; position:absolute; inset:auto 0 0 0; height:54px;
+  background: linear-gradient(to bottom, transparent, rgba(13,17,27,.94));
+}
+.vcard-hero .monogram {
+  position: absolute; left: 20px; bottom: -12px; z-index: 2;
+  width: 56px; height: 56px; border-radius: 16px;
+  display:flex; align-items:center; justify-content:center;
+  font-size: 24px; font-weight: 800; color: #fff;
+  background: linear-gradient(145deg, color-mix(in srgb, var(--accent) 85%, #fff) 0%, color-mix(in srgb, var(--accent) 70%, #000) 100%);
+  border: 2px solid rgba(255,255,255,.18);
+  box-shadow: 0 0 18px color-mix(in srgb, var(--accent) 45%, transparent), 0 8px 20px rgba(0,0,0,.5);
+  text-shadow: 0 1px 4px rgba(0,0,0,.4);
+}
+.vcard-hero .chip {
+  position: absolute; left: 20px; top: 14px;
+  font-size: 10px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase;
+  color: #fff; padding: 5px 11px; border-radius: 99px;
+  background: color-mix(in srgb, var(--accent) 26%, rgba(10,14,24,.6));
+  border: 1px solid color-mix(in srgb, var(--accent) 55%, transparent);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--accent) 25%, transparent);
+}
+.vcard-close {
+  position: absolute; right: 12px; top: 12px; z-index: 3;
+  width: 32px; height: 32px; border-radius: 50%;
+  display:flex; align-items:center; justify-content:center;
+  background: rgba(10,14,24,.65); border: 1px solid rgba(255,255,255,.14);
+  color: #aab3c5; font-size: 15px; cursor: pointer;
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  transition: all 140ms ease;
+}
+.vcard-close:hover { color:#fff; border-color: rgba(255,255,255,.4); transform: rotate(90deg); }
+
+/* body */
+.vcard-body { padding: 22px 20px 20px; }
+.vcard-name-row { display:flex; align-items:flex-start; gap: 10px; margin-bottom: 4px; padding-left: 68px; min-height: 34px; }
+.vcard-name { font-size: 20px; font-weight: 800; letter-spacing: -.3px; color: #fff; line-height: 1.15; }
+.vcard-live-dot { flex:none; width: 9px; height: 9px; border-radius: 50%; margin-top: 7px;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent), 0 0 16px color-mix(in srgb, var(--accent) 50%, transparent);
+  animation: vc-breathe 2.4s ease-in-out infinite; }
+@keyframes vc-breathe { 0%,100% { opacity: 1; } 50% { opacity: .45; } }
+.vcard-addr { padding-left: 68px; color: #8b93a7; font-size: 12.5px; line-height: 1.5; margin-bottom: 16px; }
+.vcard-addr .city { color: #c6cddb; font-weight: 600; }
+
+/* actions */
+.vcard-actions { display: flex; gap: 8px; margin-bottom: 18px; }
+.btn { display:flex; align-items:center; justify-content:center; gap: 7px;
+  font-family: inherit; font-size: 13px; font-weight: 700; border-radius: 12px;
+  padding: 11px 0; cursor: pointer; transition: all 140ms ease; border: none; }
+.btn-primary { flex: 1.2; background: #19d3f5; color: #06222b;
+  box-shadow: 0 0 16px rgba(25,211,245,.35); }
+.btn-primary:hover { background: #4adef7; box-shadow: 0 0 24px rgba(25,211,245,.55); }
+.btn-secondary { flex: 1; background: transparent; color: #19d3f5;
+  border: 1.5px solid rgba(25,211,245,.5); }
+.btn-secondary:hover { border-color: #19d3f5; background: rgba(25,211,245,.08); }
+.btn-ghost { flex: none; width: 42px; background: transparent; color: #8b93a7;
+  border: 1.5px solid rgba(139,147,167,.3); }
+.btn-ghost:hover { color: #fff; border-color: rgba(255,255,255,.4); }
+
+/* gigs section */
+.vcard-gigs-head { display:flex; align-items:center; justify-content:space-between; margin-bottom: 10px; }
+.vcard-gigs-title { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent);
+  text-shadow: 0 0 12px color-mix(in srgb, var(--accent) 40%, transparent); }
+.vcard-gigs-all { font-size: 11.5px; font-weight: 600; color: #8b93a7; cursor: pointer; transition: color 120ms; }
+.vcard-gigs-all:hover { color: #19d3f5; }
+
+.gig-row { display:flex; align-items:center; gap: 12px; padding: 9px 10px; border-radius: 12px;
+  cursor: pointer; transition: background 130ms ease; }
+.gig-row:hover { background: rgba(255,255,255,.05); }
+.gig-row + .gig-row { margin-top: 2px; }
+.gig-date { flex:none; width: 44px; text-align:center; padding: 6px 0 7px; border-radius: 10px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-left: 3px solid var(--accent);
+  box-shadow: inset 0 0 12px color-mix(in srgb, var(--accent) 8%, transparent); }
+.gig-date .dow { display:block; font-size: 9px; font-weight: 700; letter-spacing: 1.2px; color: var(--accent); }
+.gig-date .day { display:block; font-size: 17px; font-weight: 800; color: #fff; line-height: 1.1; }
+.gig-date .mon { display:block; font-size: 9px; font-weight: 600; letter-spacing: 1px; color: #8b93a7; }
+.gig-info { flex: 1; min-width: 0; }
+.gig-artist { font-size: 13.5px; font-weight: 700; color: #f2f5fa; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.gig-meta { font-size: 11.5px; color: #8b93a7; margin-top: 1px; }
+.gig-meta b { color: #c6cddb; font-weight: 600; }
+.gig-chev { flex:none; color: #4a5266; font-size: 16px; transition: all 130ms; }
+.gig-row:hover .gig-chev { color: var(--accent); transform: translateX(2px); }
+.gig-tonight { font-size: 9px; font-weight: 800; letter-spacing: 1px; color: #06222b;
+  background: #19d3f5; padding: 2px 7px; border-radius: 99px; margin-left: 6px; vertical-align: 2px;
+  box-shadow: 0 0 10px rgba(25,211,245,.5); }
+
+/* empty state (idle venue) */
+.vcard-empty { text-align: center; padding: 18px 12px 8px; }
+.vcard-empty .glyph { font-size: 26px; opacity: .5; margin-bottom: 8px; }
+.vcard-empty .t1 { font-size: 13.5px; font-weight: 700; color: #c6cddb; margin-bottom: 3px; }
+.vcard-empty .t2 { font-size: 12px; color: #8b93a7; margin-bottom: 14px; }
+.btn-add { display:inline-flex; align-items:center; gap: 6px; font-size: 12.5px; font-weight: 700;
+  color: var(--accent); background: transparent; border: 1.5px dashed color-mix(in srgb, var(--accent) 55%, transparent);
+  border-radius: 10px; padding: 8px 16px; cursor: pointer; transition: all 140ms; }
+.btn-add:hover { background: color-mix(in srgb, var(--accent) 10%, transparent); border-style: solid; }
+
+/* contact strip */
+.vcard-contact { display:flex; align-items:center; justify-content:center; gap: 18px;
+  margin-top: 16px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.07); }
+.vcard-contact a { display:flex; align-items:center; gap: 5px; font-size: 11.5px; font-weight: 600;
+  color: #8b93a7; text-decoration: none; transition: color 130ms; }
+.vcard-contact a:hover { color: #19d3f5; }
+.vcard-contact .ico { font-size: 13px; }
+
+/* ============================================================
+   MOBILE BOTTOM SHEET
+   ============================================================ */
+.phone { position: relative; width: 320px; height: 560px; border-radius: 28px; overflow: hidden;
+  border: 2px solid #222b3e; flex: none;
+  background:
+    radial-gradient(ellipse 80% 50% at 40% 20%, #11182a 0%, transparent 60%),
+    repeating-linear-gradient(105deg, transparent 0 70px, rgba(120,140,180,.05) 70px 71px),
+    repeating-linear-gradient(15deg, transparent 0 90px, rgba(120,140,180,.04) 90px 91px),
+    #0b0f1a; }
+.phone-label { text-align:center; font-size: 11px; color: #6c7689; margin-top: 10px; }
+
+.sheet { position: absolute; left: 0; right: 0; bottom: 0;
+  border-radius: 22px 22px 0 0;
+  background: rgba(13, 17, 27, .96);
+  border: 1px solid rgba(255,46,136,.3); border-bottom: none;
+  box-shadow: 0 -8px 44px rgba(255,46,136,.12), 0 -18px 60px rgba(0,0,0,.6);
+  -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
+  transition: height 360ms cubic-bezier(.3,.9,.3,1);
+  overflow: hidden;
+  --accent: #ff2e88; --accent-soft: rgba(255,46,136,.35); }
+.sheet.collapsed { height: 168px; }
+.sheet.expanded { height: 478px; }
+.sheet-handle { display:flex; justify-content:center; padding: 9px 0 5px; cursor: grab; }
+.sheet-handle span { width: 40px; height: 4px; border-radius: 99px; background: rgba(255,255,255,.22); }
+.sheet-head { display:flex; align-items:center; gap: 11px; padding: 2px 16px 10px; }
+.sheet-mono { flex:none; width: 42px; height: 42px; border-radius: 13px; display:flex; align-items:center; justify-content:center;
+  font-size: 18px; font-weight: 800; color:#fff;
+  background: linear-gradient(145deg, #ff5ba4 0%, #b21459 100%);
+  border: 2px solid rgba(255,255,255,.16);
+  box-shadow: 0 0 14px rgba(255,46,136,.4); }
+.sheet-names { flex: 1; min-width: 0; }
+.sheet-name { font-size: 16px; font-weight: 800; color: #fff; white-space: nowrap; overflow:hidden; text-overflow: ellipsis; }
+.sheet-addr { font-size: 11px; color: #8b93a7; white-space: nowrap; overflow:hidden; text-overflow: ellipsis; }
+.sheet-close { flex:none; width: 28px; height: 28px; border-radius: 50%; display:flex; align-items:center; justify-content:center;
+  background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); color: #aab3c5; font-size: 13px; cursor: pointer; }
+
+/* NEXT GIG strip (collapsed peek) */
+.next-gig { margin: 0 14px; border-radius: 12px; overflow: hidden;
+  border: 1px solid rgba(255,46,136,.3); background: rgba(255,46,136,.07); }
+.next-gig .ng-tag { font-size: 9px; font-weight: 800; letter-spacing: 1.6px; color: #ff5ba4;
+  padding: 6px 12px 0; }
+.next-gig .ng-row { display:flex; align-items:center; gap: 10px; padding: 5px 12px 9px; }
+.next-gig .gig-date { width: 40px; background: rgba(10,14,24,.5); }
+.next-gig .ng-artist { flex:1; min-width:0; }
+.next-gig .ng-artist .gig-artist { font-size: 13px; }
+.next-gig .ng-artist .gig-meta { font-size: 11px; }
+
+.sheet-body { padding: 12px 14px 0; }
+.sheet .vcard-actions { margin-bottom: 14px; }
+.sheet .btn { padding: 10px 0; font-size: 12.5px; border-radius: 11px; }
+.sheet-gigs { overflow-y: auto; max-height: 240px; padding-bottom: 10px; }
+
+/* spec table */
+table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 10px; }
+th { text-align: left; color: #8b93a7; font-weight: 600; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; padding: 8px 12px; border-bottom: 1px solid #1b2233; }
+td { padding: 9px 12px; border-bottom: 1px solid #131a29; color: #c6cddb; vertical-align: top; }
+td code { font-family: ui-monospace, Consolas, monospace; font-size: 12px; color: #ffb36b; background: #131a29; padding: 1px 6px; border-radius: 4px; }
+</style>
+</head>
+<body>
+
+<div class="kit-header"><div class="logo">bndy</div></div>
+<div class="kit-sub">Venue Modal Kit · v1 · pairs with the neon marker system</div>
+
+<!-- ============ 1. DESKTOP FLOATING CARDS ============ -->
+<section>
+  <h2>1 · Desktop — floating card overlay</h2>
+  <p class="h2-note">Replaces the luggage-tag popup. Dark glass, accent matches the marker tapped (pink = live venue, cyan = idle). Hero strip with venue monogram (swaps to <code>imageUrl</code> photo when present). Directions stays the primary action; gig rows are clickable through to the event. Card anchors near the marker on desktop; backdrop stays undimmed so the map remains alive.</p>
+  <div class="map-panel">
+    <div class="mini-dot" style="top: 16%; left: 8%;"></div>
+    <div class="mini-dot" style="bottom: 22%; right: 6%; background: radial-gradient(circle at 50% 42%, #c9f4fd 0%, #19d3f5 58%, #0e7287 100%); border-color:#7ee6f9; box-shadow: 0 0 5px rgba(25,211,245,.55), 0 0 12px rgba(25,211,245,.25);"></div>
+
+    <!-- LIVE VENUE CARD -->
+    <div class="vcard">
+      <div class="vcard-hero">
+        <span class="chip">Live music venue</span>
+        <button class="vcard-close">✕</button>
+        <div class="monogram">F</div>
+      </div>
+      <div class="vcard-body">
+        <div class="vcard-name-row">
+          <span class="vcard-name">The Friendship</span>
+          <span class="vcard-live-dot"></span>
+        </div>
+        <div class="vcard-addr">
+          536 Manchester Rd, Stocksbridge<br>
+          <span class="city">Sheffield</span> · S36 2DW
+        </div>
+        <div class="vcard-actions">
+          <button class="btn btn-primary">⤴ &nbsp;Directions</button>
+          <button class="btn btn-secondary">View gigs</button>
+          <button class="btn btn-ghost">⇪</button>
+        </div>
+        <div class="vcard-gigs-head">
+          <span class="vcard-gigs-title">Upcoming gigs</span>
+          <span class="vcard-gigs-all">View all ↗</span>
+        </div>
+        <div class="gig-row">
+          <div class="gig-date"><span class="dow">WED</span><span class="day">10</span><span class="mon">JUN</span></div>
+          <div class="gig-info">
+            <div class="gig-artist">The Roseline<span class="gig-tonight">TONIGHT</span></div>
+            <div class="gig-meta">Indie Rock · <b>8:00 PM</b> · £8</div>
+          </div>
+          <span class="gig-chev">›</span>
+        </div>
+        <div class="gig-row">
+          <div class="gig-date"><span class="dow">SAT</span><span class="day">13</span><span class="mon">JUN</span></div>
+          <div class="gig-info">
+            <div class="gig-artist">The Northern Echoes</div>
+            <div class="gig-meta">Alt Rock · <b>8:30 PM</b> · £10</div>
+          </div>
+          <span class="gig-chev">›</span>
+        </div>
+        <div class="gig-row">
+          <div class="gig-date"><span class="dow">FRI</span><span class="day">19</span><span class="mon">JUN</span></div>
+          <div class="gig-info">
+            <div class="gig-artist">Echo Park</div>
+            <div class="gig-meta">Indie / Alternative · <b>8:00 PM</b> · £9</div>
+          </div>
+          <span class="gig-chev">›</span>
+        </div>
+        <div class="vcard-contact">
+          <a href="#"><span class="ico">☎</span> Call</a>
+          <a href="#"><span class="ico">🌐</span> Website</a>
+          <a href="#"><span class="ico">ƒ</span> Facebook</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- IDLE VENUE CARD -->
+    <div class="vcard idle">
+      <div class="vcard-hero">
+        <span class="chip">Venue</span>
+        <button class="vcard-close">✕</button>
+        <div class="monogram" style="background: linear-gradient(145deg, #5fe0f7 0%, #0e7287 100%);">A</div>
+      </div>
+      <div class="vcard-body">
+        <div class="vcard-name-row">
+          <span class="vcard-name">Arden Arms</span>
+        </div>
+        <div class="vcard-addr">
+          23 Millgate<br>
+          <span class="city">Stockport</span> · SK1 2LX
+        </div>
+        <div class="vcard-actions">
+          <button class="btn btn-primary">⤴ &nbsp;Directions</button>
+          <button class="btn btn-ghost">⇪</button>
+        </div>
+        <div class="vcard-empty">
+          <div class="glyph">♪</div>
+          <div class="t1">No gigs listed yet</div>
+          <div class="t2">Know what's on here? Help keep live music alive.</div>
+          <button class="btn-add">+ Add a gig</button>
+        </div>
+        <div class="vcard-contact">
+          <a href="#"><span class="ico">☎</span> Call</a>
+          <a href="#"><span class="ico">🌐</span> Website</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2. MOBILE BOTTOM SHEET ============ -->
+<section>
+  <h2>2 · Mobile — bottom sheet, collapsed → expanded</h2>
+  <p class="h2-note">Tapping a marker slides up the collapsed peek: name, address and the NEXT GIG strip — map stays visible and pannable above it. Dragging up (tap the handle here to demo) expands to the full card with actions and the scrollable gig list. Swipe down or ✕ dismisses.</p>
+  <div class="map-panel" style="gap: 56px;">
+
+    <div>
+      <div class="phone">
+        <div class="mini-dot" style="top: 30%; left: 46%;"></div>
+        <div class="sheet collapsed" id="demoSheet" onclick="this.classList.toggle('collapsed'); this.classList.toggle('expanded');">
+          <div class="sheet-handle"><span></span></div>
+          <div class="sheet-head">
+            <div class="sheet-mono">F</div>
+            <div class="sheet-names">
+              <div class="sheet-name">The Friendship</div>
+              <div class="sheet-addr">536 Manchester Rd, Stocksbridge · Sheffield</div>
+            </div>
+            <div class="sheet-close">✕</div>
+          </div>
+          <div class="next-gig">
+            <div class="ng-tag">NEXT GIG</div>
+            <div class="ng-row">
+              <div class="gig-date"><span class="dow">WED</span><span class="day">10</span><span class="mon">JUN</span></div>
+              <div class="ng-artist">
+                <div class="gig-artist">The Roseline<span class="gig-tonight">TONIGHT</span></div>
+                <div class="gig-meta">Indie Rock · <b>8:00 PM</b> · £8</div>
+              </div>
+              <span class="gig-chev">›</span>
+            </div>
+          </div>
+          <div class="sheet-body">
+            <div class="vcard-actions">
+              <button class="btn btn-primary">⤴ &nbsp;Directions</button>
+              <button class="btn btn-secondary">View gigs</button>
+              <button class="btn btn-ghost">⇪</button>
+            </div>
+            <div class="vcard-gigs-head">
+              <span class="vcard-gigs-title">Upcoming gigs</span>
+              <span class="vcard-gigs-all">View all ↗</span>
+            </div>
+            <div class="sheet-gigs">
+              <div class="gig-row">
+                <div class="gig-date"><span class="dow">SAT</span><span class="day">13</span><span class="mon">JUN</span></div>
+                <div class="gig-info"><div class="gig-artist">The Northern Echoes</div><div class="gig-meta">Alt Rock · <b>8:30 PM</b> · £10</div></div>
+                <span class="gig-chev">›</span>
+              </div>
+              <div class="gig-row">
+                <div class="gig-date"><span class="dow">FRI</span><span class="day">19</span><span class="mon">JUN</span></div>
+                <div class="gig-info"><div class="gig-artist">Echo Park</div><div class="gig-meta">Indie / Alternative · <b>8:00 PM</b> · £9</div></div>
+                <span class="gig-chev">›</span>
+              </div>
+              <div class="gig-row">
+                <div class="gig-date"><span class="dow">SAT</span><span class="day">27</span><span class="mon">JUN</span></div>
+                <div class="gig-info"><div class="gig-artist">Velvet Static</div><div class="gig-meta">Covers · <b>9:00 PM</b> · Free</div></div>
+                <span class="gig-chev">›</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="phone-label">Collapsed peek — tap the sheet to expand (interactive)</div>
+    </div>
+
+    <div>
+      <div class="phone">
+        <div class="sheet expanded">
+          <div class="sheet-handle"><span></span></div>
+          <div class="sheet-head">
+            <div class="sheet-mono">F</div>
+            <div class="sheet-names">
+              <div class="sheet-name">The Friendship</div>
+              <div class="sheet-addr">536 Manchester Rd, Stocksbridge · Sheffield</div>
+            </div>
+            <div class="sheet-close">✕</div>
+          </div>
+          <div class="next-gig">
+            <div class="ng-tag">NEXT GIG</div>
+            <div class="ng-row">
+              <div class="gig-date"><span class="dow">WED</span><span class="day">10</span><span class="mon">JUN</span></div>
+              <div class="ng-artist">
+                <div class="gig-artist">The Roseline<span class="gig-tonight">TONIGHT</span></div>
+                <div class="gig-meta">Indie Rock · <b>8:00 PM</b> · £8</div>
+              </div>
+              <span class="gig-chev">›</span>
+            </div>
+          </div>
+          <div class="sheet-body">
+            <div class="vcard-actions">
+              <button class="btn btn-primary">⤴ &nbsp;Directions</button>
+              <button class="btn btn-secondary">View gigs</button>
+              <button class="btn btn-ghost">⇪</button>
+            </div>
+            <div class="vcard-gigs-head">
+              <span class="vcard-gigs-title">Upcoming gigs</span>
+              <span class="vcard-gigs-all">View all ↗</span>
+            </div>
+            <div class="sheet-gigs">
+              <div class="gig-row">
+                <div class="gig-date"><span class="dow">SAT</span><span class="day">13</span><span class="mon">JUN</span></div>
+                <div class="gig-info"><div class="gig-artist">The Northern Echoes</div><div class="gig-meta">Alt Rock · <b>8:30 PM</b> · £10</div></div>
+                <span class="gig-chev">›</span>
+              </div>
+              <div class="gig-row">
+                <div class="gig-date"><span class="dow">FRI</span><span class="day">19</span><span class="mon">JUN</span></div>
+                <div class="gig-info"><div class="gig-artist">Echo Park</div><div class="gig-meta">Indie / Alternative · <b>8:00 PM</b> · £9</div></div>
+                <span class="gig-chev">›</span>
+              </div>
+              <div class="gig-row">
+                <div class="gig-date"><span class="dow">SAT</span><span class="day">27</span><span class="mon">JUN</span></div>
+                <div class="gig-info"><div class="gig-artist">Velvet Static</div><div class="gig-meta">Covers · <b>9:00 PM</b> · Free</div></div>
+                <span class="gig-chev">›</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="phone-label">Expanded — full actions + scrollable gig list</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ 3. SPECS ============ -->
+<section>
+  <h2>3 · Behaviour &amp; data mapping</h2>
+  <table>
+    <tr><th>Element</th><th>Data source</th><th>Notes</th></tr>
+    <tr><td>Accent color</td><td><code>venueIdsWithEvents.has(venue.id)</code></td><td>pink <code>#ff2e88</code> live · cyan <code>#19d3f5</code> idle — matches marker tapped</td></tr>
+    <tr><td>Hero / monogram</td><td><code>venue.profileImageUrl ?? imageUrl</code></td><td>photo as hero bg when present; gradient + initial fallback (shown here)</td></tr>
+    <tr><td>Chip</td><td>static / <code>venue.facilities</code></td><td>"Live music venue" when live; plain "Venue" otherwise</td></tr>
+    <tr><td>Upcoming gigs</td><td><code>useAllPublicEvents()</code> filtered by <code>venueId</code>, date ≥ today, sorted, max 3-4</td><td>TONIGHT badge when date == today; row click → EventInfoOverlay; "View all ↗" → <code>/venues/[id]</code></td></tr>
+    <tr><td>Directions</td><td><code>getDirectionsUrl(venue)</code></td><td>unchanged from current overlay</td></tr>
+    <tr><td>Share ⇪</td><td><code>SocialShareButton</code></td><td>existing component, restyled ghost button</td></tr>
+    <tr><td>Add a gig (idle)</td><td><code>AddEventButton</code> flow</td><td>turns dead-ends into contributions</td></tr>
+    <tr><td>Contact strip</td><td><code>venue.phone/email/socialMediaUrls</code></td><td>only renders rows that exist</td></tr>
+    <tr><td>Breakpoint</td><td><code>md</code> (768px)</td><td>≥md: floating card, anchored near marker, no backdrop dim · &lt;md: bottom sheet (collapsed 168px peek → expanded ~75dvh), map pannable behind collapsed state</td></tr>
+    <tr><td>Dismiss</td><td>—</td><td>✕, map tap, Esc (desktop) · ✕, swipe down, map tap (mobile)</td></tr>
+  </table>
+</section>
+
+</body>
+</html>

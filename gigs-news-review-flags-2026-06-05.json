@@ -1,0 +1,43 @@
+{
+  "run": "gigs-news.uk daily import",
+  "date": "2026-06-05",
+  "note": "Internal QA flags only. NOT written into bndy. Resolve, then delete this file.",
+  "artists_to_review": [
+    {
+      "artistId": "5945e5ef-bdbe-4f7f-b77d-518503dd4d0d",
+      "name": "Eleventh Hour",
+      "event": "Eleventh Hour @ Jubilee Club (2026-06-05)",
+      "flag": "Identity still unconfirmed. POSSIBLE DUPLICATE of existing bndy artist 'The Eleventh Hour' (Stoke-on-Trent). Candidate FB if local covers band: facebook.com/EleventhHourRocks. No Facebook/genre attached yet."
+    }
+  ],
+  "possible_duplicates": [
+    {
+      "name": "The Mighty Reform vs The Reform",
+      "flag": "Now enriched: 'The Mighty Reform' (08326b8c-3d20-421b-8e4d-8c1e28479bb4) = fb.com/TheReformLiveBand, Pop/Rock/Indie covers, Manchester. Existing bndy artist 'The Reform' (7LCU4sW9ZWn5FvC8kDEa) = fb.com/TheReformLive. Near-identical names + FB pages — confirm whether these are the same act and merge if so."
+    }
+  ],
+  "venues_to_review": [
+    {
+      "venueId": "49bc4606-97d7-45a5-a693-a887ac2f0810",
+      "name": "Jubilee Club",
+      "flag": "Used for 'Eleventh Hour' (5 Jun). Record's city field reads 'Ashton-under-Lyne' but address is 167 Wigan Rd, Ashton-in-Makerfield, Wigan WN4 9SL. Confirm which Ashton the gigs-news listing meant and fix the city field."
+    },
+    {
+      "venueId": "f54d4cbe-e6f1-4bb0-9c9d-03c6c9d78470",
+      "name": "The Crown Inn (existing White Hairs event)",
+      "flag": "Multiple 'Crown' venue records appear to exist. The pre-existing White Hairs 6 Jun event points to this record, distinct from Crown Heaton Moor (xyERKljjDSlCFaYKMWPH) and Crown Bredbury (3AynHVShOedKil6wTesE). Possible duplicate venues — dedup check needed."
+    }
+  ],
+  "skipped_duplicate_events": [
+    {
+      "name": "The White Hairs @ Crown Heaton Moor (2026-06-06)",
+      "reason": "Already in bndy as an event on 2026-06-06 at a 'The Crown Inn' record (21:00). Not re-created."
+    }
+  ],
+  "resolved_this_session": [
+    "Gambler — fb.com/gambler.rockband confirmed by Jason.",
+    "Wasps — fb.com/p/WASPS-band-61576265191191 confirmed by Jason.",
+    "The Mighty Reform — fb.com/TheReformLiveBand + genres confirmed by Jason (see possible_duplicates).",
+    "Vintage — fb.com/people/Vintage-5-pce-band confirmed by Jason; event time corrected to 21:00 from band's FB event."
+  ]
+}

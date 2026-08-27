@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Source-Runner — Dry-Run & Review (mockup)</title>
+<style>
+  /* Palette tuned for WCAG 2.1 AA: body text ≥4.5:1, large/UI ≥3:1 on its background. */
+  :root{
+    --bg:#0a0a0b; --panel:#161618; --panel2:#202023; --line:#2b2b30; --line2:#45454d;
+    --txt:#f4f4f5;        /* ~18:1 on bg */
+    --mut:#c8c8d0;        /* ~12:1 on bg  — secondary body text */
+    --mut2:#a6a6af;       /* ~8:1 on bg   — small/label text (still AA for normal) */
+    --green:#4ade80; --green-bg:#0b3d22; --green-fg:#bbf7d0;
+    --blue:#5cc5fb;  --blue-bg:#0c3b54;  --blue-fg:#bae6fd;
+    --amber:#fbbf24; --amber-bg:#5a3408; --amber-fg:#fde68a;
+    --red:#f87171;   --red-bg:#5a1212;   --red-fg:#fecaca;
+    --violet:#b69bff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);
+    font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.5;-webkit-font-smoothing:antialiased}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+  .wrap{max-width:1120px;margin:0 auto;padding:32px 20px 80px}
+  header h1{font-size:27px;font-weight:800;margin:0 0 6px}
+  header p{color:var(--mut);margin:0;font-size:15px}
+  .runbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:16px}
+  .pill{font-size:12px;font-weight:600;padding:5px 11px;border-radius:999px;border:1px solid var(--line2);color:var(--mut)}
+  .pill.dry{background:var(--amber);border-color:var(--amber);color:#1a1408}
+  h2{font-size:13px;letter-spacing:.6px;text-transform:uppercase;color:var(--mut2);
+    font-weight:700;margin:38px 0 14px;border-bottom:1px solid var(--line);padding-bottom:8px}
+  .sub{color:var(--mut);font-size:13px;margin:-6px 0 16px}
+
+  /* sources strip (source-agnostic: KLMA is just one row) */
+  .sources{display:flex;flex-wrap:wrap;gap:10px}
+  .source{flex:1;min-width:170px;background:var(--panel);border:1px solid var(--line);
+    border-radius:12px;padding:14px;cursor:pointer;text-align:left}
+  .source.on{border-color:var(--blue);box-shadow:inset 0 0 0 1px var(--blue)}
+  .source .nm{font-weight:700;font-size:14px;display:flex;align-items:center;gap:8px}
+  .source .ty{font-size:11px;color:var(--mut2);margin-top:3px}
+  .source .st{font-size:12px;color:var(--mut);margin-top:9px;display:flex;justify-content:space-between}
+  .dot{width:8px;height:8px;border-radius:50%;flex:none}
+  .dot.live{background:var(--green)} .dot.cfg{background:var(--amber)} .dot.idle{background:var(--line2)}
+  .source.add{border-style:dashed;color:var(--mut);display:flex;flex-direction:column;justify-content:center;
+    align-items:center;min-height:96px;font-size:13px}
+  .source.add b{color:var(--txt)}
+
+  /* funnel */
+  .funnel{display:flex;flex-wrap:wrap;gap:10px;align-items:stretch}
+  .fstep{flex:1;min-width:128px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px}
+  .fstep .n{font-size:29px;font-weight:800;line-height:1}
+  .fstep .l{font-size:12px;color:var(--mut);margin-top:6px}
+  .fstep .s{font-size:11px;color:var(--mut2);margin-top:2px}
+  .arrow{display:flex;align-items:center;color:var(--mut2);font-size:22px}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px}
+  .card .n{font-size:25px;font-weight:800}
+  .card .l{font-size:13px;color:var(--mut);margin-top:4px}
+  .card .d{font-size:12px;color:var(--mut2);margin-top:8px;line-height:1.45}
+  .card.create{border-left:3px solid var(--green)}
+  .card.skip{border-left:3px solid var(--line2)}
+  .card.review{border-left:3px solid var(--amber)}
+  .card.past{border-left:3px solid var(--blue)}
+
+  .bars{display:flex;flex-direction:column;gap:10px}
+  .bar{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+  .bar .top{display:flex;justify-content:space-between;font-size:13px;margin-bottom:7px;color:var(--mut)}
+  .bar .track{height:8px;background:var(--panel2);border-radius:6px;overflow:hidden}
+  .bar .fill{height:100%;border-radius:6px;background:var(--violet)}
+
+  .cases{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:12px}
+  .case{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px}
+  .case .hd{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:8px}
+  .case .src{font-weight:700;font-size:15px}
+  .case .tag{font-size:11px;font-weight:700;padding:3px 8px;border-radius:6px;white-space:nowrap}
+  .tag.match{background:var(--green-bg);color:var(--green-fg)}
+  .tag.create{background:var(--blue-bg);color:var(--blue-fg)}
+  .tag.review{background:var(--amber-bg);color:var(--amber-fg)}
+  .case .var{font-size:12px;color:var(--mut);margin-bottom:8px}
+  .case .var code{background:var(--panel2);padding:1px 6px;border-radius:4px;color:var(--txt);font-size:11px}
+  .case .res{font-size:13px;margin-bottom:8px;color:var(--mut)}
+  .case .res b{color:var(--green)}
+  .case .why{font-size:12px;color:var(--mut);border-top:1px dashed var(--line2);padding-top:8px}
+  .conf{font-variant-numeric:tabular-nums;font-weight:700}
+  .conf.hi{color:var(--green)} .conf.lo{color:var(--red)} .conf.mid{color:var(--amber)}
+
+  .filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+  .fbtn{background:var(--panel);border:1px solid var(--line2);color:var(--mut);
+    font-size:12px;font-weight:600;padding:6px 13px;border-radius:8px;cursor:pointer}
+  .fbtn.on{background:var(--txt);color:#000;border-color:var(--txt)}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th{text-align:left;color:var(--mut2);font-size:11px;text-transform:uppercase;letter-spacing:.4px;
+    padding:8px 10px;border-bottom:1px solid var(--line2);position:sticky;top:0;background:var(--bg)}
+  td{padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--txt)}
+  tr:hover td{background:var(--panel)}
+  .dec{font-size:11px;font-weight:700;padding:2px 7px;border-radius:5px}
+  .dec.CREATE{background:var(--green-bg);color:var(--green-fg)}
+  .dec.REVIEW{background:var(--amber-bg);color:var(--amber-fg)}
+  .dec.SKIP{background:var(--panel2);color:var(--mut)}
+  .warns{font-size:11px;color:var(--mut2)}
+  .tbl-wrap{max-height:540px;overflow:auto;border:1px solid var(--line);border-radius:12px}
+  /* HITL action buttons (mockup) */
+  .acts{display:flex;gap:6px;flex-wrap:wrap}
+  .act{font-size:11px;font-weight:700;padding:3px 9px;border-radius:6px;cursor:pointer;background:transparent;border:1px solid var(--line2)}
+  .act.ok{color:var(--green);border-color:var(--green)}
+  .act.no{color:var(--red);border-color:var(--red)}
+  .act.q{color:var(--amber);border-color:var(--amber)}
+  .act:focus-visible{outline:2px solid var(--blue);outline-offset:1px}
+  .muted{color:var(--mut2);font-size:12px}
+
+  footer{margin-top:48px;color:var(--mut2);font-size:12px;border-top:1px solid var(--line);padding-top:16px}
+  .note{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--amber);
+    border-radius:10px;padding:14px 16px;font-size:13px;color:var(--mut);margin-top:14px}
+  .note b{color:var(--txt)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="sr-only">Source-runner dashboard mockup: pick a source, preview the dry-run decisions, review exceptions, and inspect entity resolution. Source-agnostic; data shown is the KLMA feed.</p>
+  <header>
+    <h1>Source-Runner — Dry-Run &amp; Review</h1>
+    <p>Source-agnostic operator view: preview what a run will do, then action the exceptions. <span class="muted">(Mockup — actions not wired.)</span></p>
+    <div class="runbar">
+      <span class="pill dry">● DRY RUN — nothing written</span>
+      <span class="pill" id="srcpill">source: —</span>
+      <span class="pill">prior run → this run diff</span>
+    </div>
+  </header>
+
+  <h2>Sources</h2>
+  <p class="sub">Every source runs through the same pipeline. Add structured feeds (sheet / CSV / JSON-LD) by config; arbitrary web pages need an adapter or the interpretive signals pipeline.</p>
+  <div class="sources" id="sources"></div>
+
+  <h2>From raw rows to planned events</h2>
+  <div class="funnel" id="funnel"></div>
+
+  <h2>This run's decisions</h2>
+  <div class="grid" id="diffcards"></div>
+  <div class="note">A <b>complete-snapshot</b> source can infer cancellations — but only inside its coverage window, and <b>never for past events</b> (they're ignored, never deleted). A <b>one-shot</b> source (e.g. a single pasted page) never infers cancellations.</div>
+
+  <h2>Why rows were parked</h2>
+  <div class="bars" id="parkbars"></div>
+
+  <h2>Entity resolution — the hard cases, handled</h2>
+  <p class="sub">Real matches from live bndy. Naïve name-matching would create duplicates or false merges on every one. The ladder (state → external-id → canonicalise → place_id → token match) is what keeps the graph clean.</p>
+  <div class="cases" id="cases"></div>
+
+  <h2>Planned writes &amp; exceptions (human-in-the-loop)</h2>
+  <p class="sub">CREATE / SKIP run automatically. <b style="color:var(--amber)">REVIEW</b> rows are the exceptions a person actions here — approve, send to review, or reject.</p>
+  <div class="filters" id="filters"></div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Decision</th><th>Date</th><th>Time</th><th>Venue</th><th>Artist</th><th>Conf.</th><th>Resolution / action</th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </div>
+
+  <footer id="foot"></footer>
+</div>
+
+<script>
+const SOURCES = [
+  {id:"klma-stoke-gig-list", name:"KLMA Stoke", type:"Google Sheet · complete snapshot", status:"live", last:"today 09:00", events:378},
+  {id:"gigs-news",           name:"Gigs-News",  type:"Website · weekly window",        status:"cfg",  last:"configured", events:null},
+  {id:"onthecase",           name:"On The Case",type:"Website · weekly window",        status:"cfg",  last:"configured", events:null},
+  {id:"sceniceye",           name:"Scenic Eye", type:"Website · weekly window",        status:"cfg",  last:"configured", events:null}
+];
+
+// Real captured KLMA data (golden-counts, diff-report, entity-resolution-seed).
+const RUN = {
+  funnel:[
+    {n:500,l:"Raw rows",s:"pulled from source"},
+    {n:480,l:"Valid rows",s:"−19 metadata, −1 bad date"},
+    {n:378,l:"Events",s:"ready to resolve"},
+    {n:102,l:"Parked",s:"sent to review"}
+  ],
+  distinct:{venues:185,artists:158},
+  diff:[
+    {cls:"create",n:3,  l:"Added → CREATE", d:"New since last run. Resolve venue+artist, create event (isPublic:true)."},
+    {cls:"skip",  n:341,l:"Unchanged → SKIP", d:"Already in bndy. External-id hit → no-op, no duplicate."},
+    {cls:"review",n:2,  l:"Cancelled? → REVIEW", d:"Was in yesterday's snapshot, gone today. Flagged, not auto-deleted."},
+    {cls:"past",  n:33, l:"Past → IGNORED", d:"Dated before today. Never touched."}
+  ],
+  park:[
+    {l:"Specialist venue",n:70,of:102},
+    {l:"Multi-act listing",n:24,of:102},
+    {l:"Form / metadata row",n:8,of:102}
+  ],
+  venues:[
+    {src:["The Express, Crewe"],bndy:"The Express",conf:100,method:"match",why:"Clean external-id hit from a prior run. bndy stores mixed UUID + legacy ids — treat as opaque."},
+    {src:["Eleven Sandyford St6 5pd"],bndy:"Eleven",conf:100,method:"match",why:"Exists but was UNLINKED. On match the runner attaches the source external-id so next run is instant."},
+    {src:["The Cosey, Haslington","The Cosey Club Near Crewe","Cosey Club Haslington Cw1 5st"],bndy:"Cosey Club",conf:20,method:"match",why:"Correct venue at just 20% name score. A 0.95 threshold would CREATE A DUPLICATE — external-id + canonicalisation save it."},
+    {src:["The Nags Head Macclesfield","The Nag's Head in Macclesfield"],bndy:"Nags Head",conf:69,method:"match",why:"Right venue, 69% by name. Two drifted external-ids exist for one venue — resolver collapses them."}
+  ],
+  artists:[
+    {src:["Afterglow"],bndy:"Afterglow",conf:100,method:"match",why:"100% — but artist location is NW England while KLMA defaults Staffordshire. A hard region filter would MISS it. Region is a signal, not a filter."},
+    {src:["Circa81"],bndy:"Circa 81",conf:88,method:"match",why:"88% only because of a missing space. Normalise before scoring or it's a duplicate."},
+    {src:["Adam Forman"],bndy:"Adam George Forman",conf:61,method:"review",why:"Search's top pick was 'Adam Morgan' (82%) — a FALSE POSITIVE. Real match shares the surname token at 61%. Never trust top-1 by score; route to review."},
+    {src:["Tom Robinson"],bndy:"— (new local act)",conf:0,method:"create",why:"Not in bndy above 50%. Region guard avoided the famous national 'Tom Robinson'. Genuine CREATE."}
+  ],
+  events:[
+    {dec:"CREATE",date:"2026-06-21",time:"21:00",venue:"The Express, Crewe",artist:"Afterglow",conf:1.0,res:"venue+artist matched 100%"},
+    {dec:"CREATE",date:"2026-06-22",time:"20:30",venue:"The Bush At Brown Edge",artist:"Circa81",conf:0.9,res:"artist normalised → Circa 81"},
+    {dec:"CREATE",date:"2026-06-23",time:"21:00",venue:"The Britannia Inn",artist:"Andy Costello",conf:0.9,res:"new artist → create"},
+    {dec:"REVIEW",date:"2026-06-16",time:"21:00",venue:"The Glebe Stoke",artist:"Malpractice + Voodoo Voodoo + Nick Degg",conf:0.9,res:"multi-act listing — split?"},
+    {dec:"REVIEW",date:"2026-06-17",time:"19:00",venue:"Market Quarter, Congleton",artist:"Danny Brab",conf:1.0,res:"missing from snapshot — cancel?"},
+    {dec:"SKIP",date:"2026-06-13",time:"21:00",venue:"The Express, Crewe",artist:"Afterglow",conf:1.0,res:"already in bndy"},
+    {dec:"SKIP",date:"2026-06-13",time:"22:00",venue:"The Shamrock, Macclesfield",artist:"Ant Clowes Duo",conf:1.0,res:"already in bndy"},
+    {dec:"SKIP",date:"2026-06-13",time:"21:00",venue:"The Cosey, Haslington",artist:"Bobcat Billy's Moonshine Mission",conf:1.0,res:"already in bndy (Cosey Club)"},
+    {dec:"SKIP",date:"2026-06-13",time:"21:00",venue:"The Nags Head Macclesfield",artist:"Eaton Park",conf:1.0,res:"already in bndy (Nags Head)"},
+    {dec:"SKIP",date:"2026-06-13",time:"20:30",venue:"The Cock Inn Leek",artist:"Adam Forman",conf:0.9,res:"already in bndy"}
+  ]
+};
+
+const $=(id)=>document.getElementById(id);
+let selected = SOURCES[0].id;
+
+function renderSources(){
+  $('sources').innerHTML = SOURCES.map(s=>{
+    const dot = s.status==='live'?'live':(s.status==='cfg'?'cfg':'idle');
+    const ev = s.events!=null ? s.events+' events' : '—';
+    return `<button class="source ${s.id===selected?'on':''}" data-s="${s.id}">
+      <div class="nm"><span class="dot ${dot}"></span>${s.name}</div>
+      <div class="ty">${s.type}</div>
+      <div class="st"><span>${s.last}</span><span>${ev}</span></div>
+    </button>`;
+  }).join('') + `<div class="source add" title="Structured feeds: by config. Arbitrary HTML: needs an adapter or the signals pipeline.">
+      <div style="font-size:20px;line-height:1">＋</div><b>Add source</b>
+      <span class="muted" style="text-align:center;margin-top:4px">config for feeds ·<br>adapter for web pages</span></div>`;
+  document.querySelectorAll('.source[data-s]').forEach(b=>b.onclick=()=>{selected=b.dataset.s;renderAll();});
+}
+
+function renderAll(){
+  const s = SOURCES.find(x=>x.id===selected);
+  $('srcpill').textContent = 'source: '+s.id;
+  renderSources();
+
+  // Only KLMA has captured data in this mockup; others show a placeholder.
+  const hasData = s.id==='klma-stoke-gig-list';
+  const main = ['funnel','diffcards','parkbars','cases','filters','rows'];
+  if(!hasData){
+    $('funnel').innerHTML = `<div class="note" style="flex:1">No captured run yet for <b>${s.name}</b>. This source is configured; its first dry-run will populate the same view.</div>`;
+    ['diffcards','parkbars','cases','rows'].forEach(id=>$(id).innerHTML='');
+    $('filters').innerHTML='';
+    return;
+  }
+
+  $('funnel').innerHTML = RUN.funnel.map((st,i)=>
+    `<div class="fstep"><div class="n">${st.n}</div><div class="l">${st.l}</div><div class="s">${st.s}</div></div>`+
+    (i<RUN.funnel.length-1?'<div class="arrow">→</div>':'')
+  ).join('') + `<div class="fstep" style="border-style:dashed"><div class="n">${RUN.distinct.venues}/${RUN.distinct.artists}</div><div class="l">distinct venues / artists</div><div class="s">to resolve or create</div></div>`;
+
+  $('diffcards').innerHTML = RUN.diff.map(d=>`<div class="card ${d.cls}"><div class="n">${d.n}</div><div class="l">${d.l}</div><div class="d">${d.d}</div></div>`).join('');
+
+  $('parkbars').innerHTML = RUN.park.map(p=>{
+    const pct=Math.round(p.n/p.of*100);
+    return `<div class="bar"><div class="top"><span>${p.l}</span><span>${p.n} rows</span></div><div class="track"><div class="fill" style="width:${pct}%"></div></div></div>`;
+  }).join('');
+
+  const cc=(c)=>c>=90?'hi':(c>=60?'mid':'lo');
+  const caseCard=(c)=>{
+    const tag = c.method==='match'?'<span class="tag match">MATCH</span>':c.method==='create'?'<span class="tag create">CREATE</span>':'<span class="tag review">REVIEW</span>';
+    const variants=c.src.map(v=>`<code>${v}</code>`).join(' ');
+    const conf=c.conf>0?`<span class="conf ${cc(c.conf)}">${c.conf}%</span> name score`:'<span class="conf lo">no match &gt;50%</span>';
+    return `<div class="case"><div class="hd"><span class="src">${c.src[0]}</span>${tag}</div>
+      <div class="var">${c.src.length>1?'variants seen: ':''}${variants}</div>
+      <div class="res">→ <b>${c.bndy}</b> · ${conf}</div><div class="why">${c.why}</div></div>`;
+  };
+  $('cases').innerHTML='<div style="grid-column:1/-1;color:var(--mut2);font-size:12px;font-weight:700;letter-spacing:.4px">VENUES</div>'
+    +RUN.venues.map(caseCard).join('')
+    +'<div style="grid-column:1/-1;color:var(--mut2);font-size:12px;font-weight:700;letter-spacing:.4px;margin-top:6px">ARTISTS</div>'
+    +RUN.artists.map(caseCard).join('');
+
+  renderFilters(); renderRows();
+}
+
+let active='ALL';
+function counts(){return RUN.events.reduce((m,e)=>{m[e.dec]=(m[e.dec]||0)+1;return m;},{});}
+function renderFilters(){
+  const c=counts();
+  $('filters').innerHTML=['ALL','CREATE','REVIEW','SKIP'].map(f=>{
+    const n=f==='ALL'?RUN.events.length:(c[f]||0);
+    return `<button class="fbtn ${active===f?'on':''}" data-f="${f}">${f} <span style="opacity:.6">${n}</span></button>`;
+  }).join('');
+  document.querySelectorAll('.fbtn').forEach(b=>b.onclick=()=>{active=b.dataset.f;renderFilters();renderRows();});
+}
+function renderRows(){
+  const rows=RUN.events.filter(e=>active==='ALL'||e.dec===active);
+  $('rows').innerHTML=rows.map(e=>{
+    const action = e.dec==='REVIEW'
+      ? `<div class="acts"><button class="act ok">Approve</button><button class="act q">Review</button><button class="act no">Reject</button></div>`
+      : `<span class="muted">${e.res}</span>`;
+    return `<tr><td><span class="dec ${e.dec}">${e.dec}</span></td><td>${e.date}</td><td>${e.time}</td>
+      <td>${e.venue}</td><td>${e.artist}</td><td>${e.conf.toFixed(1)}</td><td>${action}</td></tr>`;
+  }).join('');
+  document.querySelectorAll('.act').forEach(b=>b.onclick=()=>{b.closest('.acts').innerHTML='<span class="muted">✓ would '+b.textContent.toLowerCase()+' (mockup)</span>';});
+}
+
+$('foot').innerHTML = 'Mockup from captured fixtures (golden-counts, diff-report, entity-resolution-seed) — bndy-signals BUILD-007. '
+  + 'Source-agnostic; the operator/HITL review surface belongs in the authenticated app (backstage/ops), not public frontstage. '
+  + 'Decision: see brain ADR-017.';
+
+renderAll();
+</script>
+</body>
+</html>

@@ -1,0 +1,2090 @@
+{
+  "artists": {
+    "01a184cf-e908-4c0f-9230-3f79b764b60f": {
+      "name": "The Glamz",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate_page_id 107678685746594 (owner 100095209691045), ownership-verified via redirect",
+      "notes": "First attempt wrongly matched The Torrists (685142534680018) via unscoped regex — reverted and fixed. Owner-scoped extraction is mandatory."
+    },
+    "a337aae6-522e-4d0c-ab01-a7bbea95497f": {
+      "name": "Burning Circus",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate_page_id 361156723748836 (owner 61562342693576), ownership-verified via redirect"
+    },
+    "SPhPOgLuuPxQT3tZhkhG": {
+      "name": "Velvet Sun",
+      "status": "done",
+      "attempts": 1,
+      "method": "/share/1CGP7e3nEy resolved -> owner 61565584117389, delegate 418844524644108; facebookUrl updated to canonical profile.php?id=61565584117389"
+    },
+    "92a9b771-cdea-4944-bccc-eecd7e401a66": {
+      "name": "Fizzyfish",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "personal profile (Alan Fizzy Hawdon, owner 100006163750848) — no delegate_page; graph picture = placeholder",
+      "notes": "Needs upload_artist_image endpoint (server-side fetch to S3) or manual image."
+    },
+    "4e40a170-abe5-4751-a771-a6141a2c7123": {
+      "name": "Masquerade",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "personal profile owner 100002095058459, no delegate_page",
+      "notes": "Personal profile — graph=placeholder. Needs upload_artist_image endpoint."
+    },
+    "16a19beb-5769-4fa7-901f-685abf42cd2f": {
+      "name": "THE VARIANTS",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 103241402322396 (owner 100081023930631), ownership+image verified"
+    },
+    "f0e4328e-9f79-4e54-baf0-2374db1869f5": {
+      "name": "Walters & Bligh",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 505195706011115 (owner 61570300281767), ownership+image verified"
+    },
+    "48TinAWgzKA66q00orBZ": {
+      "name": "Soul 4 Soul",
+      "status": "failed",
+      "attempts": 3,
+      "method": "vanity /soul4soulstockportband - client shell, no owner (3rd attempt 2026-07-11)",
+      "notes": "Permanent-skip (attempts=3). Persistent client-shell non-render."
+    },
+    "b8085a51-5e5c-4383-9bee-627db911ffab": {
+      "name": "the Big Swingy Thing",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 682181664972314 (owner 61576577453352), ownership+image verified"
+    },
+    "LGaPp8WnG6Sq5qBP55JI": {
+      "name": "Thick as Thieves",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "group 1762722147482567 — graph picture returns json error (groups unsupported)",
+      "notes": "Group; no usable band photo via graph."
+    },
+    "7fe06d44-0a57-4cb4-8421-23c46f9b5625": {
+      "name": "Dave Johns",
+      "status": "failed",
+      "attempts": 1,
+      "method": "vanity /fillumstar — owner null (client-render shell), username-graph=json error",
+      "notes": "Likely personal profile. Retry."
+    },
+    "4eddeff3-e050-443c-9c26-226a68ee9f66": {
+      "name": "Miranda Newton",
+      "status": "failed",
+      "attempts": 3,
+      "method": "vanity /mirandanewton82 - client shell, no owner (3rd attempt 2026-07-11)",
+      "notes": "Permanent-skip (attempts=3). Persistent client-shell non-render."
+    },
+    "22a7bcfe-18a1-4f44-a9e7-6f79a8316048": {
+      "name": "Hannah Reem",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 123661269036521 (owner 100063051679133), ownership+image verified"
+    },
+    "cd61cff9-0d45-46de-a836-433922dd580c": {
+      "name": "Six Card Trick",
+      "status": "failed",
+      "attempts": 3,
+      "method": "page 100063478095106 graph = blank spacer HsTZSDw4avx.gif (no profile photo) (3rd attempt)",
+      "notes": "Permanent-skip threshold reached (attempts=3). Page has no profile photo."
+    },
+    "a643f428-9c09-4ab7-88a0-f616880a34c0": {
+      "name": "Under The Influence",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 108788095056351 (owner 100078278588343), ownership+image verified"
+    },
+    "1eb1707a-a37a-4857-ad79-5f84102bb29f": {
+      "name": "The Dambusters",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 105500745674453 (owner 100086214774240), ownership+image verified"
+    },
+    "928d31e5-c625-40f1-9eda-adefef82a965": {
+      "name": "Romeos Pistol",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 720070034790947 (owner 100044318362847), verified"
+    },
+    "a18bd1b4-4d93-4eda-9bba-279f626265c6": {
+      "name": "Wasps",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 694864083701194 (owner 61576265191191), verified"
+    },
+    "ehqOSqG6QYNAhArnlc8H": {
+      "name": "Rise of Kain",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 103552359079814 (owner 100082742109255), verified"
+    },
+    "d52bcb95-6c33-4ff6-867f-a7bc0c6f47e9": {
+      "name": "the Redroom Party Band",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 191154307423440 (owner 61555072455836), verified"
+    },
+    "1ebc06e6-7db8-4693-9f7f-5547a8c3b394": {
+      "name": "Beatles Anthology",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 107960352624196 (owner 100067118383123), verified; note image low-res 146x146"
+    },
+    "e05a5ed9-9c85-498f-9ed2-bd7cdc340405": {
+      "name": "The Replicants",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 206696322730330 (owner 100063855338709), verified"
+    },
+    "21e67f6f-b51a-42ca-a69f-c089c1dd28e0": {
+      "name": "Complete Control",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 183203781712969 (owner 100048685221282), verified"
+    },
+    "5ab7259a-e0bd-4978-90ec-e840cfeccf0c": {
+      "name": "Not Ned",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 14166190782 (owner 100036868346690), verified"
+    },
+    "b1f63ae9-91fb-4bea-8b96-7fe1f3c74935": {
+      "name": "Rabble Rousers",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 148313011896152 (owner 100062853412808), verified"
+    },
+    "532584a5-f367-45f9-9c6a-d0e2063db264": {
+      "name": "33 REVS",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 111928502006919 (owner 61551010940572), verified"
+    },
+    "ebfb62cd-ec3c-436e-a57c-40eb15122e79": {
+      "name": "Just Sam",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 118504435869 (owner 100064985310088), verified"
+    },
+    "Ui0vm15VqtiMHv8Jtobi": {
+      "name": "Retro Zone",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 1167008743459069 (owner 100063214494883), verified"
+    },
+    "d080a8c4-a057-4150-98a0-0ace3cce442f": {
+      "name": "Astromoda",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 104747768230838 (owner 100063957286979), verified"
+    },
+    "4985e47a-e9d0-4b93-a1bc-7c0dc182cf0d": {
+      "name": "Soultown Collective",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 1663697876995202 (owner 100058519662170), verified"
+    },
+    "6c0c0e78-800f-4073-bd94-b3781cdea0d4": {
+      "name": "Millennial Sound",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 556739437519799 (owner 61572611335172), verified"
+    },
+    "4bcb4c05-d378-4556-bc69-7d9948b5e872": {
+      "name": "Axidental Doggers",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 516772334844582 (owner 61569035169906), verified"
+    },
+    "zhqTZqSDAAsg2qPdY0Wv": {
+      "name": "Urban Myth",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 114700364145203 (owner 100071371448746), verified"
+    },
+    "rT16iLy3u64bhZadG7SR": {
+      "name": "Tony Auton Band",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 156561484410270 (owner 100063908263407), verified"
+    },
+    "2dd5c233-9812-45c3-856d-e04a5bc29146": {
+      "name": "The IndieTweeners",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 433613996500126 (owner 61565041873824), verified"
+    },
+    "4e7b5fcd-ab25-4c9d-9eeb-6479c4382997": {
+      "name": "The Skasoul",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 103234378507483 (owner 100064974401678), verified"
+    },
+    "Gx6sZ0VHdHBSiPDlc8XD": {
+      "name": "Super Monkey Kings",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "group 477001484084023",
+      "notes": "Group URL — graph picture unsupported for groups (returns JSON error). Needs manual/clear-band page."
+    },
+    "fc178310-1b1a-4baa-8dee-8bb798a12bf9": {
+      "name": "RUSH3TTE",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "group /groups/rush3tte",
+      "notes": "Group URL — graph unsupported. Manual."
+    },
+    "49a44817-cd55-4f94-8290-c4feff794739": {
+      "name": "Mugshot",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "group 29531138117",
+      "notes": "Group URL — graph unsupported. Manual."
+    },
+    "N5PMmF7jpRbN9eI0BesS": {
+      "name": "Eden",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "group 426122737572620",
+      "notes": "Group URL — graph unsupported. Manual."
+    },
+    "ggb0Gr9gnPd457ZqKanz": {
+      "name": "Soul Express",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "group 290044033118275",
+      "notes": "Group URL — graph unsupported. Manual."
+    },
+    "4a9f47c9-6e5e-4152-92b7-e20bc823782b": {
+      "name": "Hammered",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "facebookUrl points into a group (groups/111164642295828/user/100055666305702)",
+      "notes": "Bad facebookUrl — group member link, not a clean profile/page. Needs a proper page URL."
+    },
+    "3d61017a-e692-4347-ba8b-59dc26a6418c": {
+      "name": "One More Mile",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "facebookUrl points into a group (groups/197368663662662/user/61587273380700)",
+      "notes": "Bad facebookUrl — group member link. Needs a proper page URL."
+    },
+    "7bab038e-ce80-4ce6-b59c-c1fcaf15b792": {
+      "name": "Andy Bussey",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "personal profile vanity /andy.bussey.3",
+      "notes": "Personal profile — needs upload_artist_image endpoint or manual image."
+    },
+    "5c305411-ad97-44c7-b813-5102fd1c6b5c": {
+      "name": "Lewis Thubron",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "personal profile vanity /lewis.thubron.9",
+      "notes": "Personal profile — needs upload endpoint or manual."
+    },
+    "d1b55417-b104-4d15-b5c6-9d9583858131": {
+      "name": "Joe Devanny",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "personal profile vanity /joe.devanny.5",
+      "notes": "Personal profile — needs upload endpoint or manual."
+    },
+    "GYuzOSRhhYYnUkIDrBAs": {
+      "name": "Craig Harrison",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "personal profile vanity /craig.harrison.3910",
+      "notes": "Personal profile — needs upload endpoint or manual."
+    },
+    "45f3949a-1936-4921-855a-201046cdbe5b": {
+      "name": "Rob B Williams",
+      "status": "failed",
+      "attempts": 3,
+      "method": "vanity /Robbwilliamstribute - client shell (3rd attempt)",
+      "notes": "Permanent-skip threshold reached (attempts=3). Client-shell non-render."
+    },
+    "23e17eca-37fa-4948-8ee3-cd31c64a5e80": {
+      "name": "Steven Robertson",
+      "status": "failed",
+      "attempts": 3,
+      "method": "vanity /SteveRobertsonMusic - client shell (3rd attempt)",
+      "notes": "Permanent-skip threshold reached (attempts=3). Client-shell non-render."
+    },
+    "f1359ed5-025e-486a-9b1e-3324a76ab489": {
+      "name": "The Simon Hough Band",
+      "status": "failed",
+      "attempts": 3,
+      "method": "vanity /TheSimonHoughBand - client shell (3rd attempt)",
+      "notes": "Permanent-skip threshold reached (attempts=3). Client-shell non-render."
+    },
+    "g0CcgH6DtiHhUcKVrxva": {
+      "name": "The Clementines",
+      "status": "failed",
+      "attempts": 3,
+      "method": "vanity /clementinesband - client shell (3rd attempt)",
+      "notes": "Permanent-skip threshold reached (attempts=3). Client-shell non-render."
+    },
+    "be69892f-840f-4a4f-8b96-e7cc2107bee4": {
+      "name": "The Rockin Rat bags",
+      "status": "failed",
+      "attempts": 3,
+      "method": "vanity /rockin.ratbags - client shell, no owner (3rd attempt 2026-07-11)",
+      "notes": "Permanent-skip (attempts=3). Persistent client-shell non-render."
+    },
+    "87f0b0ef-b1d6-4f9e-9f0b-b6f5093cb013": {
+      "name": "Kieran Rowe",
+      "status": "flagged",
+      "attempts": 2,
+      "method": "owner 654651368 (personal profile), no delegate; graph = placeholder",
+      "notes": "Personal profile - needs upload_artist_image endpoint."
+    },
+    "4176d52f-297f-451b-bfaa-7ee703021a37": {
+      "name": "Anna Milne",
+      "status": "flagged",
+      "attempts": 2,
+      "method": "rendered this run: owner 515310154 (personal profile), no delegate; graph = placeholder",
+      "notes": "Personal profile - needs upload_artist_image endpoint."
+    },
+    "b447ed89-a494-402c-a95b-ecca89824726": {
+      "name": "Kelly Rox",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 704552247032888 (owner 100069988130582), verified"
+    },
+    "AwMtWfh6GofogTf2XYrl": {
+      "name": "The Banned",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 101262592670619 (owner 100083847818665), verified"
+    },
+    "ae6170cf-263f-4af1-98bd-89acedd7e47a": {
+      "name": "The Roy Orbison Songbook",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 108752428831949 (owner 100090861470791), verified"
+    },
+    "938c9ffd-0b69-4bcb-b370-9af927cf5b77": {
+      "name": "Atomic Blues",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 955636864295045 (owner 61585747411500), verified"
+    },
+    "b7cb4c56-091d-4d60-9a10-d7f0e31cbfcb": {
+      "name": "SAS Blues",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 695215747006089 (owner 61577176201427), verified"
+    },
+    "yBs0vwmXtrxvrbqGoems": {
+      "name": "Backwater Roll Blues Band",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 1395560240708254 (owner 100063640267098), verified"
+    },
+    "5f62427f-dd16-4ca1-a203-63c7d79e318b": {
+      "name": "Mac 3",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 111507261441335 (owner 100077482195574), verified"
+    },
+    "daa33c31-7539-43df-b4ca-c03b87937e19": {
+      "name": "Deep Sea Tiger",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 225771033952344 (owner 61555612714859), verified"
+    },
+    "73750aae-2bee-4536-981c-c779c817e387": {
+      "name": "Nick Bold & The Raging Sea",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 966019006845941 (owner 100063628626314), verified"
+    },
+    "21a99ec1-7fcb-48e9-a46b-78edfc21d10f": {
+      "name": "Talisman",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 621473514699676 (owner 100025979331449), verified"
+    },
+    "dc590e43-8acc-4f7d-8a17-35b95dd1ace7": {
+      "name": "The Ace Tones",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 103536198157184 (owner 100039975642558), verified"
+    },
+    "0e0a3848-2861-4bd3-8a4d-dcd4a7deb6f0": {
+      "name": "Electrik Live Orchestra",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 105292977672214 (owner 100063451516362), verified"
+    },
+    "ZEJTlbpZI307huWaJbX7": {
+      "name": "The Juke Box Band",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 100974185880541 (owner 100082840706810), verified"
+    },
+    "e5bc259e-8e02-44d3-9ba4-1f9479006406": {
+      "name": "Dark Lightning",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 399302986859879 (owner 100063537159911), verified"
+    },
+    "e3fc2b50-0f6e-4442-99aa-532d21d9dc4c": {
+      "name": "The Rude Boyz",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 100262896488264 (owner 100095072073645), verified"
+    },
+    "379236be-9a93-4419-bc28-5a12b384dec7": {
+      "name": "The Rattlers",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 160057327345062 (owner 100063326224944), verified"
+    },
+    "53D4o7BMrPsnb9zXVed1": {
+      "name": "Della and the Fellas",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 144311575617435 (owner 100024018735980), verified"
+    },
+    "125b25a7-482f-4157-b19d-f45e2a46061c": {
+      "name": "Ohasis",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 158849535661 (owner 100063439069794), verified"
+    },
+    "68b99cde-096f-48a1-b749-e5643b57f047": {
+      "name": "Dr Spork",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 272658124601727 (owner 100076147333359), verified"
+    },
+    "a8784ca6-6c7c-44c8-8f9f-6fb4286acef1": {
+      "name": "Vintage",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 786218964579177 (owner 61581485692433), verified"
+    },
+    "6b7e99a7-25c2-4a6e-8f8d-0a174ea2a1c0": {
+      "name": "Charlie H",
+      "status": "failed",
+      "attempts": 3,
+      "method": "re-check 2026-07-11: page 632287896964392 graph still blank spacer (3rd attempt)",
+      "notes": "Permanent-skip (attempts=3). Page has no profile photo."
+    },
+    "VdwX3erarSSW97mG2hK8": {
+      "name": "The Hard Stuff",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 150189148171866 (owner 61552297853317), verified"
+    },
+    "67792109-17b1-4fdc-a60f-e75a253bbcfe": {
+      "name": "Ding n John",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 108688692067122 (owner 100088141325586), verified"
+    },
+    "qnlAuaFyyj9ovEMdadZ7": {
+      "name": "Fred Zeppelin",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 196408737052946 (owner 100063706776830), verified"
+    },
+    "95b4a3fa-b85f-4f51-a611-e15432352f56": {
+      "name": "The Panthers",
+      "status": "failed",
+      "attempts": 3,
+      "method": "page 100086555624606 graph = blank spacer HsTZSDw4avx.gif (no profile photo) (3rd attempt)",
+      "notes": "Permanent-skip threshold reached (attempts=3). Page has no profile photo."
+    },
+    "eea82acf-e6fb-4178-812a-62949fa82ce5": {
+      "name": "Jess Evelyn",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 204686626067332 (owner 61555636746699), verified via redirect+image"
+    },
+    "62d06f64-b67c-41c5-96a0-38414415c822": {
+      "name": "Justuzfor",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 1596293557255267 (owner 100063714571591), verified"
+    },
+    "540e9f42-b0bf-40aa-be50-e2f6a362eed7": {
+      "name": "Musikbox",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 222852647578365 (owner 61555793768185), verified"
+    },
+    "ada252ae-e81c-477d-961d-ae715a90fa5f": {
+      "name": "The Band Vehicle",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 109198110748442 (owner 100063548463931), verified"
+    },
+    "980a8b79-ee2e-4863-9bd9-f24cc3b6beb3": {
+      "name": "Klassix",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 475089345878245 (owner 100063531398688), verified"
+    },
+    "72f3a39c-f213-4903-8be3-f91c96642cbf": {
+      "name": "Transmission (The Sound of Joy Division)",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 121443604576053 (owner 100063553030886), verified"
+    },
+    "5d058936-1f79-4e90-a648-bc5eb186e65b": {
+      "name": "Inner Frenzy",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 114313636962 (owner 100063530705437), verified"
+    },
+    "df67f001-4dfd-48ad-a18c-644663a13e63": {
+      "name": "The Polaroids",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 145840008809546 (owner 100063619091583), verified"
+    },
+    "9242d30f-f1a6-403c-99e2-7ea7584e8ae6": {
+      "name": "Mandy Montgomerys Angels",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 147140105917750 (owner 100062994050769), verified"
+    },
+    "033889bd-0ef2-4c4c-adfc-10aa57363ee8": {
+      "name": "Memphis Cruisers",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 772230219519938 (owner 100063581288428), verified via redirect"
+    },
+    "c210f658-f2e3-4d89-9eb8-5fa06c591456": {
+      "name": "The Codgers",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 119614643185 (owner 100063490033424), verified"
+    },
+    "0dee0fdc-4418-48b6-be9a-8a1c5ef3f566": {
+      "name": "Quantum",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 809357562255625 (owner 61580679898207), verified"
+    },
+    "rIaiaGTvG3buiSJLD8gf": {
+      "name": "Recoil",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 104708989211405 (owner 100090216669716), verified"
+    },
+    "49a091b3-d902-4319-b456-67f37725007a": {
+      "name": "Ricky and the Retros",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 583630751764992 (owner 100043399677029), verified"
+    },
+    "3374d3ca-0a01-4095-8278-dd6802efa353": {
+      "name": "On the Rocks",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 1159393984133526 (owner 100063475843106), verified"
+    },
+    "59028678-a010-497b-a280-c239cb3ad9a3": {
+      "name": "Phil Gooding",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 139650702558383 (owner 61551496768151), verified"
+    },
+    "JkiJDuIESmN6tinm0HdP": {
+      "name": "Joel Ramble",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 489369230933795 (owner 61571783729304), verified"
+    },
+    "d0b995f8-120b-4f7b-9e7b-81cc060cefba": {
+      "name": "Rock Machine",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 765474603317751 (owner 61580346155463), verified"
+    },
+    "c821b27e-2952-4e94-b12d-241cf0f662a4": {
+      "name": "Death or Glory",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 104908735881952 (owner 100090660020373), verified"
+    },
+    "2b832e36-e476-4e53-b80f-8f69a4b8ff1a": {
+      "name": "The Zone",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 860776690451153 (owner 61583203395598), verified"
+    },
+    "005df91a-5d5a-46a5-b47c-8eb11360f1e9": {
+      "name": "Dfacto",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 801155506683526 (owner 100050441385122), verified"
+    },
+    "bfa2ae47-d6d4-45d2-8ce5-015007bf9703": {
+      "name": "Jake Dixon & The Cosmic Echo",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 638084929379192 (owner 61574409328723), verified"
+    },
+    "1c2bff07-453a-45c0-ba73-0e133b9f92ae": {
+      "name": "Hybrids",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 379302432234002 (owner 100079205282267), verified"
+    },
+    "64c6117f-3dd7-49e7-b2ad-7f61f1c64dde": {
+      "name": "Hard Wired",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 321188817737262 (owner 61559021014204), verified"
+    },
+    "53ee5813-564f-4af4-89a3-1c75efe6ff94": {
+      "name": "Overdrive",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 143586935666721 (owner 100042409760389), verified"
+    },
+    "1b2a8a93-6f7a-408b-bdc2-6e6fb2a7492c": {
+      "name": "INXS UK",
+      "status": "failed",
+      "attempts": 1,
+      "method": "/p/ page 100092867724522 — owner did not render this pass",
+      "notes": "Retry next run."
+    },
+    "aa8c2fde-209a-4e98-a597-d80891e9d0da": {
+      "name": "Jean & Rogers",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 203472789516613 (owner 61555417437944), verified"
+    },
+    "bae5ee44-21d8-461d-a9c7-f1c5653eebfc": {
+      "name": "Mid Life Dirtbags",
+      "status": "done",
+      "attempts": 1,
+      "method": "/share/ resolved owner 61575887263453, delegate 656324717561970; facebookUrl updated to canonical profile.php"
+    },
+    "H1NIZdIs9psrZyueRpAX": {
+      "name": "The Monkey Men",
+      "status": "done",
+      "attempts": 1,
+      "method": "/share/ resolved owner 100035245364047, delegate 1435161476725720; facebookUrl updated to canonical profile.php"
+    },
+    "SG3CrjHwdxXKzcn9JcMj": {
+      "name": "Maggie Stevens",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "personal profile (pfbid) owner 100094275796798, no delegate; graph=placeholder",
+      "notes": "Personal profile — needs upload_artist_image endpoint."
+    },
+    "f17d6f4c-2050-45f3-909e-8f0e94696907": {
+      "name": "Mötley Crüde",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "/share/ resolves to an EVENT page (The Dirt Tour at The Rigger), not the band; owner 100033349280260 is event host",
+      "notes": "Bad facebookUrl (event link). Needs the band's actual page URL."
+    },
+    "0b38b417-e424-47d7-924c-2135d62d9011": {
+      "name": "Johnny Harper",
+      "status": "failed",
+      "attempts": 3,
+      "method": "re-check 2026-07-11: page 105800225088800 graph still blank spacer (3rd attempt)",
+      "notes": "Permanent-skip (attempts=3). Page has no profile photo."
+    },
+    "skjzJML77TvaM2w5E1UW": {
+      "name": "Dale Murphy",
+      "status": "failed",
+      "attempts": 3,
+      "method": "/people/Dales-Song-Writing/ (no numeric id) - client shell, no owner (3rd attempt 2026-07-11)",
+      "notes": "Permanent-skip (attempts=3). No numeric id in URL; needs proper page URL / resolver."
+    },
+    "03b097ba-5286-4a99-8646-37bf3f664176": {
+      "name": "Jade Sanders",
+      "status": "failed",
+      "attempts": 3,
+      "method": "vanity /jadesandersmusic - client shell, no owner (3rd attempt 2026-07-11)",
+      "notes": "Permanent-skip (attempts=3). Persistent client-shell non-render."
+    },
+    "83f7c3dc-b644-4c26-8599-f1dbe3bcd963": {
+      "name": "Blindsided",
+      "status": "failed",
+      "attempts": 3,
+      "method": "vanity /blindsidedband - client shell, no owner (3rd attempt 2026-07-11)",
+      "notes": "Permanent-skip (attempts=3). Persistent client-shell non-render."
+    },
+    "00781087-ed98-4406-91df-4ec82c5aab29": {
+      "name": "Pop Rock Riot",
+      "status": "failed",
+      "attempts": 1,
+      "method": "vanity /poprockriot — owner did not render",
+      "notes": "Retry / no usable FB photo via graph."
+    },
+    "b173ff6b-539c-4774-ad27-5c880cd186d5": {
+      "name": "GSG Stars and Legends",
+      "status": "failed",
+      "attempts": 1,
+      "method": "vanity /GSGStarsLegendsShow — owner did not render",
+      "notes": "Retry / no usable FB photo via graph."
+    },
+    "4cfcaa4e-4297-4ac5-905a-c81d7b09291f": {
+      "name": "Panic Buyers",
+      "status": "failed",
+      "attempts": 1,
+      "method": "vanity /thepanicbuyers — owner did not render",
+      "notes": "Retry / no usable FB photo via graph."
+    },
+    "e85f0d62-5a83-41cf-a61e-8dbc9d86ea48": {
+      "name": "Lois Bibbins",
+      "status": "failed",
+      "attempts": 3,
+      "method": "vanity /loisbibbinsmusic - client shell, no owner (3rd attempt 2026-07-11)",
+      "notes": "Permanent-skip (attempts=3). Persistent client-shell non-render."
+    },
+    "476955ab-9b2a-4880-8cc8-9f2053d02d13": {
+      "name": "Georgia Hair",
+      "status": "failed",
+      "attempts": 3,
+      "method": "vanity /georgiahairsinger - client shell, no owner (3rd attempt 2026-07-11)",
+      "notes": "Permanent-skip (attempts=3). Persistent client-shell non-render."
+    },
+    "a32b3729-e007-4830-94b6-b02a54117e7b": {
+      "name": "The Derwent Singers",
+      "status": "failed",
+      "attempts": 3,
+      "method": "re-check 2026-07-11: delegate 300006536685864 graph still blank spacer gPCjrIGykBe.gif (3rd attempt)",
+      "notes": "Permanent-skip (attempts=3). Page has no profile photo."
+    },
+    "u2DFiUkiUQ06r6VQJJax": {
+      "name": "Amélie Swann",
+      "status": "failed",
+      "attempts": 1,
+      "method": "vanity /AmelietheSwan — delegate 101037636182954 found but graph = blank spacer (no photo)",
+      "notes": "Retry / no usable FB photo via graph."
+    },
+    "4bd711b9-0e69-4906-956b-11d2d28e2ca5": {
+      "name": "DC Done Dirt Cheap!",
+      "status": "failed",
+      "attempts": 3,
+      "method": "re-check 2026-07-11: delegate 207099282747847 graph still blank spacer (3rd attempt)",
+      "notes": "Permanent-skip (attempts=3). Venue page (Smithfield Derby) has no profile photo."
+    },
+    "bc16ed9e-3589-49ca-90f4-342022ce22e6": {
+      "name": "Spanish Battery",
+      "status": "failed",
+      "attempts": 1,
+      "method": "vanity /spanish.battery.3 — delegate 754213657778628 found but graph = blank spacer (no photo)",
+      "notes": "Retry / no usable FB photo via graph."
+    },
+    "LqNhG6aHxJGB6FP6lLrR": {
+      "name": "The Warehouse Blues Band",
+      "status": "failed",
+      "attempts": 3,
+      "method": "re-check 2026-07-11: owner 61558776000174 graph still placeholder 84628273 (3rd attempt)",
+      "notes": "Permanent-skip (attempts=3). Needs upload_artist_image endpoint."
+    },
+    "kPH8XYpBo15ZmN4AwaDg": {
+      "name": "The Stringrays",
+      "status": "failed",
+      "attempts": 1,
+      "method": "vanity /the.stingrays.2024 — owner 61566502086447 no delegate (new page)",
+      "notes": "Retry / no usable FB photo via graph."
+    },
+    "AblKYzdv89u3Mfioxg0N": {
+      "name": "Reserved",
+      "status": "failed",
+      "attempts": 3,
+      "method": "/people/Branded-Rhythm-Blues-band (no numeric id) - client shell, no owner (3rd attempt 2026-07-11)",
+      "notes": "Permanent-skip (attempts=3). Probable DUPLICATE of branded (rwDw320gku5uQ4gzaU2N, already enriched) - recommend dedup/merge instead."
+    },
+    "875804b2-22e7-4989-ba68-fc7ee62a88c2": {
+      "name": "Mark Carter",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "personal /markcartermc — owner 572387278, graph = placeholder",
+      "notes": "Personal profile — needs upload_artist_image endpoint or manual image."
+    },
+    "545cca41-126c-487b-9a15-9b4d6bf5b0ce": {
+      "name": "North Room",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "personal /north.room.31 — owner 100023076885496, no delegate",
+      "notes": "Personal profile — needs upload_artist_image endpoint or manual image."
+    },
+    "23417287-85a0-4bcd-9dc5-24e353d13cf6": {
+      "name": "Lady Lindy",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "personal /lady.lindy.sings — owner 100095764713422, no delegate",
+      "notes": "Personal profile — needs upload_artist_image endpoint or manual image."
+    },
+    "e1ed18c2-166f-4125-9c06-b63c2996563b": {
+      "name": "Rick Sheehan",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "personal profile /rhsheehan",
+      "notes": "Personal profile — needs upload_artist_image endpoint or manual image."
+    },
+    "7e3c7ce0-e9fe-4e21-beb1-cd8f836b8690": {
+      "name": "Ken Weaver",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "personal profile /ken.weaver.566",
+      "notes": "Personal profile — needs upload_artist_image endpoint or manual image."
+    },
+    "8de26929-73f1-4689-a6d8-14e3bffcba9e": {
+      "name": "Ray Hatfield",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "personal profile /ray.hatfield.12",
+      "notes": "Personal profile — needs upload_artist_image endpoint or manual image."
+    },
+    "1a4bc3e2-bfde-48de-8feb-b05e17e33907": {
+      "name": "Peter Todd",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "personal profile /peter.todd.35977",
+      "notes": "Personal profile — needs upload_artist_image endpoint or manual image."
+    },
+    "591e7c38-5403-4b89-a25f-9e61b1286711": {
+      "name": "Sinini Ngwenya",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "personal profile /sinini.ngwenya.9",
+      "notes": "Personal profile — needs upload_artist_image endpoint or manual image."
+    },
+    "7bc368ea-00d5-4495-b017-f39517c6e33e": {
+      "name": "Carl North",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "personal profile /carl.north.77",
+      "notes": "Personal profile — needs upload_artist_image endpoint or manual image."
+    },
+    "fd67b15a-8c49-40a2-a95b-7fac745d7b42": {
+      "name": "Rob Black",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "personal profile /rob.black.1428921",
+      "notes": "Personal profile — needs upload_artist_image endpoint or manual image."
+    },
+    "ded574db-dc09-4b72-b385-71cbad96b969": {
+      "name": "Ivy Peters",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "personal profile /ivy.peters.5",
+      "notes": "Personal profile — needs upload_artist_image endpoint or manual image."
+    },
+    "a529295c-4f6b-4022-9605-91a9749a7c97": {
+      "name": "Martin McAloon of Prefab Sprout",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "personal profile /martinmcaloon04",
+      "notes": "Personal profile — needs upload_artist_image endpoint or manual image."
+    },
+    "Rbo2tvK0sSrTlk6oe64T": {
+      "name": "Henna",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "personal profile /henna.jackson",
+      "notes": "Personal profile — needs upload_artist_image endpoint or manual image."
+    },
+    "pLqWwccRe6qd4FZ9ujTJ": {
+      "name": "Bryan Mills",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "personal profile /bryan.mills.75470",
+      "notes": "Personal profile — needs upload_artist_image endpoint or manual image."
+    },
+    "130d3017-c97c-4bed-8665-340a6a193011": {
+      "name": "Archie Mac",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "personal profile /archie.mckeown.9",
+      "notes": "Personal profile — needs upload_artist_image endpoint or manual image."
+    },
+    "48a3c4ed-1a80-4cb7-94e5-522fbd07b777": {
+      "name": "Joseph Meston",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "personal profile /joseph.meston",
+      "notes": "Personal profile — needs upload_artist_image endpoint or manual image."
+    },
+    "f818a528-30bd-4e8f-a15e-216dafe1b0ea": {
+      "name": "Fraser Harper",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "personal profile /harpef",
+      "notes": "Personal profile — needs upload_artist_image endpoint or manual image."
+    },
+    "MZ7HYwPGzQnzJsj95lfy": {
+      "name": "Josh",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "group URL (https://facebook.com/groups/1385857841508219/)",
+      "notes": "Group — graph picture unsupported for groups. Manual/needs band page."
+    },
+    "GfYlNk9J3qqdWrxSnRPW": {
+      "name": "C&C Duo",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "group URL (https://www.facebook.com/groups/450032713727960)",
+      "notes": "Group — graph picture unsupported for groups. Manual/needs band page."
+    },
+    "bf0384fa-3319-4136-b394-48bd45100cce": {
+      "name": "DeLorean",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "group URL (https://www.facebook.com/groups/168139863233352/user/100092255603829/)",
+      "notes": "Group — graph picture unsupported for groups. Manual/needs band page."
+    },
+    "fa96205a-e7c1-4b53-a495-b355ebe23b5e": {
+      "name": "The Engineers",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "group URL (https://www.facebook.com/groups/370420218921275/about)",
+      "notes": "Group — graph picture unsupported for groups. Manual/needs band page."
+    },
+    "d71a58c3-3198-4ee0-8db5-c45a69db5eb0": {
+      "name": "Risley Big Band",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "group URL (https://www.facebook.com/groups/1491825247764500/)",
+      "notes": "Group — graph picture unsupported for groups. Manual/needs band page."
+    },
+    "a51444bb-bd21-4ba0-b5e0-154c2bc64b95": {
+      "name": "GodZZ of Wor",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "group URL (https://www.facebook.com/groups/606358846596014/)",
+      "notes": "Group — graph picture unsupported for groups. Manual/needs band page."
+    },
+    "3db2d232-b4d3-48ef-8b9d-81c237b62023": {
+      "name": "Cover-Story",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "group URL (https://www.facebook.com/groups/2957259521091184/user/100087444195218/)",
+      "notes": "Group — graph picture unsupported for groups. Manual/needs band page."
+    },
+    "7ftP0P2tvpyPuNjIj2UF": {
+      "name": "Wasted Years",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "group URL (https://www.facebook.com/groups/wastedyearsrock/)",
+      "notes": "Group — graph picture unsupported for groups. Manual/needs band page."
+    },
+    "0e0a6bcd-1e2e-4856-9593-8379d9ad0b54": {
+      "name": "The Stones Story",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "group URL (https://www.facebook.com/groups/thestonesstory/)",
+      "notes": "Group — graph picture unsupported for groups. Manual/needs band page."
+    },
+    "jJcqTcpWR52X9pZ93b0G": {
+      "name": "Fallen Halo",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "group URL (https://www.facebook.com/groups/fall3nhalo/)",
+      "notes": "Group — graph picture unsupported for groups. Manual/needs band page."
+    },
+    "yG74Zi4S7uHAtay74sHy": {
+      "name": "Sinpusher",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "group URL (https://www.facebook.com/groups/378122158985796)",
+      "notes": "Group — graph picture unsupported for groups. Manual/needs band page."
+    },
+    "e1be0887-5e32-4888-9b9e-bdf65342e18c": {
+      "name": "Beatles Complete",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 101544781654812 (owner 100026951753833), verified"
+    },
+    "1CJdSQBm7ZbJK3PpM1uu": {
+      "name": "Nightflight",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 113805272000951 (owner 100041892922077), verified"
+    },
+    "2151a51c-9b0c-4a44-a659-e189e4b95ebe": {
+      "name": "Flying Panda",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 224085210792826 (owner 61556344145099), verified"
+    },
+    "7a7c220a-4ffd-42e7-aa0e-ba7344f82df1": {
+      "name": "Flying Solo",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 104077017818395 (owner 100066879306734), verified"
+    },
+    "947eb449-b990-4244-8754-466c060560e7": {
+      "name": "Newman Rockets",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 105609535754465 (owner 100088879972384), verified"
+    },
+    "32299714-c92b-4116-a5bb-fd124ef420b6": {
+      "name": "Midnight Shift Rockabilly Trio",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 1103928956470410 (owner 100027271882423), verified"
+    },
+    "8614cb01-9c4e-4932-bb40-29399044f2f0": {
+      "name": "The Tigermen",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 1150964828431610 (owner 100063576488482), verified"
+    },
+    "eef00c7f-c711-41ed-aca7-9e703baf53bd": {
+      "name": "Midnight Echoes",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 635237763011588 (owner 61575314498979), verified"
+    },
+    "6272aef0-3792-46a4-bd96-ae63d279ea4e": {
+      "name": "Giroscope",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 332807570213818 (owner 100063259177328), verified"
+    },
+    "f0f08b26-699c-4b8a-a262-ba2e09747e09": {
+      "name": "FAT Sandwich",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 105694218941312 (owner 100085103655942), verified"
+    },
+    "4219e3d6-c684-4501-913d-bd991cdd8a7b": {
+      "name": "Revolver",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 193441104181563 (owner 100063496633071), verified"
+    },
+    "f3e530bf-bb2a-41ab-9f60-1dc8a714483a": {
+      "name": "The Zoinks",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 106901408595684 (owner 100078909183582), verified"
+    },
+    "1c0c24cc-0dfc-426a-a176-5b1f7ac00555": {
+      "name": "Steel Blue",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 163466165501 (owner 100063534453807), verified (img 180x180)"
+    },
+    "7d5c6017-94d2-420c-a312-b5e6d651b349": {
+      "name": "Black Cadillac",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 1675989692546487 (owner 100063692463362), verified"
+    },
+    "c1b185aa-dbc2-4c62-ac76-4cdef6816b9e": {
+      "name": "Stoned Crowes",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 2205729446352841 (owner 100057309825566), verified"
+    },
+    "zOUHlg6ULcjhBWWZXtJ1": {
+      "name": "Northside Brothers of Soul",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 109038451914647 (owner 100084320542566), verified"
+    },
+    "8ef0da96-efb3-4544-bdee-e220f46f3bce": {
+      "name": "Ricky Zalez",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 878317049041189 (owner 100039449623789), verified"
+    },
+    "68db3527-ab6c-4c9c-941b-4eb71fad5660": {
+      "name": "Sanctum Sanctorium",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 112831783584717 (owner 100063463263826), verified"
+    },
+    "d1916919-bccc-47a2-a082-38a3b9f802bf": {
+      "name": "Midnight Pumpkin Trucks",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 186837338631534 (owner 100063667985059), verified"
+    },
+    "VxENpaWC7zCauSuZztg4": {
+      "name": "The Still",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 131018536927684 (owner 100063721534519), verified"
+    },
+    "b2df0d14-5002-4f33-85a4-be0a1da30ff4": {
+      "name": "Luminote",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 843757995493773 (owner 61582949939470), verified"
+    },
+    "14328a28-84b0-4f08-bd26-8a2eca121c00": {
+      "name": "Enigma",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 239535332581925 (owner 61556733287793), verified"
+    },
+    "c07c2b66-a87b-4825-b237-b1047edce2b1": {
+      "name": "The Lost Boys",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 498574403335026 (owner 61569346404215), verified"
+    },
+    "7fe4b9fe-eb14-43e0-8736-6b5711f08e6e": {
+      "name": "The Rosettes",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 407929995730402 (owner 61563804217056), verified"
+    },
+    "rwDw320gku5uQ4gzaU2N": {
+      "name": "branded",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 115984549840439 (owner 100051215437847), verified",
+      "notes": "Likely same act as 'Reserved' (AblKYzdv89u3Mfioxg0N) — possible duplicate artist record."
+    },
+    "3eb955ed-1490-4b2f-b491-aa6b4995fdbf": {
+      "name": "RED DOG",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 295846448725 (owner 100035150182066), verified"
+    },
+    "56088627-3d23-4200-bee5-be1972ee1ba7": {
+      "name": "SkaFusion",
+      "status": "done",
+      "attempts": 1,
+      "method": "/share/ resolved owner 61572770439056, delegate 579438555245620; facebookUrl updated to canonical profile.php"
+    },
+    "f858859b-efad-4a87-a908-9a5990efeaff": {
+      "name": "Thunder Hammer",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "/share/ resolves to an EVENT page (Thunder Hammer LIVE at The Rigger), owner 100033349280260 = venue/event host, no band page",
+      "notes": "Bad facebookUrl (event link). Needs the band's own page URL."
+    },
+    "3cd89287-f5ff-4e42-b412-ed9094de5b24": {
+      "name": "Nirvanah & L.A. Foo Fighters",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "/share/ resolves to an EVENT page at The Rigger, owner 100063564160780, no band page",
+      "notes": "Bad facebookUrl (event link). Needs band page URL."
+    },
+    "38382b77-13dd-4160-8d62-e590692d6a97": {
+      "name": "The Madchester Experience",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "/share/ resolves to an EVENT page at The Rigger, owner 100063564160780, no band page",
+      "notes": "Bad facebookUrl (event link). Needs band page URL."
+    },
+    "6c1e7334-323f-41ef-a5ae-1e85f53c3ecb": {
+      "name": "Rory Holl",
+      "status": "failed",
+      "attempts": 3,
+      "method": "re-check 2026-07-11: id 61555255931149 graph still blank spacer HsTZSDw4avx.gif (3rd attempt)",
+      "notes": "Permanent-skip (attempts=3). Personal profile has no photo."
+    },
+    "98ccce7f-bf97-40fb-9e46-d1f04b36036b": {
+      "name": "Big Red Band",
+      "status": "done",
+      "attempts": 1,
+      "method": "vanity /BIGREDROCKBAND delegate 118524044578088 (owner 100093054099100), verified"
+    },
+    "32fcbd0c-1ddc-4b5c-a2f8-b649621b6dc5": {
+      "name": "Armed Project",
+      "status": "done",
+      "attempts": 1,
+      "method": "vanity /ArmedProjectBand delegate 673705339657274 (owner 100047288774278), verified"
+    },
+    "e4178d8d-2bd0-43ef-b1ce-6a97a78fc359": {
+      "name": "Sugar Rush Band",
+      "status": "done",
+      "attempts": 1,
+      "method": "vanity /AnnaWhalesBand delegate 133859976487657 (owner 61553961699772), verified"
+    },
+    "0611d2cb-82d5-456d-90fb-48d656807b3f": {
+      "name": "Slade UK",
+      "status": "failed",
+      "attempts": 3,
+      "method": "vanity /sladeuk - client shell, no owner (3rd attempt 2026-07-11)",
+      "notes": "Permanent-skip (attempts=3). Persistent client-shell non-render."
+    },
+    "bec85f9e-fd3f-4865-8c00-40a603761e3d": {
+      "name": "Stop The Clocks",
+      "status": "failed",
+      "attempts": 3,
+      "method": "vanity /stoptheclocksuk - client shell, no owner (3rd attempt 2026-07-11)",
+      "notes": "Permanent-skip (attempts=3). Persistent client-shell non-render."
+    },
+    "8eff554d-a2d0-4bd1-9db5-f2b91f42899d": {
+      "name": "Mad Ferret - Oasis Tribute",
+      "status": "failed",
+      "attempts": 3,
+      "method": "vanity /madferrits - client shell, no owner (3rd attempt 2026-07-11)",
+      "notes": "Permanent-skip (attempts=3). Persistent client-shell non-render."
+    },
+    "904fc9aa-eefb-48e4-8d99-f857570fbce9": {
+      "name": "Andrea Harvey",
+      "status": "failed",
+      "attempts": 3,
+      "method": "re-check 2026-07-11: owner 61579591066413 graph still placeholder 84628273 (3rd attempt)",
+      "notes": "Permanent-skip (attempts=3). No delegate/new-format profile. Needs upload_artist_image endpoint."
+    },
+    "a92da09a-b1ff-47a8-8150-0758ecff2f4a": {
+      "name": "Abba ca Deborah",
+      "status": "failed",
+      "attempts": 3,
+      "method": "re-check 2026-07-11: delegate 331435420057705 graph still blank spacer (3rd attempt)",
+      "notes": "Permanent-skip (attempts=3). Delegate page has no profile photo."
+    },
+    "f2ce77e4-f462-4025-865c-9ada2d2eed58": {
+      "name": "Victoria Lucie",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "personal /victoria.lucie.14 owner 100022098012243, no delegate",
+      "notes": "Personal profile — needs upload_artist_image endpoint."
+    },
+    "d7e20412-ea31-40f3-abed-26f884a86411": {
+      "name": "Kecco Recchia",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "personal profile /kecco.recchia",
+      "notes": "Personal profile — needs upload_artist_image endpoint."
+    },
+    "b0784bfa-131d-4da8-9d42-836125dac468": {
+      "name": "The F'uke Fighters",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "group /groups/403271011544128",
+      "notes": "Group — graph picture unsupported. Manual/needs band page."
+    },
+    "4b1eec27-ad3e-4ff6-aedc-febd0e4f4450": {
+      "name": "The Others",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "group /groups/592785011455234",
+      "notes": "Group — graph picture unsupported. Manual/needs band page."
+    },
+    "e63f18aa-67ca-4f39-9ab9-3dcb2d17ebfd": {
+      "name": "Bravado",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "group URL /groups/BravadoRushTribute (Bravado - A Tribute to Rush) - no profile_owner/delegate, graph unsupported for groups",
+      "notes": "Group - needs band page URL or upload endpoint."
+    },
+    "c58dc521-dd3f-4d02-b5b2-31284b6aaefb": {
+      "name": "Orion Stars",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 116496181347741 (owner 100090152703331), ownership+image verified"
+    },
+    "78b957d3-d993-47b7-aed9-de5f0591faec": {
+      "name": "Nick Of Time",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 2874592232556029 (owner 100063690096933), ownership+image verified"
+    },
+    "8b7d9b32-2a8a-4da0-bff5-8b6c9fd4fc99": {
+      "name": "Tomorrow Burns",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 458425074030444 (owner 61571729335197), ownership+image verified"
+    },
+    "c914a1b0-6c1d-4d68-88af-d7497756d761": {
+      "name": "The Pulpits",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 550223931501105 (owner 61571546921407), ownership+image verified"
+    },
+    "c7108e39-66b3-4c1b-b850-0d5d841691c9": {
+      "name": "Dean Palmer",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 1032130393468781 (owner 100028285429234), ownership+image verified"
+    },
+    "a603777d-25f1-4f4c-9d13-866a4a0fe49c": {
+      "name": "Tanky/Electrifying 80's show",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 230389860156502 (owner 61555856745370), ownership+image verified"
+    },
+    "c79c1ae1-6d8e-47dd-82b6-ea8813fc313e": {
+      "name": "Sleazy Money",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 203851529484143 (owner 61555988456842), ownership+image verified"
+    },
+    "f5be5b7b-c324-4d68-9574-63025fb6cbe2": {
+      "name": "Stiff Joints",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 327684814018442 (owner 100059594981464), ownership+image verified; image 578x578"
+    },
+    "f69c47a9-7233-46f0-b0a9-d9bf0d31045c": {
+      "name": "The ZML Band",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 105691802365667 (owner 100087732674889), ownership+image verified"
+    },
+    "e1b710ca-9ec2-4199-884a-194ed8bff222": {
+      "name": "Florentenes",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 100523489673402 (owner 100090364615808), ownership+image verified"
+    },
+    "bb17bff0-2a65-4bac-8127-cc156bdadfbf": {
+      "name": "Sticky Bones Jones",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 138493019347395 (owner 61551920075857), ownership+image verified"
+    },
+    "304cf76f-5aa3-4d88-ada7-bf01796b46ec": {
+      "name": "Bad Mother Covers",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 103763615959147 (owner 100089600444381), ownership+image verified"
+    },
+    "8461e3eb-2ab3-4858-ada9-50eb675f8caf": {
+      "name": "Upstate UK",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 779696051903004 (owner 61582320070247), ownership+image verified"
+    },
+    "4b8b57c3-c363-4773-a140-fb2ba1c07ba8": {
+      "name": "Footloose Band",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 108884942170350 (owner 100091552269658), ownership+image verified"
+    },
+    "e8699bf4-bc9d-485d-9716-b5b24399cc3f": {
+      "name": "Longshore Drift",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 102346442879291 (owner 100093180510476), ownership+image verified"
+    },
+    "6474a532-bd46-4adf-9e49-efc10a89e4ba": {
+      "name": "New Variants",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 1408002446160850 (owner 100063824191757), ownership+image verified"
+    },
+    "1cf49375-b5cc-4ea2-a5df-97c3ee720301": {
+      "name": "MC Devvo",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 21516529205 (owner 100047213568498), ownership+image verified; image 600x600"
+    },
+    "096f9eb8-bd7e-4b09-92b3-0f32935aa153": {
+      "name": "GANS",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 152260647967738 (owner 61552741731995), ownership+image verified"
+    },
+    "1d84869d-28e8-4cd4-b88f-2228c3fad46f": {
+      "name": "Indecision",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 574644776242307 (owner 100031704292130), ownership+image verified; image 353x353 low-res"
+    },
+    "ae3914a9-b0f7-4df7-8055-2152ddad7287": {
+      "name": "Tuesday Blue",
+      "status": "failed",
+      "attempts": 1,
+      "method": "delegate 728625693899619 (owner 100069728156355) ownership-verified, but graph = blank spacer gPCjrIGykBe.gif",
+      "notes": "Page has no profile photo."
+    },
+    "1532f10a-61ed-4739-845d-d04983ab9166": {
+      "name": "Night Patrol",
+      "status": "failed",
+      "attempts": 1,
+      "method": "delegate 207789949332454 (owner 100064254660024) ownership-verified, but graph = blank spacer gPCjrIGykBe.gif",
+      "notes": "Page has no profile photo."
+    },
+    "45c9d1ed-e3f8-44b7-987e-c70de9204253": {
+      "name": "Storm Kings",
+      "status": "failed",
+      "attempts": 1,
+      "method": "delegate 621928027901090 (owner 100063717570225) ownership-verified, but graph = blank spacer gPCjrIGykBe.gif",
+      "notes": "Page has no profile photo."
+    },
+    "dc6fb07c-ea41-46b4-88af-5a99fe4d7741": {
+      "name": "NU CALL - Nu-Metal Tribute Band",
+      "status": "failed",
+      "attempts": 1,
+      "method": "delegate 1674492116154033 (owner 100063485866107) ownership-verified, but graph = blank spacer gPCjrIGykBe.gif",
+      "notes": "Page (lastcallswindon) has no profile photo. Also check the facebookUrl: bndy name is NU CALL, page is lastcallswindon."
+    },
+    "e5d8552c-126d-4c90-be8b-77db88ee3e25": {
+      "name": "Swanvesta Social Club",
+      "status": "failed",
+      "attempts": 1,
+      "method": "vanity /swanvestas - client shell, no owner (2 passes this run, 5s and 7s waits)",
+      "notes": "Retry."
+    },
+    "446abe16-538d-4540-b584-17cdc6916216": {
+      "name": "James Deane",
+      "status": "failed",
+      "attempts": 1,
+      "method": "vanity /jamesdeanemusic - client shell, no owner (2 passes this run)",
+      "notes": "Retry."
+    },
+    "efd257a8-4bcc-4d6c-b5d5-1911dd66283f": {
+      "name": "Snubcat",
+      "status": "failed",
+      "attempts": 1,
+      "method": "vanity /snubcat - client shell, no owner (2 passes this run)",
+      "notes": "Retry."
+    },
+    "b13b7fe8-763f-4fcc-807d-f61234a2a6b7": {
+      "name": "Bad Knees Blues Band",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "personal profile /badknees.bluesband - owner 100006425967812, no delegate_page",
+      "notes": "Personal profile - needs upload_artist_image endpoint or manual image."
+    },
+    "2c11088f-4af2-4ab9-9785-0ea397975d43": {
+      "name": "Lazarus",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "group URL (facebook.com/groups/1063920593770773) - not navigated, graph unsupported for groups",
+      "notes": "Group - needs a proper band page URL."
+    },
+    "dd831762-3a6f-4a2f-a0f0-769e5f143adb": {
+      "name": "Not Guilty (Stoke on Trent)",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "group member link (groups/111164642295828/user/100060215265497) - not navigated",
+      "notes": "Bad facebookUrl - group member link, not a page. Needs a proper page URL."
+    },
+    "162e8e0b-c9b4-47e8-9c3c-4e0ec29b6a36": {
+      "name": "He's Electric",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 301618389692728 (owner 61558396585599), ownership+image verified 2026-08-27"
+    },
+    "5e655a31-4657-425b-a82c-219219334108": {
+      "name": "Jesse Garwood",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 582376658289855 (owner 61573468077176), ownership+image verified 2026-08-27"
+    },
+    "cc822bcc-8bae-4b3f-b5b7-2c596f90ebe7": {
+      "name": "Oasain't",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 707731555761451 (owner 61579037121475), ownership+image verified 2026-08-27"
+    },
+    "348cfd0f-4a35-4263-89d7-7979f967083e": {
+      "name": "Electric Pilgrims",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 653138161214839 (owner 61576065601774), ownership+image verified 2026-08-27"
+    },
+    "2b92d42f-911d-4764-9427-6c5f7c80bd63": {
+      "name": "The Puddled People",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 280666188470874 (owner 61558839303790), ownership+image verified 2026-08-27"
+    },
+    "94431e14-0d89-46d3-a6b7-9cf7358e5eaf": {
+      "name": "Jack n Doris",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 112159135318161 (owner 61550805598824), ownership+image verified 2026-08-27"
+    },
+    "e8f62448-cf61-413f-abf5-57c353a68704": {
+      "name": "Syren",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 253642724501906 (owner 61556996567148), ownership+image verified 2026-08-27",
+      "notes": "redirects to /SyrenBandCumbria"
+    },
+    "4b2b1d77-50b4-47b5-a19e-2aa2a512a2c2": {
+      "name": "FeverStreet",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 114723655060236 (owner 61551012203602), ownership+image verified 2026-08-27"
+    },
+    "c51708df-d502-4631-940e-ebca77423317": {
+      "name": "Lewis Latham & Chalk",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 318917291314213 (owner 61562064712423), ownership+image verified 2026-08-27",
+      "notes": "image 573x573"
+    },
+    "777d6bcf-078d-4dd0-a6f3-3d28e0aae003": {
+      "name": "The Nice Blokes",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 687624064435190 (owner 61577766687826), ownership+image verified 2026-08-27"
+    },
+    "7864eee4-6230-40cf-8201-230f29bdd386": {
+      "name": "GoodFellas Blues Band",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 424561614076944 (owner 61566850197659), ownership+image verified 2026-08-27",
+      "notes": "image 586x586"
+    },
+    "26dd87f3-7061-46c4-9b62-54547aeb47f7": {
+      "name": "Stingray (Funky World Groove Band)",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 965655953523315 (owner 100062979621407), ownership+image verified 2026-08-27"
+    },
+    "f4029dae-025d-4426-808d-7cdb371c2f67": {
+      "name": "Uncle Pleb",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 1037224469484201 (owner 61589593895407), ownership+image verified 2026-08-27",
+      "notes": "image 433x436"
+    },
+    "e8ddb2e1-7bc8-494f-b794-8db55ea10718": {
+      "name": "Indifference",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 357066707761814 (owner 100063792990487), ownership+image verified 2026-08-27"
+    },
+    "136351f5-b583-435a-802f-afb17bf1258e": {
+      "name": "KJP & the Divas",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 1123548204176837 (owner 61590052363726), ownership+image verified 2026-08-27",
+      "notes": "image 539x539"
+    },
+    "2b727583-5f33-4ad1-b8e9-735432d0a0a6": {
+      "name": "Southern Blues Collective",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 537045162820420 (owner 61570472993450), ownership+image verified 2026-08-27",
+      "notes": "image 564x561"
+    },
+    "ad17ae00-1ecf-42c5-a557-2857f85389cf": {
+      "name": "Rockacella",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 327413317112958 (owner 61559321451121), ownership+image verified 2026-08-27"
+    },
+    "76dc6287-654e-48db-87ad-eb9eca279ed5": {
+      "name": "Dilemma",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 652744731249779 (owner 61575352277450), ownership+image verified 2026-08-27"
+    },
+    "776542f0-c157-4d25-afd4-acc4b5940b8f": {
+      "name": "Amicus Band",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 1080447208484707 (owner 61574384455118), ownership+image verified 2026-08-27"
+    },
+    "66a50311-c778-437e-b713-c31255d6e5bf": {
+      "name": "Double Vinyl",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 106497702479954 (owner 100093687995048), ownership+image verified 2026-08-27",
+      "notes": "LOW RES 200x200"
+    },
+    "901aaf05-82ca-4157-a1ab-15ba65cb09e8": {
+      "name": "Jibbafish",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 167567676592227 (owner 100063220629045), ownership+image verified 2026-08-27",
+      "notes": "image 425x425"
+    },
+    "67ec25a9-deb7-4c5c-a760-912f637f5460": {
+      "name": "Lord Street",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 697515130119787 (owner 61579592277755), ownership+image verified 2026-08-27"
+    },
+    "197a5bbf-e52b-46cf-97b1-13fab1bf8db2": {
+      "name": "The Waterfront Band",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 546815498522172 (owner 61573860399213), ownership+image verified 2026-08-27"
+    },
+    "dc84081b-b15b-4ac0-8795-548cdc142655": {
+      "name": "Kasperia Band",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 626375923902263 (owner 61577572481012), ownership+image verified 2026-08-27"
+    },
+    "3c11ab5b-d61f-441c-883d-294bc21b19a5": {
+      "name": "5 Hills Out",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 1602809403339998 (owner 100063532424574), ownership+image verified 2026-08-27",
+      "notes": "image 595x595"
+    },
+    "bbc782ad-62a6-4736-825c-2ff93dbb4c8e": {
+      "name": "Ska Train",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 112358251953871 (owner 100095703004680), ownership+image verified 2026-08-27"
+    },
+    "2855c663-a276-422e-ba39-9f2c8a413b63": {
+      "name": "Harmony Junction",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 112747031821536 (owner 100092482941939), ownership+image verified 2026-08-27",
+      "notes": "image 500x500"
+    },
+    "87d5d775-3d8a-4fbc-8620-e8b370c5d9fe": {
+      "name": "Johnny & The Dogs",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 247742425097769 (owner 61557880071469), ownership+image verified 2026-08-27"
+    },
+    "ce65b31a-a136-4abc-8e09-9a6d83bd114b": {
+      "name": "The Whisky Flowers",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 232217753300866 (owner 61555521462111), ownership+image verified 2026-08-27"
+    },
+    "69a63f84-1681-429e-a8d4-534c52a70823": {
+      "name": "No Filter",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 1247692305088558 (owner 61592206773189), ownership+image verified 2026-08-27"
+    },
+    "06948465-3460-4706-9ba8-32b2c9d5f226": {
+      "name": "The Centaurs",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 610419202146219 (owner 61573519273559), ownership+image verified 2026-08-27"
+    },
+    "bc16d7ed-2fbd-4293-862f-a8d8c5d54f36": {
+      "name": "The Feel Good Foundation",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 104495292575923 (owner 100090358484635), ownership+image verified 2026-08-27"
+    },
+    "56b5d41e-31d6-46c9-910f-dde805792c2c": {
+      "name": "Sonic Blue",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 132906393412707 (owner 100058270741434), ownership+image verified 2026-08-27"
+    },
+    "eb3efd11-0f20-477b-adfd-18cae34329e0": {
+      "name": "The Murmur",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 203025603055826 (owner 100053974731790), ownership+image verified 2026-08-27"
+    },
+    "a3da860d-cff1-482a-94d8-42f327d3c504": {
+      "name": "Louie Walsh",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 104554419375072 (owner 100094534392635), ownership+image verified 2026-08-27"
+    },
+    "30b63776-e126-4c6f-ac72-5ef3ce7d8927": {
+      "name": "The Re-covered",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 153580758685097 (owner 100024269505463), ownership+image verified 2026-08-27"
+    },
+    "b8620d09-7c42-4168-96ff-364cbd1d4fb7": {
+      "name": "Guitar Heads",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 253534334505452 (owner 61556359244895), ownership+image verified 2026-08-27",
+      "notes": "redirects to /ukguitarheadsband"
+    },
+    "c356f317-83f5-4aa3-bac0-a99dc16f966a": {
+      "name": "Bat Flattery",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 104886001958148 (owner 100076201477225), ownership+image verified 2026-08-27"
+    },
+    "bce04911-c0b7-4c77-815a-d20063a9cd5c": {
+      "name": "The Good Times -Covers Band",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 965264503334388 (owner 61587043533835), ownership+image verified 2026-08-27"
+    },
+    "de65647c-6419-4671-8844-a35ba1325178": {
+      "name": "Tanante",
+      "status": "done",
+      "attempts": 1,
+      "method": "delegate 124614130983192 (owner 100064145943103), ownership+image verified 2026-08-27",
+      "notes": "image 300x298"
+    },
+    "46317496-20ff-4982-a336-6189a32b0b88": {
+      "name": "Alimo",
+      "status": "failed",
+      "attempts": 1,
+      "method": "vanity /alimo.band - client shell, no profile_owner at 11s wait",
+      "notes": "Retry next run."
+    },
+    "cd2d4285-d0cb-4e34-a025-d0473489d094": {
+      "name": "Mr G and the Faith Healers",
+      "status": "failed",
+      "attempts": 1,
+      "method": "/people/ URL - client shell, no profile_owner at 12s wait",
+      "notes": "Retry next run."
+    },
+    "92b9455c-25ac-41e0-84d0-011184e0b8b3": {
+      "name": "The Mardi Gras Bombers",
+      "status": "failed",
+      "attempts": 1,
+      "method": "delegate 297901188047 (owner 100063180700820) ownership-verified, graph = blank spacer gPCjrIGykBe.gif",
+      "notes": "Page has no profile photo. Needs upload_artist_image or manual."
+    },
+    "48eeed0c-3e7c-4d44-b2f7-f14d99ed6e1b": {
+      "name": "Electric Charm",
+      "status": "failed",
+      "attempts": 1,
+      "method": "vanity /electriccharmuk - client shell, no profile_owner at 13s wait",
+      "notes": "Retry next run."
+    },
+    "cc4065a4-49a2-4af4-acb0-6c50369a9639": {
+      "name": "Ray Hatfield",
+      "status": "failed",
+      "attempts": 1,
+      "method": "vanity /rayhatfield8851 - client shell, no profile_owner at 13s wait",
+      "notes": "Retry. NOTE possible duplicate of artist 8de26929-73f1-4689-a6d8-14e3bffcba9e (Ray Hatfield, /ray.hatfield.12) - check dedup."
+    },
+    "8c9ae978-aae7-4b2a-8961-6057415b900f": {
+      "name": "Ellie Owen",
+      "status": "failed",
+      "attempts": 1,
+      "method": "vanity /EllieOwen.music - client shell, no profile_owner at 13s wait",
+      "notes": "Retry next run."
+    },
+    "3ad19aa8-0dc2-4eaf-a0fa-7b5bf897d0e7": {
+      "name": "Jonny Salt Duo",
+      "status": "failed",
+      "attempts": 1,
+      "method": "vanity /JonnySaltMusic - client shell, no profile_owner at 13s wait",
+      "notes": "Retry next run."
+    },
+    "5ce46b6e-15f1-4bf3-b54a-881f296fea45": {
+      "name": "Ska Klub",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "/p/The-Ska-Klub-100063567833077/ returns FB message: content is not available",
+      "notes": "Dead or restricted page. Bad facebookUrl - needs a working page URL from Jason."
+    },
+    "641d40f3-0141-4c0f-a23d-ffcc7ad53a22": {
+      "name": "Cherry Stone",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "vanity /cherrystone.theband, owner 61554667253322, no delegate_page; graph = placeholder 84628273",
+      "notes": "Needs upload_artist_image endpoint or manual image."
+    },
+    "6abf742d-9fbb-4636-a576-e16c1c787548": {
+      "name": "Blag",
+      "status": "flagged",
+      "attempts": 1,
+      "method": "/BLAGBAND returns FB message: content is not available",
+      "notes": "Dead or restricted page. Bad facebookUrl - needs a working page URL from Jason."
+    }
+  },
+  "runs": [
+    {
+      "date": "2026-07-05",
+      "type": "manual 4-artist test",
+      "processed": 4,
+      "succeeded": 3,
+      "failed": 0,
+      "flagged": 1,
+      "remaining": "~183"
+    },
+    {
+      "date": "2026-07-07",
+      "type": "scheduled nightly",
+      "status": "aborted-preflight",
+      "processed": 0,
+      "succeeded": 0,
+      "failed": 0,
+      "flagged": 0,
+      "remaining": "~183",
+      "notes": "Aborted before any Facebook navigation. The Chrome browser named 'bndy' was not connected — only two generically-named browsers ('Browser 1', 'Browser 2') were present. Task requires selecting the 'bndy' browser by name; did not guess between the two unnamed browsers (no user present, MCP guardrail forbids auto-selecting among multiple browsers). No FB pages were opened; no account-safety events. Backlog unchanged. Fix: re-name the FB-logged-in browser to 'bndy' in the Chrome extension so the nightly task can select it."
+    },
+    {
+      "date": "2026-07-08",
+      "type": "scheduled nightly",
+      "status": "aborted-preflight",
+      "processed": 0,
+      "succeeded": 0,
+      "failed": 0,
+      "flagged": 0,
+      "remaining": "~183",
+      "notes": "SECOND consecutive abort, same cause as 2026-07-07. list_connected_browsers returned only 'Browser 1' (7ad060c3-b3e0-41c9-9dd4-a8097db94bfa) and 'Browser 2' (72e5556d-13eb-4804-9851-3f887667a83b) — no browser named 'bndy'. Task mandates selecting the FB-logged-in 'bndy' browser by name and never guessing among multiple browsers with no user present. No Facebook navigation attempted; no account-safety events; backlog unchanged. ACTION NEEDED FROM JASON: rename the FB-logged-in Chrome extension instance to 'bndy' (or the task can be updated to pin one of the deviceIds) so nightly runs can proceed."
+    },
+    {
+      "date": "2026-07-09",
+      "type": "scheduled nightly",
+      "status": "aborted-preflight",
+      "processed": 0,
+      "succeeded": 0,
+      "failed": 0,
+      "flagged": 0,
+      "remaining": "~183",
+      "notes": "THIRD consecutive abort, identical cause to 2026-07-07 and 2026-07-08. list_connected_browsers returned only 'Browser 1' (72e5556d-13eb-4804-9851-3f887667a83b) and 'Browser 2' (7ad060c3-b3e0-41c9-9dd4-a8097db94bfa) — no browser named 'bndy'. Note: the deviceId<->name mapping has swapped vs prior runs (72e5... is now 'Browser 1', 7ad0... is now 'Browser 2'), so the generic names are not stable identifiers and can't be safely pinned by name. Task mandates selecting the FB-logged-in 'bndy' browser by name and never guessing among multiple browsers with no user present. No Facebook navigation attempted; no account-safety events; backlog unchanged. The task has now failed 3 nights running and will keep failing until fixed. RECOMMENDED FIX (either): (1) rename the FB-logged-in Chrome extension instance to 'bndy' in the extension UI, OR (2) since deviceIds also appear unstable, have Jason confirm which browser is FB-logged-in during an interactive session and update the task to pin that deviceId."
+    },
+    {
+      "date": "2026-07-09",
+      "type": "interactive fix",
+      "status": "fixed",
+      "notes": "Jason removed the Claude extension from the second (non-bndy) Chrome profile — extension now exists ONLY in the bndy profile, so exactly one browser connects and no name/deviceId guessing is needed. Task prompt updated: select the single connected browser (deviceId 7ad060c3-b3e0-41c9-9dd4-a8097db94bfa as of today); abort if zero or more-than-one connected. FB login verified in that browser (no checkpoint). Root cause of the week's failures: extension names assigned via the connect prompt are session-scoped, not persisted — browsers re-register with generic swapping labels ('Browser 1'/'Browser 2') whenever the extension reconnects (Chrome restart/profile close/service-worker sleep)."
+    },
+    {
+      "date": "2026-07-09",
+      "type": "scheduled nightly",
+      "status": "completed",
+      "processed": 50,
+      "succeeded": 26,
+      "failed": 11,
+      "flagged": 13,
+      "remaining": 190,
+      "remaining_actionable": 176,
+      "notes": "First successful nightly run after the browser-selection fix (single 'bndy' browser connected, deviceId 7ad060c3, FB logged-in, no checkpoint). 26 artists enriched with verified stable graph delegate-page images (owner-scoped delegate extraction + ownership redirect check + non-placeholder image check, all writes verified via edit_artist echo/get_by_id). 13 flagged: 8 group URLs (graph picture returns JSON error for groups — unsupported) incl. 2 group-member links (Hammered, One More Mile), and 5 personal-profile vanity URLs (Andy Bussey, Lewis Thubron, Joe Devanny, Craig Harrison, + Masquerade) that yield only the placeholder and need the upload_artist_image endpoint. 11 failed: vanity/username FB URLs (no numeric id in URL) render only a client-side app shell so profile_owner/delegate can't be extracted this session (Soul 4 Soul, Dave Johns, Miranda Newton, Six Card Trick, Rob B Williams, Steven Robertson, Simon Hough Band, The Clementines, Rockin Rat bags, Kieran Rowe, Anna Milne) — need a numeric-page-id resolver; will retry. 3 transient Chrome-extension disconnects mid-run, each recovered by re-selecting the single browser; no account checkpoint/security page at any point."
+    },
+    {
+      "date": "2026-07-09",
+      "type": "manual (user-requested 100)",
+      "status": "completed",
+      "processed": 100,
+      "succeeded": 51,
+      "failed": 19,
+      "flagged": 30,
+      "remaining": 139,
+      "remaining_actionable": 95,
+      "notes": "Second run same day at Jason's request (batch of 100 fresh artists, above the usual 50 cap). 51 enriched with verified graph delegate images incl. 2 via /share/ links (Mid Life Dirtbags, The Monkey Men) whose facebookUrl was updated to the canonical profile.php id. 30 flagged: 11 Facebook groups (graph picture unsupported), 18 personal profiles (firstname.lastname vanity or pfbid — graph returns placeholder; need upload_artist_image endpoint), 1 bad /share/ that resolves to an event page not the band (Motley Crude). 19 failed (retry): vanity/username or /people/-without-id pages that render only a client shell so owner/delegate can't be extracted (Jade Sanders, Pop Rock Riot, Blindsided, GSG Stars, Panic Buyers, Lois Bibbins, Georgia Hair, Stringrays, Warehouse Blues, Dale Murphy, Johnny Harper, INXS UK, The Panthers, Charlie H, Reserved), plus several classic pages whose delegate/owner graph returns a blank spacer i.e. the page simply has no profile photo set (Derwent Singers, Amelie Swann, DC Done Dirt Cheap, Spanish Battery). KEY REFINEMENT vs run 1: vanity/username URLs are NOT uniformly unresolvable — some classic vanity pages DO expose owner+delegate (e.g. Derwent Singers, DC Done Dirt Cheap, Spanish Battery all rendered), so vanity should still be attempted; the real blockers are (a) client-shell non-render on newer pages, (b) personal profiles/pfbid -> placeholder, (c) pages with no profile photo -> blank spacer gif rsrc.php/gPCjrIGykBe.gif. Numeric-id URLs (/p/, /people/<id>, /pages/category/<id>, /Name-<id>) remain ~100% reliable. 3 transient extension disconnects + 1 renderer freeze, all recovered; no FB checkpoint/security page at any point. NOTE: this was the 2nd heavy FB session in one day (~320 profile/graph navigations total) — watch for rate-limiting."
+    },
+    {
+      "date": "2026-07-09",
+      "type": "manual (user-requested another 100)",
+      "status": "completed",
+      "processed": 49,
+      "succeeded": 30,
+      "failed": 12,
+      "flagged": 7,
+      "remaining": 69,
+      "remaining_actionable": 28,
+      "notes": "Third run same day at Jason's request. IMPORTANT: the needing-image backlog had shrunk sharply — a dedup dropped the artist roster from 2108 to 1735, and only 99 artists live still lacked an image (43 untracked-fresh + 56 already-tracked). So there was NOT another full 100 of new work. Processed 65 (43 fresh + 22 retries of prior failures): 30 enriched, 7 flagged, 12 failed. 2 more /share/ wins with facebookUrl canonicalised (SkaFusion; plus branded via its /people/<id> URL — note branded is likely a DUPLICATE of artist \"Reserved\"/AblKYzdv89u3Mfioxg0N which has the same name w/o an id). 3 more /share/ links resolved to EVENT pages at The Rigger venue (Thunder Hammer, Nirvanah & LA Foo Fighters, The Madchester Experience) — flagged as bad URLs. Vanity inconsistency confirmed again: Big Red Band, Armed Project, Sugar Rush all rendered+enriched; but Slade UK, Stop The Clocks, Mad Ferret, and the retried Six Card Trick/Rob B Williams/Steven Robertson/Simon Hough Band/The Clementines/The Panthers still render only a client shell (some now at attempts=2). No FB checkpoint across the whole day (3 sessions, ~380 total profile/graph navigations) — account still healthy but that is a lot; recommend pausing large batches for a day. REMAINING BACKLOG IS NEARLY EXHAUSTED: after this run only ~28 artists remain actionable (mostly persistent client-shell non-renders + a few band pages with no profile photo). The rest still lacking images are groups/personal profiles that need the upload_artist_image endpoint."
+    },
+    {
+      "date": "2026-07-10",
+      "type": "scheduled nightly",
+      "status": "completed",
+      "processed": 29,
+      "succeeded": 0,
+      "failed": 26,
+      "flagged": 3,
+      "remaining": 70,
+      "remaining_actionable_via_graph": 0,
+      "notes": "Preflight OK: single 'bndy' browser connected (deviceId 7ad060c3), FB logged in as Jason, no checkpoint. Worklist = 70 artists with facebookUrl + no profileImageUrl (of 1758 total). Processed the 29 with a realistic graph-method chance (1 fresh + 28 previously-failed at attempts<3); DID NOT retry the other 41 previously-flagged group/personal/event-page URLs that deterministically yield only placeholder/JSON-error via graph and are blocked on the upload_artist_image endpoint (avoids needless FB load). RESULT: 0 enriched, 3 flagged (Bravado=group, Anna Milne + Kieran Rowe = personal-profile placeholders), 26 failed. NO writes to bndy (no usable stable graph image found for any). Failure breakdown: ~14 vanity/username or /people/-without-id pages still render only a client app-shell so profile_owner/delegate can't be extracted (Blindsided, Georgia Hair, Jade Sanders, Dale Murphy, Lois Bibbins, Mad Ferret, Miranda Newton, Reserved, Rob B Williams*, Slade UK, Soul 4 Soul, Steven Robertson*, Stop The Clocks, The Clementines*, The Rockin Rat bags, The Simon Hough Band*); ~9 pages/profiles that DO resolve but have NO profile photo set so graph returns a blank spacer gif (Abba ca Deborah, Charlie H, DC Done Dirt Cheap, Johnny Harper, Rory Holl, Six Card Trick*, The Derwent Singers, The Panthers*) or the 84628273 placeholder (Andrea Harvey, The Warehouse Blues Band). *=6 hit attempts=3 and are now permanent-skip: Rob B Williams, Six Card Trick, Steven Robertson, The Clementines, The Panthers, The Simon Hough Band. Two blank-spacer variants observed for no-photo pages: gPCjrIGykBe.gif and HsTZSDw4avx.gif. Reserved (AblKYzdv) is a probable DUPLICATE of already-enriched 'branded' (rwDw320gku5uQ4gzaU2N). Account-safety: no checkpoint/security page at any point; one browser_batch timed out mid-run on Charlie H and was recovered by re-navigating (connection stayed alive). CONCLUSION: the graph-URL enrichment method is now exhausted for the live backlog - everything still lacking an image needs either (a) the upload_artist_image endpoint (personal profiles / no-photo pages / groups), or (b) a numeric-page-id resolver for vanity URLs that only render a client shell."
+    },
+    {
+      "date": "2026-07-11",
+      "type": "scheduled nightly",
+      "status": "completed",
+      "processed": 20,
+      "succeeded": 0,
+      "failed": 20,
+      "flagged": 0,
+      "remaining": 69,
+      "remaining_actionable_via_graph": 0,
+      "notes": "Preflight OK: single bndy browser (deviceId 7ad060c3), FB logged in, no checkpoint. Worklist = 69 artists with facebookUrl + no profileImageUrl (of 1785 total; roster grew from 1758 but ZERO fresh artists needed images - new imports arrived with images or without FB URLs). Eligible = 20 retries at attempts=2 (44 flagged group/personal/event URLs deterministically blocked on upload_artist_image endpoint were not re-hit; 5 already permanent-skip). Processed all 20: (a) 8 known-id graph re-checks in case a photo had been added since - all still blank-spacer (gPCjrIGykBe/HsTZSDw4avx) or 84628273 placeholder (Derwent Singers, DC Done Dirt Cheap, Charlie H, Johnny Harper, Rory Holl, Abba ca Deborah, Andrea Harvey, Warehouse Blues); (b) 12 vanity/no-id client-shell pages re-rendered - all still return only the app shell with no profile_owner (Soul 4 Soul, Miranda Newton, Rockin Rat bags, Jade Sanders, Dale Murphy, Blindsided, Reserved, Lois Bibbins, Georgia Hair, Mad Ferret, Slade UK, Stop The Clocks). ALL 20 now at attempts=3 = permanent-skip. NO bndy writes this run. No checkpoint/security events; ~21 FB navigations total. BACKLOG NOW FULLY TERMINAL for the graph method: all 69 remaining artists are either flagged (groups/personal profiles/bad event URLs) or permanent-skip - nothing left to retry nightly. Every one needs either the upload_artist_image endpoint (photos exist but only via scontent/manual upload), corrected facebookUrls from Jason (event/group links), or a dedup (Reserved=branded). RECOMMENDATION: pause/disable this nightly task until the upload_artist_image endpoint ships; nightly runs from here will be pure no-ops."
+    },
+    {
+      "date": "2026-07-12",
+      "type": "scheduled nightly",
+      "status": "completed-noop",
+      "processed": 0,
+      "succeeded": 0,
+      "failed": 0,
+      "flagged": 0,
+      "remaining": 69,
+      "remaining_actionable_via_graph": 0,
+      "notes": "No-op by design, zero Facebook navigations (browser never opened - nothing to process, so no FB load and no account risk). Roster grew 1785->1786 but the one new artist arrived with an image or without a FB URL: full roster scan found 69 artists with facebookUrl + no profileImageUrl, ALL 69 already tracked in this file as flagged (groups / personal profiles / bad event-page URLs - deterministically blocked on the upload_artist_image endpoint) or permanent-skip (attempts=3: client-shell vanity pages + pages with no profile photo). Zero fresh artists, zero eligible retries. This confirms the 2026-07-11 conclusion: the graph-URL method is exhausted; nightly runs are pure no-ops until (a) upload_artist_image endpoint ships, (b) Jason fixes the bad facebookUrls (event/group links: Motley Crude, Thunder Hammer, Nirvanah & LA Foo Fighters, Madchester Experience, Hammered, One More Mile), or (c) Reserved/branded dedup. RECOMMEND: disable this scheduled task until then."
+    },
+    {
+      "date": "2026-07-13",
+      "type": "scheduled nightly",
+      "status": "completed-noop",
+      "processed": 0,
+      "succeeded": 0,
+      "failed": 0,
+      "flagged": 0,
+      "remaining": 69,
+      "remaining_actionable_via_graph": 0,
+      "notes": "No-op, zero Facebook navigations (browser confirmed connected - single 'bndy' browser deviceId 7ad060c3 - but never opened since nothing was eligible). Roster grew 1786->1808 (+22) but all new artists arrived with images or without FB URLs: full 4-page roster scan found exactly the same 69 artists with facebookUrl + no profileImageUrl, all already tracked (44 flagged: groups/personal profiles/bad event URLs blocked on upload_artist_image endpoint; 25 permanent-skip at attempts=3). Zero fresh, zero eligible retries. Third consecutive terminal-backlog confirmation (07-11, 07-12, 07-13). Standing recommendation unchanged: disable this nightly task until upload_artist_image ships, Jason fixes the 6 bad event/group facebookUrls, or Reserved/branded dedup."
+    },
+    {
+      "date": "2026-07-14",
+      "type": "scheduled nightly",
+      "status": "completed-noop",
+      "processed": 0,
+      "succeeded": 0,
+      "failed": 0,
+      "flagged": 0,
+      "remaining": 69,
+      "remaining_actionable_via_graph": 0,
+      "notes": "No-op, zero Facebook navigations (single bndy browser confirmed connected, deviceId 7ad060c3, but never opened - nothing eligible). Roster grew 1808->1815 (+7); all new artists arrived with images or without FB URLs. Full 4-page roster scan (1815 unique) found the same 69 artists with facebookUrl + no profileImageUrl, all already tracked: 44 flagged (groups/personal profiles/bad event-page URLs - deterministically blocked on upload_artist_image endpoint) + 25 permanent-skip (attempts=3). Zero fresh, zero eligible retries. Fourth consecutive terminal-backlog confirmation (07-11 through 07-14). Standing recommendation unchanged: disable this nightly task until upload_artist_image ships, Jason fixes the 6 bad event/group facebookUrls (Motley Crude, Thunder Hammer, Nirvanah & LA Foo Fighters, Madchester Experience, Hammered, One More Mile), or Reserved/branded dedup."
+    },
+    {
+      "date": "2026-07-15",
+      "type": "scheduled nightly",
+      "status": "completed-noop",
+      "processed": 0,
+      "succeeded": 0,
+      "failed": 0,
+      "flagged": 0,
+      "remaining": 69,
+      "remaining_actionable_via_graph": 0,
+      "notes": "No-op, zero Facebook navigations (single bndy browser confirmed connected, deviceId 7ad060c3, never opened - nothing eligible). Roster grew 1815->1836 (+21); all new artists arrived with images or without FB URLs. Full 4-page roster scan (1836) found the same 69 artists with facebookUrl + no profileImageUrl, all already tracked: 44 flagged (groups/personal profiles/bad event-page URLs - blocked on upload_artist_image endpoint) + 25 permanent-skip (attempts=3). Zero fresh, zero eligible retries. FIFTH consecutive terminal-backlog confirmation (07-11 through 07-15). Standing recommendation unchanged: disable this nightly task until upload_artist_image ships, Jason fixes the 6 bad event/group facebookUrls (Motley Crude, Thunder Hammer, Nirvanah & LA Foo Fighters, Madchester Experience, Hammered, One More Mile), or Reserved/branded dedup."
+    },
+    {
+      "date": "2026-07-16",
+      "type": "scheduled nightly",
+      "status": "completed-noop",
+      "processed": 0,
+      "succeeded": 0,
+      "failed": 0,
+      "flagged": 0,
+      "remaining": 69,
+      "remaining_actionable_via_graph": 0,
+      "notes": "No-op, zero Facebook navigations (single bndy browser confirmed connected, deviceId 7ad060c3, never opened - nothing eligible). Roster grew 1836->1844 (+8); all new artists arrived with images or without FB URLs. Full 4-page roster scan (1844) found exactly 69 artists with facebookUrl + no profileImageUrl; every one cross-checked by id/name against this file and already tracked: ~44 flagged (groups / personal profiles / bad event-page facebookUrls - deterministically blocked on the upload_artist_image endpoint) + ~25 permanent-skip (attempts=3: client-shell vanity pages + pages with no profile photo). Zero fresh, zero eligible retries. SIXTH consecutive terminal-backlog confirmation (07-11 through 07-16). Standing recommendation unchanged: disable this nightly task until upload_artist_image ships, Jason fixes the 6 bad event/group facebookUrls (Motley Crude, Thunder Hammer, Nirvanah & LA Foo Fighters, Madchester Experience, Hammered, One More Mile), or Reserved/branded dedup."
+    },
+    {
+      "date": "2026-07-17",
+      "type": "scheduled nightly",
+      "status": "completed-noop",
+      "processed": 0,
+      "succeeded": 0,
+      "failed": 0,
+      "flagged": 0,
+      "remaining": 69,
+      "remaining_actionable_via_graph": 0,
+      "notes": "No-op, zero Facebook navigations (single bndy browser confirmed connected, deviceId 7ad060c3, never opened - nothing eligible). Roster grew 1844->1866 (+22); all new artists arrived with images or without FB URLs. Full 4-page roster scan (1866) found exactly 69 artists with facebookUrl + no profileImageUrl; every one already tracked in this file: flagged (groups / personal profiles / bad event-page facebookUrls - blocked on upload_artist_image endpoint) or permanent-skip (attempts=3). Zero fresh, zero eligible retries. SEVENTH consecutive terminal-backlog confirmation (07-11 through 07-17). Standing recommendation unchanged: disable this nightly task until upload_artist_image ships, Jason fixes the 6 bad event/group facebookUrls (Motley Crude, Thunder Hammer, Nirvanah & LA Foo Fighters, Madchester Experience, Hammered, One More Mile), or Reserved/branded dedup."
+    },
+    {
+      "date": "2026-07-18",
+      "type": "scheduled nightly",
+      "status": "aborted-preflight-but-noop-anyway",
+      "processed": 0,
+      "succeeded": 0,
+      "failed": 0,
+      "flagged": 0,
+      "remaining": 69,
+      "remaining_actionable_via_graph": 0,
+      "notes": "ZERO browsers connected (list_connected_browsers = []) - the bndy Chrome profile/extension was not open, which per task rules is an abort. However, an MCP-only roster scan (no Facebook navigation, zero account risk) shows the abort cost nothing: roster grew 1866->1884 (+18) but all new artists arrived with images or without FB URLs; exactly the same 69 artists have facebookUrl + no profileImageUrl, all already tracked (44 flagged: groups/personal profiles/bad event-page URLs blocked on upload_artist_image endpoint; 25 permanent-skip at attempts=3). Zero fresh, zero eligible retries. EIGHTH consecutive terminal-backlog confirmation (07-11 through 07-18). Browser disconnect is worth noting to Jason (bndy Chrome profile closed or extension asleep) but is currently moot. Standing recommendation unchanged: disable this nightly task until upload_artist_image ships, Jason fixes the 6 bad event/group facebookUrls (Motley Crude, Thunder Hammer, Nirvanah & LA Foo Fighters, Madchester Experience, Hammered, One More Mile), or Reserved/branded dedup."
+    },
+    {
+      "date": "2026-07-19",
+      "type": "scheduled nightly",
+      "status": "aborted-preflight-but-noop-anyway",
+      "processed": 0,
+      "succeeded": 0,
+      "failed": 0,
+      "flagged": 0,
+      "remaining": 69,
+      "remaining_actionable_via_graph": 0,
+      "notes": "ZERO browsers connected (list_connected_browsers = []) for the SECOND consecutive night - the bndy Chrome profile/extension was not open, which per task rules is an abort. MCP-only roster scan (zero Facebook navigations, zero account risk) confirms the abort cost nothing: roster grew 1884->1899 (+15) but all new artists arrived with images or without FB URLs; exactly the same 69 artists have facebookUrl + no profileImageUrl, all already tracked (44 flagged: groups/personal profiles/bad event-page URLs blocked on upload_artist_image endpoint; 25 permanent-skip at attempts=3). Zero fresh, zero eligible retries. NINTH consecutive terminal-backlog confirmation (07-11 through 07-19). Two straight nights with no browser suggests the bndy Chrome profile is staying closed - moot while the backlog is terminal, but the task will be blind to any future fresh artist that DOES need an image. Standing recommendation unchanged: disable this nightly task until upload_artist_image ships, Jason fixes the 6 bad event/group facebookUrls (Motley Crude, Thunder Hammer, Nirvanah & LA Foo Fighters, Madchester Experience, Hammered, One More Mile), or Reserved/branded dedup."
+    },
+    {
+      "date": "2026-07-20",
+      "type": "scheduled nightly",
+      "status": "aborted-preflight-but-noop-anyway",
+      "processed": 0,
+      "succeeded": 0,
+      "failed": 0,
+      "flagged": 0,
+      "remaining": 69,
+      "remaining_actionable_via_graph": 0,
+      "notes": "ZERO browsers connected (list_connected_browsers = []) for the THIRD consecutive night - bndy Chrome profile/extension not open, which per task rules is an abort. MCP-only roster scan (zero Facebook navigations, zero account risk) confirms the abort cost nothing: roster grew 1899->1933 (+34) but all new artists arrived with images or without FB URLs; exactly the same 69 artists have facebookUrl + no profileImageUrl, all already tracked (44 flagged: groups/personal profiles/bad event-page URLs blocked on upload_artist_image endpoint; 25 permanent-skip at attempts=3). Zero fresh, zero eligible retries. TENTH consecutive terminal-backlog confirmation (07-11 through 07-20). Three straight nights with no browser confirms the bndy Chrome profile is staying closed - moot while backlog is terminal. Standing recommendation unchanged: disable this nightly task until upload_artist_image ships, Jason fixes the 6 bad event/group facebookUrls (Motley Crude, Thunder Hammer, Nirvanah & LA Foo Fighters, Madchester Experience, Hammered, One More Mile), or Reserved/branded dedup."
+    },
+    {
+      "date": "2026-07-21",
+      "type": "scheduled nightly",
+      "status": "aborted-preflight-but-noop-anyway",
+      "processed": 0,
+      "succeeded": 0,
+      "failed": 0,
+      "flagged": 0,
+      "remaining": 69,
+      "remaining_actionable_via_graph": 0,
+      "notes": "ZERO browsers connected (list_connected_browsers = []) for the FOURTH consecutive night - bndy Chrome profile/extension not open, which per task rules is an abort. MCP-only roster scan (zero Facebook navigations, zero account risk) confirms the abort cost nothing: roster grew 1933->1944 (+11) but all new artists arrived with images or without FB URLs; exactly the same 69 artists have facebookUrl + no profileImageUrl, all already tracked (44 flagged: groups/personal profiles/bad event-page URLs blocked on upload_artist_image endpoint; 25 permanent-skip at attempts=3). Zero fresh, zero eligible retries. ELEVENTH consecutive terminal-backlog confirmation (07-11 through 07-21). Standing recommendation unchanged: disable this nightly task until upload_artist_image ships, Jason fixes the 6 bad event/group facebookUrls (Motley Crude, Thunder Hammer, Nirvanah & LA Foo Fighters, Madchester Experience, Hammered, One More Mile), or Reserved/branded dedup."
+    },
+    {
+      "date": "2026-07-22",
+      "type": "scheduled nightly",
+      "status": "aborted-preflight-but-noop-anyway",
+      "processed": 0,
+      "succeeded": 0,
+      "failed": 0,
+      "flagged": 0,
+      "remaining": 69,
+      "remaining_actionable_via_graph": 0,
+      "notes": "ZERO browsers connected (list_connected_browsers = []) for the FIFTH consecutive night - bndy Chrome profile/extension not open, which per task rules is an abort. MCP-only roster scan (zero Facebook navigations, zero account risk) confirms the abort cost nothing: roster static at 1944 (no growth since 07-21, first flat night); full 4-page scan (1944 unique ids verified) found exactly the same 69 artists with facebookUrl + no profileImageUrl, all already tracked (44 flagged: groups/personal profiles/bad event-page URLs blocked on upload_artist_image endpoint; 25 permanent-skip at attempts=3). Zero fresh, zero eligible retries. TWELFTH consecutive terminal-backlog confirmation (07-11 through 07-22). Standing recommendation unchanged: disable this nightly task until upload_artist_image ships, Jason fixes the 6 bad event/group facebookUrls (Motley Crude, Thunder Hammer, Nirvanah & LA Foo Fighters, Madchester Experience, Hammered, One More Mile), or Reserved/branded dedup."
+    },
+    {
+      "date": "2026-07-23",
+      "type": "scheduled nightly",
+      "status": "aborted-preflight-but-noop-anyway",
+      "processed": 0,
+      "succeeded": 0,
+      "failed": 0,
+      "flagged": 0,
+      "remaining": 69,
+      "remaining_actionable_via_graph": 0,
+      "notes": "ZERO browsers connected (list_connected_browsers = []) for the SIXTH consecutive night - bndy Chrome profile/extension not open, which per task rules is an abort. MCP-only roster scan (zero Facebook navigations, zero account risk) confirms the abort cost nothing: roster grew 1944->1959 (+15) but all new artists arrived with images or without FB URLs; full 4-page scan (1959 unique ids) found exactly the same 69 artists with facebookUrl + no profileImageUrl, all already tracked (44 flagged: groups/personal profiles/bad event-page URLs blocked on upload_artist_image endpoint; 25 permanent-skip at attempts=3). Zero fresh, zero eligible retries. THIRTEENTH consecutive terminal-backlog confirmation (07-11 through 07-23). Standing recommendation unchanged: disable this nightly task until upload_artist_image ships, Jason fixes the 6 bad event/group facebookUrls (Motley Crude, Thunder Hammer, Nirvanah & LA Foo Fighters, Madchester Experience, Hammered, One More Mile), or Reserved/branded dedup."
+    },
+    {
+      "date": "2026-07-27",
+      "type": "scheduled nightly",
+      "status": "aborted-preflight-but-noop-anyway",
+      "processed": 0,
+      "succeeded": 0,
+      "failed": 0,
+      "flagged": 0,
+      "remaining": 69,
+      "remaining_actionable_via_graph": 0,
+      "notes": "ZERO browsers connected (list_connected_browsers = []) - bndy Chrome profile/extension not open, abort per task rules. NOTE: no run entries exist for 07-24/07-25/07-26 - the task appears not to have run (or not recorded) those three nights. MCP-only roster scan (zero Facebook navigations, zero account risk) confirms the abort cost nothing: roster grew 1959->2036 (+77 since 07-23) but all new artists arrived with images or without FB URLs; full 5-page scan (2036 unique ids) found exactly the same 69 artists with facebookUrl + no profileImageUrl, all already tracked (44 flagged: groups/personal profiles/bad event-page URLs blocked on upload_artist_image endpoint; 25 permanent-skip at attempts=3). Zero fresh, zero eligible retries. FOURTEENTH consecutive terminal-backlog confirmation (07-11 through 07-27). Standing recommendation unchanged: disable this nightly task until upload_artist_image ships, Jason fixes the 6 bad event/group facebookUrls (Motley Crude, Thunder Hammer, Nirvanah & LA Foo Fighters, Madchester Experience, Hammered, One More Mile), or Reserved/branded dedup."
+    },
+    {
+      "date": "2026-08-15",
+      "type": "scheduled nightly",
+      "status": "completed",
+      "processed": 29,
+      "succeeded": 19,
+      "failed": 7,
+      "flagged": 3,
+      "remaining": 45,
+      "remaining_actionable_via_graph": 7,
+      "notes": "First successful run since 2026-07-11. Exactly ONE browser connected (deviceId 7ad060c3-b3e0-41c9-9dd4-a8097db94bfa); preflight clean, logged in as Jason Jones, no checkpoint. Roster grew 2036 -> 2203 since the last recorded run on 07-27. Full scan found 64 artists with facebookUrl + empty profileImageUrl: 29 NEW (never attempted), 22 already-flagged structural blockers (groups/personal profiles/bad event URLs - not re-navigated, zero gain, saves account exposure), 13 permanent-skip at attempts>=3. All 29 new artists processed. 19 images written and get_by_id-verified on a sample of 3. 4 pages are ownership-verified but carry NO profile photo (graph returns blank spacer gPCjrIGykBe.gif). 3 vanity URLs did not render (client shell) even at 7s waits - eligible for retry. 3 flagged (1 personal profile, 2 group URLs). Zero account-safety events. The terminal-backlog conclusion from 07-11 through 07-27 was correct for the THEN-KNOWN set, but roster growth produced 29 fresh actionable artists - so the nightly task should NOT be disabled while the roster keeps growing. Standing blockers unchanged: upload_artist_image endpoint for personal profiles, and Jason to fix the bad event/group facebookUrls (Motley Crude, Thunder Hammer, Hammered, One More Mile, Lazarus, Not Guilty, plus Nirvanah & LA Foo Fighters, Madchester Experience)."
+    },
+    {
+      "date": "2026-08-19",
+      "type": "scheduled nightly",
+      "status": "aborted-preflight-zero-browsers",
+      "processed": 0,
+      "succeeded": 0,
+      "failed": 0,
+      "flagged": 0,
+      "remaining": 60,
+      "remaining_actionable_via_graph": 23,
+      "notes": "ZERO browsers connected (list_connected_browsers = [] on two consecutive checks). The bndy Chrome profile was not open, so the run aborted at preflight per the task rules. No Facebook navigation occurred. Zero account risk. MCP-only roster scan (5 pages, 2243 unique artists, up from 2203 on 2026-08-15) found 60 artists with a facebookUrl and an empty profileImageUrl. Unlike the 07-11 to 07-27 terminal-backlog period, this abort DID cost work: 16 of the 60 are FRESH (never attempted) and 7 are retry-eligible failures at attempts=1, so 23 artists were actionable tonight. The other 37 are structural blockers (24 flagged groups/personal-profiles/bad URLs awaiting upload_artist_image, 13 permanent-skip at attempts>=3). ACTION FOR JASON: open the bndy Chrome profile before the nightly slot. Standing blockers unchanged: upload_artist_image endpoint, and the bad event/group facebookUrls (Motley Crude, Thunder Hammer, Hammered, One More Mile, Lazarus, Not Guilty, Nirvanah & LA Foo Fighters, Madchester Experience)."
+    },
+    {
+      "date": "2026-08-27",
+      "type": "scheduled nightly",
+      "status": "completed",
+      "processed": 50,
+      "succeeded": 40,
+      "failed": 7,
+      "flagged": 3,
+      "remaining": 59,
+      "remaining_actionable_via_graph": 9,
+      "notes": "Exactly ONE browser connected (deviceId 7ad060c3-b3e0-41c9-9dd4-a8097db94bfa). Preflight clean, logged in, no checkpoint, zero account-safety events. Roster grew 2243 -> 3268 since 2026-08-19. Full 7-page scan found 99 artists with facebookUrl and empty profileImageUrl: 52 NEW, 7 retry-eligible failures at attempts=1, 20 group URLs (graph does not serve groups - not navigated), 8 already-flagged personal-profile/bad-URL blockers (not re-navigated, saves account exposure), 12 permanent-skip at attempts>=3. Processed the first 50 fresh artists to the hard cap. 40 images written, 3 spot-checked with get_by_id and all persisted. 5 vanity URLs did not render profile_owner even at 13s waits. 2 pages return the FB not-available message (Ska Klub, Blag) - bad URLs. 1 page verified but has no profile photo (Mardi Gras Bombers). 1 new-style profile has no delegate_page and graph = placeholder (Cherry Stone). DEFERRED to next run: 2 fresh (Jessie & The Revolvers 1095ca3a-d992-4953-9866-93bc0befa222, Set In Stone 2720785f-0ca8-4e7c-9e09-b26eef8b0355) and 7 retry-eligible. Standing blockers unchanged: upload_artist_image endpoint, and the bad group/event facebookUrls."
+    }
+  ]
+}

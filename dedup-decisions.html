@@ -1,0 +1,162 @@
+<!doctype html><meta charset=utf-8><title>bndy dedup — decisions</title>
+<style>
+body{font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;max-width:1000px;margin:24px auto;padding:0 16px;color:#222;line-height:1.4}
+h1{font-size:22px} h2{margin-top:32px;border-bottom:2px solid #eee;padding-bottom:6px}
+.grp{border:1px solid #e3e3e3;border-radius:8px;padding:12px 16px;margin:14px 0;background:#fafafa}
+.grp h3{margin:0 0 6px} .why{margin:2px 0;color:#555;font-size:13px}
+.rec{margin:6px 0;padding:6px 10px;background:#fff;font-size:14px}
+table{border-collapse:collapse;width:100%;margin-top:8px;font-size:13px;background:#fff}
+th,td{border:1px solid #e0e0e0;padding:5px 8px;text-align:left} th{background:#f0f0f0}
+td.id{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px}
+.note{color:#777;font-size:12px}
+</style>
+<h1>bndy duplicate-artist decisions — 20 groups I did NOT auto-merge</h1>
+<p class=note>Snapshot from this morning's data. I merged the 100 clear groups; these 20 were too risky to merge automatically. Decide each in Backstage. *Gig counts are from the morning snapshot and may differ slightly now.</p>
+<h2>Section A — Same name, different region / common word (13 groups)</h2>
+<p class=note>These could be genuinely different bands. Red = probably keep separate; orange = verify first; purple = "acts of one artist" decision.</p>
+<div class="grp"><h3>The Ant Hill Mob</h3>
+<p class="why"><b>Why held:</b> distinct regions ['BURTON', 'NW']</p>
+<p class="rec" style="border-left:4px solid #c0392b"><b>Recommendation:</b> <span style="color:#c0392b;font-weight:700">KEEP SEPARATE (likely different acts)</span> — Burton-upon-Trent vs Northwich are ~2hrs apart — probably two different bands sharing a name.</p>
+<table><tr><th>Record ID (find in Backstage)</th><th>Name</th><th>Location</th><th>Gigs*</th><th>Facebook</th><th>Created</th></tr>
+<tr><td class="id">63d3f78c-f1f3-45f8-8b96-ad2308f65038</td><td>The Ant Hill Mob</td><td>Northwich</td><td>14</td><td>Yes</td><td>2026-05-03</td></tr>
+<tr><td class="id">8bc112d4-d464-4602-8df7-c1ec7dd6f8d1</td><td>The Ant Hill Mob</td><td>Burton upon Trent</td><td>9</td><td>Yes</td><td>2026-06-11</td></tr>
+</table></div>
+<div class="grp"><h3>Trilogy Rock Band</h3>
+<p class="why"><b>Why held:</b> distinct regions ['NW', 'STAFFS']</p>
+<p class="rec" style="border-left:4px solid #e67e22"><b>Recommendation:</b> <span style="color:#e67e22;font-weight:700">CHECK</span> — You already picked keeper XJ2gV4… earlier. Records span NW vs Staffs — confirm they are the same band before merging.</p>
+<table><tr><th>Record ID (find in Backstage)</th><th>Name</th><th>Location</th><th>Gigs*</th><th>Facebook</th><th>Created</th></tr>
+<tr><td class="id">XJ2gV4N1qIe6vK2R562Q</td><td>Trilogy Rock Band</td><td>North West UK</td><td>21</td><td>Yes</td><td>2025-02-14</td></tr>
+<tr><td class="id">a6b1adbc-8201-4934-a1ba-55f8ce5dfb69</td><td>Trilogy Rock Band</td><td>North Staffordshire UK</td><td>1</td><td>Yes</td><td>2026-07-02</td></tr>
+</table></div>
+<div class="grp"><h3>Undercover / Undercover Band</h3>
+<p class="why"><b>Why held:</b> distinct regions ['NE', 'SUSSEX']</p>
+<p class="rec" style="border-left:4px solid #c0392b"><b>Recommendation:</b> <span style="color:#c0392b;font-weight:700">KEEP SEPARATE (likely different acts)</span> — North East vs Sussex — almost certainly two different acts.</p>
+<table><tr><th>Record ID (find in Backstage)</th><th>Name</th><th>Location</th><th>Gigs*</th><th>Facebook</th><th>Created</th></tr>
+<tr><td class="id">a25b2473-1190-4132-a94b-6c5cd1390377</td><td>Undercover Band</td><td>Sussex</td><td>12</td><td>Yes</td><td>2026-05-03</td></tr>
+<tr><td class="id">8573e476-7041-48c4-975b-e8651e01f9f0</td><td>Undercover Band</td><td>North East England</td><td>7</td><td>Yes</td><td>2026-04-28</td></tr>
+<tr><td class="id">cc5866fa-57f7-42a4-8786-624fa31d0d0e</td><td>Undercover</td><td>Test</td><td>1</td><td>—</td><td>2026-06-15</td></tr>
+</table></div>
+<div class="grp"><h3>The VANZ Band / The Vanz / VANZ Acoustic Duo</h3>
+<p class="why"><b>Why held:</b> multiple ACTS incl. Roxx — Jason to direct (ADR-023)</p>
+<p class="rec" style="border-left:4px solid #8e44ad"><b>Recommendation:</b> <span style="color:#8e44ad;font-weight:700">DECIDE ACT MODEL</span> — Band / Duo / Acoustic are different ACTS of one artist "Vanz". Merge into one artist and record the act in the event title, OR keep separate — your call.</p>
+<table><tr><th>Record ID (find in Backstage)</th><th>Name</th><th>Location</th><th>Gigs*</th><th>Facebook</th><th>Created</th></tr>
+<tr><td class="id">RebslDBF2zQheg8BFZU1</td><td>The VANZ Band</td><td>Stoke-on-Trent, UK</td><td>11</td><td>Yes</td><td>2025-02-14</td></tr>
+<tr><td class="id">c7f3a6df-3793-4ffd-a962-897095f2af34</td><td>The Vanz</td><td>Cheshire UK</td><td>3</td><td>Yes</td><td>2026-06-18</td></tr>
+<tr><td class="id">65d370d2-31a7-430a-b571-d0328b38cb0f</td><td>VANZ Acoustic Duo</td><td>Stoke-on-Trent</td><td>2</td><td>Yes</td><td>2026-04-30</td></tr>
+<tr><td class="id">7a16a3b6-ed61-4d0f-8191-1d89fdcf440f</td><td>The Vanz</td><td>Staffordshire UK</td><td>1</td><td>Yes</td><td>2026-07-03</td></tr>
+</table></div>
+<div class="grp"><h3>The Flames</h3>
+<p class="why"><b>Why held:</b> common-word name, no shared venue to confirm</p>
+<p class="rec" style="border-left:4px solid #e67e22"><b>Recommendation:</b> <span style="color:#e67e22;font-weight:700">VERIFY</span> — Common name, no shared venue to confirm. Check Facebook/venues before merging.</p>
+<table><tr><th>Record ID (find in Backstage)</th><th>Name</th><th>Location</th><th>Gigs*</th><th>Facebook</th><th>Created</th></tr>
+<tr><td class="id">b840d474-c280-4cc7-9c3a-a5c57f32d6c7</td><td>The Flames</td><td>North East</td><td>13</td><td>Yes</td><td>2026-01-13</td></tr>
+<tr><td class="id">d2eb61f4-c0b9-4100-9180-fe79739967eb</td><td>The Flames</td><td>North East England UK</td><td>1</td><td>—</td><td>2026-06-24</td></tr>
+</table></div>
+<div class="grp"><h3>ALIBI / Alibi / The Alibi</h3>
+<p class="why"><b>Why held:</b> distinct regions ['HANTS', 'STAFFS']</p>
+<p class="rec" style="border-left:4px solid #c0392b"><b>Recommendation:</b> <span style="color:#c0392b;font-weight:700">KEEP SEPARATE (likely different acts)</span> — Hampshire vs Staffordshire — probably different bands.</p>
+<table><tr><th>Record ID (find in Backstage)</th><th>Name</th><th>Location</th><th>Gigs*</th><th>Facebook</th><th>Created</th></tr>
+<tr><td class="id">bU5hJ1qKaQ6pNLsQ75yg</td><td>Alibi</td><td>—</td><td>9</td><td>Yes</td><td>2025-03-19</td></tr>
+<tr><td class="id">42cb263b-be0c-410d-9c1c-0abdf0d0c972</td><td>ALIBI</td><td>Staffordshire UK</td><td>2</td><td>—</td><td>2026-06-19</td></tr>
+<tr><td class="id">5b07f961-603c-4b17-9967-1e2dd607d52e</td><td>The Alibi</td><td>Hampshire UK</td><td>1</td><td>Yes</td><td>2026-07-02</td></tr>
+</table></div>
+<div class="grp"><h3>The VANZ ROXX / Vanz Roxx</h3>
+<p class="why"><b>Why held:</b> multiple ACTS incl. Roxx — Jason to direct (ADR-023)</p>
+<p class="rec" style="border-left:4px solid #8e44ad"><b>Recommendation:</b> <span style="color:#8e44ad;font-weight:700">DECIDE ACT MODEL</span> — Band / Duo / Acoustic are different ACTS of one artist "Vanz". Merge into one artist and record the act in the event title, OR keep separate — your call.</p>
+<table><tr><th>Record ID (find in Backstage)</th><th>Name</th><th>Location</th><th>Gigs*</th><th>Facebook</th><th>Created</th></tr>
+<tr><td class="id">LI6M6exH6GO5H0s4eXKV</td><td>Vanz Roxx</td><td>—</td><td>4</td><td>Yes</td><td>2025-02-14</td></tr>
+<tr><td class="id">f0eb0a72-1c69-4a78-8c04-ba35b89571a1</td><td>The VANZ ROXX</td><td>Staffordshire UK</td><td>1</td><td>—</td><td>2026-07-02</td></tr>
+</table></div>
+<div class="grp"><h3>The Power 3 / the Power 3</h3>
+<p class="why"><b>Why held:</b> distinct regions ['NW', 'STAFFS']</p>
+<p class="rec" style="border-left:4px solid #c0392b"><b>Recommendation:</b> <span style="color:#c0392b;font-weight:700">KEEP SEPARATE (likely different acts)</span> — NW vs Staffordshire — probably different.</p>
+<table><tr><th>Record ID (find in Backstage)</th><th>Name</th><th>Location</th><th>Gigs*</th><th>Facebook</th><th>Created</th></tr>
+<tr><td class="id">0d1aad43-1561-43d0-9728-d6a5140e6bdd</td><td>the Power 3</td><td>Greater Manchester UK</td><td>2</td><td>—</td><td>2026-06-25</td></tr>
+<tr><td class="id">61f18462-427d-46f5-94d5-ddb91fda04e4</td><td>The Power 3</td><td>Staffordshire UK</td><td>1</td><td>—</td><td>2026-06-26</td></tr>
+</table></div>
+<div class="grp"><h3>Eleventh Hour / The Eleventh Hour</h3>
+<p class="why"><b>Why held:</b> distinct regions ['NW', 'STAFFS']</p>
+<p class="rec" style="border-left:4px solid #c0392b"><b>Recommendation:</b> <span style="color:#c0392b;font-weight:700">KEEP SEPARATE (likely different acts)</span> — NW vs Staffordshire — probably different.</p>
+<table><tr><th>Record ID (find in Backstage)</th><th>Name</th><th>Location</th><th>Gigs*</th><th>Facebook</th><th>Created</th></tr>
+<tr><td class="id">a78ff26e-4fbf-45b0-bbd3-2a8869a7bd42</td><td>The Eleventh Hour</td><td>Stoke-on-Trent</td><td>1</td><td>—</td><td>2026-05-01</td></tr>
+<tr><td class="id">5945e5ef-bdbe-4f7f-b77d-518503dd4d0d</td><td>Eleventh Hour</td><td>Ashton-under-Lyne</td><td>1</td><td>—</td><td>2026-06-05</td></tr>
+</table></div>
+<div class="grp"><h3>Elvis</h3>
+<p class="why"><b>Why held:</b> common-word name, no shared venue to confirm</p>
+<p class="rec" style="border-left:4px solid #e67e22"><b>Recommendation:</b> <span style="color:#e67e22;font-weight:700">VERIFY</span> — Common name (Elvis tributes). Confirm same act before merging.</p>
+<table><tr><th>Record ID (find in Backstage)</th><th>Name</th><th>Location</th><th>Gigs*</th><th>Facebook</th><th>Created</th></tr>
+<tr><td class="id">4c4a49b7-c3d2-4f26-8d10-2cc751af2629</td><td>Elvis</td><td>Hampshire</td><td>1</td><td>—</td><td>2026-05-01</td></tr>
+<tr><td class="id">ba59013f-5d6f-471c-87d5-961bfc524b03</td><td>Elvis</td><td>Hampshire UK</td><td>1</td><td>—</td><td>2026-06-26</td></tr>
+</table></div>
+<div class="grp"><h3>Festival Blues Band / The Festival Blues Band</h3>
+<p class="why"><b>Why held:</b> distinct regions ['NW', 'STAFFS']</p>
+<p class="rec" style="border-left:4px solid #c0392b"><b>Recommendation:</b> <span style="color:#c0392b;font-weight:700">KEEP SEPARATE (likely different acts)</span> — NW vs Staffordshire — probably different.</p>
+<table><tr><th>Record ID (find in Backstage)</th><th>Name</th><th>Location</th><th>Gigs*</th><th>Facebook</th><th>Created</th></tr>
+<tr><td class="id">33b81989-8427-4d2c-b1a4-300338cb5674</td><td>Festival Blues Band</td><td>Greater Manchester UK</td><td>1</td><td>—</td><td>2026-06-25</td></tr>
+<tr><td class="id">cc3d10c4-b53e-42cf-be28-9b25d6761342</td><td>The Festival Blues Band</td><td>Staffordshire UK</td><td>1</td><td>—</td><td>2026-06-26</td></tr>
+</table></div>
+<div class="grp"><h3>Giroscope</h3>
+<p class="why"><b>Why held:</b> common-word name, no shared venue to confirm</p>
+<p class="rec" style="border-left:4px solid #e67e22"><b>Recommendation:</b> <span style="color:#e67e22;font-weight:700">VERIFY</span> — Common-ish name, no shared venue. Confirm before merging.</p>
+<table><tr><th>Record ID (find in Backstage)</th><th>Name</th><th>Location</th><th>Gigs*</th><th>Facebook</th><th>Created</th></tr>
+<tr><td class="id">6272aef0-3792-46a4-bd96-ae63d279ea4e</td><td>Giroscope</td><td>North East</td><td>1</td><td>Yes</td><td>2026-04-28</td></tr>
+<tr><td class="id">907c52ac-1b53-4b79-95ad-3cf9cc740f95</td><td>Giroscope</td><td>North East England UK</td><td>1</td><td>—</td><td>2026-06-20</td></tr>
+</table></div>
+<div class="grp"><h3>Kimmi</h3>
+<p class="why"><b>Why held:</b> distinct regions ['DERBY', 'NE']</p>
+<p class="rec" style="border-left:4px solid #c0392b"><b>Recommendation:</b> <span style="color:#c0392b;font-weight:700">KEEP SEPARATE (likely different acts)</span> — Derbyshire vs North East — probably different.</p>
+<table><tr><th>Record ID (find in Backstage)</th><th>Name</th><th>Location</th><th>Gigs*</th><th>Facebook</th><th>Created</th></tr>
+<tr><td class="id">188d3246-daff-411e-a0d4-e4e68279c04c</td><td>Kimmi</td><td>Derbyshire UK</td><td>1</td><td>—</td><td>2026-07-03</td></tr>
+<tr><td class="id">6f71e4d8-10c5-4bba-8120-6a009ef454dd</td><td>Kimmi</td><td>North East</td><td>0</td><td>Yes</td><td>2026-04-28</td></tr>
+</table></div>
+<h2>Section B — Likely true duplicates, held only because the record is old (7 groups)</h2>
+<p class=note>These matched name + region (the safe merge rule) but the duplicate record predates the 5-week cutoff, so I left them for you. Very likely real duplicates.</p>
+<div class="grp"><h3>Cover-Up</h3>
+<p class="why"><b>Why held:</b> Duplicate record created 2025-03-04 — older than the 5-week safety cutoff.</p>
+<p class="rec" style="border-left:4px solid #27ae60"><b>Recommendation:</b> <span style="color:#27ae60;font-weight:700">MERGE (likely same act)</span> — Same name + same region as the keeper — very likely a true duplicate. Held only because the duplicate record is old (pre-2026). Move its gigs to the keeper, then delete it.</p>
+<table><tr><th>Record ID (find in Backstage)</th><th>Name</th><th>Location</th><th>Gigs*</th><th>Facebook</th><th>Created</th></tr>
+<tr><td class="id">94d715c4-1bad-46f0-8ae7-a2a066eefb21 🡐 most enriched/oldest</td><td>Cover-Up</td><td>Greater Manchester UK</td><td>1</td><td>Yes</td><td>2026-07-02</td></tr>
+<tr><td class="id">FlGRdTlLOoohmiHN91Qd</td><td>The Cover-Up</td><td>Manchester, UK</td><td>0</td><td>Yes</td><td>2025-03-04</td></tr>
+</table></div>
+<div class="grp"><h3>Cry Havoc</h3>
+<p class="why"><b>Why held:</b> Duplicate record created 2025-02-14 — older than the 5-week safety cutoff.</p>
+<p class="rec" style="border-left:4px solid #27ae60"><b>Recommendation:</b> <span style="color:#27ae60;font-weight:700">MERGE (likely same act)</span> — Same name + same region as the keeper — very likely a true duplicate. Held only because the duplicate record is old (pre-2026). Move its gigs to the keeper, then delete it.</p>
+<table><tr><th>Record ID (find in Backstage)</th><th>Name</th><th>Location</th><th>Gigs*</th><th>Facebook</th><th>Created</th></tr>
+<tr><td class="id">f6d49ae6-821a-4302-aa7a-bb83ecedab77 🡐 most enriched/oldest</td><td>Cry Havoc</td><td>Staffordshire UK</td><td>1</td><td>—</td><td>2026-06-22</td></tr>
+<tr><td class="id">7i2ulUrTigX6y4E4Rb5N</td><td>Cry Havoc</td><td>—</td><td>0</td><td>Yes</td><td>2025-02-14</td></tr>
+</table></div>
+<div class="grp"><h3>Foxed Up</h3>
+<p class="why"><b>Why held:</b> Duplicate record created 2025-02-14 — older than the 5-week safety cutoff.</p>
+<p class="rec" style="border-left:4px solid #27ae60"><b>Recommendation:</b> <span style="color:#27ae60;font-weight:700">MERGE (likely same act)</span> — Same name + same region as the keeper — very likely a true duplicate. Held only because the duplicate record is old (pre-2026). Move its gigs to the keeper, then delete it.</p>
+<table><tr><th>Record ID (find in Backstage)</th><th>Name</th><th>Location</th><th>Gigs*</th><th>Facebook</th><th>Created</th></tr>
+<tr><td class="id">4f3a256a-4cd1-4a44-90c1-d7b815572218 🡐 most enriched/oldest</td><td>Foxed Up</td><td>Staffordshire UK</td><td>1</td><td>—</td><td>2026-07-01</td></tr>
+<tr><td class="id">CrQ4HTLAdayQszNaFJp4</td><td>Foxed Up</td><td>—</td><td>0</td><td>Yes</td><td>2025-02-14</td></tr>
+</table></div>
+<div class="grp"><h3>Jack Woodward</h3>
+<p class="why"><b>Why held:</b> Duplicate record created 2025-03-13 — older than the 5-week safety cutoff.</p>
+<p class="rec" style="border-left:4px solid #27ae60"><b>Recommendation:</b> <span style="color:#27ae60;font-weight:700">MERGE (likely same act)</span> — Same name + same region as the keeper — very likely a true duplicate. Held only because the duplicate record is old (pre-2026). Move its gigs to the keeper, then delete it.</p>
+<table><tr><th>Record ID (find in Backstage)</th><th>Name</th><th>Location</th><th>Gigs*</th><th>Facebook</th><th>Created</th></tr>
+<tr><td class="id">ba8eea2a-468b-4f7e-ab36-21289bf7019a 🡐 most enriched/oldest</td><td>Jack Woodward</td><td>Greater Manchester UK</td><td>1</td><td>Yes</td><td>2026-07-02</td></tr>
+<tr><td class="id">KCFSMGtbJfL4TWx5sLk0</td><td>Jack Woodward</td><td>—</td><td>0</td><td>Yes</td><td>2025-03-13</td></tr>
+</table></div>
+<div class="grp"><h3>Jane and the Hurricanes</h3>
+<p class="why"><b>Why held:</b> Duplicate record created 2025-02-14 — older than the 5-week safety cutoff.</p>
+<p class="rec" style="border-left:4px solid #27ae60"><b>Recommendation:</b> <span style="color:#27ae60;font-weight:700">MERGE (likely same act)</span> — Same name + same region as the keeper — very likely a true duplicate. Held only because the duplicate record is old (pre-2026). Move its gigs to the keeper, then delete it.</p>
+<table><tr><th>Record ID (find in Backstage)</th><th>Name</th><th>Location</th><th>Gigs*</th><th>Facebook</th><th>Created</th></tr>
+<tr><td class="id">b644679e-6b0e-4d3a-aedd-996e74849940 🡐 most enriched/oldest</td><td>Jane and the Hurricanes</td><td>Stoke-on-Trent</td><td>1</td><td>Yes</td><td>2026-07-02</td></tr>
+<tr><td class="id">XsZXdNv8vtVtfuuukj1z</td><td>Jane And The Hurricanes</td><td>—</td><td>0</td><td>Yes</td><td>2025-02-14</td></tr>
+</table></div>
+<div class="grp"><h3>Pretty Weeds</h3>
+<p class="why"><b>Why held:</b> Duplicate record created 2026-04-28 — older than the 5-week safety cutoff.</p>
+<p class="rec" style="border-left:4px solid #27ae60"><b>Recommendation:</b> <span style="color:#27ae60;font-weight:700">MERGE (likely same act)</span> — Same name + same region as the keeper — very likely a true duplicate. Held only because the duplicate record is old (pre-2026). Move its gigs to the keeper, then delete it.</p>
+<table><tr><th>Record ID (find in Backstage)</th><th>Name</th><th>Location</th><th>Gigs*</th><th>Facebook</th><th>Created</th></tr>
+<tr><td class="id">f403789c-f79d-4725-92bc-04f048005032 🡐 most enriched/oldest</td><td>Pretty Weeds</td><td>North East England UK</td><td>1</td><td>—</td><td>2026-06-24</td></tr>
+<tr><td class="id">66913800-b073-4209-bc93-1e07d25cc83a</td><td>Pretty Weeds</td><td>North East</td><td>0</td><td>Yes</td><td>2026-04-28</td></tr>
+</table></div>
+<div class="grp"><h3>Rock Machine</h3>
+<p class="why"><b>Why held:</b> Duplicate record created 2026-04-28 — older than the 5-week safety cutoff.</p>
+<p class="rec" style="border-left:4px solid #27ae60"><b>Recommendation:</b> <span style="color:#27ae60;font-weight:700">MERGE (likely same act)</span> — Same name + same region as the keeper — very likely a true duplicate. Held only because the duplicate record is old (pre-2026). Move its gigs to the keeper, then delete it.</p>
+<table><tr><th>Record ID (find in Backstage)</th><th>Name</th><th>Location</th><th>Gigs*</th><th>Facebook</th><th>Created</th></tr>
+<tr><td class="id">57d82136-f425-4067-807d-df98ec07b00a 🡐 most enriched/oldest</td><td>Rock Machine</td><td>North East England UK</td><td>1</td><td>—</td><td>2026-06-26</td></tr>
+<tr><td class="id">d0b995f8-120b-4f7b-9e7b-81cc060cefba</td><td>Rock Machine</td><td>North East</td><td>0</td><td>Yes</td><td>2026-04-28</td></tr>
+</table></div>

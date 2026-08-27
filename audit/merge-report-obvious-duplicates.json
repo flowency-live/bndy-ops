@@ -1,0 +1,37 @@
+{
+  "totalPairs": 4,
+  "succeeded": 4,
+  "failed": 0,
+  "totalEventsRepointed": 1,
+  "artistsDeleted": 4,
+  "details": [
+    {
+      "name": "Wish We Were Pink Floyd",
+      "keeper": "a67b95c5-9393-42bc-a7bc-9e040482ddfc",
+      "duplicate": "44a3f105-d3f2-438d-9277-826e61309d56",
+      "eventsRepointed": 1,
+      "success": true
+    },
+    {
+      "name": "The Inmates",
+      "keeper": "9171ccad-d78d-4c01-9140-5e7fc30df227",
+      "duplicate": "f0c22a3e-28b0-4e84-b110-0faae4f8f75f",
+      "eventsRepointed": 0,
+      "success": true
+    },
+    {
+      "name": "The Zone",
+      "keeper": "2b832e36-e476-4e53-b80f-8f69a4b8ff1a",
+      "duplicate": "0b9c688c-e5b8-4467-8c0a-6da073bfaaa4",
+      "eventsRepointed": 0,
+      "success": true
+    },
+    {
+      "name": "The Zone",
+      "keeper": "2b832e36-e476-4e53-b80f-8f69a4b8ff1a",
+      "duplicate": "cf03302e-bae0-409b-98be-40b3936046d7",
+      "eventsRepointed": 0,
+      "success": true
+    }
+  ]
+}

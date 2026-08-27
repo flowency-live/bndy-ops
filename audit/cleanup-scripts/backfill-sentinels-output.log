@@ -1,0 +1,2951 @@
+
+╔════════════════════════════════════════════════════════════╗
+║  SENTINEL BACKFILL (Final Step Before Enforce Mode)      ║
+╚════════════════════════════════════════════════════════════╝
+
+
+╔════════════════════════════════════════════════════════════╗
+║  Backfill Artist Sentinels                                ║
+╚════════════════════════════════════════════════════════════╝
+
+Scanning artists...
+(node:59528) NOTE: The AWS SDK for JavaScript (v2) has reached end-of-support.
+It will no longer receive updates or releases.
+
+Please migrate your code to use AWS SDK for JavaScript (v3).
+For more information, check the blog post at https://a.co/cUPnyil
+(Use `node --trace-warnings ...` to show where the warning was created)
+  Scanned 1238 total
+  Processed 100/1238 artists...  Processed 200/1238 artists...  Processed 300/1238 artists...  Processed 400/1238 artists...  Processed 500/1238 artists...  Processed 600/1238 artists...  Processed 700/1238 artists...  Processed 800/1238 artists...  Processed 900/1238 artists...  Processed 1000/1238 artists...  Processed 1100/1238 artists...
+⚠️  COLLISION: artist#waltersandbligh#west-midlands
+    Existing: f0e4328e-9f79-4e54-baf0-2374db1869f5
+    Attempted: bf4c443a-6478-4222-8268-483668b67585 (Walters & Bligh - Acoustic Duo)
+  Processed 1200/1238 artists...
+
+
+╔════════════════════════════════════════════════════════════╗
+║  Backfill Venue Sentinels                                 ║
+╚════════════════════════════════════════════════════════════╝
+
+Scanning venues...
+  Scanned 1463 total
+
+⚠️  Missing place_id: Shavington Social Club (b8181b19-bfdf-4c6f-829d-422add0bfd0d)
+
+⚠️  Missing place_id: Urban Social Club (7dafb3ed-52bb-4b6b-91bb-b2bd54bd8ed0)
+
+⚠️  Missing place_id: The Crompton Arms (da02e607-3325-487b-9074-dc9f1b733597)
+
+⚠️  Missing place_id: The Spring Arts & Heritage Centre (fb25e68a-e9a4-4b6e-879f-8f0515f0d558)
+
+⚠️  Missing place_id: The Tavern (ef4a3356-0e1b-4508-a10c-864341034d37)
+
+⚠️  Missing place_id: Cheshire County Show (51fa066f-d3e3-4e0c-9777-b3e2f6b63d2e)
+
+⚠️  Missing place_id: The Princess Royal (n28ZWaM3zIV4kk2HmHdm)
+
+⚠️  Missing place_id: Bird In Hand (d207b6b9-aff0-4c70-8162-997a72ce9a6b)
+
+⚠️  Missing place_id: Melton Mowbray Market (eHgHXMm29YnS99aKNlsF)
+
+⚠️  Missing place_id: The Lodge Inn, Alsager (2bba34d8-a3ea-4e0f-96d0-85e5bad66855)
+
+⚠️  Missing place_id: Railway Inn (82c6dd4e-1f41-4d56-80be-320913edfa66)
+
+⚠️  Missing place_id: The Ship Inn Hoylake (2151c220-6226-4f9f-94ad-ae91df65fc9d)
+
+⚠️  Missing place_id: The Windsor Castle Pub (e5bc5b32-94c2-40c0-bc78-f862140a1722)
+
+⚠️  Missing place_id: The Sugarmill (333e73ff-bdc5-48b7-9821-ce20412e3fee)
+
+⚠️  Missing place_id: Talbot (4zyREUOlIp9XUOKJEyfd)
+
+⚠️  Missing place_id: Kingstone (e73b4582-70d3-49f4-850a-da4f0810491b)
+
+⚠️  Missing place_id: Thatto Heath Social Club (b9575d74-6218-4f00-99e4-a5574437f996)
+
+⚠️  Missing place_id: The Georgian Theatre - Stockton-on-Tees (b6ae5ae0-82be-4f7d-80b5-7ab404e1b66c)
+
+⚠️  Missing place_id: MacSorley's (905e66b3-444b-4d67-a138-71b0c2dcd16b)
+
+⚠️  Missing place_id: Clousden Hill (a1d31424-4293-4187-83b0-5b940b853053)
+
+⚠️  Missing place_id: Millers Bar (e1ff2a4b-123f-483d-92e4-3cae2b027126)
+
+⚠️  Missing place_id: Corporation (92e7d7b1-5381-47ac-b710-0fd86ea591a4)
+
+⚠️  Missing place_id: Lost & Found Knutsford (8bc3921b-1479-4319-94c8-19e399a29a4f)
+
+⚠️  Missing place_id: The Black Lion (ImnGvNQiQeckEIJYVgzu)
+
+⚠️  Missing place_id: The Old Talbot (1d207b95-a84a-46ae-ae4f-2f602f818f48)
+
+⚠️  Missing place_id: Harlescott Social Club (69d330a6-3648-4cad-9b36-fca854dfbb77)
+
+⚠️  Missing place_id: Bridge Tavern (15b27b38-7978-4587-b499-e4fe88ec26bf)
+
+⚠️  Missing place_id: Green Posts (a41ebe6a-8384-40c0-b51d-0c5350d6ec1d)
+
+⚠️  Missing place_id: The Mighty Oak and acorn bistro (50f5fc25-1b00-4a4e-a2c9-a64059e68682)
+
+⚠️  Missing place_id: Durrington Club Ltd (5ca70480-2026-418b-862b-af24cafcaaf2)
+
+⚠️  Missing place_id: The Mason's Arms. (af38954c-a08f-4e3c-b363-fcba7fa23fb9)
+
+⚠️  Missing place_id: Brudenell Social Club (933bd582-63bd-41cc-a9a2-c6e5a874e0d9)
+
+⚠️  Missing place_id: Stags Head (b496a9a2-ccca-4cfb-91c5-718114e83a5b)
+
+⚠️  Missing place_id: Soul Lounge (5988f49c-5839-4340-b557-54f5a6d81306)
+
+⚠️  Missing place_id: Newcastle-under-Lyme Markets (7c9c361b-6e6f-4aed-89e5-16521b007b47)
+
+⚠️  Missing place_id: Cullercoats Crescent Club (e9da36df-ac1a-42bc-bb5f-d1309e0e48e1)
+
+⚠️  Missing place_id: The George & Dragon (80ff4a53-a03b-4bc6-9f5e-3ba2f8e93e91)
+
+⚠️  Missing place_id: Foaming Quart (02987461-f2f9-447f-81eb-ad2ea27815e2)
+
+⚠️  Missing place_id: Stone Cricket Club (020a9f02-b2c6-43cc-aab7-ada9d825b6f8)
+
+⚠️  Missing place_id: Chichester Lakeside Holiday Park (dead359e-fe9a-4e69-941e-0d97c68a6800)
+
+⚠️  Missing place_id: Coal & Cotton (5943cf60-8d6e-4397-9f49-269705e49ffc)
+
+⚠️  Missing place_id: The Ship & Atlantic Bar (f49eee23-7a63-451c-97bd-d9be0b950c3d)
+
+⚠️  Missing place_id: The Bridge Ashbourne (d7ec4455-ea95-4d51-b09f-f8f250bf4cb4)
+
+⚠️  Missing place_id: The Royal British Legion Romford (0249ad6c-8ae4-4c67-a827-65b1cdb990da)
+
+⚠️  Missing place_id: Canal Turn (da9cd940-7f5e-4c85-88b7-f35d125aabea)
+
+⚠️  Missing place_id: Rode Hall Farmer's Market (H1iNyWhCCRjfNm9AoOXW)
+
+⚠️  Missing place_id: The Midland Hotel (f43c6b3e-6136-4fd5-aed7-e9edd290cca1)
+
+⚠️  Missing place_id: Golcar Central Liberal Club (f1005d5f-ce10-4ef6-ae38-c0531d5bbb16)
+
+⚠️  Missing place_id: The 4 Candles (5K1fW8daHwW1f2rKLKHT)
+
+⚠️  Missing place_id: Pavilion Tearoom Burslem Park (38724040-85d8-4c66-9f9c-93a88a6ea53e)
+
+⚠️  Missing place_id: The Black & Grey Morpeth (5ddcadc9-bcbf-42b7-b0df-70461c834c95)
+
+⚠️  Missing place_id: Wilnecote Working Men's Club (7a02952f-b766-4bc8-8f79-3b10e1edd107)
+
+⚠️  Missing place_id: Voodoo Daddy's (573b91e2-0e02-48e2-ba37-a6d8175f80b1)
+
+⚠️  Missing place_id: The Furlong (d186e8da-662f-401f-9b0f-cbae9b63401c)
+
+⚠️  Missing place_id: Meltham Liberal Club (eb417309-b2cc-4d3b-8711-bea6a4635f4e)
+
+⚠️  Missing place_id: Caffi Isa (703e5c76-0f61-45a9-a730-03ede8313020)
+
+⚠️  Missing place_id: Derby Arena (32d35dce-8cf6-4009-a9e4-b0b1f2c234fe)
+
+⚠️  Missing place_id: The Fiveways (eOWh8d34NCrpH4Wi38Tg)
+
+⚠️  Missing place_id: Bulls Head (Umi5WmYPVDwcYw81GIeC)
+
+⚠️  Missing place_id: Portsmouth Guildhall (e842d11a-c768-4504-8c68-d969d7726a09)
+
+⚠️  Missing place_id: The Bradeley (b29f8a04-95b2-4b31-9fd0-a022588c1b85)
+
+⚠️  Missing place_id: Brew (44230894-2215-46e3-846a-6efc20aea891)
+
+⚠️  Missing place_id: The Spirit Run, Distillery & Bar (5965dba4-fd97-499c-b096-de2e262ae506)
+
+⚠️  Missing place_id: Sand Bay Holiday Village (26bd96b6-a136-42d5-8bc1-2b8227165d76)
+
+⚠️  Missing place_id: W P M Sports & Social Club (db9dd035-7cee-42a4-ad23-9976bad2a339)
+
+⚠️  Missing place_id: The Trimmers Arms (721ab3f7-0a17-48ea-b954-1d7bc3ac616f)
+
+⚠️  Missing place_id: Level One L1VE (f324f41b-0e91-42b0-afa7-1dd1b0874142)
+
+⚠️  Missing place_id: Winter Gardens Blackpool (b2644892-01fc-45ad-b883-fb6b20029280)
+
+⚠️  Missing place_id: The Barn At The Mill (b65e8f4f-4b05-427b-86d7-8a02ecf5a7cf)
+
+⚠️  Missing place_id: Billy Bootleggers (60be0eaa-935c-438d-bcbf-2e7518bbab9c)
+
+⚠️  Missing place_id: The Postcard Inn, Holmfirth (145dd066-0e1c-42ba-ae24-6716173d910e)
+
+⚠️  Missing place_id: Royal Telegraph (8a7d81fe-c9a9-47dd-a9fe-beeb3652f49d)
+
+⚠️  Missing place_id: The Royal Oak (3920d000-65b2-47eb-870a-c8aeb0f4df11)
+
+⚠️  Missing place_id: The Hare & Gate (481228e6-2154-4dae-b558-c4ba161046df)
+
+⚠️  Missing place_id: Rose & Crown (Xf3ZDp96kAQpxi8YFCCv)
+
+⚠️  Missing place_id: Stock Dove (Dc3cChyFYIJErgEhZN8T)
+
+⚠️  Missing place_id: The Fox Tavern Gosport (5d1ac9c2-0fb6-46d2-8a1c-6cdbb998d672)
+
+⚠️  Missing place_id: The Globe (0f96c3f0-28f0-462d-9146-a87e890f0fdb)
+
+⚠️  Missing place_id: The Cross (fc4d1d03-2bb4-4693-b0dd-5971d1c8b6cf)
+
+⚠️  Missing place_id: The Moorland Inn (hbXt7haW5QcV06fHixD0)
+
+⚠️  Missing place_id: Angel Inn Durham City (35f04b47-b4ed-4daa-a373-e15810e188cc)
+
+⚠️  Missing place_id: Ambleside Social Club (102dd22f-f222-4079-9f28-cb9469c222f8)
+
+⚠️  Missing place_id: Boaters Bar (5291fd50-2d9a-46cd-bcba-8080a457f7ee)
+
+⚠️  Missing place_id: The Library Tap (7MToyIeLHNX1ubTfLdeP)
+
+⚠️  Missing place_id: The Olde Kings Arms (ed2b35bb-4e6e-4947-98a2-7798fe1e94b0)
+
+⚠️  Missing place_id: Krakatoa (a3f26dc3-564f-429a-af62-6a273357e663)
+
+⚠️  Missing place_id: Kilburn Welfare Social Club (e00e78c1-f7d5-4599-b4b5-0b13119a7fc5)
+
+⚠️  Missing place_id: Steels Social Club (8f6b3a46-4f3e-4d9e-8058-b9d715741515)
+
+⚠️  Missing place_id: NZA (e7611fce-e44a-491f-bcd0-2eb96686e9cf)
+
+⚠️  Missing place_id: The Melton Constable (9911f46d-05a7-41b4-95e1-2b3e78477683)
+
+⚠️  Missing place_id: The Bird In Hand Measham (6c22b62f-efe5-42ce-b4bf-f3d11f5d3761)
+
+⚠️  Missing place_id: The Miners Arms (aFfitaCwifETdUTMEmym)
+
+⚠️  Missing place_id: The Cheshire Cat (hthWXVTnoTUbA0n1F9cx)
+
+⚠️  Missing place_id: The Railway Hotel (GJiOnYlrbURjlpY2tpVq)
+
+⚠️  Missing place_id: Strange Brew (b1e45b56-75d5-4c49-9f9f-1c6d3b4e9a6a)
+
+⚠️  Missing place_id: Prince of Wales (b3df15fe-ca88-4616-b5ad-efc427a20b82)
+
+⚠️  Missing place_id: The Old Masons (256771f9-d8b3-4006-9deb-c27377dcd264)
+
+⚠️  Missing place_id: Colne Legion Club (901636d2-6d1f-4f25-9b13-d8d59a8139c8)
+
+⚠️  Missing place_id: The White Swan at Ockbrook (f59063b6-8f74-488b-a6fc-42a6d46ba1ba)
+
+⚠️  Missing place_id: The Wheatsheaf Inn (c27afa1e-ed55-4d8d-9d86-036f4940596c)
+
+⚠️  Missing place_id: The Westleigh (11fbe3bb-6798-4c30-b34e-2b999648ac01)
+
+⚠️  Missing place_id: Buffers (a55d8fd3-bc60-4979-ad7e-bb5d75a4b09c)
+
+⚠️  Missing place_id: Pegswood & District Social Club (0643592d-7365-4413-8310-58f1d4ddee29)
+
+⚠️  Missing place_id: The Glebe Stoke (4846f276-39bc-409e-8e6c-fb0802cf4d50)
+
+⚠️  Missing place_id: Hoplab (a76969c6-6dfd-4284-8f3d-e1f224abbbef)
+
+⚠️  Missing place_id: Derby Market Hall (433c3066-9132-43b8-a3fc-fde38c7afcc5)
+
+⚠️  Missing place_id: Lochside (07023f91-eb33-4781-9f02-1fb176218a93)
+
+⚠️  Missing place_id: The Roebuck, Chesterton (90a24418-12f5-4f7c-97d0-3ddf9cc833f4)
+
+⚠️  Missing place_id: The Raven (cb08b5f1-2271-4f7f-9a68-480a832ff333)
+
+⚠️  Missing place_id: Camp Bongo (9b59c237-fcf0-43e3-aab7-a813e3ef6fc0)
+
+⚠️  Missing place_id: The Cross Keys (4aa83fe8-00bc-4782-85f3-12775775e008)
+
+⚠️  Missing place_id: New Hartley SMC New Hartley (69c05b07-4a9a-47cd-bf98-d6005590ffeb)
+
+⚠️  Missing place_id: The Lawns Hotel (a46b2080-f2c5-4b6f-a0ea-faeb001d31a6)
+
+⚠️  Missing place_id: The Victoria (5a862a90-4c9d-4c35-bca7-2b071cc86282)
+
+⚠️  Missing place_id: Ossett Cricket & Athletic Club (716d9029-5fea-4952-9e93-0a3fc248708c)
+
+⚠️  Missing place_id: The Cricketers (b9712eed-a9ee-4638-b3cd-c68bc4a197fe)
+
+⚠️  Missing place_id: The Wrens Nest (2111b236-24d0-45ba-9635-02cee81536e0)
+
+⚠️  Missing place_id: Stanton House Inn (e52e07b5-6256-4b1b-b07e-d72731887376)
+
+⚠️  Missing place_id: The Offley Arms (06119cf7-2c06-4caf-8b8e-03c1f9f4d51b)
+
+⚠️  Missing place_id: New Finney Gardens (88edfa74-bbd3-4734-aea2-cd0a9343f05c)
+
+⚠️  Missing place_id: Sitwell Arms (863e3575-936f-4f1d-b2a0-81ed0af92041)
+
+⚠️  Missing place_id: Wildes Inns (c7122828-be26-426b-9add-322f9569cc2d)
+
+⚠️  Missing place_id: The Hop Pole (f15b1894-b102-421c-b52a-30023fee72e1)
+
+⚠️  Missing place_id: Bannerman's Bar (bf23b15a-76d3-466e-a6f0-9818adffc406)
+
+⚠️  Missing place_id: The Grand Pavilion Matlock Bath (0be45767-4fd7-45c8-9347-32484bd14d45)
+
+⚠️  Missing place_id: Derby Folk Festival (47832597-5972-4514-9602-49a05030546b)
+
+⚠️  Missing place_id: Bakewell Town Hall (2b4e8419-8298-418a-8723-6d1e8cadf0c7)
+
+⚠️  Missing place_id: The Holly Bush at Salt (85b1d046-5215-49f3-859a-5b67b073da85)
+
+⚠️  Missing place_id: Dukeries Live @ Dukeries Brewery Tap (1325472f-e800-4040-8e52-b7491ecbbbe2)
+
+⚠️  Missing place_id: The Swan Inn (6e5381d8-3124-4a9c-af79-16394fbfa0d8)
+
+⚠️  Missing place_id: Whittles@tokyo - Live Music Venue & Bar (yGNojetg8AYGh9vlGPia)
+
+⚠️  Missing place_id: Champs Sports Bar & Grill (928971b3-d9f8-42ac-a1c4-c29581f36a54)
+
+⚠️  Missing place_id: The New Inn (5dcf4e68-ecbc-47ad-8605-257b87f900c4)
+
+⚠️  Missing place_id: Duke of York Whitby (548f7e31-3f2a-46e6-85ef-9e98710cc48c)
+
+⚠️  Missing place_id: Pack Horse (MAPVICP2Fz5TPCxUyv4O)
+
+⚠️  Missing place_id: Silverdale Athletic Football Club (XrtmxixV6fb0957cwixR)
+
+⚠️  Missing place_id: The Silk House (56e0d83e-0a5f-488e-ac40-b5f7573e8692)
+
+⚠️  Missing place_id: Abbey Wharf (ac311e66-6644-422a-850b-02aebe730212)
+
+⚠️  Missing place_id: The Loaf & Cheese (754f126d-6238-4aaf-88f8-2d674c2b461e)
+
+⚠️  Missing place_id: West Moor Social Club (f0349981-4456-4b53-bdd4-0f182ab39335)
+
+⚠️  Missing place_id: The Duchess Theatre, Chatsworth Centre (eb459381-6945-45ca-984a-b2da742ae487)
+
+⚠️  Missing place_id: Miners Arms (bdcccfe3-1719-4088-b26e-4915d1162dcf)
+
+⚠️  Missing place_id: Foxfield Steam Railway (5ca0cb80-21ae-48d7-b012-c3191d11eef6)
+
+⚠️  Missing place_id: Derby (ab88da0e-5f8b-4a53-bb3e-c4bc0751f347)
+
+⚠️  Missing place_id: Yates - Newcastle Under Lyme (ad855fbb-f9e6-4ba6-8157-d912a59cb01e)
+
+⚠️  Missing place_id: The Leopard (rWyjRg8JL7ibsTUk9ctb)
+
+⚠️  Missing place_id: Old Queens Head (JAmEElFj4xa8NEWuHREi)
+
+⚠️  Missing place_id: Riverside Holiday Village, West Country Parks (4653be3f-3629-4a8a-9a65-5fea59535150)
+
+⚠️  Missing place_id: Navigation Inn (2e01fec7-738a-4897-beb2-40de1db36b07)
+
+⚠️  Missing place_id: 33 Green Bottles (ec3f7e49-f454-4d06-b36d-e941fa349c05)
+
+⚠️  Missing place_id: The Cat Inn (1ZZVBNjSQXoia9KNKHqW)
+
+⚠️  Missing place_id: Stag Inn (88f64612-ed0c-499d-88af-ac542f84f8e5)
+
+⚠️  Missing place_id: Buck Inn, Clitheroe (04fdc590-d51b-4c3c-a6f8-a4e6350675f5)
+
+⚠️  Missing place_id: The Fleece (c34614a1-4a98-4c35-8757-c434fd956328)
+
+⚠️  Missing place_id: Boat & Horses (2c0ff784-d7b7-4c90-b2bb-4590940e5293)
+
+⚠️  Missing place_id: The Castle Inn (C0ZegKYDxLLls9OiCErh)
+
+⚠️  Missing place_id: Blackbox Hastings (31ccdb9b-c6be-4ac0-bc50-420a865722ce)
+
+⚠️  Missing place_id: Tom's Tap and Brewhouse (O24ZOAFAjoxI9mVFjEp6)
+
+⚠️  Missing place_id: Radley & Co. Bar (1865bfc8-a2f4-4d63-a445-ee750b6c8434)
+
+⚠️  Missing place_id: Aardvark (35d91a67-9e6a-495e-b2c2-73314779ea5f)
+
+⚠️  Missing place_id: The Moor Club (EsXfxgxJTFkuRvaRLpS7)
+
+⚠️  Missing place_id: Coach & Horses (df7371da-9366-4592-842f-60fe951e8307)
+
+⚠️  Missing place_id: Sand Dancer (d0084948-7f1e-4457-adbc-dc208ede1633)
+
+⚠️  Missing place_id: Tudor Nook, Cheadle (701f5003-e01e-42ae-bb09-a08b0f5a9045)
+
+⚠️  Missing place_id: Baddeley Green Club (c0dfcb04-2669-46fe-a869-c3d9c4a9e8ae)
+
+⚠️  Missing place_id: The Peel Arms (fa0a9502-b6d9-4233-9857-16cbec63d51d)
+
+⚠️  Missing place_id: The Cheshire Cheese (kCjS3Rn2F2PnBZhYAdqf)
+
+⚠️  Missing place_id: Butchers Arms (e95bca2e-e019-48c1-b6f7-1b4db860f931)
+
+⚠️  Missing place_id: The Anvil (4fb03854-e3ae-459c-9ed4-c726841e2586)
+
+⚠️  Missing place_id: The Shroppie Fly (6deb3cc7-669f-4432-8bba-773d897de7bf)
+
+⚠️  Missing place_id: Old Black Bull (b9767ca7-9510-4729-80c9-35b28fa743e5)
+
+⚠️  Missing place_id: The Railway (1c942b25-a512-483d-b39c-07d826723f2a)
+
+⚠️  Missing place_id: The George & Dragon (e717545c-d64a-41c9-ae3f-7dcaf0b783f9)
+
+⚠️  Missing place_id: Sailmaker (2514635e-dc6f-40d2-9b79-ee503a4ebdf6)
+
+⚠️  Missing place_id: Corner Club (9c15c581-e066-48c1-9352-1784c9742e74)
+
+⚠️  Missing place_id: California Social Club (67a93513-b497-46c8-bfaa-a1947f87b939)
+
+⚠️  Missing place_id: The Coppenhall Working Mens Club (CCNVANtGSGM8vggYddzj)
+
+⚠️  Missing place_id: Prospect Italian Bistro (f0d49c0a-0a75-4ae1-ae0b-c2bb10656368)
+
+⚠️  Missing place_id: Marquis of Granby (462bdcc3-a7d3-4eca-acf8-4eab394a40d7)
+
+⚠️  Missing place_id: Fox & Pine (I9JNW8nXIMgaFcoimkvx)
+
+⚠️  Missing place_id: The CryerArts Centre (60dd1f1c-578c-40cc-bfc8-6f55832d489d)
+
+⚠️  Missing place_id: Carisbrooke Arms (b117aab8-26f6-493b-958e-5ad938ca1d95)
+
+⚠️  Missing place_id: The Pub (a3d60301-2a6d-4fa7-81aa-8e47dcd3c12e)
+
+⚠️  Missing place_id: The Cotton Club (26004ee3-5aab-4134-be44-e2e98684b516)
+
+⚠️  Missing place_id: Royal Oak (7e63acba-6ffc-4c07-b4cc-aa826f7a860a)
+
+⚠️  Missing place_id: Bell & Crown (c8a2665f-e5f4-454f-bb79-3023f5b5f918)
+
+⚠️  Missing place_id: Ye Olde White Lion (e5623051-8d00-40cd-851a-0e78236cfb05)
+
+⚠️  Missing place_id: The Lord Combermere (KTbD89zEQw0pao4D211s)
+
+⚠️  Missing place_id: Charlie Bassett's (i9pMD0X1YHGW5qJCKLs0)
+
+⚠️  Missing place_id: The Acoustic Lounge (Ha5zokxmGzIi6miASzO0)
+
+⚠️  Missing place_id: The Grapes Inn, Newcaple (c023cd5a-2cd5-4088-a72b-01e22b7136dc)
+
+⚠️  Missing place_id: The New Old Sal (6nEjAkv2WTdyWZf5fr5M)
+
+⚠️  Missing place_id: Sir Robert Peel (5002a5d9-cb02-4f55-9770-e2438da5e6ca)
+
+⚠️  Missing place_id: The Brick & Tile (128a8dbb-9f63-4700-8130-3a945c92665f)
+
+⚠️  Missing place_id: The Slow & Easy (69cf3525-d4ff-42c8-a83e-9c30cd366527)
+
+⚠️  Missing place_id: Chesters (14e0bb68-fb20-4caf-9d00-7ae01b8e7dea)
+
+⚠️  Missing place_id: The Beacon (3ff6fecb-ab00-472e-8cff-7eb40987cafa)
+
+⚠️  Missing place_id: The Fellows Pub (25286a14-b460-4f45-8878-4b2e68c3dbdd)
+
+⚠️  Missing place_id: Low Fell the Cannon (0b65344f-24f3-4b98-b75b-d051a0f8a64e)
+
+⚠️  Missing place_id: The Peacock (6b0fde58-bccb-4b00-bd0a-563a6c1d5b2a)
+
+⚠️  Missing place_id: Barlaston Village Hall (B8YAV3wqbUpgrPqJ73qx)
+
+⚠️  Missing place_id: The New Inn (5381113f-ffeb-456a-9de6-1cdcf0c91a22)
+
+⚠️  Missing place_id: The Driftwood (f17b5d2a-4f65-4cc7-ae15-c737cf41fa53)
+
+⚠️  Missing place_id: Kirkgate Centre (90e4724d-4ea9-4585-a394-c9367f133532)
+
+⚠️  Missing place_id: The Dog House Pub Alfreton (76e56542-3910-449b-a7c4-1642f2e7fa69)
+
+⚠️  Missing place_id: Red Cow (40e29b3e-538d-44ed-bf30-8a5d63dafca3)
+
+⚠️  Missing place_id: Marsden Football Club (0a38f872-76d1-4405-a1ab-e5c46307e682)
+
+⚠️  Missing place_id: Namaste Indian Restaurant and Club Prosecco Lounge (a1b40977-f627-4289-9ed7-7040397cf270)
+
+⚠️  Missing place_id: The George & Dragon (108f8433-7c83-476f-ae3d-afeb04e6228f)
+
+⚠️  Missing place_id: The Royal George (2199f027-6ca4-4050-9a20-11dd176f9c45)
+
+⚠️  Missing place_id: Pau, Trentham (4f3a6fff-6aed-4721-919f-e93d10149b25)
+
+⚠️  Missing place_id: Brighouse Civic Hall Live (9aafdb73-3ffb-4686-b5c5-a795bc1a9350)
+
+⚠️  Missing place_id: The Rose & Crown (76c1a27c-c34e-4f95-bfa9-e9531b30b204)
+
+⚠️  Missing place_id: Coach & Horses (45b189eb-a737-4505-8d12-405992515322)
+
+⚠️  Missing place_id: 4 Moor St (e7b53d59-5874-47f3-8f84-d0fd574c0f71)
+
+⚠️  Missing place_id: Colne & Nelson Rufc (c567bd9e-e578-4c44-acaa-feddf00409a6)
+
+⚠️  Missing place_id: The Cross Keys (ecffb8e5-6518-4f32-89ac-4a2500ba1dcf)
+
+⚠️  Missing place_id: Punch Tarmey's Southport (1a82f72f-ef9a-486d-ab29-a3ee7ea7b544)
+
+⚠️  Missing place_id: The Crown (xyERKljjDSlCFaYKMWPH)
+
+⚠️  Missing place_id: The Old Post Office (2677bb30-51dc-440c-ac13-f6de5aa62704)
+
+⚠️  Missing place_id: Bootleg Social (45eed2ac-ec20-4e4b-8021-4d377c66ec5c)
+
+⚠️  Missing place_id: Edinburgh Arms (aaacb002-deb1-43ff-a29d-bcdc3212495a)
+
+⚠️  Missing place_id: The Royal Oak (95ea9321-74f1-4c3a-bf91-217179d2567e)
+
+⚠️  Missing place_id: Swiftys (aayxv4IGQbBmXBpk7WZL)
+
+⚠️  Missing place_id: Rustik Cafe Bar (sFnE4l6BP5HXMzBIpYtl)
+
+⚠️  Missing place_id: Reddish Conservative Club (86399746-798b-4ff3-8de6-f8b4d8fa6b80)
+
+⚠️  Missing place_id: Gardeners Arms (a207bb82-a2be-4290-8c35-05babff1848a)
+
+⚠️  Missing place_id: The Last Post (0249016e-f445-4649-bce7-2111fd8a977c)
+
+⚠️  Missing place_id: Porters Ale House (cc125fe1-8bfa-4834-b569-dee237b06ad8)
+
+⚠️  Missing place_id: Newport Royal Naval Association Club Ltd (d68958c5-c36e-432c-ae01-7b159aeecc8d)
+
+⚠️  Missing place_id: Melbourne Assembly Rooms (d366ee05-eeb7-4a09-b139-745576e26c5e)
+
+⚠️  Missing place_id: Fishnet Tavern (eb37bce4-971d-4cc4-8819-c9d6e220afa0)
+
+⚠️  Missing place_id: Severus Social Club Ltd (f48bebcb-0bfb-4f41-8837-a2bbf8f7963a)
+
+⚠️  Missing place_id: Royston Midland Working Mens Club (bae36ee5-f129-4ced-881f-f262d357bb28)
+
+⚠️  Missing place_id: The White Hart Stanley (7baf3fd6-7bfe-4d76-8dcd-7a455c4c2ddc)
+
+⚠️  Missing place_id: Chaddesden Park Social Club (99560176-946a-402a-8b3a-ef130b519f7d)
+
+⚠️  Missing place_id: Village Club, Spondon (829cdf73-ee75-474d-b70e-9c550f97aadf)
+
+⚠️  Missing place_id: The Fishpond (b0f76afb-a52a-4baf-a224-9a62af1396b2)
+
+⚠️  Missing place_id: New Hartley Memorial Hall (2a48a6a4-41f0-44a8-865e-610d52889b6b)
+
+⚠️  Missing place_id: Golcar Con Club (7df94d8e-3f87-46a9-abb2-943820fdf37f)
+
+⚠️  Missing place_id: The Pop Inn (f8e66905-bfff-4190-bccc-ba15ce7593d5)
+
+⚠️  Missing place_id: The Jolly Colliers (04042eda-9533-41da-833c-19fd31d956bf)
+
+⚠️  Missing place_id: The Volunteer (1620e3c5-8c9a-42d6-a838-0dd505d8b4e4)
+
+⚠️  Missing place_id: The Olive Leaf (d4cf2b67-2550-45c4-9511-0cd9971341e1)
+
+⚠️  Missing place_id: Foley Meir FC (f71cf4b4-3fcd-40f3-9369-b03839560807)
+
+⚠️  Missing place_id: Number 73 Bar and Kitchen (520e7bcd-9e06-4e2c-ad89-4ec8f32f4486)
+
+⚠️  Missing place_id: The Borough Arms (88193286-4aeb-44ca-8c7d-f4dc024d426d)
+
+⚠️  Missing place_id: MK11 (e7b1bdb7-e791-4b3f-9acb-7e9bb030648d)
+
+⚠️  Missing place_id: Higher Openshaw Working Men's Club (BCAw9NpGGJ9vAQ2cM8Oq)
+
+⚠️  Missing place_id: Hawk & Buckle (8c50d08e-aa0c-4bed-b76b-518b85c8b478)
+
+⚠️  Missing place_id: The Blacksmiths Arms (10432a06-e158-448b-a441-582b74455146)
+
+⚠️  Missing place_id: The Venue Dumfries (a2be90c2-40fc-4621-aca0-86b47fdd865f)
+
+⚠️  Missing place_id: Queen's Hotel (6HroN1Vgsv281M7bbbKR)
+
+⚠️  Missing place_id: The Friendship (a3f765d5-dc9d-4271-8c9c-4c2abc43d438)
+
+⚠️  Missing place_id: Elvaston Castle (f569de38-815f-4099-bb05-d924d5e9b276)
+
+⚠️  Missing place_id: Annitsford Welfare Club (4082b952-b9e3-4f81-acc0-2dd9f41fdcef)
+
+⚠️  Missing place_id: Backstage Cleveleys (oAcOVawgJk1lzwJpKuJF)
+
+⚠️  Missing place_id: TTonic (2c1974a0-b7d1-4cc3-9664-14014d6f5d13)
+
+⚠️  Missing place_id: The White Lion (dc7b6b7c-fc83-4c8a-a248-cf0742f775f5)
+
+⚠️  Missing place_id: The Royal Oak (WsBRSoZMrKTVxhbLQfVF)
+
+⚠️  Missing place_id: The Black Swan (8e889abe-6150-4962-8144-e5c38b474f0c)
+
+⚠️  Missing place_id: Barge & Barrel (9d0f2492-d9ee-4e75-9bec-36fff3eaf6c9)
+
+⚠️  Missing place_id: The Broadway (4d714a3b-3c8b-4f2d-85e0-177dcf8b2d03)
+
+⚠️  Missing place_id: Thorntree inn (0b09febd-18fd-4023-b044-513de34da76e)
+
+⚠️  Missing place_id: The Victoria Inn Washington (063df9df-ef4c-4404-8e5b-9f5c3103f771)
+
+⚠️  Missing place_id: The Cuckoo (Yp3NcUUzfz7vOXN2PRpd)
+
+⚠️  Missing place_id: Lowton Social Club (31885660-2ca2-4193-8de3-3bdf888bf51c)
+
+⚠️  Missing place_id: The Royal Oak Staveley (0dc643c2-b65b-4915-8de5-ba475a2b6b17)
+
+⚠️  Missing place_id: The Olde Barbridge Inn (55e1ea7f-bbd4-4f61-a0de-a64250a5b855)
+
+⚠️  Missing place_id: New Meadow Street Labour Club (9081f6b7-cbad-432e-b86f-a10ff74b118f)
+
+⚠️  Missing place_id: Sarisbury Green Social Club (469ffba6-adfd-4de6-a140-81d52c9297f4)
+
+⚠️  Missing place_id: The Fountain Inn (Yk9dPPCC2tATvdQzlBcm)
+
+⚠️  Missing place_id: Bebside Inn (b23c91b9-b467-4df3-b6e8-73b5621d8d8e)
+
+⚠️  Missing place_id: Wolstanton Golf Club (59abeabc-81af-45b6-859a-fef89cc83b7c)
+
+⚠️  Missing place_id: The Vale of York (8c99ce11-6ac5-4b63-8cb2-ffce877e33cc)
+
+⚠️  Missing place_id: Canal Tavern (367490c2-6382-4bca-8d9a-f0ed3584dfe2)
+
+⚠️  Missing place_id: The Royal British Legion (c5345529-e102-4818-8f7e-6d2a8e8cdb38)
+
+⚠️  Missing place_id: Chapel St (7acb9fc4-e757-465b-b254-452973eb11cc)
+
+⚠️  Missing place_id: Half Moon (7595d7af-c6e2-45ad-8321-84b698061e5b)
+
+⚠️  Missing place_id: The Runhead (63da82cc-c512-4e8c-8fb2-f8180720b2ec)
+
+⚠️  Missing place_id: The Prince of Wales Baslow (b662cbcc-8cba-4b3f-ad83-ab52e0e9dbf7)
+
+⚠️  Missing place_id: The Red Lion (6dc41794-48d4-4f69-ab9b-05376b9e9363)
+
+⚠️  Missing place_id: Milestone (7d649f77-796b-4e20-a605-e5b7ca02986f)
+
+⚠️  Missing place_id: Stapylton Steakhouse (dfde9903-5abf-49a9-8cd2-414a034f595a)
+
+⚠️  Missing place_id: The Tyne Bar (4b558591-3e2a-4f73-93f5-869ec7f4bc81)
+
+⚠️  Missing place_id: Chew's Yard (aeca101f-b600-4a9e-b406-34f79bc6e79c)
+
+⚠️  Missing place_id: Woodville Box Club (26ef39cb-2726-4a75-80c8-45c047463a62)
+
+⚠️  Missing place_id: The New Inn Free House (2TAGHbumA27Eu53h1tsR)
+
+⚠️  Missing place_id: Crown Wharf (ZTV2K9EgtLbudihMbcov)
+
+⚠️  Missing place_id: Milnrow Working Mens Club (9b64acb8-d29b-4344-b87e-dd4b83e7ed5e)
+
+⚠️  Missing place_id: Town Hall (a6852a52-1696-49d2-8ce1-1b0992f950b8)
+
+⚠️  Missing place_id: South Beach, Blyth (cb780ab3-0ffe-4b87-ba64-f719dd7e2601)
+
+⚠️  Missing place_id: Ultra Warehouse (504e9dc9-34a5-406c-86ce-da3323aeccab)
+
+⚠️  Missing place_id: East Harlsey Village Hall (af2e9440-9cf3-4df2-bd12-e277db1d6d5b)
+
+⚠️  Missing place_id: Black Bull Hotel (Piy7ItLXfwnvTUft0fWd)
+
+⚠️  Missing place_id: The Latch Lifter (pMDQF8I9dGZY0bOsFpiv)
+
+⚠️  Missing place_id: Black Lion (6261d1d2-cc7e-417e-aba5-fca2f6b2a50c)
+
+⚠️  Missing place_id: Concorde 2 (dc40a165-d87a-4bc2-b576-19fd7d6263e2)
+
+⚠️  Missing place_id: Ashfield House (9d877417-4d14-4c3c-be69-7a11ea394e6c)
+
+⚠️  Missing place_id: Boughey Arms (Zy1REmHjHDtnzThK0Mgs)
+
+⚠️  Missing place_id: The Golden Lion (ed70db16-218c-422f-8d74-1232e7895f73)
+
+⚠️  Missing place_id: The White House (CwMkRsUa9JJDTjBgUSCu)
+
+⚠️  Missing place_id: Cowplain Social Club (2f01ebc9-abce-4ff6-8b39-0bde440d45ff)
+
+⚠️  Missing place_id: Holy Diver (8exTdwz8vCsAafJ76SNZ)
+
+⚠️  Missing place_id: The Halfway House Inn Morley (b96a51fc-63cd-44f5-abb4-95b38b3ec2fb)
+
+⚠️  Missing place_id: The Crown (V7jfQCotLP4xJGuts36K)
+
+⚠️  Missing place_id: The Engineers Arms (bc31991a-df23-486d-951a-eb0a15e1050a)
+
+⚠️  Missing place_id: Billy Bootleggers Nottingham (formerly Percy Picklebackers) (4e39800b-b69f-4ff3-9510-d05a641746cd)
+
+⚠️  Missing place_id: Percy Arms (1e27f6a2-c97f-4168-9263-95ce2c38122a)
+
+⚠️  Missing place_id: Mount Pleasant Inn (9b56952c-33a7-4654-a840-51b365e32ec5)
+
+⚠️  Missing place_id: The High Crown (fb1faaca-ed16-4f3f-8d7e-a907417635dd)
+
+⚠️  Missing place_id: Chesterfield Arms (dbe16d64-3646-46b1-87b7-82026a4ec516)
+
+⚠️  Missing place_id: Cock & Pheasant (ad334010-4a78-4336-bb1d-799332799504)
+
+⚠️  Missing place_id: The Brewhouse (05197e3a-7a0a-4ab7-820d-966c35334791)
+
+⚠️  Missing place_id: The Crown Hotel (fea7679a-9452-402f-ab21-9edf56d045f8)
+
+⚠️  Missing place_id: Holey Molies Leisure Complex (6b43273e-de79-44f1-813f-00ad22f80ff2)
+
+⚠️  Missing place_id: Ball Green Working Mens Club (fRn4ZOmg3MGQsOk4b4Sv)
+
+⚠️  Missing place_id: The Lord Nelson (15990fe3-cce4-41df-b33e-10b19c7eea11)
+
+⚠️  Missing place_id: Eight Farmers, Crewe (5ff4cc03-9554-4b16-8ebb-ea316fba368d)
+
+⚠️  Missing place_id: Kings Head (bY73hTwRGQTg73wLqHOm)
+
+⚠️  Missing place_id: The Coach House (dba5abbc-1f70-42f9-89df-fc4ee599744d)
+
+⚠️  Missing place_id: Fordhouses Cricket & Social Club (c58aa383-fc32-4dd3-bfa0-fe7709a25ffa)
+
+⚠️  Missing place_id: The Coach & Horses (775e4bbf-b138-46ca-9774-0377da7dc386)
+
+⚠️  Missing place_id: Wolstanton Conservative Club (65c8a32e-0e23-468d-a445-7c4df6cfba71)
+
+⚠️  Missing place_id: The Flat Iron (idf5nV97Dx0OSv5VP4lV)
+
+⚠️  Missing place_id: Crazy Moose Nantwich (n5TADkhTgs6xviZ4ianP)
+
+⚠️  Missing place_id: Eleven (8Pky4flebxSt2s36ub3o)
+
+⚠️  Missing place_id: The Pit at Newstead (GdWJX9FHEtRGm7WbSgWc)
+
+⚠️  Missing place_id: The Dudley Hotel (18541866-1e69-4b43-9786-58147d5dc728)
+
+⚠️  Missing place_id: Acapela Studio (0c70a374-56f1-4600-8e50-746a4bbc0187)
+
+⚠️  Missing place_id: The Bull’s Head (kDZuIhEoN0ZRyFQZgWVp)
+
+⚠️  Missing place_id: The Horse And Groom (18e7c53c-bab3-4e00-b5a0-b28307c3462a)
+
+⚠️  Missing place_id: The Roebuck (3b12fdec-4644-40c4-a50c-608a377e1f88)
+
+⚠️  Missing place_id: The Ox & Plough Washington (fe7e00a3-34c7-47a3-84d6-f9dd5d5c6e0c)
+
+⚠️  Missing place_id: Jasper’s Bar (384b1b8c-34dd-4a9e-820f-d4544a88b510)
+
+⚠️  Missing place_id: The Puss in Boots (16e284f0-8f84-480d-aeb4-b51da9ab3dc3)
+
+⚠️  Missing place_id: The King William (175b3fc2-cdd8-47c7-93bb-70e9c178c79d)
+
+⚠️  Missing place_id: Joiners Arms (581a22c3-d649-4716-93e6-72bbc073ffc4)
+
+⚠️  Missing place_id: The Rhoden Inn (84caf441-e713-4888-bf54-c05c50277088)
+
+⚠️  Missing place_id: Plaza Theatre (29f9512d-fa00-4a9d-83c2-c64095b33beb)
+
+⚠️  Missing place_id: Thorn Tree, Ripley (b4a193da-a4f4-4086-9500-cc064760fd59)
+
+⚠️  Missing place_id: Ashley Hall (c7bc2835-db5f-4a9b-926c-65ef53f41dfc)
+
+⚠️  Missing place_id: Parish (8641ad62-4c36-40eb-88ca-dd29d7e8dae0)
+
+⚠️  Missing place_id: Theatre On The Steps (829b42ca-5100-4160-be97-618a55e6c7ae)
+
+⚠️  Missing place_id: The Green Man (PzB0cOLYGbHPA0qMgXQa)
+
+⚠️  Missing place_id: The Indi Club at Sneyd Green (FYRvncZ1wROKWbwm2RI7)
+
+⚠️  Missing place_id: The Red Lion (ea6faef1-501d-40e1-a0d3-eb560981962b)
+
+⚠️  Missing place_id: Bridge Hotel Durham (22f62ed9-a489-4d80-8cd3-9f3aa1677f24)
+
+⚠️  Missing place_id: The Ramp Horwich (MRq5JIV0rWrGcZP7wZsE)
+
+⚠️  Missing place_id: Foxlowe Arts Centre (e75a745c-a108-4e81-a7a8-c92d25e2ee53)
+
+⚠️  Missing place_id: Presleys Bar & Suite (725b47e6-e3a2-428c-953f-3e36f27a117f)
+
+⚠️  Missing place_id: Gawber Road Working Mens Club (2e562593-7595-42df-9b72-c4843665327b)
+
+⚠️  Missing place_id: The Hastings Arms (110a3987-9b81-4cdf-b64d-959f9773f88d)
+
+⚠️  Missing place_id: The Railway (7b8a2172-1112-403b-9f60-59f8f573bffb)
+
+⚠️  Missing place_id: House Of Beer Ashbourne (94ce64a0-69d1-483e-8c84-694a1e5bc2b7)
+
+⚠️  Missing place_id: The Blue Mugge (5e63af97-f9b8-4f5e-a079-44a0cb66b53f)
+
+⚠️  Missing place_id: Dead Poets Inn (dac3e88d-9db1-4cb5-bb85-6724704afab2)
+
+⚠️  Missing place_id: The Signalman (e4a35b26-e16a-4658-a71a-e5a6f33617d8)
+
+⚠️  Missing place_id: The Hindley Arms (98c1663e-a0a9-4b68-97fe-0803e26d60b3)
+
+⚠️  Missing place_id: The Muni Theatre (4acbf7f2-8f51-457a-ba45-8857a6c5116a)
+
+⚠️  Missing place_id: The Lion House (2555dbb5-c8e1-4fd8-9639-c6dc4138d552)
+
+⚠️  Missing place_id: Royal Oak (d9fe0d38-69c0-45fe-98dd-ff1e0b849919)
+
+⚠️  Missing place_id: Fat Lil's (58a32d40-5cfa-4e13-ba56-e0caa0702a42)
+
+⚠️  Missing place_id: New Inn (07d06445-d8c5-46dd-b990-8bc3b1d54049)
+
+⚠️  Missing place_id: The Fox Public House (bd8b5f31-279f-4e6f-841a-25c74af6883b)
+
+⚠️  Missing place_id: The Roebuck Inn (49a99e35-5bbe-4e7d-9543-af52dcf3a850)
+
+⚠️  Missing place_id: Wangies (3abe8ec8-16ae-4f75-9190-1e5028b9d17e)
+
+⚠️  Missing place_id: The Greyhound Inn (490777a1-48fd-4d7b-a31b-a9b1fcb08d99)
+
+⚠️  Missing place_id: Top of The World Stafford (f368ee4b-dfb5-43f8-a29f-5b73161049bf)
+
+⚠️  Missing place_id: Bleeding Wolf, Scholar Green (l6hG6QpGZMkjWjPL2qMY)
+
+⚠️  Missing place_id: Phoenix Tap (3fdd5d4d-cd29-4243-85a2-c2c7156b35d6)
+
+⚠️  Missing place_id: Travellers Rest (jD5u9ulKHxUyGLfuPOiw)
+
+⚠️  Missing place_id: The Lodge Bar & Dining at Littleover Lodge (6a263e22-c21d-4134-b82c-10df7c322d1f)
+
+⚠️  Missing place_id: The Queens Head (u5Y5GTc4KDECOSy0amBH)
+
+⚠️  Missing place_id: Bohemian Lounge (MPtIhKGnYqdHnBS3zxBf)
+
+⚠️  Missing place_id: The Blvd (235b4719-09f6-4b23-a4c0-f4689127a8d2)
+
+⚠️  Missing place_id: Esholt Sports & Leisure Club (71ea140d-8b29-4b17-8cae-e9a34c8d5cb7)
+
+⚠️  Missing place_id: Farmers Arms (9d5c213f-5f37-4637-adb0-95e01bdb0df4)
+
+⚠️  Missing place_id: The Sidings (IGMnN0CW2cLnieuu7W3C)
+
+⚠️  Missing place_id: The Lexington (6055b290-ed71-4fdd-bb2f-e8ef333b7595)
+
+⚠️  Missing place_id: White Hart Inn Tean (f5d09b5f-c90e-40a7-b415-c9d36648aea8)
+
+⚠️  Missing place_id: The Seabridge (3CFhQW25LUmAqLx2MHlR)
+
+⚠️  Missing place_id: The George Inn (d59eee37-a708-4236-915f-2cab5fb6530b)
+
+⚠️  Missing place_id: The Stanley Arms (5bd7f04e-5449-4248-8afb-89d6b45b430b)
+
+⚠️  Missing place_id: Groves Restaurant and Bar (d49796fd-2536-40c4-8036-9816f0f1958f)
+
+⚠️  Missing place_id: Chantry Brewery (0413a977-faba-4f5c-955e-65411d7b354e)
+
+⚠️  Missing place_id: The Thistleberry Hotel (28bf005f-4367-45b8-857d-197cafcdd4f5)
+
+⚠️  Missing place_id: Empire Rochdale (6c37344d-29e5-41b1-8447-4430e64444bf)
+
+⚠️  Missing place_id: Inn The Middle (1c49bcc9-f06e-4006-a7e6-c6f827d19bf4)
+
+⚠️  Missing place_id: The Lamb Inn (ec8d9a2e-43ea-4017-93d3-a0348fcc7d31)
+
+⚠️  Missing place_id: The Six Bells Chiddingly (a6c0b575-2da0-48c7-b5d6-40eb0fa13618)
+
+⚠️  Missing place_id: Perry Street Conservative Club Ltd (5fc831ae-d411-4b1f-adda-cfbc8cfefbdf)
+
+⚠️  Missing place_id: The Victoria Hotel (babc4a24-8166-4665-8a81-fb3573a3cea4)
+
+⚠️  Missing place_id: The Three Horseshoes (233e30f7-3446-47d3-b324-c888e558c29c)
+
+⚠️  Missing place_id: Catchems Corner (75GKS94FpNZgPtMaahVW)
+
+⚠️  Missing place_id: The Ivy House (51095351-358a-493a-9b42-36d03d1d5b91)
+
+⚠️  Missing place_id: Marton Institute (7764cf3a-cb99-4c89-90ce-f6dc204dd286)
+
+⚠️  Missing place_id: National Forest Adventure Farm (3b2acaae-895b-4861-b42c-bd6f348912a3)
+
+⚠️  Missing place_id: Jollees Cabaret Venue (cE7xldAG98rla3ZxIqk6)
+
+⚠️  Missing place_id: The Shed, Maybank (9Cxqgi0JJOQ0RWRS4uwy)
+
+⚠️  Missing place_id: The Sportsman, Durham (4eb30a0d-331a-46a6-a35f-381bde1a9fdf)
+
+⚠️  Missing place_id: Platform 1 @ East Bedlington Community Centre (b4f818c9-fcc3-4ebe-8cac-b5c8a9d59792)
+
+⚠️  Missing place_id: Larry's (f43c4492-c42c-45ae-8a25-ae8177b22b58)
+
+⚠️  Missing place_id: Paddock Cricket, Bowling and Athletic Club (637d1132-eed2-4727-8590-80ec8ff32f57)
+
+⚠️  Missing place_id: The Sandpiper (90107b8b-ce6e-426d-922f-bbe06847f690)
+
+⚠️  Missing place_id: Catchems (7820cdbd-d32f-413f-ba7d-d12e95b1857d)
+
+⚠️  Missing place_id: The White Swan (699697fc-b6ae-4474-aee2-d534a481a002)
+
+⚠️  Missing place_id: Furnace Inn (cc0eb527-730b-425a-806f-1d3eb90f0848)
+
+⚠️  Missing place_id: The Albert (Vmth731WC1cPu9R4k4L8)
+
+⚠️  Missing place_id: The Hanging Gate (q9OGA2pmoRvVrVqqmi7I)
+
+⚠️  Missing place_id: Prince of Wales (37f0cf67-a178-48eb-984d-d2950db97c10)
+
+⚠️  Missing place_id: The T.E Dingwall Building (a1c192ed-06d1-466d-a528-f7cb1830b995)
+
+⚠️  Missing place_id: Sidney St & Matilda St (6b4c37af-4e1d-486d-a3d9-c795637f81db)
+
+⚠️  Missing place_id: Yorkshireman, Sheffield (f063a861-ea03-4a53-9500-74f5749d9dee)
+
+⚠️  Missing place_id: The Tivoli (7594ccb1-234a-4c43-9691-c675da8d8ccf)
+
+⚠️  Missing place_id: Princess Theatre (c034de96-8139-4f3b-9b7f-eb8711df5f50)
+
+⚠️  Missing place_id: The Stags Head (c90f3d40-f90d-4e61-b498-dbd40db12ff9)
+
+⚠️  Missing place_id: Standish Social Club (7fa3a9a2-4997-4097-a495-3c049a7e126b)
+
+⚠️  Missing place_id: Coundon Conservative Club (f291d3e4-f82b-48c1-9598-82cd61a973a6)
+
+⚠️  Missing place_id: The Green Dragon Inn at Hardraw (c3c2544f-8d45-4215-9da7-97fe56d00fb9)
+
+⚠️  Missing place_id: Village Club & Institute - The Tank (d8c04f91-c869-4952-8c53-b55226b7ae22)
+
+⚠️  Missing place_id: Tutbury Club (c918f2df-b169-42ed-9363-7b93d80d6d48)
+
+⚠️  Missing place_id: Queens Social Club (c83be787-2c5d-43fa-be23-5c28a538adb7)
+
+⚠️  Missing place_id: The Coach and Horses (1efc325d-207c-4883-a18d-ff38a928df84)
+
+⚠️  Missing place_id: St. Lawrence's Parish Church, Biddulph (27024589-638e-43c3-b13d-a1748031c1e8)
+
+⚠️  Missing place_id: The Steampacket (a076fe4f-fd21-4c7b-9b19-baedfb637ac7)
+
+⚠️  Missing place_id: The Prior (8ab19fad-6dea-4a6f-b45e-04ccda5dcc52)
+
+⚠️  Missing place_id: The Lifeboat Inn (096afdf6-573f-4c65-8551-6e25fd119092)
+
+⚠️  Missing place_id: Benks (e279bada-a3dd-4846-8196-8a75bbe10713)
+
+⚠️  Missing place_id: The Wilbraham Arms, Alsager (17uClZIQxqf1YDWWnudz)
+
+⚠️  Missing place_id: Royal Anglesey Yacht Club (1e9673e4-6f82-4d00-a911-0c4b4afbe6af)
+
+⚠️  Missing place_id: Milton Park (dd463507-2da1-4fe2-b870-ef5c80be896a)
+
+⚠️  Missing place_id: Sandbach Cricket Club (b21e4651-da69-4d87-a81c-9e3abe40cd0c)
+
+⚠️  Missing place_id: The Railway Pub East Grinstead (024bd68d-3eec-48ab-a98a-9b2de0264f20)
+
+⚠️  Missing place_id: Storyhouse, Hunter Street, Chester (cb9e70a5-29cb-4515-9ff0-89549d239869)
+
+⚠️  Missing place_id: Cafe Indie (46e03e9c-aa1e-4cb7-8771-a32b844a837c)
+
+⚠️  Missing place_id: UPSTAIRS INVERNESS (a3fcbebc-3955-4e12-a3e9-534bedd5a744)
+
+⚠️  Missing place_id: Church House, Buglawton (6f8438ed-2cbf-4e46-bd30-19badc778ef1)
+
+⚠️  Missing place_id: Wilkes Head (04e2d803-baf2-45ea-a75c-50f99216c8e9)
+
+⚠️  Missing place_id: The Pickled Pig At The Bank House (902e7440-39b3-459b-bdbc-51a8932eff27)
+
+⚠️  Missing place_id: The Cock Inn (LQtPjX86BPVxftmBEoTS)
+
+⚠️  Missing place_id: The Dog Inn (q2zJ4l8YAdshgCuXhseR)
+
+⚠️  Missing place_id: Woodside (Wxg5EPYmElP5RHKMI9yO)
+
+⚠️  Missing place_id: Albert's Corner (cdac0172-5406-4865-aba9-5899a8ce2574)
+
+⚠️  Missing place_id: The Peacock Newcastle (e345cdd5-425c-4fba-b920-ec1fa721ca3c)
+
+⚠️  Missing place_id: The Needles (404c4d1a-b599-47bb-9812-263bb69d6de5)
+
+⚠️  Missing place_id: Pineapple Inn (krTWYUVWAa04AzFXs9ct)
+
+⚠️  Missing place_id: The Natural Healthcare Centre (3ce9d86b-8df8-4086-a087-fd6a42bc8644)
+
+⚠️  Missing place_id: Royal Gourock Yacht Club (70b77af5-9d84-46b1-b225-72f9b95ee3b2)
+
+⚠️  Missing place_id: Old Royal Oak (bbecba30-b208-42bb-bd69-b4e53d07a016)
+
+⚠️  Missing place_id: Portchester Social Club (0d2d43b6-278a-4d35-aded-19a8c4fde342)
+
+⚠️  Missing place_id: The Gliderdrome (e69678c1-3ede-4af1-a2d1-2644fb59af1a)
+
+⚠️  Missing place_id: The Snig (cb0fb705-978a-4b60-b424-4c0aa6f90ef6)
+
+⚠️  Missing place_id: Nantwich Town Football Club (12073206-4f7c-452c-a26f-3cd3c9f4ce6a)
+
+⚠️  Missing place_id: The White Swan (b9877a84-f92d-4894-9fd6-130e89f54f47)
+
+⚠️  Missing place_id: The Leeds Irish Centre (6b12eb6a-0749-4154-8b78-856fe1043dbe)
+
+⚠️  Missing place_id: Buxton Working Men's Club (TdrtliunWD8ENVM9WGyg)
+
+⚠️  Missing place_id: Northumberland Arms Marple Bridge 4pm (0e045d9b-66af-4868-9fbc-487124f1bf90)
+
+⚠️  Missing place_id: St Mary’s Church, Nantwich (3e7e8ace-c343-422c-bba2-dfeb1d11e236)
+
+⚠️  Missing place_id: White Barn (bFu1MxGewXvXM03d44X6)
+
+⚠️  Missing place_id: Broadwater Working Mens Club (f9247bc3-efb3-4329-a423-8744bb80d811)
+
+⚠️  Missing place_id: The Top Pub - Brown Edge (20eced38-130a-4378-9e45-c8218a3216e7)
+
+⚠️  Missing place_id: Blue's Micro Pub (14bcefe7-2613-4b40-bcdb-b7c8958b8620)
+
+⚠️  Missing place_id: The Ash Inn (2VK9K0cVdptiRH6AnQX8)
+
+⚠️  Missing place_id: Seahorse Sports Bar (a5f246ed-33d4-465f-8a7b-6f482493f500)
+
+⚠️  Missing place_id: The Three Tuns (4a9489aa-d6b8-4277-b29d-bf6c43e1c46c)
+
+⚠️  Missing place_id: The Powder Monkey (3a33d1dd-a14c-486f-8a28-8928e7333615)
+
+⚠️  Missing place_id: The Garden Farm (daa8b476-bee9-4273-a73e-9840225cac59)
+
+⚠️  Missing place_id: Bench & Bar (UDR8xzQsgn3MLevSBO58)
+
+⚠️  Missing place_id: Miners Arms (5efd7bd6-6ff8-4908-9f54-0b6bebde3768)
+
+⚠️  Missing place_id: The Arena Crewe (Ojeq5atXE2krvQIZVqqd)
+
+⚠️  Missing place_id: The Royal Oak (37bb18fb-9a81-4451-ae04-230b6472fd13)
+
+⚠️  Missing place_id: Brewery Tap (19043be0-9d83-41e8-a666-69da485a7888)
+
+⚠️  Missing place_id: Grumpy's-GB Motorcycles (HDfCfgFwyafaVHhzYA5z)
+
+⚠️  Missing place_id: The Crystal Ballroom (d2289aaa-e3b3-4686-ad2e-e2b32e78dcc7)
+
+⚠️  Missing place_id: The Linley Tavern (6g2cr3Y65jTCK4xOkhX8)
+
+⚠️  Missing place_id: The Spotted Cow, Waterlooville (9812b69d-99d6-4092-a122-853ff154a0bc)
+
+⚠️  Missing place_id: The Turf Consett (260df76e-b507-4555-bf1c-323d43252447)
+
+⚠️  Missing place_id: The Winking Man country pub (7a390659-ae19-4406-ba27-f2fda23c74da)
+
+⚠️  Missing place_id: Ighten Leigh Social Club (6085e6be-e6bd-4b0d-b319-8334cc5cd9d1)
+
+⚠️  Missing place_id: The Hollybush Inn (3c127679-774e-4ce6-8afa-e85651ae477b)
+
+⚠️  Missing place_id: The Underground (dcee1656-6571-4bba-b74d-a96022f361f6)
+
+⚠️  Missing place_id: Platform One Romiley (oc7ZULQcTaNFWbFU21CE)
+
+⚠️  Missing place_id: Butlin's Minehead Resort (e217f78f-7396-4649-b1e7-6f34941d09cd)
+
+⚠️  Missing place_id: Railway Arches (54a00c26-1401-4bce-9691-6993214a6ee0)
+
+⚠️  Missing place_id: Penkhull Village Hall (616e7620-56a7-4405-8f14-726122ea6245)
+
+⚠️  Missing place_id: Black Horse (a7496d3e-bd40-49fa-97a8-20a2341a892a)
+
+⚠️  Missing place_id: The Old Post Office (ocqMyrVLWZkxk5zEjJ2w)
+
+⚠️  Missing place_id: Arden Inn Live Music Venue (7050c958-c21b-4e39-9a98-68557b2b7d61)
+
+⚠️  Missing place_id: The Feathers Inn (6ebeb8f3-f6a1-4caa-aeec-3835c05d146c)
+
+⚠️  Missing place_id: The Victoria Tap Room, Kidsgrove Town Hall, Kidsgrove, Stoke-on-Trent, (5f29b714-bf51-4109-80d6-8a9dd0856658)
+
+⚠️  Missing place_id: The Tache Rock Club (69ad2c5a-5f04-405e-9c68-c53f7aaed802)
+
+⚠️  Missing place_id: The Shamrock Bar Leek (4372ad41-49dd-4e83-aedd-6846c1da11c6)
+
+⚠️  Missing place_id: Parkhouse Centre (003c2cfc-9847-4b81-8972-9292a6e85884)
+
+⚠️  Missing place_id: The Blue Bell Inn (fef5a51c-5c3f-4e9d-84c1-c394b0f4e337)
+
+⚠️  Missing place_id: Alexander's Live (WMPKQiDAee7Ys6wqJDbJ)
+
+⚠️  Missing place_id: The Bay Horse (MczMyOGPwpcejo3DP7pv)
+
+⚠️  Missing place_id: Crown & Thistle (4bcdfe7a-26e0-4d12-99d9-55ced2680879)
+
+⚠️  Missing place_id: Congleton Rugby Union Football Club and Congleton Cycling Club (f81a2d03-8fc8-4986-ad3b-70841fada78a)
+
+⚠️  Missing place_id: Blurton Club (8fdb292b-497a-42f4-b8cd-9382b45f104a)
+
+⚠️  Missing place_id: Arches Venue (8e2f011c-af5a-4a32-9deb-9012c7e2305e)
+
+⚠️  Missing place_id: Washington Station Westwood (6fc0cf43-8e41-42af-8801-c233ccaa9fc7)
+
+⚠️  Missing place_id: Buffs Club (9970c668-6fb6-496b-a205-222705de1fb8)
+
+⚠️  Missing place_id: The Albion (c7dd0494-b35b-4af6-aa66-8e9d843067f5)
+
+⚠️  Missing place_id: The AVCC - Aintree Village Community Club (1208b221-5059-4890-8015-32a11fe7809e)
+
+⚠️  Missing place_id: Truck Store (5ce28728-aae9-468d-a404-d443f07d95fe)
+
+⚠️  Missing place_id: The Miner's Lamp (77b6b3e4-5d35-4918-9b83-811208afc80c)
+
+⚠️  Missing place_id: The Boythorpe Inn (7dd821a8-a0ba-491f-bf52-a0af5e5c56f7)
+
+⚠️  Missing place_id: The Robin Hotel (VSSXlvUdzdqBMi3sGlc8)
+
+⚠️  Missing place_id: Jubilee Park, Horndean (2ebace81-f0be-409c-8cab-a1b638627c01)
+
+⚠️  Missing place_id: Rock Tavern (9da333a1-a4fe-448d-9989-4d2968a3176c)
+
+⚠️  Missing place_id: The Bird I'th Hand (b9071356-fd35-4da3-90dc-66b2439c82a4)
+
+⚠️  Missing place_id: Hilton Village Hall (8c890731-eb02-4e04-8c97-1c6f50193c44)
+
+⚠️  Missing place_id: Six in One Community Association (368f816a-25d2-4445-8ec2-20bfa14a0e1e)
+
+⚠️  Missing place_id: The Centurion (101c4fb7-0f1e-47ac-87e7-204474143898)
+
+⚠️  Missing place_id: St. George's Theatre (63c757df-67e3-4768-8cd9-34aebf71e704)
+
+⚠️  Missing place_id: Golden Lion (f34a9b2c-63b9-46c7-97f0-9219756ef16c)
+
+⚠️  Missing place_id: Ann Welfare Playing Fields (5be68729-0b17-487f-b3d0-ca9023c5bc90)
+
+⚠️  Missing place_id: Live Lounge (e368931e-fbd0-4033-ae7c-0be68e01ad0c)
+
+⚠️  Missing place_id: McMenemy's Function Suite (7c13d414-9519-4635-8d04-f70da0f1f46a)
+
+⚠️  Missing place_id: The Queens Head (953d2479-5f17-4a1b-8ecf-69cf1170b0de)
+
+⚠️  Missing place_id: New Kyo Club (3aa9b316-adb0-4467-ac54-203a50f8253b)
+
+⚠️  Missing place_id: THE OLD RED LION (pWiPwGW4hH3Tk3S6zLhn)
+
+⚠️  Missing place_id: Sun Hotel (7de9b730-f0c3-48dd-9929-469a4962a27c)
+
+⚠️  Missing place_id: Cheshire Cheese (18a2916a-59d1-4375-ad4d-1fa99e3a9dd8)
+
+⚠️  Missing place_id: Rosedene (05adcd18-a961-465d-a862-55bdd541ed83)
+
+⚠️  Missing place_id: Ashcombe Park Cricket Club (a6479882-a6ff-4ca3-816e-c02a34598c39)
+
+⚠️  Missing place_id: The Mill (TVzZikhNHtKtj5lqGteC)
+
+⚠️  Missing place_id: Madeley Town Council (9512fd58-e936-43b2-915f-5f959c7e5ae3)
+
+⚠️  Missing place_id: The Seaton Lane Inn Seaham (29feef76-622d-4385-9bf8-3ffb1322bee7)
+
+⚠️  Missing place_id: The Legion Pub (60f04dac-8412-47cd-bf3e-3bdf549e26af)
+
+⚠️  Missing place_id: The Blossoms (942916a8-3d08-4064-8c6c-d225e467568b)
+
+⚠️  Missing place_id: The Black Bear (6c096edd-5618-4243-8d8f-e3680edc71dc)
+
+⚠️  Missing place_id: Hip Hop Bar, Alsager (f3f90f44-22f7-4333-99c3-724712b809f4)
+
+⚠️  Missing place_id: The Forum Music Studios (fa4b98df-7ec8-48be-b14f-7154dc57e62b)
+
+⚠️  Missing place_id: Sneaky Pete's (1f9acd1b-1a92-4513-9a52-199df0aa9d67)
+
+⚠️  Missing place_id: The Red Lion At Kniveton (f1cfacfb-c81d-480b-a019-e7ec70f13db0)
+
+⚠️  Missing place_id: Star & Garter (AS1nNG17GXKbGhNT4NQu)
+
+⚠️  Missing place_id: Cássidys (98c98f0d-b7d4-4515-8e03-9a0e4a024d90)
+
+⚠️  Missing place_id: Three Horse Shoes (1cdad9ed-511c-44c3-9705-3caa37cce203)
+
+⚠️  Missing place_id: The Malt (361ab7de-df53-44fe-bffc-fa09d4aa650b)
+
+⚠️  Missing place_id: The Bush (vG4qXIx6gDwoji75ZfGH)
+
+⚠️  Missing place_id: The Wren (fKFGBvyxuloXBfXcZcNC)
+
+⚠️  Missing place_id: Wellington, Stoke (920becfa-d84b-416e-92f1-fa2d7ffd2213)
+
+⚠️  Missing place_id: Netherton & South Crosland Conservative Club (5ee4ac57-316b-48bb-b475-1227f178cb6d)
+
+⚠️  Missing place_id: Westbury Tavern (f027b2f0-d5c3-454d-92d0-cceb4406e2ca)
+
+⚠️  Missing place_id: Kirkheaton Conservative Club (ec0b4995-8901-4ac6-9376-096703f02b40)
+
+⚠️  Missing place_id: The Boathouse Shardlow (f0a1c097-0306-4428-a779-2ffe83bf1481)
+
+⚠️  Missing place_id: The Bhurtpore Inn (a88c1b8f-1f59-4245-9a5e-f97002627266)
+
+⚠️  Missing place_id: Millstone (ca1e1035-366e-41e5-8025-37b298f637be)
+
+⚠️  Missing place_id: The Cock Inn (ty1aOZiIsEDpFBBPM6m5)
+
+⚠️  Missing place_id: Dane Bank (G2gTbzmpmGS9Ta0lMstp)
+
+⚠️  Missing place_id: The Bowling Green Leamington Spa (22eedd4b-b2d3-4f2a-a662-74410dd10d4f)
+
+⚠️  Missing place_id: The Keys (602c26b3-6180-40a0-a8ea-f4a2cc11fc03)
+
+⚠️  Missing place_id: Amber Valley Rugby Club RUFC (77bfdc1e-079b-4813-b7dc-94427395134b)
+
+⚠️  Missing place_id: The Malthouse (528b3463-6349-4c91-bfe0-8d69ded27d7c)
+
+⚠️  Missing place_id: The Royal Oak, Biddulph (7d2130e9-b351-40da-8080-cd06a9f706ce)
+
+⚠️  Missing place_id: The Saddle Inn (2ea25c99-0058-4580-a999-2434e49db40e)
+
+⚠️  Missing place_id: The Plough (mOl8uMPhF6UgyuuVITIy)
+
+⚠️  Missing place_id: The Bankers Draught (67696c63-3da1-4970-b376-2fcb4c2fcbdf)
+
+⚠️  Missing place_id: The Abbey Bulwell (3fb6ca1b-3c09-4c6f-a5d3-38796547f7d2)
+
+⚠️  Missing place_id: The Monastery (daf3d7d7-361a-429e-bdc8-673e7650a6c2)
+
+⚠️  Missing place_id: The New Florence, Dresden (63f7392c-8a44-4adc-bbfd-7e6b325c333c)
+
+⚠️  Missing place_id: Chell Social Club (8e1c012b-0f0a-49ca-8e82-80b12fe78c0f)
+
+⚠️  Missing place_id: The Angel Inn (GxaC9GE3CyvCKzLMfCJE)
+
+⚠️  Missing place_id: The Roebuck (QbvafQDh5wCl0UmDB1u6)
+
+⚠️  Missing place_id: Hayfield Club (cf792645-6f28-4430-ae44-f222a48e537c)
+
+⚠️  Missing place_id: Newtown House Hotel (91604611-6889-464e-aa5a-480040391b1c)
+
+⚠️  Missing place_id: The Anchor Inn (7b581e63-7412-4901-b3a3-9fe56b5160f9)
+
+⚠️  Missing place_id: The Halfway House (d2abceb1-bf73-4e1f-96c9-fc751177943c)
+
+⚠️  Missing place_id: The Library (82ef45b1-57b6-484e-845e-716dc45e2f2b)
+
+⚠️  Missing place_id: Eagle & Child (yO2hHYD6a41h48HDHqh1)
+
+⚠️  Missing place_id: Lowes Arms (0gSMfR2LsBcwLgVw8qjr)
+
+⚠️  Missing place_id: The Square Brewery, Petersfield (c5921aac-926e-451d-af92-1a1f9e4f8e3b)
+
+⚠️  Missing place_id: Sanctuary (668c2c89-5bd9-47d2-8a35-3d909cd7e977)
+
+⚠️  Missing place_id: Star Penkridge (fkx5MXwav02Y7tta3fXj)
+
+⚠️  Missing place_id: Cappello Lounge (49b346cb-d42f-4a10-8fd6-22533c18f2df)
+
+⚠️  Missing place_id: The Glebe (6a301f4a-4935-49e3-abda-326b69ecaccb)
+
+⚠️  Missing place_id: The Woodman (QxIznExAtkHyFcl3waAP)
+
+⚠️  Missing place_id: The Railway (1a4f86f8-3373-466b-a861-4c0acc743195)
+
+⚠️  Missing place_id: The Wheelhouse (6f420759-2bbf-43d8-a24f-249dae1ef88a)
+
+⚠️  Missing place_id: Boons (2565fe13-002a-4fd3-9487-ad1a453bae9e)
+
+⚠️  Missing place_id: Bollington Taproom (bb743009-23ad-4dda-9540-c1478416d6ff)
+
+⚠️  Missing place_id: Last Orders Anchor Road (zHVAxLAk6kh8EQWlpvZ1)
+
+⚠️  Missing place_id: The Infinity Bar Hayling Island (b62b30e5-2c4d-4929-a84d-c9f289357e9e)
+
+⚠️  Missing place_id: Garswood (ee149433-6174-4fc4-a8f3-fd22a0a57c28)
+
+⚠️  Missing place_id: The Ship Inn (e0c8fa3f-41c2-4f93-aa39-f3154911183a)
+
+⚠️  Missing place_id: Grangemoor Working Men’s Club (08547c76-024d-4275-a190-743e611eb713)
+
+⚠️  Missing place_id: Cross Keys Country Pub (34f81279-18ba-46dc-9b99-e953385123ad)
+
+⚠️  Missing place_id: Polite Vicar (55aefa3f-7348-4969-9dbe-ad4bc40f049c)
+
+⚠️  Missing place_id: The Lowther Club (c2877c30-b0f4-4fb0-ba7a-6a10b442b27e)
+
+⚠️  Missing place_id: Prince Of Wales (Xiaxlq2K0keBgk6TU4E5)
+
+⚠️  Missing place_id: The Eclipse Bar (db1f902f-eff5-4fc2-8faa-92750dbb26ce)
+
+⚠️  Missing place_id: Darley Park (beb9fcaa-e9ff-4bcc-ad0c-8d562695ace7)
+
+⚠️  Missing place_id: The Chieftain (8e1381f1-4345-417a-a482-df7da1cb9432)
+
+⚠️  Missing place_id: The New Florence (dca1edd2-5edf-48ba-b883-50efc60932b0)
+
+⚠️  Missing place_id: Mill View Social Club & Institute Ltd (241d5012-06ac-40a7-955a-49cd694e403d)
+
+⚠️  Missing place_id: Checkley Community Centre (uBRkd9T3uPUs8oMTR51s)
+
+⚠️  Missing place_id: Hartwood Hall (e79853f9-8af8-4d06-81c2-f252e793587d)
+
+⚠️  Missing place_id: Norwich Arts Centre (f5e1dd0d-bce2-4b32-8cc0-d3802d8f6d0d)
+
+⚠️  Missing place_id: Star Hotel (da2d34dc-4c16-495b-b6f0-d55981c21ecc)
+
+⚠️  Missing place_id: The Bulls Head (zAKdAy5wuzos30QC2cC9)
+
+⚠️  Missing place_id: Rebellion Manchester (24bf552e-ed58-48fa-9b44-849e617d847a)
+
+⚠️  Missing place_id: Secret Garden Leisure (ca6e0afa-2c70-42e3-88e3-7c3120c49e81)
+
+⚠️  Missing place_id: Easington Colliery Club & Institute Ltd (758d8dc5-30a4-4231-a57a-856f29f89b1d)
+
+⚠️  Missing place_id: Dandy Cock (0gU1VvdvpcjjV1XCYq6m)
+
+⚠️  Missing place_id: The Sound Of Coffee (e013bed0-b129-44c5-9c76-e75518e7c91c)
+
+⚠️  Missing place_id: Dog Lovers Festival (88ecaaa9-4f9b-4ccf-bc14-2f9beb1b877f)
+
+⚠️  Missing place_id: Greyhound Inn (Cj9cwXdV9nxx3J6IgjC1)
+
+⚠️  Missing place_id: Red Lion Inn (ccde2f33-b76f-41ef-9287-25bf2edfb7e7)
+
+⚠️  Missing place_id: The Black Swan (pospIitlktbIWvz0e8dM)
+
+⚠️  Missing place_id: The Mann Cave (incl. Chas Mann Motorcycles, Scooterista, Upstairs@ & Downstairs@) (4ed8b7da-8950-4ed7-8336-67bc784210c8)
+
+⚠️  Missing place_id: The Royal Oak Hartshill (6b0bc583-6108-42bc-b66d-d8600b122f81)
+
+⚠️  Missing place_id: West End Club (840be0d6-7049-4436-a5be-7e72030252b9)
+
+⚠️  Missing place_id: No28 Belper (0b62e279-77be-459d-931c-2a17fe91e1b3)
+
+⚠️  Missing place_id: The Billy Goat (5HtnKXxZrHoI6904D8xq)
+
+⚠️  Missing place_id: Banbury Club (e241b717-dcd8-4920-9914-49ba7224d03e)
+
+⚠️  Missing place_id: Ship & Bell Hotel (f28850bf-1c54-4873-9cd1-3c09f2f08760)
+
+⚠️  Missing place_id: Riff Factory (61b6cdb5-872b-414a-b5cf-389fa50351ba)
+
+⚠️  Missing place_id: Oak & Ivy (f6e1948d-f4b4-4acf-8de8-5535b191dd61)
+
+⚠️  Missing place_id: Middleton Masonic Hall (697f83fa-ea4f-4817-ad75-29a22fc1c8a5)
+
+⚠️  Missing place_id: Northcourt (eb8eae6b-85ef-49ad-8ba3-c39d5fc31f17)
+
+⚠️  Missing place_id: The Melbourne Inn (07dbab95-deee-40e6-b463-524e314e8ef4)
+
+⚠️  Missing place_id: Three (cilx6AdCDD3F37DL7Jwc)
+
+⚠️  Missing place_id: Weston Coyney Private Social Club (348247f1-af2b-4126-a4ce-83af20c48079)
+
+⚠️  Missing place_id: Bell Inn (28c07086-8917-4e8b-8ebd-becb52d4d61e)
+
+⚠️  Missing place_id: Lorentes – Darley Abbey (4394c1ad-c041-42ea-8381-c03a84a15937)
+
+⚠️  Missing place_id: Southwick Sports & Social Club (baa23602-ee2d-4988-bc5c-990ffffd9cfc)
+
+⚠️  Missing place_id: The Garden Bar at Bridgnorth Club (0a5423da-fc50-494e-81f1-b8b025a74981)
+
+⚠️  Missing place_id: 282 Lovedean Ln (a779eafc-17eb-4dd5-9898-2c3652d75e67)
+
+⚠️  Missing place_id: Crazy Moose Congleton (RWgT4xP1z5dpK7MqRcOV)
+
+⚠️  Missing place_id: Railway Inn Selston (d874c766-2d42-4415-a5f4-58543fe0f3cc)
+
+⚠️  Missing place_id: The River Rooms (9d02e792-8ebe-40e4-be89-734ce322bf8e)
+
+⚠️  Missing place_id: The Picture House Cinema (01f0ff77-391b-445f-acc6-ebdaa90ac7cc)
+
+⚠️  Missing place_id: Yorkshire Tapas @ The Blues Bar (0f875141-076a-4986-80bc-d5bca8f8828f)
+
+⚠️  Missing place_id: The Cross Keys (425b3b99-4571-4a6f-891f-0942f28550c7)
+
+⚠️  Missing place_id: The Wheatsheaf, Tunstall (62dfaaa6-138b-48a7-829c-5e0849200250)
+
+⚠️  Missing place_id: The John Marston (Bc8sj7DFuXIhLQI0Ar6A)
+
+⚠️  Missing place_id: Waggon & Horses (xDcdX6nXL4kszVnDjlpj)
+
+⚠️  Missing place_id: The Ashwood (2UNlZvpYfrHP38jMf2w5)
+
+⚠️  Missing place_id: St Faith's Church (c7e7e064-f26d-4372-aa23-e3050db0980b)
+
+⚠️  Missing place_id: Burslem Golf Club (H4nWKwFSDJkKEsulB2pY)
+
+⚠️  Missing place_id: The Swinging Arm (215d2b52-fcff-4001-8a51-73fe207ebb08)
+
+⚠️  Missing place_id: Sun Inn (58a02123-a6d6-4098-849e-22e88b4c458d)
+
+⚠️  Missing place_id: Brickhouse Tavern (df3f757a-33b4-4e4b-838d-90bc68474600)
+
+⚠️  Missing place_id: The New Adelphi Club (a9f88fb6-305a-44f3-8445-3eed95885750)
+
+⚠️  Missing place_id: The Fox & Hounds (c65d2a95-9288-408a-9643-9e41e378388e)
+
+⚠️  Missing place_id: Venue TBC (2f2e5e77-314a-4ce6-8377-b705e9480cdc)
+
+⚠️  Missing place_id: The Bell and Harp Freehouse (2e55d19d-00d4-4afe-baa4-303eff54214a)
+
+⚠️  Missing place_id: Beyond The Pale (ba5df586-1955-425b-b24f-9d47ab3363a8)
+
+⚠️  Missing place_id: The Loft (65967b8c-2071-4aac-a661-2e78fc11f579)
+
+⚠️  Missing place_id: The low moor club (267ad2c3-83ba-45be-9df5-6b52a47d1f66)
+
+⚠️  Missing place_id: Elements Live Lounge (fd8273ea-2037-4d0d-8bc6-3911dfe686e5)
+
+⚠️  Missing place_id: Hartlepool Working Mens Club (82fa52da-e515-4b84-9f6b-f6bec0a4e1b2)
+
+⚠️  Missing place_id: The Black Lion, Consall Forge (2eb0ad94-697b-41e8-bb3d-6e621846cf16)
+
+⚠️  Missing place_id: Ladybarn Social Club (d4378e53-fc4c-4b8e-8c2c-aee7a7ac39aa)
+
+⚠️  Missing place_id: Queens Market Rhyl (835abb87-9e0e-46b4-9bd1-d2985f4d3d47)
+
+⚠️  Missing place_id: CONKERS (1d662bda-0030-47f8-b1e7-3a4dba1d2f24)
+
+⚠️  Missing place_id: The Royal Oak (8c693461-a368-45a9-89e1-8659208fdf81)
+
+⚠️  Missing place_id: United match) (9be0502f-2a7f-42ac-8751-b51852b2320a)
+
+⚠️  Missing place_id: The Princess Royal (11e7b8f8-a06f-4da1-8d6e-504a8636662c)
+
+⚠️  Missing place_id: The Leigh Arms (kdyQz9zaHSMahMpdiEpS)
+
+⚠️  Missing place_id: Gatehouse (3kcVkXcBUerfQ2HEoAKc)
+
+⚠️  Missing place_id: Kassia Drayton (8378dd0c-87de-4a03-938b-13bbf29b49d8)
+
+⚠️  Missing place_id: The Queen's Head Hotel (DRbGD8coVJMaAZoAsNR4)
+
+⚠️  Missing place_id: Hazlehurst Arms (lurxwbx9egOTLciRlVwA)
+
+⚠️  Missing place_id: Bench Bistro Bar Nantwich (4d08a32b-4821-4fe4-8e8e-fa09b297bcf1)
+
+⚠️  Missing place_id: Blackburn Empire Theatre (63edf247-fff2-4d27-a975-e0dfe194d853)
+
+⚠️  Missing place_id: The Railway Inn, Congleton (ee41e905-0033-45d1-91e1-d7d491c74619)
+
+⚠️  Missing place_id: Arden Arms (5399d41a-10a9-4064-b971-774fd096fdaf)
+
+⚠️  Missing place_id: Poynton Workmen's Club (QWIBLMGTJIqiGnkk1kvU)
+
+⚠️  Missing place_id: The Red Lion Inn (003ec327-a0e3-478b-ac72-7fef1d85099d)
+
+⚠️  Missing place_id: Marchamley Club (a0397481-e615-4232-a2ca-15d7f23cf7a0)
+
+⚠️  Missing place_id: 32 Nottingham Rd (1a930f35-9dab-48a7-a5ee-68620dffb3b9)
+
+⚠️  Missing place_id: The Blake Arms (3d1735fc-c283-4f83-abfa-5c7fd06df36e)
+
+⚠️  Missing place_id: Wrekin Inn (P6DZCdmAWyMK7ECGo82k)
+
+⚠️  Missing place_id: No.41 (wz8lxAD5har3pjL2HX1a)
+
+⚠️  Missing place_id: 100 Club (35843c1f-c3e4-4a2b-b462-9840d1d5bc74)
+
+⚠️  Missing place_id: bod Stone (nYOqTvObJRL9N6il9k0m)
+
+⚠️  Missing place_id: Baroeg (e25f6fb4-0c5a-41f9-8551-352a4adf0d04)
+
+⚠️  Missing place_id: Quayside Bowness (aa2593c5-d3ef-463d-81cf-d6032c8d0bdd)
+
+⚠️  Missing place_id: Endbutt (079ddb6a-25d4-46b3-b3a7-f47901d2e372)
+
+⚠️  Missing place_id: R&G's Tap House (fddaec05-d74f-4d15-a8de-b083a073ebd8)
+
+⚠️  Missing place_id: Rappor Lounge (fed8b953-08f1-4221-b59b-784777e91ff5)
+
+⚠️  Missing place_id: South Durham Social Club (The Steelies) (9ac8a0f8-31c4-4e01-a387-0d6a8ee51dd7)
+
+⚠️  Missing place_id: The Beartown Tap (9qjDw2qwkf4LEboUirdx)
+
+⚠️  Missing place_id: GW Horners (35b992a2-2903-4172-be1b-11d8e9ca35ec)
+
+⚠️  Missing place_id: Scampston Hall & Walled Garden (5ce22238-ed0d-4fc9-bd1c-ea2480dfcc3f)
+
+⚠️  Missing place_id: The Auctioneers Arms (S4OJgiii3JAGHVRd0iQq)
+
+⚠️  Missing place_id: The Keys (2f525f61-7357-4697-b581-9ba1289a24c6)
+
+⚠️  Missing place_id: Tow Law Town FC (4211978d-8514-47db-a77b-7927b059a6c0)
+
+⚠️  Missing place_id: Nags Head (f0e01a30-e46d-4f4a-82b4-df4e0aeb2456)
+
+⚠️  Missing place_id: Elmfield Social Club & Institute ltd (b8157b27-ee13-4687-acae-4bdfb83f1b7a)
+
+⚠️  Missing place_id: The Claro Beagle (de2d2cfb-b675-4d2e-ae77-7c1b6d270c7c)
+
+⚠️  Missing place_id: Crown Inn, Coniston (f50feb04-8ff5-48e0-a210-9605daf54dc2)
+
+⚠️  Missing place_id: Throstles Nest, Congleton (dbef9eca-c03f-408d-86f3-e283d5a1a7e4)
+
+⚠️  Missing place_id: Rams Head Inn (fea1cb3f-ec16-4499-9415-310bf71c2c3e)
+
+⚠️  Missing place_id: The Edge Arts Centre (06470356-462f-40b4-bc24-f090e16e08be)
+
+⚠️  Missing place_id: Sound Lounge Extra (1d720dc7-b4fe-461e-9ffc-fda31c284709)
+
+⚠️  Missing place_id: The Maypole Inn (ba1db9f7-39b3-4ebf-8ef2-f7274cddae7a)
+
+⚠️  Missing place_id: The Crescent Community Venue (abd2f11c-b40a-4b5d-bddc-4a66a00b90be)
+
+⚠️  Missing place_id: Nags Head (3AtaBBDfT4xp3pTYiIUZ)
+
+⚠️  Missing place_id: The Newmarket (ca883fdd-12b0-49cc-b756-7acaebdc1dbb)
+
+⚠️  Missing place_id: Langley Mill United Cricket Club (540fdf18-ecc6-4d7b-bef3-f10d52380576)
+
+⚠️  Missing place_id: The Jug (KFWFxYJASE6UQJQKV0eN)
+
+⚠️  Missing place_id: Oakland Village (6abd0f15-860f-4f3d-bd0c-aea9e24cbc99)
+
+⚠️  Missing place_id: The Mere Inn (a5sIXdnHMdXmLPtUtHyf)
+
+⚠️  Missing place_id: Staunton Farm (ea2d607f-632e-46eb-b7fa-454409498476)
+
+⚠️  Missing place_id: The Lottie Dod (101fcd0b-fcc8-4489-9161-d064f02095b5)
+
+⚠️  Missing place_id: Harry's Bar East Runton (eb6d3f57-a4db-4f03-8388-5835859af181)
+
+⚠️  Missing place_id: Ladybrook (EG4Mfg5Js6zManGQMOkI)
+
+⚠️  Missing place_id: Brickmakers Arms (6efa4077-e834-4b99-85b6-949aaaad78d8)
+
+⚠️  Missing place_id: Roebuck Inn (I7RcAfPu0g4DP7kXdlaL)
+
+⚠️  Missing place_id: The Hairy Lemon (63eafe7a-a59d-4c80-8977-0c6b1cb43205)
+
+⚠️  Missing place_id: White Lodge (4508b924-b3fc-4d6e-907b-65841ec1baa5)
+
+⚠️  Missing place_id: Offleyhay Village Hall (4a94765a-fd34-4444-80bf-275e0bb7ce3d)
+
+⚠️  Missing place_id: The Raven Inn (ILter889MV8bJCrPKpVh)
+
+⚠️  Missing place_id: The Studio (34e1d935-01f0-4135-8bd4-24e857788bf2)
+
+⚠️  Missing place_id: The Witham (3d25a3e6-d050-4cd3-9b8b-452e541863be)
+
+⚠️  Missing place_id: Grindon Broadway Social Club & Institute Ltd (4d0c216f-e5ab-429d-9fd1-7e1322d11ed9)
+
+⚠️  Missing place_id: The Black Cock (C34vgRZar2gYJPcEydl9)
+
+⚠️  Missing place_id: The Fox at Thorner (04b918e9-3d74-4448-979e-9700e54da7a7)
+
+⚠️  Missing place_id: Spanish Bar (b21ccc45-92c9-4bcb-b4a2-b75b5ca48634)
+
+⚠️  Missing place_id: The Star Inn (t0PUMMbL2hqXafWaY9mB)
+
+⚠️  Missing place_id: The Great Northern (19da3d56-a5ca-44d8-9093-601748b3e880)
+
+⚠️  Missing place_id: The Taproom - Padiham (b1d32a5d-f474-4a94-bcb0-5b371a0ec2ad)
+
+⚠️  Missing place_id: Haydock Conservative Club (8ec0f86a-dc63-4e86-be06-84b0423c7ca8)
+
+⚠️  Missing place_id: Halifax Hall (fac160d0-081a-495f-9761-dc43652f3dc9)
+
+⚠️  Missing place_id: Wickford Railway Club (81fda74b-152b-4190-b5b7-0888e9fb82ff)
+
+⚠️  Missing place_id: Potters Bar (cAlDvTljmyhQTo5uB6Wb)
+
+⚠️  Missing place_id: The One Eyed Stag (f00fbeb1-a313-4c44-a3b5-c9546f98e67d)
+
+⚠️  Missing place_id: Malt Kiln (3ad40631-c6df-47df-bfb3-f15b0178c648)
+
+⚠️  Missing place_id: Chaplins (ab95a872-1e66-4ca3-a2f1-0abf50b84504)
+
+⚠️  Missing place_id: Elephant & Castle Inn Holmfirth (c64abe68-4c1d-4c73-a20d-b67f4a5c9c79)
+
+⚠️  Missing place_id: The Highwayman (b8e7ea21-ca32-4655-be01-f0d4711a13f6)
+
+⚠️  Missing place_id: 109 Mount Pleasant Rd (a1aa4cbf-80fe-4339-b680-57e347908a71)
+
+⚠️  Missing place_id: The Derby Irish Association (40fea99e-c73a-4ac7-976e-b4e9dc13e465)
+
+⚠️  Missing place_id: Bridge Inn (c7629a1d-390e-40f1-86eb-52478003bac7)
+
+⚠️  Missing place_id: Billingham Synthonia Cricket Club (a5aa9dc9-3361-42d8-bd33-4c1572f88684)
+
+⚠️  Missing place_id: The Railway Royton (iUP3wJyKf0vRNsHgzNH8)
+
+⚠️  Missing place_id: The White Horse (3558bf5f-963f-4ad5-a2cf-4dd55fc1d6db)
+
+⚠️  Missing place_id: The Ship & Anchor (418bf252-5064-49e3-9174-5f4cfd8608d7)
+
+⚠️  Missing place_id: Heanor Conservative Club (0690170a-517d-492b-96d7-f9c7a333aa82)
+
+⚠️  Missing place_id: The Brook (0b72cb34-e616-4c77-884a-2e3df254cd95)
+
+⚠️  Missing place_id: Riddings Park Community Centre (458b3d96-ff20-4b77-9ac6-66862ada3d3e)
+
+⚠️  Missing place_id: Kimberley Miners Welfare FC (29873e20-b6fb-43ee-a85b-75e9477ab283)
+
+⚠️  Missing place_id: The Cheese Hall (3b5b6c9b-dccc-41c1-a960-23faa0ef793e)
+
+⚠️  Missing place_id: Red Lion (8a35b204-cd8d-4422-bf78-abaa6c9ab6f6)
+
+⚠️  Missing place_id: The White Lion (78647e71-a4ba-4110-b055-a34c0f72db5f)
+
+⚠️  Missing place_id: Ember Woodpecker (c39d8689-fe27-4bef-86d3-ead453a77e33)
+
+⚠️  Missing place_id: Concorde Club (83aba982-2271-42be-8713-24cbac40126b)
+
+⚠️  Missing place_id: The Bunny Hop Ale House (1f490590-ba6e-42ae-b3bb-421f66837928)
+
+⚠️  Missing place_id: The Sundial (632a063a-1556-45c8-bd5b-20d06e213b16)
+
+⚠️  Missing place_id: West Town Inn (c3540da6-3e88-40d6-8b88-9356ee39723d)
+
+⚠️  Missing place_id: The Peregrine (d9602bfa-a710-4427-9c09-6ef6f89fd74e)
+
+⚠️  Missing place_id: Charlesworth & Chisworth Village Club (rqoowruJ8VaNl7yusGfo)
+
+⚠️  Missing place_id: Louth Riverhead Theatre (03e24042-3c21-43ab-a7b5-f1cc027958a0)
+
+⚠️  Missing place_id: Meadow Rd (f33ccbb6-ca3c-41ff-a1c3-5582dce66e37)
+
+⚠️  Missing place_id: The Jolly Sailor (11827bd7-3ca3-46fa-8e65-a9437a63b736)
+
+⚠️  Missing place_id: Beehive Inn (dyfUxZVkru9c0c93YZph)
+
+⚠️  Missing place_id: Stork Hotel (896d7fd3-bf39-49ef-9f0d-f6ec939426c0)
+
+⚠️  Missing place_id: Handcross Bowls Club (cb76d723-3d58-4f93-8741-ec2e21c13b95)
+
+⚠️  Missing place_id: Voltage (838e7afc-ef6c-42c9-8382-1e94f519b0c8)
+
+⚠️  Missing place_id: Albert's Shed Southwater (152be9df-0b95-44e9-9fe0-0311d737ef64)
+
+⚠️  Missing place_id: The Station (22044021-9985-4ab3-a1dd-7193a815f121)
+
+⚠️  Missing place_id: The King's Head in Market Drayton (fd81df4d-d004-448d-85e0-13c7edd1e034)
+
+⚠️  Missing place_id: The Grey Horse (59a97f3f-71eb-4f61-a1ee-117b73e532b6)
+
+⚠️  Missing place_id: The Cottage of Content (5806abce-c4b1-4d99-93dd-9037a22b0903)
+
+⚠️  Missing place_id: The Butler's Bell By Davenports (933faedd-c1d5-4e43-9d87-0db69a394f78)
+
+⚠️  Missing place_id: The Apiary at Castle Donington (20f8a6c3-348b-4957-8786-04dfddd38c79)
+
+⚠️  Missing place_id: The Cricketers Arms Oakamoor (f225bddf-76b1-4fb5-abe6-41957c4d6bc8)
+
+⚠️  Missing place_id: The Hampshire Rose (cfd6ec30-e647-4a5b-8ca4-4dd5188a7798)
+
+⚠️  Missing place_id: Den Engel Belgian Bar and Restaurant (9c0be2a1-bd34-476e-aea3-49e9dd367f26)
+
+⚠️  Missing place_id: The Royal British Legion (d1c4030f-13c4-4df4-9f25-a74263ed536d)
+
+⚠️  Missing place_id: Tyersal Club (6c39bf70-add0-48f5-b0f4-11f72f623cc8)
+
+⚠️  Missing place_id: The Honeycomb (4f3baebd-5c1d-4848-8d2b-e93c33b5f344)
+
+⚠️  Missing place_id: The Commercial (guAUvAYaULiDEMj9hYhT)
+
+⚠️  Missing place_id: Twenty Ten (3104a747-a00f-4a81-a7b3-7f2401ae73d6)
+
+⚠️  Missing place_id: Seabridge, Seabridge (a6cb4e7c-3969-478b-ab3c-99e697a0d483)
+
+⚠️  Missing place_id: Darfield Conservative Club (1c9ac3e6-198b-4bb8-b696-18a2af4f7682)
+
+⚠️  Missing place_id: The Tavern (c40add37-04a1-43c2-acf9-2f425f145a65)
+
+⚠️  Missing place_id: The Portland (72082fee-d015-47e4-9196-fff990785894)
+
+⚠️  Missing place_id: Ye Olde Foundry (LaCerFrJADpYv07peEZK)
+
+⚠️  Missing place_id: Bay Horse (9eb49ae2-1bc3-4570-aa40-aaa9e24085f8)
+
+⚠️  Missing place_id: The Locomotive (fQTvBxyBqIdDIxKjzFBu)
+
+⚠️  Missing place_id: The Royal British Legion (gbHZGvRa7AwIpNUgyKlO)
+
+⚠️  Missing place_id: Bike 'N' Hound (qCk6zjFPCmz1E6I4G9oz)
+
+⚠️  Missing place_id: The Citadel Theatre (33e98acc-d9f7-4f06-8494-f7c1824acc06)
+
+⚠️  Missing place_id: Greyhound Way (160e2ea6-a01f-4fb8-8edb-c170834eb9c1)
+
+⚠️  Missing place_id: Sandbach Town Hall (8e1075b2-6a7e-44f1-8ee4-e5178374f2d0)
+
+⚠️  Missing place_id: The Hairy Dog (3a5b4ca3-c4d8-4326-a0c8-c5dc585a52b7)
+
+⚠️  Missing place_id: Q Bar (4219b0f1-96fa-4cf8-9439-ec988d157a3b)
+
+⚠️  Missing place_id: The Boat Inn (6IfTnQife4HCNNhrwkcB)
+
+⚠️  Missing place_id: Broomhill Albion Working Mens Club (b83b6c89-b2b4-4658-a1c1-71d2ff951a58)
+
+⚠️  Missing place_id: Cock & Pullet (4cba0da0-cd33-45ec-8504-106d4f325f94)
+
+⚠️  Missing place_id: The Pool Dole (DvXRTvhUhT1tfqPLH1Gp)
+
+⚠️  Missing place_id: The Oxford (e51c4c01-7576-4031-a5fa-49a21aaf4a20)
+
+⚠️  Missing place_id: Princess Royal, Dresden (6c6ec5e6-f730-4c48-9248-0bfaed0e5042)
+
+⚠️  Missing place_id: Britannia (FrQdPAwmH6p5gp3NeMWo)
+
+⚠️  Missing place_id: The Black Horse, Endon (RIDVGVy7UAvWa19Zj5DQ)
+
+⚠️  Missing place_id: Congleton Market Quarter (92232725-a4fb-49a4-9abc-2e384ad7d703)
+
+⚠️  Missing place_id: The Ship Inn, Langstone (c3e9765d-db57-49d6-8cad-3ca67d745ae6)
+
+⚠️  Missing place_id: The Red Lion (7dd36d63-114c-4a5a-8e27-69f8d2c97244)
+
+⚠️  Missing place_id: Almondbury Cricket Club (511f43a9-c2f0-4fd4-8e00-e80c5e4a3c32)
+
+⚠️  Missing place_id: The Ashcombury Music Festival (b2301bcf-a321-4a93-a2ea-bc14960a42f5)
+
+⚠️  Missing place_id: The Bulls Head Hotel (1f9f2e2f-00ba-4f0e-acf9-7ce0b047ae49)
+
+⚠️  Missing place_id: The Crossbar Audley FC (4e82e278-8c07-49c3-9ad7-53700a4d7085)
+
+⚠️  Missing place_id: Comrades Club (83891a2b-6dc5-4031-a328-fefa242d0a55)
+
+⚠️  Missing place_id: Brooks Deli & Wine Bar Mickleover (5bd75434-e1d7-45ea-acd9-057c7a6672aa)
+
+⚠️  Missing place_id: The Victoria Biker's Pub (8btYRREXlLtaOLpKd6QW)
+
+⚠️  Missing place_id: Houghton Rugby Club (938c6297-ec51-46bd-85f4-6ff36f3d0e16)
+
+⚠️  Missing place_id: The Oatlands (42c3ec60-5766-45cd-9f08-c48c7b5ca538)
+
+⚠️  Missing place_id: The White Lion (f11bdcd9-9cee-4a1d-a092-ebb4b39d935f)
+
+⚠️  Missing place_id: Gardeners Rest (986d44d1-2649-4056-8958-b3a095e9042a)
+
+⚠️  Missing place_id: The Little Vintage Tea Room At Spode Museum (6cf1a3c1-c068-40a6-b365-001028dbc906)
+
+⚠️  Missing place_id: Cubar Restaurant & Bar (AeD6xCHLVLBZrow64txY)
+
+⚠️  Missing place_id: Rolls Royce Leisure (f051235f-f92d-4d75-bd96-66211e034707)
+
+⚠️  Missing place_id: Kings Arms Hotel (7639319c-9b51-4652-9442-07126fbc36e7)
+
+⚠️  Missing place_id: The Captain Webb (0JI8W2TuAmbU4VsJncpN)
+
+⚠️  Missing place_id: Town Hall Tavern (BmQg5orKKV613HpsCjge)
+
+⚠️  Missing place_id: The Wellington Inn Leek (e15bb7ba-f552-4801-a580-d0ffeb4258ae)
+
+⚠️  Missing place_id: The Hope & Ruin (e7cb5dbb-460e-498f-8a73-d007c4da058a)
+
+⚠️  Missing place_id: The Old Town Hall (6ef2dd65-0553-411f-aa91-6afd03389510)
+
+⚠️  Missing place_id: Brooks Deli & Wine Bar Ockbrook (4b9df9cd-f93d-487c-8f0c-3969903c389d)
+
+⚠️  Missing place_id: The Alfred (c48e3de0-fe1a-46ea-ae49-6e5c21b4cf3c)
+
+⚠️  Missing place_id: Railway Hotel (c0619b75-4c76-49cb-980a-f25c0dd8e557)
+
+⚠️  Missing place_id: The Church House Inn (d645b76b-1621-4c4c-b108-433eeb8fe062)
+
+⚠️  Missing place_id: Welcome Inn (FXQKvDaexNQj53yl4icf)
+
+⚠️  Missing place_id: The Three Stirrups (4cc2a2eb-3b5f-446c-916a-15269340b051)
+
+⚠️  Missing place_id: The Unicorn, Congleton (7cbc04f6-6e0b-4aec-accf-5191956715c6)
+
+⚠️  Missing place_id: The Boars Head (f317b6dc-ec37-4af3-afac-34a75c3052dd)
+
+⚠️  Missing place_id: Cosey Club (LHrDNnXeCU1eirDOxUKc)
+
+⚠️  Missing place_id: Hartlepool Golf Clb (423634de-4710-4e9d-837d-8d130fc05381)
+
+⚠️  Missing place_id: Bradley House (28b93c80-4a8d-4949-bbd0-201216468903)
+
+⚠️  Missing place_id: Brewery Arts (f4089caf-3038-465e-8628-6fda9a6cf65d)
+
+⚠️  Missing place_id: The Gunner (2078d80f-b947-465f-9471-a1ce979ddcb1)
+
+⚠️  Missing place_id: The Maverick (33e7a899-4bf8-4b36-9b04-7784d0643c5e)
+
+⚠️  Missing place_id: Ladies Mile (ff917e9a-f331-49a0-9b32-e08e87247542)
+
+⚠️  Missing place_id: The Fat Ox Hotel (f4712549-b828-48ae-9f26-78c6734fb19e)
+
+⚠️  Missing place_id: Cattle Market (q16QpXNewWkr80Xt0ogj)
+
+⚠️  Missing place_id: The Central Bar & Venue Ibstock (efd5a59f-65d8-448d-b1b2-55c0a94caefc)
+
+⚠️  Missing place_id: Lymedale Bar & Dine (IVbPiW7chU4tSoKt14CM)
+
+⚠️  Missing place_id: Travellers Rest (60618350-2f68-4a87-98b7-a1d1686e1c4f)
+
+⚠️  Missing place_id: Crown and Cannon (ed1384a2-4c95-4072-8b22-1f9b25da0e0a)
+
+⚠️  Missing place_id: Queens Hotel (766038dd-fe92-4f21-8990-eab76ba039ed)
+
+⚠️  Missing place_id: Tavern (124a847b-bf23-42e5-ba4f-72736cc4962b)
+
+⚠️  Missing place_id: The Met Lounge (cee01ec4-a4c8-42cb-9483-c49036cfd903)
+
+⚠️  Missing place_id: The Swan With Two Necks (cc8cbda0-b4fb-4f48-9802-6a2a8b2aa9fe)
+
+⚠️  Missing place_id: Marsden Liberal Club (fffa3e70-161e-48f4-be56-00b743e075b3)
+
+⚠️  Missing place_id: The Rigger (YOMsEVdj9Y7OMMy88HFV)
+
+⚠️  Missing place_id: St John the Evangelist Church, Derby (35c5b39c-1a18-499d-b92f-904e5ced303b)
+
+⚠️  Missing place_id: The Wayfarer (1c9f2738-2ace-4134-a3f1-0dc2d83d1539)
+
+⚠️  Missing place_id: Pudsey Tavern (5487e40b-2d5f-472f-8819-8a1eea9938fe)
+
+⚠️  Missing place_id: The Spinning Top (Urmbw9NLybwTyfdVygSV)
+
+⚠️  Missing place_id: The Dublin Castle (ce2b7f33-6db1-4f4c-8c69-15e227aa1bf7)
+
+⚠️  Missing place_id: Emsworth Sports & Social Club (b9cf260b-63da-46c2-ad84-51d88ead74ee)
+
+⚠️  Missing place_id: The Rising Sun (SzE46SL9phccWWNprHhb)
+
+⚠️  Missing place_id: Oulton Village Hall (HxZq0juNEwxVKh2DU7vp)
+
+⚠️  Missing place_id: Carnfield club (7a39d5b7-2ace-4d41-8d64-d682582b74e9)
+
+⚠️  Missing place_id: The Eight Farmers (RMgG8RhgzTdh5qsIjtEU)
+
+⚠️  Missing place_id: Norton Central Social Club (SJrDEbAzFaHuyoTpoTST)
+
+⚠️  Missing place_id: Farnworth Cricket Club (a9a5e597-504f-47e6-8c17-c9d7f3aa3bdc)
+
+⚠️  Missing place_id: The Guide Post Inn (3c5db310-8903-4066-9d48-9c9b3d42f17f)
+
+⚠️  Missing place_id: The Cottage Tavern (f82f3963-3d93-4a4a-9fcf-22ff307ac5e6)
+
+⚠️  Missing place_id: The Farriers Arms Shilbottle (3ec6bcd4-17a2-403f-877c-803d97cfedcd)
+
+⚠️  Missing place_id: The Fiddlers Three (8ca6b1d4-855d-4cd5-977f-56a7487f0f3b)
+
+⚠️  Missing place_id: Bees Knees Colne (896fc533-74be-4943-bd44-f26f9ee53818)
+
+⚠️  Missing place_id: The Beehive Inn (2SLrqg5NEbwWH3Umcf0j)
+
+⚠️  Missing place_id: The Harvest Home (ea8c43b2-4b3d-42f7-95ed-4d934b844a82)
+
+⚠️  Missing place_id: Royal Oak (66c4795a-6c3b-484a-8304-6b672b06cb08)
+
+⚠️  Missing place_id: The Loft cleckheaton (978c24c5-b5b6-491a-a5b2-3abfec3610a8)
+
+⚠️  Missing place_id: The Little R'Ale House (3938faeb-dfaf-4e86-8cae-362cb3ba19a1)
+
+⚠️  Missing place_id: Lindley Liberal Club (3854f088-4af5-4ee3-9f66-360a05fc8e7a)
+
+⚠️  Missing place_id: The Bank (f6a87768-75e3-4197-8dae-e9567528d756)
+
+⚠️  Missing place_id: The Oak Tree (1a51ed4a-ff52-4bd7-90ff-2c7c12777351)
+
+⚠️  Missing place_id: West Park, Long Eaton (0888fe2f-504b-48fa-a1c2-e9c3e0afe7e0)
+
+⚠️  Missing place_id: The Sun Inn (2902e955-4ccb-49f3-b816-4f7054dd6953)
+
+⚠️  Missing place_id: Kings Head (4703c54e-51dd-40dd-8b34-295dac0a88e1)
+
+⚠️  Missing place_id: The Heroes, Waterlooville (eb51991a-b082-433c-90e4-123340283271)
+
+⚠️  Missing place_id: The Bridge House Theatre and Warwick Hall (bxRSwlu2QvWtyd9NddVM)
+
+⚠️  Missing place_id: The Ashley (0329853a-cdd8-400e-bf76-10518abadc06)
+
+⚠️  Missing place_id: Bembridge Dr (03905c86-b694-4819-afc1-7400e54d1b87)
+
+⚠️  Missing place_id: Fox and Goose (ogtUnLyaNHhtk9iOHJLX)
+
+⚠️  Missing place_id: The Bowling Green (8rwZ9VhoUZpOIoReKrPD)
+
+⚠️  Missing place_id: The Flass Inn (088a2354-822e-451f-b291-93bc8b911bd5)
+
+⚠️  Missing place_id: The Old House at Home, Havant (349ca19c-fb7f-45e6-b9a1-bebdb16a0634)
+
+⚠️  Missing place_id: New Continental (c2e03928-98e9-42c2-99b6-12683c1ef0c8)
+
+⚠️  Missing place_id: Bohemian Bus Café (9dd00f3a-46ec-4ea3-9d0d-1667f76f7026)
+
+⚠️  Missing place_id: The Albert (4d12e4f8-84de-42c2-b79c-4972e2841f71)
+
+⚠️  Missing place_id: Singing Chocker (fd3fd7b8-91d6-4dfe-8721-f23b9c1dc993)
+
+⚠️  Missing place_id: The Boundary (ecKeQub1A7YoDyWGhMVK)
+
+⚠️  Missing place_id: Bask. (NfZbSb26zj7jGSTrL2f1)
+
+⚠️  Missing place_id: The Tap & Spile (Xa5l5XQCa2bcguy87pws)
+
+⚠️  Missing place_id: Golden Eagle pub (ee4a916b-dcb1-4b2e-b782-aefcf0cfebb5)
+
+⚠️  Missing place_id: Granville's Restaurant & Music Bar (pkmhj8ElmrfJWNoWLn6X)
+
+⚠️  Missing place_id: Murphys Pub & Kitchen (HC0NaN9oXbcIjpgx60gs)
+
+⚠️  Missing place_id: Victoria Working Men's Club (QAfcjv38IHgxkaBZvn04)
+
+⚠️  Missing place_id: Berry Hill Club (62a1d2e2-4722-4647-a93b-bf0325f6679c)
+
+⚠️  Missing place_id: Nantwich Club (fKYALswrqeTdwdJi8iGG)
+
+⚠️  Missing place_id: The Nine Pins Saltwell (127e98dc-8e41-44b9-9cbf-31eaf0f247d3)
+
+⚠️  Missing place_id: The Potters Arms (74d80fe5-f8c1-4d71-90ea-f37a564d5465)
+
+⚠️  Missing place_id: The Nest (2cbf0be1-0bce-4080-ad9b-42fe6c692ebe)
+
+⚠️  Missing place_id: Stansted Park Garden Centre (3218ee02-6145-4aac-9be8-c113acfefdb1)
+
+⚠️  Missing place_id: Coole Acres, Audlem (2a475d69-281f-4787-bba2-07d8f62bb640)
+
+⚠️  Missing place_id: Darlington Market Square (d64d5f40-2d35-4ed5-9e72-42acfabb0b9d)
+
+⚠️  Missing place_id: Marstons Sports & Social Club (OgrtkPTNQzTI9bhtGrkh)
+
+⚠️  Missing place_id: The Prince of Wales (8670d198-54a8-43a5-80f9-94bca1b21f40)
+
+⚠️  Missing place_id: The Nursery Inn (Q3n3Tpupglw4tfIzGBWD)
+
+⚠️  Missing place_id: Byers Green Club (75d31666-5264-469e-a234-2af239917068)
+
+⚠️  Missing place_id: The Giffard Arms (19c78897-5370-4f2a-ba1e-d75faedf7977)
+
+⚠️  Missing place_id: Hartington Hall Yha (23c4ce03-7d4d-4a25-8626-8026bdcc4973)
+
+⚠️  Missing place_id: Stourbridge Social (7639f529-391f-4103-b4ee-11a997b27f4a)
+
+⚠️  Missing place_id: The First & Last (2115d595-1de5-4230-ab34-a2239d957f60)
+
+⚠️  Missing place_id: The Railway, Handforth (mm0bQZ6jFLr1FR4huxcW)
+
+⚠️  Missing place_id: Townhouse Oswestry (6b8f32bd-d49f-4cc0-a5c8-96e8c43f1459)
+
+⚠️  Missing place_id: 1 Uttoxeter Old Rd (a7687e91-ccf2-447f-96b3-b9e4113aae47)
+
+⚠️  Missing place_id: The Commercial (8efd1867-7c1b-4a3c-8648-f1958019e308)
+
+⚠️  Missing place_id: Alsager Civic (xbQ9aD1oMVFO3Wr911gA)
+
+⚠️  Missing place_id: Frankies Wine Bar (6y2Q1SDw853wuAKvfyIo)
+
+⚠️  Missing place_id: Lakeside Park (be46ef87-27d2-45c2-a3ba-612827c58cdc)
+
+⚠️  Missing place_id: The Lambton (fef4984e-c6e4-4452-81e7-6712d5f4c2fc)
+
+⚠️  Missing place_id: Casked Rawtenstall (3f2b19cf-43a6-4051-b03d-8d1888f9e23c)
+
+⚠️  Missing place_id: Moira Social Club (84e948bc-306a-4cdc-9992-c966de39df16)
+
+⚠️  Missing place_id: The Keepers Lodge (505c660e-7602-4628-b8f5-dbcca4c6edcc)
+
+⚠️  Missing place_id: Old Market Tavern (PXMkdbjvxMMfxa0PlYp3)
+
+⚠️  Missing place_id: Flash Village Hall (0gP5c7lukp4VQZgRJ0jH)
+
+⚠️  Missing place_id: Penkridge Sports & Recreation Centre (Monckton) (SAjeq0QwiI5RftXXtGYc)
+
+⚠️  Missing place_id: The Royal Oak Inn (db70def7-7377-49ec-9fbc-e3bb94cf7b24)
+
+⚠️  Missing place_id: The Smallthorne Victory Working Mans Club (a5c87f19-98fb-4c46-8821-20312d2cae05)
+
+⚠️  Missing place_id: Palmer-Morewood Memorial Club (b0d2343f-c907-4a17-8d87-b0e01794d302)
+
+⚠️  Missing place_id: Reddish Working Men's Club (9c48828c-ef63-46bc-bb89-605dd46b063c)
+
+⚠️  Missing place_id: Britannia Inn (3beac9d5-34e1-4aec-9706-5b3dc3f15fe1)
+
+⚠️  Missing place_id: Square & Compass, Darley Dale (d0289813-1201-4e31-83de-fed95ddc9408)
+
+⚠️  Missing place_id: The Barley Mow (3763445b-56b5-42ed-b888-1ea100ab4fb1)
+
+⚠️  Missing place_id: The Liquor Vaults (DxJUMGSpcqUl7fbWU61D)
+
+⚠️  Missing place_id: The Crown (9e6164f5-791b-4045-bdf8-59021646047c)
+
+⚠️  Missing place_id: George IV, Pub (3b94f3d5-d539-4569-bf2a-3f8b350930b6)
+
+⚠️  Missing place_id: Queens Head (6795a390-259a-46d0-aaf4-496d075d0b50)
+
+⚠️  Missing place_id: The Voyager (8ba95267-7bfe-4c6f-9d76-2c7a18cc57b7)
+
+⚠️  Missing place_id: National Tramway Museum (560b986f-4e62-4369-a32b-d94fcc9e0862)
+
+⚠️  Missing place_id: Stafford Leisure Centre (c2be6d1d-20ad-4c16-89e5-924f3f538e3d)
+
+⚠️  Missing place_id: Sitwell Arms (b4b01846-8ee9-415f-9d03-ba1b4c6da775)
+
+⚠️  Missing place_id: Goldenhill Working Mens Club (hkyxKiFkCkOPbtT520NY)
+
+⚠️  Missing place_id: The Ashcombury Music Festival (abcc9d87-221c-4630-9b72-3409c077ebfd)
+
+⚠️  Missing place_id: The Pub in the Woods (2be5048d-7bd9-4000-87c3-3afb44737d8b)
+
+⚠️  Missing place_id: South Wingfield Social Club (a3cb46dc-646a-4bd8-904b-fea91dc5f00c)
+
+⚠️  Missing place_id: The Huts Emsworth (c23b364b-8e12-4c2c-8e1a-eff5acfacca6)
+
+⚠️  Missing place_id: The Victoria Inn DE1 (35eaa30a-902b-4251-a7b1-e4dcbf7b0832)
+
+⚠️  Missing place_id: Artisan Tap (CoS3G3Jr9djE4WSWQqkz)
+
+⚠️  Missing place_id: The Highwayman (d59ea974-f780-4894-97af-a115b15cdc62)
+
+⚠️  Missing place_id: Fox & Hounds (3f8efa9c-31ce-4752-9555-088a384db663)
+
+⚠️  Missing place_id: The Old Sessions House (671f03f8-ca9c-4489-9a0c-fe2ad2eec76a)
+
+⚠️  Missing place_id: Melbourne Hall The Gardens (66e576b3-9365-487f-a346-2299fd8ba6f1)
+
+⚠️  Missing place_id: Barrow-in-Furness Town Hall (5bc5d392-cbf4-4183-b61f-9117c83ac69a)
+
+⚠️  Missing place_id: Redrock Stockport (59881121-9688-4cd4-bea4-e402f2d40118)
+
+⚠️  Missing place_id: Corner House (4fda02f7-fa4a-4ef1-a88f-fdc33c64311f)
+
+⚠️  Missing place_id: Langley Park Hotel (6ec6ffdc-bf8d-45b3-ae08-36f60f4085dc)
+
+⚠️  Missing place_id: Wheatsheaf Hillgate (cd0581c3-457e-45a8-93d8-15544b122a1d)
+
+⚠️  Missing place_id: The Old Star (cr54ADsGpNZBWpd0Rmei)
+
+⚠️  Missing place_id: Quarry Bank Inn (9aedc3a9-6d4d-4ff4-b598-1f0bb8893a82)
+
+⚠️  Missing place_id: Hogg Nogginns (qIFn9NZNjUrboPVGqgTN)
+
+⚠️  Missing place_id: The Groovers Arms (c6befac8-a3d8-42d6-8343-adeb4572036e)
+
+⚠️  Missing place_id: The Decorated Dead Tattoo Studio (28f7869f-3bf4-4214-a9f2-ff2a94f8a4f5)
+
+⚠️  Missing place_id: The Red House (70341a51-6a91-47b4-8b07-3d29fe229ced)
+
+⚠️  Missing place_id: The Crows Nest.Newcastle (644f9224-b4fb-45a3-badd-063d4bd388a8)
+
+⚠️  Missing place_id: Scissett Club Ltd (070de289-4b48-4841-be06-494f3d4b25c4)
+
+⚠️  Missing place_id: Masons Arms (11a94543-0257-4c9e-8c40-c84ad74a83d7)
+
+⚠️  Missing place_id: Travellers Rest (8fb1d111-a92f-48f1-9886-5722bebf12ff)
+
+⚠️  Missing place_id: The Stag (aed775b8-2e8a-44e1-bdcc-6c8e78482c2b)
+
+⚠️  Missing place_id: Oakhill Bowling & Recreation Club Ltd (ExRv69hCrGI3BXSZiLp3)
+
+⚠️  Missing place_id: the QUARTER at Potbank (431c0409-d611-4427-9af3-34c1bebc3d27)
+
+⚠️  Missing place_id: Mel Inn Social Club. (790a87bc-a07d-43e1-9eef-fb54cb04f1b8)
+
+⚠️  Missing place_id: New Inn (KkWVggB3hdH9zqXZDhXY)
+
+⚠️  Missing place_id: Darcy's (sFtBFBVDH68B7lROwqqj)
+
+⚠️  Missing place_id: The Smithfield (48feef35-83db-40fc-9828-7b144c1ce36b)
+
+⚠️  Missing place_id: Beamish Mary Inn (d1e0ca16-c89e-4ae3-bec5-6b86df949773)
+
+⚠️  Missing place_id: St Nicholas' Chapel (42aece3d-83a6-4400-a1c1-3d002469d96c)
+
+⚠️  Missing place_id: The Globe (njgBYMOIyoHc6kihZYmF)
+
+⚠️  Missing place_id: Anvil Club (b9a65fb0-d062-4a55-aaf2-12efcd254719)
+
+⚠️  Missing place_id: Horse Shoe Inn, High Lane (f37f227c-e1c5-4c03-bdff-6d6d5b48a5fe)
+
+⚠️  Missing place_id: The Barley Mow (33852be8-b247-4829-8eae-4725fb2dc619)
+
+⚠️  Missing place_id: Measham Top Club (eed6b5c2-1ddb-489d-8290-bb844ec2e489)
+
+⚠️  Missing place_id: Lake View Garden Bar (055cc1dd-9324-4171-9106-23a3719659d2)
+
+⚠️  Missing place_id: The Links Tavern, Liphook (d81b196f-fe1c-48ba-a40a-1a8f7149da19)
+
+⚠️  Missing place_id: Woodlands Hotel (286ed2bb-6382-49e8-aa41-1b87bcae4ed9)
+
+⚠️  Missing place_id: The Underground (vzWTYVGllln9h8WQCaNf)
+
+⚠️  Missing place_id: Knaresborough Working Mens Club (eccd7704-b19e-41d8-976f-7cf2434e66b9)
+
+⚠️  Missing place_id: Nantwich Road Social Club (01239430-8bdd-415e-b14c-1fee8ef9ff09)
+
+⚠️  Missing place_id: Chasewater Railway - (Brownhills West,Station) (fb22df61-7c6a-4811-bd0d-cd94a8d4ba6e)
+
+⚠️  Missing place_id: The Penny Gill (ea7bbf5f-586f-4b8f-96f4-efe2e02d098c)
+
+⚠️  Missing place_id: Lily's Bar (f707cc61-def2-45e8-a8af-ee09d86b3730)
+
+⚠️  Missing place_id: The Station (590f9061-f1e7-4dfc-a7dd-39534e3c75b6)
+
+⚠️  Missing place_id: White Swan (94a81619-af6d-45d3-a7c5-2c2a57945e25)
+
+⚠️  Missing place_id: Blue Bell (bd3505e9-ba0f-464d-aa11-bcb19f38e18f)
+
+⚠️  Missing place_id: The Carlton (d79f6582-7af6-46e5-a51e-252ae7459a28)
+
+⚠️  Missing place_id: Knutton Ex Servicemens Club (a50f76d9-eb5a-40f8-a313-eef43f242981)
+
+⚠️  Missing place_id: The Goats Head (dfaf1c1f-b2d0-49de-8195-9777d76e5536)
+
+⚠️  Missing place_id: Broken Cross Club (84c8b24b-889a-48fc-9e5e-a23a8a624d04)
+
+⚠️  Missing place_id: Tan Hill Inn (8c4bceb1-f7b9-4be7-a2b2-44e750b0f82a)
+
+⚠️  Missing place_id: The Four Ladies (ea62872b-2d7c-404f-8bb7-0bec678a48cc)
+
+⚠️  Missing place_id: The Terrace Sports Bar & Kitchen (627892dc-736f-4140-833c-0af1941f626b)
+
+⚠️  Missing place_id: Ashwood Longton (a0489e41-c939-44ed-ba03-adfcfa0ddabd)
+
+⚠️  Missing place_id: Crown Hotel, Bar & Grill (kiEvV8KhpAHE6Il8XMyn)
+
+⚠️  Missing place_id: The Albert, Brindley Street, Newcastle (d0edb10a-4218-416a-b710-9228b5fcb4ac)
+
+⚠️  Missing place_id: The Fox (c600e549-1ecf-447c-bae7-336718cdde5c)
+
+⚠️  Missing place_id: The Old Springs Inn (7e60b0c1-a753-43ab-92c7-744319333d52)
+
+⚠️  Missing place_id: Wyldes (b18a44ad-198a-4c02-816b-b64b95e9d4fe)
+
+⚠️  Missing place_id: Cricketers (64268e75-245f-451d-8c23-90fb0b504d87)
+
+⚠️  Missing place_id: Sanctuary, Hartshill (e5f6c233-3a2d-450c-9bd5-540f6f076a6b)
+
+⚠️  Missing place_id: Thirteen Club (cc95485a-8625-41db-ac0d-efe3b8878e68)
+
+⚠️  Missing place_id: The SalthouseNW (45652be3-17c2-425f-bda8-8cd9d8638af5)
+
+⚠️  Missing place_id: The Royal Oak (8797ff7a-ddce-4f70-9a39-e67265ebaa80)
+
+⚠️  Missing place_id: Barstable Social Club (6b00a74d-8b0c-4178-9a08-b166c4fef91c)
+
+⚠️  Missing place_id: The Alma Inn (52e68f93-61f9-41b4-8192-7ce36db89d93)
+
+⚠️  Missing place_id: Nicco Restaurant & Bar (78b46fe4-8fb9-41b2-8c6e-329ed9d43dcf)
+
+⚠️  Missing place_id: PAU Cafe (9Lo1wQb5g1V1GxZxwWTW)
+
+⚠️  Missing place_id: Chaddesden Jubilee Club Limited (675eb3a9-19f3-4070-909f-17731b2d806a)
+
+⚠️  Missing place_id: Shotton Comrades Club (c9043061-396d-4454-badb-5b02512f36ce)
+
+⚠️  Missing place_id: The Norfolk Arms (S8B9W99bLeiDlW1O71Z6)
+
+⚠️  Missing place_id: Shakespeare Inn (7ebb4a0f-29c7-468f-8974-f11299b7235d)
+
+⚠️  Missing place_id: The Malleable Social Club (b0a84bee-0b6d-4cc9-9a62-5ba8a6d54bf3)
+
+⚠️  Missing place_id: The Stone Trough (eb341fa7-8146-47f6-8013-4a8fd8016be3)
+
+⚠️  Missing place_id: The Peacock Hotel (f17b51e3-be52-46c6-ae0e-0923f352fd1d)
+
+⚠️  Missing place_id: The Royal British Legion Hayling Island (4153eabe-5c36-49a6-8210-a004b6c9e474)
+
+⚠️  Missing place_id: SIXTOWNS by Bros Distillery (DElVQrRuo7rWaP0t1SXH)
+
+⚠️  Missing place_id: The Ram Inn (6feb90ea-f438-49f2-8411-014ba4a54c55)
+
+⚠️  Missing place_id: The Juke Shed (5470f75c-3b02-45df-a7b5-99a6855fe6a6)
+
+⚠️  Missing place_id: The Terrace Inn (6goHDTaJAdlphw4gX2py)
+
+⚠️  Missing place_id: Wave Festival Hayling (be159d8c-15b5-4083-9638-eefb1a34215e)
+
+⚠️  Missing place_id: Oakland Hotel (0cf2dca5-7483-4f2e-a19d-d82519e5e55d)
+
+⚠️  Missing place_id: Tates Bar Northenden (QvI1lwugRPHB1GVx82Uo)
+
+⚠️  Missing place_id: White Hart Inn (2aac079c-ed04-4489-abc9-db4ff778c7db)
+
+⚠️  Missing place_id: The Railway Inn Country Cottages & Caravan Park (24dbbe7d-741e-4a6d-84f2-dc69c72f83f1)
+
+⚠️  Missing place_id: The Barley Mow (39819d2e-7bf2-4a94-85ba-3f132ecffcee)
+
+⚠️  Missing place_id: The Steam and Whistle (12676686-9500-4879-bac6-501522fddd3c)
+
+⚠️  Missing place_id: The Olde Boars Head (g70YkcDQMSH6syV1QTVL)
+
+⚠️  Missing place_id: The Smugglers Den (84f27c4d-5b13-4440-b745-85ce88ef2d9c)
+
+⚠️  Missing place_id: 28b Church St (bfb1bfcf-8881-462b-b75c-6f7217d90af8)
+
+⚠️  Missing place_id: Bridge Street Sports & Social Club (df14df7e-9537-471d-845c-25aeef91af0a)
+
+⚠️  Missing place_id: Town Crier (154b999d-8341-4797-921e-7e84d38cd584)
+
+⚠️  Missing place_id: The George Inn (00712053-79a5-4226-a9fd-9b772c861355)
+
+⚠️  Missing place_id: The Shakespeare (15db14cc-ec5e-4d41-8db4-ba4181dc2d5f)
+
+⚠️  Missing place_id: The Vigilant Inn (e5db777a-6110-47d5-8768-97143931aa82)
+
+⚠️  Missing place_id: BottleCraft Hanley (cd45873c-b54c-41bd-b49e-bcc14db641a5)
+
+⚠️  Missing place_id: Clennell Hall Country House (1f0ec1cc-e20e-498f-ab4c-6dcaba637b03)
+
+⚠️  Missing place_id: Ty Fry Manor & Estate (d77bc490-00ed-4083-bba1-ed444b816149)
+
+⚠️  Missing place_id: The Watchmaker Bar & Grill (68OieC35B1IjEJcFNIgY)
+
+⚠️  Missing place_id: These Things Happen (f2b88fb6-e76d-4ee7-93f6-712fc8f393a2)
+
+⚠️  Missing place_id: The Tannery (d6572707-b153-40e4-ac09-fa15c19166a1)
+
+⚠️  Missing place_id: The Sun Inn (e844cb5b-d12e-4226-8381-5994ed445ffe)
+
+⚠️  Missing place_id: The Queens Arms (ThfJQrk9GsFtuBsPJjN5)
+
+⚠️  Missing place_id: The Bulls Head (581dea02-cd89-4b62-b2c9-5f175b0308c5)
+
+⚠️  Missing place_id: The Bridge Inn (zeqBH5shQluh20e8m4rL)
+
+⚠️  Missing place_id: Windmill (eSivOm4IslGPkNveyPjQ)
+
+⚠️  Missing place_id: Broughton Arms (d961ac2d-9ae2-4cbb-a7c7-b14ee0a9960b)
+
+⚠️  Missing place_id: Marquis of Granby (4e7717fc-8b3e-4424-a14a-933c4ef0e92f)
+
+⚠️  Missing place_id: Hare & Hounds (i0ZMEN0agqL6JOTMhSEm)
+
+⚠️  Missing place_id: The Express (26b80c61-a573-4d17-9542-80d02d7d136b)
+
+⚠️  Missing place_id: Farmers Arms (3d769e43-be50-4dba-a45b-b88aa6c9adf1)
+
+⚠️  Missing place_id: The Red Lion (3e653671-f28d-4ccb-8164-be3848d0a797)
+
+⚠️  Missing place_id: Plough and Harrow (YyEnV2m1STUpTMpVumFL)
+
+⚠️  Missing place_id: Arena Torquay (912171b0-62f3-4339-be2e-5decfc358956)
+
+⚠️  Missing place_id: The Bodega Nottingham (b83eedf9-d770-45bb-915d-e768befa015a)
+
+⚠️  Missing place_id: The Waterloo Music Bar (G4ukSnnisfDwlkK3sGk2)
+
+⚠️  Missing place_id: Life of Riley (fadf09f9-17cc-42f7-9aae-cf5457616ba4)
+
+⚠️  Missing place_id: The Gladstone Club (a9adaa45-999b-43bb-9bee-a6e1cab54a75)
+
+⚠️  Missing place_id: The Valiant - Leek (0451cea9-0551-4ade-ab56-8243db6ccb90)
+
+⚠️  Missing place_id: Road Wizards MCC (debf8b78-455e-4964-ba8f-65941be55e11)
+
+⚠️  Missing place_id: White Swan (83e3016b-d8cb-4f71-8d6d-6baec1601808)
+
+⚠️  Missing place_id: Whatcroft Hall Ln (b4217d98-79d9-401d-be69-b37ea56c4505)
+
+⚠️  Missing place_id: White Lion (b372935e-8efd-4153-9d62-f6d41f0ab71b)
+
+⚠️  Missing place_id: The Wellington Inn (if0p2UXF6QtiXIKLr2O8)
+
+⚠️  Missing place_id: Flying Horse Hotel (ae64ea92-ff1b-4b5b-b9e5-1b3a89fc1321)
+
+⚠️  Missing place_id: Holditch Miners Welfare Club (RoUrdThOzKaWtJ7JChoS)
+
+⚠️  Missing place_id: Church House Sutton (66b14b5b-6cd4-4926-869d-9fcae09032fb)
+
+⚠️  Missing place_id: The Old English Gentleman (5e6250bd-a781-438d-b517-077e91660535)
+
+⚠️  Missing place_id: Bunny Jacksons (yTUsf23P1VMP5epHICNT)
+
+⚠️  Missing place_id: L M R C A (d63a4992-e0dd-413f-9ee7-2c84cf8a0872)
+
+⚠️  Missing place_id: Newcastle Working Mens Club (rEy5qWpx8zTPqXYAwzuT)
+
+⚠️  Missing place_id: Ye Olde Manor Inne Pub (s7CRZJVWvqyVaLGKDgYb)
+
+⚠️  Missing place_id: Loco Nantwich (XmFnVDvlitZQTJOQnv3t)
+
+⚠️  Missing place_id: The Archer (QGOxhZAPuofq762mjnLq)
+
+⚠️  Missing place_id: Broken Cross (992c9090-a0d0-4942-97b4-3ed272a94c8a)
+
+⚠️  Missing place_id: Nantwich Civic Hall (374f99f4-b4d1-46a3-8eb0-116e1dcfc35c)
+
+⚠️  Missing place_id: Crewe Market Hall (fIqoL7N8DSfWuvPiU9Hm)
+
+⚠️  Missing place_id: The Windsor Castle (lwlZ1VKJskevDmYlc8V6)
+
+⚠️  Missing place_id: Iris belle Aesthetics (4c339a04-59e1-4170-b21d-5a8b8c477ab1)
+
+⚠️  Missing place_id: Ebenezer's (d2823194-97f5-4714-8a2f-1f2bde11455b)
+
+⚠️  Missing place_id: Woodpecker Inn (547dc6cd-f8ae-4654-82ab-f92ae1612fe6)
+
+⚠️  Missing place_id: Victory Club (4f6ce924-9ee1-4557-b769-7eda434c5787)
+
+⚠️  Missing place_id: The Blue Bell (1f1e2cf5-58ee-4305-91e7-cd9fe7148527)
+
+⚠️  Missing place_id: Waterloo Subscription Bowling Club (70fc6d3e-e76c-4fae-b21e-851f60674e09)
+
+⚠️  Missing place_id: The Boot & Shoe Inn (29a600fc-b1df-4f53-9444-a0b45ac75086)
+
+⚠️  Missing place_id: Crossroads Tavern (1dba8657-b5b8-4b2b-91bd-fd3657c473c6)
+
+⚠️  Missing place_id: Swadlincote Town Hall (93d170d9-1137-4223-87b7-4848d5798b48)
+
+⚠️  Missing place_id: Hardwick Social Club (866943fa-b7d5-4853-934c-2a60cdfeb1db)
+
+⚠️  Missing place_id: Atherton & Tyldesley Botanical Gardens (d44687db-6c5a-4578-8b21-9fd5522c1209)
+
+⚠️  Missing place_id: Namaste Indian Restaurant & Kings Prosecco Lounge (e4c0d6a8-68e7-4c93-976a-2461d43b7e36)
+
+⚠️  Missing place_id: John Bull Chop House (6238ce1c-b079-4780-9ec1-70e8a08654d7)
+
+⚠️  Missing place_id: Murton Club (Official) (05272a47-5018-4769-8ec2-1b1aa2842423)
+
+⚠️  Missing place_id: Duke of Lancaster (b18e26ff-2a34-4e77-9bfc-159733414e20)
+
+⚠️  Missing place_id: The Denton (cdac6734-32df-4f95-b2d9-e262d4a9185a)
+
+⚠️  Missing place_id: Hetton Lyons Cricket Club (4c7ac696-fa35-42dd-b927-9b78c03d3c0a)
+
+⚠️  Missing place_id: The Southbourne Club (d430d923-8fa9-46b5-ba59-a68d5e01827e)
+
+⚠️  Missing place_id: Duke Of York (f313ff77-e182-4804-92d6-5dfbccdbf067)
+
+⚠️  Missing place_id: Mr Ants Hexham (c085811e-d416-42d2-8372-314476be9942)
+
+⚠️  Missing place_id: Two Gates Sports & Social Club (158f5f2f-e109-4bb7-8e66-1c54415eba78)
+
+⚠️  Missing place_id: The George Stephenson Bar & Kitchen (bc754ed1-5dc9-4284-9623-71ade2da9d68)
+
+⚠️  Missing place_id: The Clough Hall (D2PWaHeWP2tUUGrv5lX4)
+
+⚠️  Missing place_id: The Cluny (SBO8CQyG9HxVvvD3I10c)
+
+⚠️  Missing place_id: Station Inn Whitby (8d4abc59-11bd-47e2-879c-071f7988fe03)
+
+⚠️  Missing place_id: Mr Shaw's House (3312d553-c4eb-42c5-bb18-5302a6f961d8)
+
+⚠️  Missing place_id: Hafod Colliery Social Centre (e5e10163-f50f-4a7f-a1bf-a5e2a79c2dbe)
+
+⚠️  Missing place_id: The Langley, a Luxury Collection Hotel, Buckinghamshire (dd133232-b330-4cec-bd2f-25095199ef35)
+
+⚠️  Missing place_id: The Lion Hotel (3e959db4-1279-40b7-88d7-0abfb6312a58)
+
+⚠️  Missing place_id: Kidsgrove Masonic Club (9c3bf58f-96ee-42f0-b42c-cb2b709ed0eb)
+
+⚠️  Missing place_id: Springfield Hotel (b31b6abf-23a9-4b5c-8862-a8a7ceced4cb)
+
+⚠️  Missing place_id: House Kitchen & Bar (b8c1c01c-59d8-4107-b7a9-3869fb750111)
+
+⚠️  Missing place_id: Kings Head (8cvj31xXxPFgUCfM8Hw2)
+
+⚠️  Missing place_id: The Southport Coaster (763401c7-b145-4101-ab3f-d8481cf0469e)
+
+⚠️  Missing place_id: Northern Social Club (c39d935b-d56b-46c9-a989-4d6ed0cf71b1)
+
+⚠️  Missing place_id: The Neptune Inn (2806b367-cc80-4511-acfa-a22301c0b0a2)
+
+⚠️  Missing place_id: Wheatsheaf Ashton (e56ae801-6a9b-48e2-93ae-12eadac0a006)
+
+⚠️  Missing place_id: Three Ponds (0a6076ba-2f79-4af5-b450-22875c749f6d)
+
+⚠️  Missing place_id: The Bowdon Rooms (b75b79ec-035b-4381-a879-b5f1e98053ad)
+
+⚠️  Missing place_id: The Flowerpot (7610dec2-04d4-4a42-911e-e4b36e751fca)
+
+⚠️  Missing place_id: The Bulls Head (0e1b3bf3-314a-4350-bd90-8c857981af0d)
+
+⚠️  Missing place_id: Wylam Brewery (7e54df49-68f8-4ab5-8323-db2dc41ff496)
+
+⚠️  Missing place_id: The Musketeer (KPuQOU8ZZipCyYgxX4iS)
+
+⚠️  Missing place_id: Corner Pin (po8y9WRow7WlIOyhqjcu)
+
+⚠️  Missing place_id: The Kingswood Tavern (266cda30-8149-4476-8354-ed65d08edd2c)
+
+⚠️  Missing place_id: Sidcup Recreation Club (ff0a7f7e-182d-4f33-bc35-beca355452a8)
+
+⚠️  Missing place_id: The Fox & Hounds Inn (e74284ae-c9ef-48fb-8bd8-0376ac4a42ee)
+
+⚠️  Missing place_id: The Tommyfield (c5956649-356a-4862-9466-725279f99f56)
+
+⚠️  Missing place_id: The Acorn (6e937ce7-2674-4db0-98a0-71a5b54be906)
+
+⚠️  Missing place_id: Lindisfarne Social Club (926e977c-53d7-4ab2-ba2e-bfbbda2bca86)
+
+⚠️  Missing place_id: The Beaverwood (14d39488-bfdf-40fb-ab6b-0691ea0040c9)
+
+⚠️  Missing place_id: Wedderlie House (a8d93333-9d8c-4bb7-acb0-3980bdda65ee)
+
+⚠️  Missing place_id: Ripley (85545287-ba05-40d6-956e-426b1badc4da)
+
+⚠️  Missing place_id: Doveridge Village Club (TDV5qXv3JDoV3MM6h4Ka)
+
+⚠️  Missing place_id: Lamplight - Coffee House & Tap Room (f40351b5-5e3b-49e7-81af-cb09949757bc)
+
+⚠️  Missing place_id: Bilton Club (4f55dcf6-7dc8-450c-85c9-1601bcbce93d)
+
+⚠️  Missing place_id: The Railway (NwEtqexKQqLHyBcPVgJF)
+
+⚠️  Missing place_id: Old Fat Ox (c1a763b7-6496-4a93-843b-99a0ecba9a58)
+
+⚠️  Missing place_id: The New Inn, Chapel En Le Frith (0LDFTplFBYHHAo6W0sYe)
+
+⚠️  Missing place_id: The Cygnet Club (KMWRsNUTH2daxM8zwLsR)
+
+⚠️  Missing place_id: Slug & Lettuce, NUL (2f60e4aa-419f-4553-8866-644dc4b1a57f)
+
+⚠️  Missing place_id: The Castle & Falcon (36778d90-3dc6-4258-b0ed-1a7b973d2608)
+
+⚠️  Missing place_id: The Black Horse (45d22359-8c41-4260-8771-21eea448b7fa)
+
+⚠️  Missing place_id: The Ropemaker, A Heartwood Inn (0fb76f42-1aeb-42e9-9521-86b6bd9efa7b)
+
+⚠️  Missing place_id: The Baker's Arms (fga5KgUeALe9E0J83dWc)
+
+⚠️  Missing place_id: Darley Abbey Wines (a278c15a-9f93-440b-9a4d-cfe95e050255)
+
+⚠️  Missing place_id: The Wellington - Stockport (ffAHL9Hg3JsTWU36Kbiq)
+
+⚠️  Missing place_id: CHURNET VALLEY RAIL ALE TRAIL FESTIVAL (15dc462d-8848-4ec5-84de-ef45426d4c31)
+
+⚠️  Missing place_id: The Horseshoes (a7337a83-cd3a-4649-8328-54af58525ff0)
+
+⚠️  Missing place_id: The Bowling Green (2f267d08-9a64-4c86-a9d3-b95e3d68f173)
+
+⚠️  Missing place_id: Top Hoose (77639449-9cda-485a-bee9-c9149f989756)
+
+⚠️  Missing place_id: The Royal Dyche (bf4b1d7d-06cc-435f-b27e-701880965b2e)
+
+⚠️  Missing place_id: The Foxley Hotel (a8UIYzRkZWkTxtXjA7D6)
+
+⚠️  Missing place_id: Ye Olde Crown (Rf2j76jAGsoRR93vc1pi)
+
+⚠️  Missing place_id: The Brookfield (b2883440-a6d0-404a-aeca-db43f04a7d31)
+
+⚠️  Missing place_id: Cheadle Hulme Conservative Club (uEAI87WA9FyKOPxfWPYN)
+
+⚠️  Missing place_id: The Fox & Hounds (da1c3d9e-a9d8-41d8-a279-3f8d9ec8fac6)
+
+⚠️  Missing place_id: The Patriot Home of Rock (94ec5a33-8c21-4e08-bed6-b52d5d7af81f)
+
+⚠️  Missing place_id: Vange & Pitsea Working Mens Club (f6ae19a4-40f4-4e3a-8bb5-c62a7d2e1ae8)
+
+⚠️  Missing place_id: The Big Jug (74d3a2a0-5cba-4939-b769-fa8216c0d520)
+
+⚠️  Missing place_id: The Boat Inn (7307c63f-0a1f-491b-b0c7-12a2c863f54e)
+
+⚠️  Missing place_id: Meadowfield Social Club-Heaton (88e0a012-a961-4ada-b2ee-0932bb07e109)
+
+⚠️  Missing place_id: Mitchell's (5f1ac030-3e91-4930-bddd-b0189dc072ce)
+
+⚠️  Missing place_id: Coolock Irish Bar Shrewsbury (09d203f8-6c34-4dfb-aefa-33fe612bd9d9)
+
+⚠️  Missing place_id: HalfWay House (mXLmYkL9qZU8ZvYNtmoO)
+
+⚠️  Missing place_id: The Polished Knob (b19Lnvpd9eyAhEfHpPLg)
+
+⚠️  Missing place_id: BlueNote (9e60047c-5180-4d51-a6fe-bb76ea7aceb9)
+
+⚠️  Missing place_id: Cow'd Feet Club (5f320798-5056-4cdd-a654-5ba745fd51b7)
+
+⚠️  Missing place_id: Sunnyvale (f4a45643-a815-4b17-bd46-0ffb34f172ae)
+
+⚠️  Missing place_id: The Drill (78c41a08-f6dd-4a2a-98d2-cfae67839ea6)
+
+⚠️  Missing place_id: Decade of Dance (cf25ce49-3b67-4c3f-a80b-73a7b0bfa79d)
+
+⚠️  Missing place_id: The Chequers Inn (de79f3bc-68fa-4d0b-bc45-52fed6b22f09)
+
+⚠️  Missing place_id: Sir Harold Hillier Gardens (d7cd00e0-9a51-4718-b8b1-5d2af383cbbe)
+
+⚠️  Missing place_id: Hogarths (b8f67729-9d7d-4984-832e-5a946548ad47)
+
+⚠️  Missing place_id: The Admiral Drake (8e7811f1-2acd-4329-9b25-872f63f40de1)
+
+⚠️  Missing place_id: The Swan at Bedhampton (dad8947e-58a9-4eee-9404-4b78f629a730)
+
+⚠️  Missing place_id: The County Hotel (bf81ae6f-ca12-4d0b-9173-6a7c3e459398)
+
+⚠️  Missing place_id: The Babington Arms (b18da88a-e31f-4cc3-902b-6c45de415a11)
+
+⚠️  Missing place_id: Rowells Drinking Emporium (14e4c578-2ee0-4dbc-a4ee-f0ce7d63db27)
+
+⚠️  Missing place_id: The King's Way (xsmw6Hdr8W7lHO7ruM0W)
+
+⚠️  Missing place_id: Green Star (PrUInpF22PJIskerI2Ic)
+
+⚠️  Missing place_id: Shukers Farm Shop, Werrington (ad09014e-b65a-4368-a033-2a4c5afe6f5f)
+
+⚠️  Missing place_id: Dyers Arms (dd77d963-b1fa-4492-8e63-d80eb89c4a9f)
+
+⚠️  Missing place_id: Ye Olde Dolphin Inne (75e13d60-a114-4284-b56b-f7350529155d)
+
+⚠️  Missing place_id: George & Dragon (KcIpCx2WnBLupNsteSpL)
+
+⚠️  Missing place_id: The Old Fox (5229697a-4b35-41eb-8120-f1cd6a32bf5f)
+
+⚠️  Missing place_id: Bradmans Wine Cellar (49958fa9-d8ae-46d3-960f-1edd76353b93)
+
+⚠️  Missing place_id: The Railway Inn (8075057b-c427-46ed-823b-0b9e0c277b27)
+
+⚠️  Missing place_id: The Victoria (aNJvhjLrO6PhN5l7xLgL)
+
+⚠️  Missing place_id: The Glebe (ano2IUt9HBfjJjm0mBke)
+
+⚠️  Missing place_id: The Ye Olde Rose & Crown (rQP4D8jyiRh9iHxcpPdu)
+
+⚠️  Missing place_id: 2Funky Music Cafe (Pz9dB5lSXYoK88VcFRgf)
+
+⚠️  Missing place_id: The White Eagle Club (PseEjI1t8kdiMWCj27zx)
+
+⚠️  Missing place_id: The Witchwood (765d7f18-e32f-489c-8e03-6908c52cffd8)
+
+⚠️  Missing place_id: The Crown Inn (3AynHVShOedKil6wTesE)
+
+⚠️  Missing place_id: Hartlepool United FC Supporters Association (047b4775-182b-4028-8df2-fc871b42b24b)
+
+⚠️  Missing place_id: The Swan Inn (pq6Rk3XQeVXCU5nxcvd9)
+
+⚠️  Missing place_id: 338 top club, stanley common. (18c89991-ddfe-499a-87ef-0d1f1b940d02)
+
+⚠️  Missing place_id: The King's Arms, Stafford (32e49cc0-ccfb-4eff-9544-8efd4d09b031)
+
+⚠️  Missing place_id: Sutherland Arms (L4sbBgsurMD2WTdPWIy6)
+
+⚠️  Missing place_id: Oddfellows Arms (2gVkPTNtsW5Uv62rMiFg)
+
+⚠️  Missing place_id: The Deco (e4c7789a-6ffa-414e-bd69-36ce6052e1ec)
+
+⚠️  Missing place_id: Greens Tavern (c3959c17-7f02-46f2-9ad3-99dde887f30c)
+
+⚠️  Missing place_id: Llanberis & District Social Club Ltd (9bc52ae8-b03c-4075-a7cd-7689a63c02fc)
+
+⚠️  Missing place_id: Hales Hall Caravan And Camping Park (b3586556-f042-430d-9302-a691ef644d3b)
+
+⚠️  Missing place_id: Kings Arms, Wilmslow (qBVuL2CvXckaG1hbzzEH)
+
+⚠️  Missing place_id: Madeley Carnival, Madeley (56373bed-08e8-4fd8-a2f7-cafde860e75e)
+
+⚠️  Missing place_id: The Crown (5d645a7d-3e88-4504-b5cd-085bc00362c9)
+
+⚠️  Missing place_id: New Hartley Residents Club (6ebbbf5a-5c3d-44c8-b699-5a02b268ef14)
+
+⚠️  Missing place_id: Seatons Place to be (187c3f78-88e3-4b59-92d1-a0519d271bd8)
+
+⚠️  Missing place_id: Shiny Tap - Brewery Taproom (0601ce8c-7fe2-46ff-8134-533b7b1e09bd)
+
+⚠️  Missing place_id: The Railway - Halmerend (14e9e16d-a5da-4de8-ac8b-06253f62ed1e)
+
+⚠️  Missing place_id: The Bowling Green (leigh) Ltd (34a8aab1-4221-4947-9789-798a24a9099a)
+
+⚠️  Missing place_id: Ye Olde Salutation Inn (7b4380c9-f75d-4b35-a804-9adb87c6481a)
+
+⚠️  Missing place_id: Shamrock Bar (PSGt4lFWbfM8gTtXKqJb)
+
+⚠️  Missing place_id: The Robin Hood (0bf093fd-7513-46bd-9dd0-ee5d0a2a7a70)
+
+⚠️  Missing place_id: The Cherry Gardens Hotel (4e52c183-2b78-4209-a9c1-9df2649c6a7a)
+
+⚠️  Missing place_id: Empire (8444d99c-bd3e-4d0b-a1a1-f349b2f45bc5)
+
+⚠️  Missing place_id: Torr Vale Tap (a35e5a24-114c-428b-98bb-4ed39539cdfa)
+
+⚠️  Missing place_id: Angels Place (0e4afd8e-13e4-47d3-90f1-26e490df3a96)
+
+⚠️  Missing place_id: The Miners Bar & Kitchen (601b92ab-eedc-4494-a6e1-df3e2ecc4179)
+
+⚠️  Missing place_id: The Grove (fc693030-cdea-44c4-b699-11bfe9c2c976)
+
+⚠️  Missing place_id: The Gunners, Sunderland (db8d8caf-fbf9-4b31-a782-77fb15125f65)
+
+⚠️  Missing place_id: The Vault (0fb562a3-e9c6-405b-88e3-42f5a18ee2d8)
+
+⚠️  Missing place_id: Kings Arms Morecambe (b57c207c-2856-4e78-b177-985f2b356c65)
+
+⚠️  Missing place_id: Shoulder of Mutton (CqOZyc9DQrO7jxNwouKA)
+
+⚠️  Missing place_id: Skipton Sound Bar Ltd (74a8fa8c-e08d-4c06-a5b0-eef87a6100fe)
+
+⚠️  Missing place_id: Meriton Road Park (4c0e1c53-569b-41a2-8d53-e762a0593975)
+
+⚠️  Missing place_id: The Club (Romiley Conservative Club) (869c236f-0f6f-4ad5-ac65-4c8d44bb088d)
+
+⚠️  Missing place_id: Vaillant Live (cb11d8e4-9239-4251-bc72-04988d2772c8)
+
+⚠️  Missing place_id: Red Lion (2cf4db4c-34c9-47c6-9029-714dc6d18881)
+
+⚠️  Missing place_id: Reddish Vale Farm (7d2055e5-bdb8-4e96-8df0-2f1f3c935d6b)
+
+⚠️  Missing place_id: The Victoria (9c931dd1-759d-4083-ad12-29aa88c6245d)
+
+⚠️  Missing place_id: 12 Midland Pl (fa33511c-5bcb-4b46-bf1d-84b762f85ef0)
+
+⚠️  Missing place_id: Kings Corner (0665b85e-1fa8-4c18-ba31-e19eedb99cc3)
+
+⚠️  Missing place_id: The Colliery Tavern (f92b3762-4431-4c9d-b260-886dbde38d2a)
+
+⚠️  Missing place_id: The Devonshire Arms (be0b8284-4e40-4e6a-945f-ec6ef89e5a09)
+
+⚠️  Missing place_id: The Lord Raglan (bedb0ed3-e93c-4ddf-9fe3-7d0a044f9316)
+
+⚠️  Missing place_id: Dirty Bottles (d6276d3a-2201-4de3-b1bd-f3064772a31d)
+
+⚠️  Missing place_id: The Foresters Arms (7230f02c-4d84-4b11-a1f2-9cdf79dcc563)
+
+⚠️  Missing place_id: Charlie's Bar (9e33ae8d-deef-4184-8736-b3bc94b9fb6c)
+
+⚠️  Missing place_id: Hope & Anchor (915389df-da45-498e-a18a-8776c58bdd74)
+
+⚠️  Missing place_id: Jorge Wilson + Jesse James (befdd87f-2d49-4a0e-ab7a-fcbe2dac32bf)
+
+⚠️  Missing place_id: Blossom Way Bowling Club (aaa9d696-f054-4043-bfa9-35192556f162)
+
+⚠️  Missing place_id: The Rumpot (c904a7ff-cfaa-4c59-b61c-7314668f72a8)
+
+⚠️  Missing place_id: St Joseph's Community Club (9b0b78f4-a5bb-483f-bb1d-bd465e410f52)
+
+⚠️  Missing place_id: The Priory (YITkKZD3Se5ngWebQLNQ)
+
+⚠️  Missing place_id: Coach & Horses (e333d743-3ad8-4780-927a-8527a0788d04)
+
+⚠️  Missing place_id: The Oaklands (a7983784-ecad-4827-8917-c5205d8210d8)
+
+⚠️  Missing place_id: Coxhoe & District Social Club (cf75307c-2fab-4b19-a48e-5a0a3e526dab)
+
+⚠️  Missing place_id: Fenton Community Hall (hfwNovFB0k5dvcd2l7nb)
+
+⚠️  Missing place_id: The Museum, Newcastle under Lyme (61ba4c83-1c33-4e37-9647-5231992db0f1)
+
+⚠️  Missing place_id: The Wheatsheaf (66b81514-9ac7-45a1-8099-43a9c1660524)
+
+⚠️  Missing place_id: Jac's Music Venue Aberdare (94116510-fbbc-48c2-9639-08d084d4fcb2)
+
+⚠️  Missing place_id: The Foresters (e4fa0014-9f1e-43e5-97a9-30c7c56c5c9a)
+
+⚠️  Missing place_id: The Milbourne Arms (be97c102-d20f-4d86-8d8c-10795f531d6f)
+
+⚠️  Missing place_id: Queenie's Vintage Tearoom (e9941285-2d22-4131-aea7-10f39bfbba9e)
+
+⚠️  Missing place_id: The Endeavour (5d7aac32-dc91-4314-aa00-927535cfd683)
+
+⚠️  Missing place_id: Swan Inn (JbcIXQqMpvU0edJlSbig)
+
+⚠️  Missing place_id: Wolstanton Social Club (Am20CeVkowTqxJzYVuJE)
+
+⚠️  Missing place_id: The King's Arms (69ad6810-cf21-4153-a5b2-c60904b269b9)
+
+⚠️  Missing place_id: The Railway (WVSAbjPEiVfP6zCIV69Q)
+
+⚠️  Missing place_id: Belmont Services Club (e540ed81-e88f-477a-a723-73b26578db25)
+
+⚠️  Missing place_id: Swan & Chequers, Sandbach (3a6bcb38-d35b-40ad-b81d-cde8769ec572)
+
+⚠️  Missing place_id: The Elms Public House (11883051-e9ff-4406-be18-2e340fefce9e)
+
+⚠️  Missing place_id: Holyhead (add5f045-6b99-407d-9b37-876a5333be51)
+
+⚠️  Missing place_id: The Boulevard (e6ee8af1-39b2-46b2-a079-504be8d11867)
+
+⚠️  Missing place_id: The Plough Inn (778a937c-f743-4ac1-a6e1-df62f8b2eb37)
+
+⚠️  Missing place_id: Coalville Labour Club & Institute (dfcf4c7b-e11d-4ae4-b102-a855b1d969b9)
+
+⚠️  Missing place_id: The George & Dragon (0698a59b-0586-411e-99d2-83a4cc27aadd)
+
+⚠️  Missing place_id: The White Hart (c47hZqHsgRr7VTA5FB87)
+
+⚠️  Missing place_id: The Green Man (e4b5751a-c758-45f3-b72a-4f5b190499d4)
+
+⚠️  Missing place_id: Railway Inn (7bad448d-33a9-4c47-bd2d-d7586ca8dd2e)
+
+⚠️  Missing place_id: The 5:15 Club (8M0K1gqkHluuuQwp1d9U)
+
+⚠️  Missing place_id: Dog And Parrot: Real Ale House (e7cc983c-e727-4d30-bee7-20a1310f19b7)
+
+⚠️  Missing place_id: Inn on the Beach (5c37b348-d793-4135-8209-d5577f855a93)
+
+⚠️  Missing place_id: Whitley Bay Cricket Club (c5dfb1f7-8fb4-4e76-8844-9fb924fd76a2)
+
+⚠️  Missing place_id: E Rooms Bar and Music Venue (5c46ab83-fd07-4b42-8607-9e3ddb3185de)
+
+⚠️  Missing place_id: The Broughton Arms (WrpXapTnOg0sNGRSsGON)
+
+⚠️  Missing place_id: The Bentinck (56f19970-752a-481a-9f60-94a54dcfd84a)
+
+⚠️  Missing place_id: O'Dwyers Bar (7fb2fa84-9377-466a-a5aa-8c1803076b36)
+
+⚠️  Missing place_id: Newcastle RAOB - Heaton Buffs (28e8e48a-ccc2-4299-ac33-5660ce4fce61)
+
+⚠️  Missing place_id: The Union Arms (87672671-5f48-480c-ba91-6d6f04aaa8be)
+
+⚠️  Missing place_id: Swan & Chequers (74a085bd-010c-46f4-acdd-e1464006047b)
+
+⚠️  Missing place_id: The Church House (328106d2-7b83-4769-a6f9-058de1e51198)
+
+⚠️  Missing place_id: The Devonshire Arms (73e0d31d-5ea1-422a-b12d-edb129e8d0d8)
+
+⚠️  Missing place_id: King's Hall (7ccde402-7254-4a3c-a0b3-03aa71702f78)
+
+⚠️  Missing place_id: Mash (f4d7cdc4-2c10-4472-b47e-79a4d0d34881)
+
+⚠️  Missing place_id: South Kirkby Miners Welfare Club (82c973c7-c2c2-4b1c-be34-46b344789e8c)
+
+⚠️  Missing place_id: The Bank Bar & Kitchen Darwen (56d2aef1-4e0b-4ad2-b16c-df4ba3e575ae)
+
+⚠️  Missing place_id: Jubilee Club (49bc4606-97d7-45a5-a693-a887ac2f0810)
+
+⚠️  Missing place_id: South Stapenhill Social Club (6839b965-828c-433c-aa36-f00b35f9333c)
+
+⚠️  Missing place_id: Littleover Social Club (0652f68a-89c2-4e46-a4e3-36f3564ff02f)
+
+⚠️  Missing place_id: The Wulstan (bxEqJhWxTrbxpEPXU7Vp)
+
+⚠️  Missing place_id: Newhall Social Club (11bb183c-bb18-4c5c-9d34-6a08468223a1)
+
+⚠️  Missing place_id: Dobbies Sports & Social Club (b9b84c72-f9ff-4ebb-938a-4444651e5a84)
+
+⚠️  Missing place_id: Renishaw Miners Welfare (f950eebb-c8c6-4f48-a31e-12848394185b)
+
+⚠️  Missing place_id: Hebburn Town Football Club (a54acbfe-3985-437c-822b-6008a6aae8ec)
+
+⚠️  Missing place_id: Rolleston Club (c300eb58-a3a2-4d9d-a493-b588f1ab5f46)
+
+⚠️  Missing place_id: The Crown Inn Emsworth (557be6b0-33f9-4945-8adb-fe1cd7dff78b)
+
+⚠️  Missing place_id: Higher Ground Cafe & Bar (niJqnN3DLyL3Ji9vfLOY)
+
+⚠️  Missing place_id: Cramlington Workingmens Social Club (5939b6c6-b388-4948-a53f-0005145f9fb4)
+
+⚠️  Missing place_id: Post Office, Burslem (c8d63572-6f45-42de-8559-52d14a3289b0)
+
+⚠️  Missing place_id: Castle Hotel (b52149a9-8efc-4306-9369-bf96d87221b4)
+
+⚠️  Missing place_id: Bucknall Bowling & Recreation Club (KmcA5GgqsepJAFPYtqTM)
+
+⚠️  Missing place_id: The Old Bulldog (cMnFQk0jZ9RQIwhSbncB)
+
+⚠️  Missing place_id: Holly Bush Farm | Pike Hall | Peak District (48691752-2b6d-4125-a324-856247f5e9e0)
+
+⚠️  Missing place_id: Red House Farm Public House (fe7c29d2-d936-490d-8df2-1fad7ccfdc72)
+
+⚠️  Missing place_id: The Jolly Sailor Southsea (9603f67d-90c2-4440-bb37-2d6f4b2e5d4c)
+
+⚠️  Missing place_id: Firth Park Working Mens Club (4c6a0bdb-4226-4519-936e-6af23002c9ba)
+
+⚠️  Missing place_id: Burslem Cricket Club (SFuCrm1kThYq9KlVsWCJ)
+
+⚠️  Missing place_id: Milford Social Club (715ee064-6cd1-44eb-8895-5ae5d3b8e6f6)
+
+⚠️  Missing place_id: The Gate Inn (38d8848d-2bf5-462f-9881-a0c98b0367f9)
+
+⚠️  Missing place_id: Pierpoints Club (487d47e3-3cf9-40e6-8fe7-ade4b338ce56)
+
+⚠️  Missing place_id: The Loom (1a51b019-f4fa-41c5-b8fc-02c0278f6ecd)
+
+⚠️  Missing place_id: The Red Lion, Winsford (526c271e-b8b0-498b-92e0-0c7f4b3d9096)
+
+⚠️  Missing place_id: The Duke of Wellington (cd4bacc4-57aa-4b03-915a-ddc373a50779)
+
+⚠️  Missing place_id: Redgate Clayton Fc (DlPoJy9HBmg8ji15AVYA)
+
+⚠️  Missing place_id: The Bush At Brown Edge (YUno720qqVNIwH0wgAob)
+
+⚠️  Missing place_id: The Electric Circus (KyXzJma8Qhso15VvfGi6)
+
+⚠️  Missing place_id: Grannie Annies Sunderland (03402d77-7012-4854-b8cf-92cbe3d59c03)
+
+⚠️  Missing place_id: Red Lion (b2f9304b-2e74-4795-a500-0770d63c32d3)
+
+⚠️  Missing place_id: Yardbirds Rock Club (81d0d1cd-11d7-4ec5-b3c5-dac3f475f4f1)
+
+⚠️  Missing place_id: Oggy’s Sports Bar (kVQZjlVgqUtUTE3QeTuo)
+
+⚠️  Missing place_id: The Kings Arms Hotel (3d8e96e3-3336-471b-b329-3a1917ea82c7)
+
+⚠️  Missing place_id: Gardeners Retreat (h7vjRstHEFx5wsfCU8ez)
+
+⚠️  Missing place_id: THE INN ON THE WHARF (5adc33c2-e963-40ef-97ac-e994339feae2)
+
+⚠️  Missing place_id: Slaters Country Inn (c1f93cb7-6c9c-4f83-9916-933f49081e60)
+
+⚠️  Missing place_id: The Cliff Inn at Crich (0298f6e2-5643-4ea5-90c6-5f43594baf18)
+
+⚠️  Missing place_id: The Rockin' Chair (a3bb5bda-51b7-46ef-aaa8-eebd3ded8842)
+
+⚠️  Missing place_id: The Ship Inn (fb5e1765-84e6-4056-be72-09256c21b816)
+
+⚠️  Missing place_id: Dubrek Studios (7b4fba21-547b-4b5c-892f-88c6e4b98b53)
+
+⚠️  Missing place_id: Pear Tree Hotel Ripley (ae57b018-56d0-4281-8501-d8592e7fdddb)
+
+⚠️  Missing place_id: The Crook Hotel (de040d70-21f8-4d99-8c73-9037029960f0)
+
+⚠️  Missing place_id: Bradwell Working Mens Club (mgdwXCyskOp5jBxq85lv)
+
+⚠️  Missing place_id: Spaces Studio (74ea5a81-09d8-47ce-8cc5-955df975bd45)
+
+⚠️  Missing place_id: The White Hart (966d5192-a136-4e0a-a24c-cfdb870fc454)
+
+⚠️  Missing place_id: Mexborough Athletic Sports Club (dea1172e-456f-4225-83f4-8e45e68a2187)
+
+⚠️  Missing place_id: Leigh Park Working Men's Club (6e35b9e8-f859-4452-9ce5-e70061e0d31e)
+
+⚠️  Missing place_id: The Old Plough (e764ccb8-fa1b-4742-9fdf-15561a21bcae)
+
+⚠️  Missing place_id: bod Trentham (dac8ee16-7df2-4fd6-bf16-96729dc43d48)
+
+⚠️  Missing place_id: Warrington Irish Club (gfnEVRQdQmTa1ZdoN5AG)
+
+⚠️  Missing place_id: The Globe Inn (da856438-0c22-420b-9d2d-0862c8fc9aa8)
+
+⚠️  Missing place_id: Vesta Tilley's (4e392026-581b-4069-b323-aa2b8b52b837)
+
+⚠️  Missing place_id: Bridgtown Social Club (yrlHKu2q2VHtMIqqdI8o)
+
+⚠️  Missing place_id: Wizards Hollow (ca3c3737-31e1-4c2a-9008-6e254483c1d2)
+
+⚠️  Missing place_id: Black Lion Inn (ff65dfbc-ab0d-466c-8f55-a4d65fb4e7dc)
+
+⚠️  Missing place_id: The Boulevard (a7c157f1-b969-4cd1-8598-fa58f5fecbb4)
+
+⚠️  Missing place_id: Bridle Path (05c443b1-6bb8-4a78-91af-51cbae995355)
+
+⚠️  Missing place_id: South Shields National Unionist Workers Club Ltd (9b9caf53-c62c-4fbb-8122-a904be7330b5)
+
+⚠️  Missing place_id: Seaton Carew Social Club & Institute Ltd (ba2d35ba-ed23-4991-baf2-bb4e12da7e3c)
+
+⚠️  Missing place_id: Sandbrook Vaults (ef0a90ab-3c2e-48a6-9248-20fc3cd404e4)
+
+⚠️  Missing place_id: Pelly House Members Club (65471566-a5a0-4036-a4ce-2245417a45de)
+
+⚠️  Missing place_id: The Swan Hotel & Restaurant (f6e473e4-cc63-483e-9717-359532d7e216)
+
+⚠️  Missing place_id: Hetton & District Working Men's Club & Institute (892abbb9-3163-458a-8ada-8e5b89faeec5)
+
+⚠️  Missing place_id: The Royal British Legion (f1da7bdf-f5e7-45ee-9ffe-c9b3a61a7c9d)
+
+⚠️  Missing place_id: Leek Conservative Club (Dog & Rot) (OZZiBTQpGpgV3ZlFCvan)
+
+⚠️  Missing place_id: The Firs Club (bb56ca4d-0d41-40c1-bd5b-ae4c12316cd9)
+
+⚠️  Missing place_id: The Graduate (920a2ef8-bcc4-49fd-93c6-541e191e6f9b)
+
+⚠️  Missing place_id: Spondon Liberal Club (766d5486-5a63-4925-91e8-c4f4e1dcf4ca)
+
+⚠️  Missing place_id: Bulls Head (f322f921-609b-418f-bab4-2e9f158c6f03)
+
+⚠️  Missing place_id: Black Horse Chester Le Street (08d55643-2e59-46a2-844b-bf2a49343b46)
+
+⚠️  Missing place_id: The Bellringer (CAHVTK1MKNymzYrB3tfx)
+
+⚠️  Missing place_id: Nelson Inn (07ScEkLoOD7Id1HFerCy)
+
+⚠️  Missing place_id: Prince of Wales (GlvrhNfJDfyItAz8n6n8)
+
+⚠️  Missing place_id: Icons Bar & Restaurant (16ccd839-8b91-4f5f-bc2a-d4088cf8646e)
+
+⚠️  Missing place_id: Rising Sun Vaults (6wnnY9197q6yQ8YHrJnA)
+
+⚠️  Missing place_id: The Robin Hood (20dbda0e-1ab9-408c-93cf-8d9e13a65881)
+
+⚠️  Missing place_id: Owley Wood Recreation Club (5dcf5984-b7bb-497d-ac35-22f77fbeda80)
+
+⚠️  Missing place_id: Teal Farm (af56aeaf-a343-4974-b101-208ff4fd430d)
+
+⚠️  Missing place_id: St Mary's Catholic Club (857d4968-8d8f-408a-9c5e-cbf2d98a9413)
+
+⚠️  Missing place_id: The New Inn (OhvEaWNaAfYPKbyD7ybv)
+
+⚠️  Missing place_id: Old Boot Inn Pub & Restaurant (3e667ca2-0449-44b7-92fb-ca359eac93f2)
+
+⚠️  Missing place_id: Greenslate Community Farm (56dcf133-222b-47ef-bdbb-282d7d32604c)
+
+⚠️  Missing place_id: Royal Oak (0x3dT0oH6L1WfVHVgTAP)
+
+⚠️  Missing place_id: Honeysuckle Inn (c53d8333-9374-4ff7-b315-00811a8aa933)
+
+⚠️  Missing place_id: Ye Olde Rose & Crown, Stafford (b7ba29ee-1886-46e9-b7f5-d02d1af3866c)
+
+⚠️  Missing place_id: The Diversion Bars ltd (e49909e5-a84d-4b10-98a3-bcf29bc8c153)
+
+⚠️  Missing place_id: Disley (2793a93f-3061-4717-bc57-5f28e346ec18)
+
+⚠️  Missing place_id: The Market Tavern (2e04cdf7-3b2e-4eb2-91e7-7a9c8d21e051)
+
+⚠️  Missing place_id: Maldon Town Council (0a0bdb1a-6014-44ba-b32e-7e328e47cf7b)
+
+⚠️  Missing place_id: Red Lion (76c82fde-dcc0-41e2-b5fb-beda165df7ed)
+
+⚠️  Missing place_id: tanfield Lea Working Mens Club (5b074e6c-66d7-4eb8-a0dc-210f937fe159)
+
+⚠️  Missing place_id: Railway Hotel (c809511e-9a51-483c-91e1-c1dc23d947d2)
+
+⚠️  Missing place_id: The Flying Coach (MxHxBlAm0dzN9Mie5kOX)
+
+⚠️  Missing place_id: The Moorcock (2622af20-eb18-44bf-a458-3face46306f6)
+
+⚠️  Missing place_id: Crafty Lion (b4999125-7196-4f5d-84bf-97d3b4b392a7)
+
+⚠️  Missing place_id: The Golden Lion (d3200659-f23b-4a19-a2c3-63e036b75c56)
+
+⚠️  Missing place_id: Swadlincote Cons Club (307b00dc-1c98-47ae-b58a-15255e8c33c9)
+
+⚠️  Missing place_id: Marple Con Club (bbzzpFPYsOVE4bcHU60s)
+
+⚠️  Missing place_id: The Vine (c8fd948a-c271-4db7-b920-fa2ed6895869)
+
+⚠️  Missing place_id: Oakfield Farm (46f9b96d-67af-44b1-bc3d-300d958e9b7e)
+
+⚠️  Missing place_id: Newsham Park & Garden (9fbfd78e-a27a-4791-8ca5-a1d8c3ea6739)
+
+⚠️  Missing place_id: Holbrook Sports & Social Club (49e1d3e3-9eda-44e3-929a-7e0b80caf89a)
+
+⚠️  Missing place_id: Royal Oak New Mills (9E0yaLs9E44AN15DHOea)
+
+⚠️  Missing place_id: The Red Cow Werrington (633b7189-c3fd-4de1-b6be-262df7a01f2d)
+
+⚠️  Missing place_id: hmv Empire (6356945f-5dc0-4155-9f2a-9d1f834bbead)
+
+⚠️  Missing place_id: The Masons Arms (692ceaf4-6bd4-44d8-b29e-effa2c470dd2)
+
+⚠️  Missing place_id: The Old Star, Uttoxeter (844002d0-e423-43d1-8705-df49a7a276e8)
+
+⚠️  Missing place_id: Cannock (090f24a6-01d8-4c56-b7bd-611e80c2c711)
+
+⚠️  Missing place_id: The Phoenix Bar and Eatery (583cba3a-526d-491a-a7cd-cf1281468495)
+
+⚠️  Missing place_id: Independent (b59e8233-723f-4611-9039-530c433ec284)
+
+⚠️  Missing place_id: The Feather Star (dee61600-1587-4c99-81af-1b619b15e673)
+
+⚠️  Missing place_id: The Royal British Legion (74b050c5-22ce-47d0-9f89-1e14d4aa6612)
+
+⚠️  Missing place_id: Hulton Arms (bca70e47-2a83-48e2-970d-a5c9666263f4)
+
+⚠️  Missing place_id: Timperley Conservative & Social Club (79ee2e4e-4859-4ff3-b38c-068e544f52a7)
+
+⚠️  Missing place_id: The Pelican (28b935ba-ac23-4e4a-85e4-a3e6df86967e)
+
+⚠️  Missing place_id: Corn Exchange Hertford (28fd8caa-f5c1-4f1b-ac91-ceab4c162c70)
+
+⚠️  Missing place_id: The Red Lion (26c85b35-d474-49f0-9245-6faece7f47f7)
+
+⚠️  Missing place_id: Burton Banter (31d09560-4240-4e65-a9c2-8b43fee0f877)
+
+⚠️  Missing place_id: High Lane Conservative Club (rZQQBFXZNRsivCEgFyob)
+
+⚠️  Missing place_id: The International (70d4b35e-4b81-4aa9-bbfc-2a33c66668b4)
+
+⚠️  Missing place_id: The White Lion (buU3n8vQUSK9EnGHhMs2)
+
+⚠️  Missing place_id: Castle Sports and Social Club (3b84daa7-0f39-470f-96d2-1d25d460db69)
+
+⚠️  Missing place_id: Mount Pleasant (3a7b05a3-c72b-4d47-a58f-dfa8edf1e76f)
+
+⚠️  Missing place_id: Shape (Patisserie & Bakehouse) (8c9cdacb-edad-4b39-a11d-e4de67612d91)
+
+⚠️  Missing place_id: Kinsley Coronation Working Mens Club (d2df2173-a670-4235-8d56-00ca2beb3438)
+
+⚠️  Missing place_id: Newton Grange (d9d9b0c9-1200-4ce7-8f98-a7ad8bedd510)
+
+⚠️  Missing place_id: The Quakerhouse (fd39c951-e61f-4903-ba4a-c80c1f03ce18)
+
+⚠️  Missing place_id: The Vaults, Southsea (eee98105-f781-4ddc-b2e6-aba6ea2b454f)
+
+⚠️  Missing place_id: The Exchange (6e15552e-fc83-4d8a-a863-29c58a0eaa72)
+
+⚠️  Missing place_id: Swan Inn (74BjwiHSxHDxdUghRVB9)
+
+⚠️  Missing place_id: Squires Cafe Bar. (981da455-c7fb-4a80-8f1c-ac3ab74af315)
+
+⚠️  Missing place_id: The Cross (4b446492-c4fe-4f59-b0c5-a83d52e72a9e)
+
+⚠️  Missing place_id: The Pride of the Peaks (c77449cc-60ad-471f-a5ed-2037e7117abc)
+
+⚠️  Missing place_id: The Congress Inn (SOCpDO2kWfLaPh9Z7EET)
+
+⚠️  Missing place_id: The Grove Inn (e20eaa80-875c-4fa3-8a32-61dc8a57dcd9)
+
+⚠️  Missing place_id: The Metropolitan (Ra7qD6gz17L5uQn0AiN5)
+
+⚠️  Missing place_id: The Greyhound Inn (17f8c2c2-a3e0-463a-bdb1-4d605f6f044e)
+
+⚠️  Missing place_id: Romford United Services And Social Club Ltd (48692f82-5046-417c-9e56-56651b9c34f8)
+
+
+
+╔════════════════════════════════════════════════════════════╗
+║  Backfill Event Sentinels                                 ║
+╚════════════════════════════════════════════════════════════╝
+
+Scanning events...
+  Scanned 3329 total
+  Processed 100 keys...  Processed 200 keys...  Processed 300 keys...  Processed 400 keys...  Processed 500 keys...  Processed 600 keys...  Processed 700 keys...  Processed 800 keys...  Processed 900 keys...  Processed 1000 keys...  Processed 1100 keys...  Processed 1200 keys...  Processed 1300 keys...  Processed 1400 keys...  Processed 1500 keys...  Processed 1600 keys...  Processed 1700 keys...  Processed 1800 keys...  Processed 1900 keys...  Processed 2000 keys...  Processed 2100 keys...  Processed 2200 keys...  Processed 2300 keys...  Processed 2400 keys...  Processed 2600 keys...  Processed 2700 keys...  Processed 2800 keys...  Processed 2900 keys...  Processed 3000 keys...
+⚠️  COLLISION: event#b30944804e07bfd5046dae969ad6eaa78a6d83cf
+    Existing: f40fccde-d448-4514-8bc4-6cb7f52cc6d8
+    Attempted: 7c8b3729-9400-42f8-ad07-6d00e32dada7
+  Processed 3100 keys...  Processed 3200 keys...  Processed 3300 keys...  Processed 3400 keys...
+
+════════════════════════════════════════════════════════════
+SENTINEL BACKFILL COMPLETE
+════════════════════════════════════════════════════════════
+
+📊 ARTISTS
+   Total artists:    1238
+   Keys generated:   1228
+   Sentinels written: 1225
+   Already existed:  12
+   Collisions:       1 ⚠️
+   Errors:           0
+
+📍 VENUES
+   Total venues:     1463
+   Sentinels written: 27
+   Already existed:  0
+   Collisions:       0 ✅
+   Missing place_id: 1436
+   Errors:           0
+
+🎫 EVENTS
+   Total events:     3329
+   Keys generated:   3445
+   Sentinels written: 3437
+   Already existed:  7
+   Collisions:       1 ⚠️
+   Missing fields:   0
+   Errors:           0
+
+════════════════════════════════════════════════════════════
+⚠️  REVIEW REQUIRED
+   2 collisions detected - investigate before enforce mode
+

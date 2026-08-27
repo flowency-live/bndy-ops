@@ -1,0 +1,333 @@
+{
+  "metadata": {
+    "date": "2026-07-27",
+    "analysisType": "data-quality-specific-issues",
+    "totalArtists": 2047,
+    "totalEvents": 4844
+  },
+  "multiArtistLineups": {
+    "count": 15,
+    "items": [
+      {
+        "id": "bce2a512-3a64-46b5-be58-f3e6511cd828",
+        "name": "Die Ego, Vulgaris, and Bound By Burdens",
+        "pattern": "/,.*,/",
+        "gigmapUrl": "https://gigmap.bndy.co.uk/artists/bce2a512-3a64-46b5-be58-f3e6511cd828"
+      },
+      {
+        "id": "a08a9bc0-1397-46b4-a23a-1ec76a9bc322",
+        "name": "A Thousand Cuts + Anti-Meta + Tba",
+        "pattern": "/\\+.*\\+/",
+        "gigmapUrl": "https://gigmap.bndy.co.uk/artists/a08a9bc0-1397-46b4-a23a-1ec76a9bc322"
+      },
+      {
+        "id": "1fd5bef1-38d0-49c1-9412-9212b3edeca7",
+        "name": "Scarlett Fever, Disco Lizards, and Grenades",
+        "pattern": "/,.*,/",
+        "gigmapUrl": "https://gigmap.bndy.co.uk/artists/1fd5bef1-38d0-49c1-9412-9212b3edeca7"
+      },
+      {
+        "id": "2e5f087f-44d0-48e0-a5db-beed87175eee",
+        "name": "Elvis tribute show featuring Mark Clay",
+        "pattern": "/\\bfeaturing\\b/i",
+        "gigmapUrl": "https://gigmap.bndy.co.uk/artists/2e5f087f-44d0-48e0-a5db-beed87175eee"
+      },
+      {
+        "id": "081c5357-bee7-45d3-8ce5-fc1708758106",
+        "name": "The Offspin vs Some 41: Derby",
+        "pattern": "/\\bvs?\\b/i",
+        "gigmapUrl": "https://gigmap.bndy.co.uk/artists/081c5357-bee7-45d3-8ce5-fc1708758106"
+      },
+      {
+        "id": "c8640d38-3873-43e5-ac5c-577d3446a36c",
+        "name": "Seamus Fogarty + Crowspeak + Morning's Thief",
+        "pattern": "/\\+.*\\+/",
+        "gigmapUrl": "https://gigmap.bndy.co.uk/artists/c8640d38-3873-43e5-ac5c-577d3446a36c"
+      },
+      {
+        "id": "252ee8bf-301a-4b47-afdc-0cfc913a6679",
+        "name": "Tombstone, Tits Up, And Bang Bang Firecracker",
+        "pattern": "/,.*,/",
+        "gigmapUrl": "https://gigmap.bndy.co.uk/artists/252ee8bf-301a-4b47-afdc-0cfc913a6679"
+      },
+      {
+        "id": "a036cdd7-1c18-4226-a56b-07095efb3b9e",
+        "name": "\"Bushtonbury Day 2\" - Eaton Park, The Vanz, Rob Wheeler",
+        "pattern": "/,.*,/",
+        "gigmapUrl": "https://gigmap.bndy.co.uk/artists/a036cdd7-1c18-4226-a56b-07095efb3b9e"
+      },
+      {
+        "id": "2c067741-f4a0-4249-a2a4-791841093146",
+        "name": "The Gakk, Kid Klumsy, And Choked",
+        "pattern": "/,.*,/",
+        "gigmapUrl": "https://gigmap.bndy.co.uk/artists/2c067741-f4a0-4249-a2a4-791841093146"
+      },
+      {
+        "id": "3a2595e8-2021-4445-a0a4-aa4a884d1a50",
+        "name": "Bushtonbury Day 3 - White Knuckle Ride, Acoustic Anarchy, 20 Mile Island",
+        "pattern": "/,.*,/",
+        "gigmapUrl": "https://gigmap.bndy.co.uk/artists/3a2595e8-2021-4445-a0a4-aa4a884d1a50"
+      },
+      {
+        "id": "0a81a599-f2fe-4780-8cc7-c45ea509ea17",
+        "name": "Malpractice + Voodoo Voodoo + Nick Degg",
+        "pattern": "/\\+.*\\+/",
+        "gigmapUrl": "https://gigmap.bndy.co.uk/artists/0a81a599-f2fe-4780-8cc7-c45ea509ea17"
+      },
+      {
+        "id": "e3a1d7eb-20ea-4fdd-831b-9f42151cc503",
+        "name": "Imperial Bees, The Groves, and The Filters",
+        "pattern": "/,.*,/",
+        "gigmapUrl": "https://gigmap.bndy.co.uk/artists/e3a1d7eb-20ea-4fdd-831b-9f42151cc503"
+      },
+      {
+        "id": "6e329829-06b9-4df6-aba9-741e351485ac",
+        "name": "Wolves in Alcatraz + Anti-Meta + Cure for the Enemy",
+        "pattern": "/\\+.*\\+/",
+        "gigmapUrl": "https://gigmap.bndy.co.uk/artists/6e329829-06b9-4df6-aba9-741e351485ac"
+      },
+      {
+        "id": "15024bd2-7bbf-4618-89df-b04011f59ab4",
+        "name": "Meat Loaf Vs Elton John",
+        "pattern": "/\\bvs?\\b/i",
+        "gigmapUrl": "https://gigmap.bndy.co.uk/artists/15024bd2-7bbf-4618-89df-b04011f59ab4"
+      },
+      {
+        "id": "732e0bd2-27ed-4f7b-b3bd-f3e4f752d8ca",
+        "name": "Anti-Meta, Chin, Fractured Mind + Cure For The Enemy",
+        "pattern": "/,.*,/",
+        "gigmapUrl": "https://gigmap.bndy.co.uk/artists/732e0bd2-27ed-4f7b-b3bd-f3e4f752d8ca"
+      }
+    ]
+  },
+  "cancelledArtists": {
+    "count": 4,
+    "items": [
+      {
+        "id": "47024cb9-c5fc-43fa-8677-2ba93f604516",
+        "name": "Cancelled",
+        "gigmapUrl": "https://gigmap.bndy.co.uk/artists/47024cb9-c5fc-43fa-8677-2ba93f604516"
+      },
+      {
+        "id": "414befd4-ec69-46db-ab71-83269eaf8da5",
+        "name": "Cancelled",
+        "gigmapUrl": "https://gigmap.bndy.co.uk/artists/414befd4-ec69-46db-ab71-83269eaf8da5"
+      },
+      {
+        "id": "4de44055-e4e1-4175-8571-beac5f8ecfb9",
+        "name": "Cancelled",
+        "gigmapUrl": "https://gigmap.bndy.co.uk/artists/4de44055-e4e1-4175-8571-beac5f8ecfb9"
+      },
+      {
+        "id": "5efbbe8c-49e9-438d-a68b-2532a45dfb40",
+        "name": "Cancelled",
+        "gigmapUrl": "https://gigmap.bndy.co.uk/artists/5efbbe8c-49e9-438d-a68b-2532a45dfb40"
+      }
+    ]
+  },
+  "unsearchableNames": {
+    "count": 2,
+    "items": [
+      {
+        "id": "87f59213-c6fc-42de-a720-657bf443c539",
+        "name": "ÜL†RᛟɣᛨɸLE†",
+        "reason": "Stylized all-caps with unicode",
+        "gigmapUrl": "https://gigmap.bndy.co.uk/artists/87f59213-c6fc-42de-a720-657bf443c539",
+        "suggestion": "Lrle"
+      },
+      {
+        "id": "e02c3acc-8730-46db-bb5b-e31635e5b24a",
+        "name": "F.A.B.",
+        "reason": "50% non-ASCII characters",
+        "gigmapUrl": "https://gigmap.bndy.co.uk/artists/e02c3acc-8730-46db-bb5b-e31635e5b24a"
+      }
+    ]
+  },
+  "zeroEventArtists": {
+    "count": 28,
+    "percentage": "1.4",
+    "items": [
+      {
+        "id": "3df91a2c-5841-4a6f-abfe-6845a4db2e1a",
+        "name": "The Situation",
+        "source": "mcp_ai_import",
+        "created_at": "2026-07-11T12:04:01.653Z"
+      },
+      {
+        "id": "8dd59e5f-9082-4f82-9cf3-c5b77b84f05d",
+        "name": "Terri and the Waders",
+        "source": "mcp_ai_import",
+        "created_at": "2026-07-14T04:15:03.994Z"
+      },
+      {
+        "id": "7eba42e0-3bd1-455f-957e-2a3e3d2068a8",
+        "name": "Motley Screw",
+        "source": "mcp_ai_import",
+        "created_at": "2026-07-27T11:35:38.513Z"
+      },
+      {
+        "id": "f4d1a4ba-f85e-4834-a997-baa116030d5d",
+        "name": "Stevie & the Cruzers",
+        "source": "mcp_ai_import",
+        "created_at": "2026-07-13T13:27:16.967Z"
+      },
+      {
+        "id": "c1da8d55-3f85-4958-a9f1-3f79f412cdf6",
+        "name": "Wadcutter Blues",
+        "source": "mcp_ai_import",
+        "created_at": "2026-07-10T07:27:31.772Z"
+      },
+      {
+        "id": "fa310697-95d1-4cbf-8163-16c66fd092bf",
+        "name": "Tee",
+        "source": "mcp_ai_import",
+        "created_at": "2026-07-10T07:27:32.712Z"
+      },
+      {
+        "id": "6613b6e9-bf3f-4401-8efd-35487f6ac0d5",
+        "name": "Unfinished Business",
+        "source": "mcp_ai_import",
+        "created_at": "2026-07-10T07:27:30.927Z"
+      },
+      {
+        "id": "c90e4f14-f96b-4ec7-83ea-83d94d8acee1",
+        "name": "Feryl Beryl",
+        "source": "mcp_ai_import",
+        "created_at": "2026-07-14T01:08:35.774Z"
+      },
+      {
+        "id": "8dc7855e-e880-437f-a5ab-984e584f5191",
+        "name": "Blind Panic",
+        "source": "mcp_ai_import",
+        "created_at": "2026-07-14T01:08:36.731Z"
+      },
+      {
+        "id": "e1a3e37a-2d76-45b4-932e-acda30f4fe82",
+        "name": "Band of Gypsies",
+        "source": "mcp_ai_import",
+        "created_at": "2026-07-14T01:08:37.318Z"
+      },
+      {
+        "id": "c333bbfb-38b1-4481-9768-bf75cb653ad8",
+        "name": "Lee Michaels",
+        "source": "mcp_ai_import",
+        "created_at": "2026-07-13T13:27:17.949Z"
+      },
+      {
+        "id": "cd782942-f8a7-478e-9502-2974cef03ddf",
+        "name": "the Scooby Dudes",
+        "source": "mcp_ai_import",
+        "created_at": "2026-07-10T07:27:31.195Z"
+      },
+      {
+        "id": "9e7c81a8-c53a-4d3d-a33f-0d43064a495f",
+        "name": "Hayley Jane Morris",
+        "source": "mcp_ai_import",
+        "created_at": "2026-07-10T07:27:31.996Z"
+      },
+      {
+        "id": "5b1c63a7-e11d-4ccf-8795-94ab8653e444",
+        "name": "Truffle Valley Boys",
+        "source": "mcp_ai_import",
+        "created_at": "2026-07-11T12:04:03.174Z"
+      },
+      {
+        "id": "4ac2abdf-d825-432a-8024-5e556e3dd1ac",
+        "name": "A Few Good Men",
+        "source": "mcp_ai_import",
+        "created_at": "2026-07-10T07:27:38.892Z"
+      },
+      {
+        "id": "573290e5-7a15-4c27-9bee-bd17436b15af",
+        "name": "Paula Ann",
+        "source": "mcp_ai_import",
+        "created_at": "2026-07-10T07:27:34.985Z"
+      },
+      {
+        "id": "a145f51c-700e-42eb-88b5-3b76d6428a98",
+        "name": "Guy Manrin",
+        "source": "mcp_ai_import",
+        "created_at": "2026-07-14T01:08:36.414Z"
+      },
+      {
+        "id": "3f413663-b4a8-4952-8309-2ed6163134cd",
+        "name": "Strangeways",
+        "source": "mcp_ai_import",
+        "created_at": "2026-07-10T07:27:36.692Z"
+      },
+      {
+        "id": "0680a88c-54c5-4d03-b798-705d42bd3d13",
+        "name": "Tuesday Trilo3y",
+        "source": "mcp_ai_import",
+        "created_at": "2026-07-13T13:27:15.716Z"
+      },
+      {
+        "id": "0ec74a04-6177-492c-9cf2-584eb2436843",
+        "name": "the Steamers",
+        "source": "mcp_ai_import",
+        "created_at": "2026-07-10T07:27:40.488Z"
+      },
+      {
+        "id": "557b8949-9bbf-4fa3-8eae-0f0dd675c2ee",
+        "name": "Stormstealer",
+        "source": "mcp_ai_import",
+        "created_at": "2026-07-10T07:27:35.642Z"
+      },
+      {
+        "id": "a92c706a-f0cf-4684-920a-8fcf232ed712",
+        "name": "Charlie Hawkins",
+        "source": "mcp_ai_import",
+        "created_at": "2026-07-10T07:27:31.423Z"
+      },
+      {
+        "id": "2577824a-f188-45c2-8cd5-ffada271b81a",
+        "name": "Kaskade",
+        "source": "mcp_ai_import",
+        "created_at": "2026-07-27T11:35:30.505Z"
+      },
+      {
+        "id": "eade84c1-475b-455d-b226-a581833d835d",
+        "name": "James Christy",
+        "source": "mcp_ai_import",
+        "created_at": "2026-07-14T01:08:38.405Z"
+      },
+      {
+        "id": "911b76b6-c2f4-4be5-9f88-475351f969d3",
+        "name": "Gaia Pacifica",
+        "source": "mcp_ai_import",
+        "created_at": "2026-07-11T12:04:00.900Z"
+      },
+      {
+        "id": "be7355ed-f45e-465c-8e82-b3fa8e162472",
+        "name": "Suzanne Hassett",
+        "source": "mcp_ai_import",
+        "created_at": "2026-07-10T07:27:40.181Z"
+      },
+      {
+        "id": "ac86423e-290a-4f73-b8c1-becb84e2c468",
+        "name": "Dr.Uke",
+        "source": "mcp_ai_import",
+        "created_at": "2026-07-10T07:27:33.958Z"
+      },
+      {
+        "id": "0e9a38a4-64af-4975-9020-ff08e9293d42",
+        "name": "Alan Squires",
+        "source": "mcp_ai_import",
+        "created_at": "2026-07-10T07:27:37.919Z"
+      }
+    ]
+  },
+  "aliasCandidates": {
+    "count": 1,
+    "items": [
+      {
+        "artistId": "87f59213-c6fc-42de-a720-657bf443c539",
+        "artistName": "ÜL†RᛟɣᛨɸLE†",
+        "targetArtistId": "30c4ade9-64f3-4ed2-a792-17cb157b4288",
+        "targetArtistName": "Ultraviolet",
+        "reason": "Unsearchable unicode stylization",
+        "action": "merge"
+      }
+    ]
+  }
+}

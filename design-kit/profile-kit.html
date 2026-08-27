@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>bndy — Profile Pages Kit v1</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', system-ui, sans-serif; background: #070a12; color: #e6e9f0; padding: 36px 24px 80px; }
+.kit-header { text-align: center; margin-bottom: 8px; }
+.kit-header .logo { font-size: 36px; font-weight: 800; color: #ff7a1a; letter-spacing: -1px; }
+.kit-sub { text-align:center; color:#5d6678; font-size:13px; margin-bottom: 32px; }
+h2 { font-size: 13px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: #19d3f5; margin: 0 auto 6px; max-width: 1280px; }
+.h2-note { color: #8b93a7; font-size: 13px; margin: 0 auto 16px; max-width: 1280px; line-height: 1.5; }
+section { margin: 0 auto 56px; max-width: 1280px; }
+.duo { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 980px) { .duo { grid-template-columns: 1fr; } }
+
+:root {
+  --orange: #ff7a1a; --pink: #ff2e88; --cyan: #19d3f5; --green: #6dff9c;
+  --bg: #070a12; --surface: rgba(255,255,255,.04); --rule: rgba(255,255,255,.08);
+  --t1: #f2f5fa; --t2: #c6cddb; --t3: #8b93a7;
+}
+.page {
+  border-radius: 16px; border: 1px solid #1b2233; overflow: hidden;
+  background: var(--bg);
+}
+.page.light {
+  --bg: #f4f5f7; --surface: #ffffff; --rule: rgba(15,20,30,.1);
+  --t1: #171c26; --t2: #3d4452; --t3: #6b7382;
+  border-color: #d8dce3;
+}
+.page-tag { font-size: 10px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; color: #5d6678; padding: 14px 20px 0; }
+
+/* ============ HERO: stage banner fading into the page ============ */
+.hero {
+  --accent: var(--orange);
+  position: relative; height: 200px;
+  background:
+    radial-gradient(ellipse 40% 60% at 25% 10%, rgba(255,160,80,.5) 0%, transparent 55%),
+    radial-gradient(ellipse 35% 55% at 60% 5%, rgba(140,90,255,.45) 0%, transparent 55%),
+    radial-gradient(ellipse 45% 60% at 85% 15%, rgba(255,60,130,.4) 0%, transparent 60%),
+    radial-gradient(ellipse 120% 80% at 50% 100%, #181420 0%, #0a0810 70%);
+}
+.hero::before { /* silhouette crowd */
+  content: ''; position: absolute; inset: auto 0 18% 0; height: 34%;
+  background:
+    radial-gradient(ellipse 8% 70% at 10% 100%, #05040a 30%, transparent 70%),
+    radial-gradient(ellipse 9% 85% at 22% 100%, #05040a 30%, transparent 70%),
+    radial-gradient(ellipse 8% 65% at 35% 100%, #05040a 30%, transparent 70%),
+    radial-gradient(ellipse 10% 90% at 49% 100%, #05040a 30%, transparent 70%),
+    radial-gradient(ellipse 8% 70% at 62% 100%, #05040a 30%, transparent 70%),
+    radial-gradient(ellipse 9% 80% at 76% 100%, #05040a 30%, transparent 70%),
+    radial-gradient(ellipse 8% 65% at 90% 100%, #05040a 30%, transparent 70%);
+  opacity: .9;
+}
+/* THE TREATMENT: banner melts into page bg + accent hairline at the seam */
+.hero::after {
+  content: ''; position: absolute; inset: auto 0 0 0; height: 72px;
+  background: linear-gradient(to bottom, transparent, var(--bg) 92%);
+}
+.hero .seam {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 1px; z-index: 2;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--accent) 55%, transparent) 30%, color-mix(in srgb, var(--accent) 55%, transparent) 70%, transparent);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--accent) 35%, transparent);
+}
+.hero.venue { --accent: var(--pink); }
+.hero .socials {
+  position: absolute; bottom: 14px; right: 16px; z-index: 3; display: flex; gap: 8px;
+}
+.hero .socials span {
+  width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  background: rgba(10,14,24,.6); border: 1px solid rgba(255,255,255,.18); color: #dfe5ef; font-size: 14px;
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+}
+
+/* ============ INTRO ============ */
+.intro { display: flex; align-items: flex-end; gap: 16px; padding: 0 20px; margin-top: -44px; position: relative; z-index: 3; }
+.pf-avatar {
+  --accent: var(--orange);
+  position: relative; flex: none;
+  width: 104px; height: 104px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 38px; font-weight: 800; color: #fff; overflow: hidden;
+  border: 3px solid rgba(255,255,255,.16);
+  box-shadow: 0 0 0 3px var(--bg), 0 0 22px color-mix(in srgb, var(--accent) 40%, transparent), 0 10px 26px rgba(0,0,0,.5);
+  background:
+    radial-gradient(ellipse 120% 90% at 25% 0%, color-mix(in srgb, var(--accent) 45%, transparent) 0%, transparent 60%),
+    linear-gradient(160deg, #161d2e 0%, #0b0f19 100%);
+}
+.pf-avatar.venue { --accent: var(--pink); }
+.pf-avatar.photo { background: radial-gradient(circle at 35% 30%, #8a5dff 0%, #150b35 80%); }
+.pf-gigging {
+  position: absolute; top: 4px; right: 4px; width: 14px; height: 14px; border-radius: 50%;
+  background: var(--pink); border: 2.5px solid var(--bg);
+  box-shadow: 0 0 10px var(--pink), 0 0 18px rgba(255,46,136,.5);
+  animation: pf-breathe 2.4s ease-in-out infinite;
+}
+@keyframes pf-breathe { 0%,100% { opacity: 1; } 50% { opacity: .5; } }
+.pf-ident { flex: 1; min-width: 0; padding-bottom: 6px; }
+.pf-chip {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 9.5px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase;
+  color: #fff; padding: 4px 10px; border-radius: 99px; margin-bottom: 7px;
+  background: color-mix(in srgb, var(--orange) 26%, rgba(10,14,24,.6));
+  border: 1px solid color-mix(in srgb, var(--orange) 55%, transparent);
+}
+.pf-chip.venue {
+  background: color-mix(in srgb, var(--pink) 26%, rgba(10,14,24,.6));
+  border-color: color-mix(in srgb, var(--pink) 55%, transparent);
+}
+.light .pf-chip { color: #6b3305; background: rgba(255,122,26,.14); }
+.light .pf-chip.venue { color: #8a1247; background: rgba(255,46,136,.12); }
+.pf-name { font-size: 26px; font-weight: 800; letter-spacing: -.4px; color: var(--t1); line-height: 1.1; }
+.pf-meta { display: flex; align-items: center; gap: 6px; font-size: 12.5px; color: var(--t3); margin-top: 4px; }
+.pf-meta .pin { color: var(--cyan); font-size: 12px; }
+
+.pf-actions { display: flex; gap: 8px; padding: 16px 20px 0; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 7px; font-family: inherit;
+  font-size: 13px; font-weight: 700; border-radius: 12px; padding: 11px 18px; cursor: pointer; border: none; transition: all 140ms; }
+.btn-primary { background: var(--cyan); color: #06222b; box-shadow: 0 0 16px rgba(25,211,245,.35); }
+.btn-primary:hover { background: #4adef7; }
+.btn-secondary { background: transparent; color: var(--cyan); border: 1.5px solid rgba(25,211,245,.5); }
+.btn-ghost { background: transparent; color: var(--t3); border: 1.5px solid var(--rule); width: 44px; padding: 11px 0; }
+
+/* ============ BIO + GENRES (READABILITY FIX) ============ */
+.pf-bio {
+  padding: 16px 20px 0;
+  font-size: 15px;           /* was ~13px italic */
+  line-height: 1.65;         /* was tight */
+  color: var(--t2);          /* brighter tier — was muted t3 */
+  max-width: 640px;          /* comfortable measure on desktop */
+}
+.pf-genres { display: flex; flex-wrap: wrap; gap: 8px; padding: 14px 20px 0; }
+.pf-genre {
+  font-size: 12.5px;         /* was 9-10px mono */
+  font-weight: 600;
+  color: var(--t2);
+  padding: 6px 13px;         /* real tap-size */
+  border-radius: 99px;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+}
+.pf-genre.hot { color: #fff; background: color-mix(in srgb, var(--orange) 16%, transparent); border-color: color-mix(in srgb, var(--orange) 45%, transparent); }
+.light .pf-genre.hot { color: #6b3305; }
+
+/* ============ INFO TILES (venue) ============ */
+.pf-tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; padding: 16px 20px 0; }
+.pf-tile { text-align: center; padding: 10px 4px 11px; border-radius: 12px;
+  background: var(--surface); border: 1px solid var(--rule); border-top: 3px solid var(--pink); }
+.pf-tile .l { display: block; font-size: 9px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: var(--pink); margin-bottom: 2px; }
+.pf-tile .v { display: block; font-size: 14px; font-weight: 800; color: var(--t1); }
+.pf-tile .v.free { color: var(--green); text-shadow: 0 0 10px rgba(109,255,156,.4); }
+.light .pf-tile .v.free { color: #0a9e54; text-shadow: none; }
+
+/* ============ TABS ============ */
+.pf-tabs { display: flex; gap: 4px; padding: 20px 20px 0; border-bottom: 1px solid var(--rule); }
+.pf-tab {
+  position: relative; display: flex; align-items: center; gap: 7px;
+  font-family: inherit; font-size: 13px; font-weight: 700; color: var(--t3);
+  background: none; border: none; cursor: pointer; padding: 10px 14px 12px;
+  transition: color 130ms;
+}
+.pf-tab:hover { color: var(--t2); }
+.pf-tab.active { color: var(--t1); }
+.pf-tab.active::after {
+  content: ''; position: absolute; left: 10px; right: 10px; bottom: -1px; height: 2.5px; border-radius: 99px;
+  background: var(--orange); box-shadow: 0 0 10px color-mix(in srgb, var(--orange) 60%, transparent);
+}
+.venue-accent .pf-tab.active::after { background: var(--pink); box-shadow: 0 0 10px rgba(255,46,136,.5); }
+.pf-tab .cnt {
+  font-size: 10.5px; font-weight: 800; padding: 1px 7px; border-radius: 99px;
+  background: var(--surface); border: 1px solid var(--rule); color: var(--t3);
+}
+.pf-tab.active .cnt { color: #06222b; background: var(--orange); border-color: transparent; }
+.venue-accent .pf-tab.active .cnt { background: var(--pink); color: #fff; }
+
+/* ============ FEATURED NEXT GIG ============ */
+.pf-feat {
+  margin: 16px 20px; border-radius: 14px; overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--orange) 30%, transparent);
+  background: color-mix(in srgb, var(--orange) 7%, transparent);
+}
+.pf-feat .tag { font-size: 9px; font-weight: 800; letter-spacing: 1.6px; color: color-mix(in srgb, var(--orange) 70%, #fff); padding: 8px 14px 0; }
+.light .pf-feat .tag { color: #b3540a; }
+.pf-feat .row { display: flex; align-items: center; gap: 12px; padding: 6px 14px 11px; }
+.gig-date { flex: none; width: 46px; text-align: center; padding: 6px 0 7px; border-radius: 10px;
+  background: rgba(10,14,24,.5); border: 1px solid var(--rule); border-left: 3px solid var(--orange); }
+.light .gig-date { background: #fff; }
+.gig-date .dw { display: block; font-size: 9px; font-weight: 700; letter-spacing: 1.2px; color: var(--orange); }
+.gig-date .dy { display: block; font-size: 17px; font-weight: 800; color: var(--t1); line-height: 1.1; }
+.gig-date .mn { display: block; font-size: 9px; font-weight: 600; color: var(--t3); }
+.pf-feat .inf { flex: 1; min-width: 0; }
+.pf-feat .a { font-size: 14.5px; font-weight: 700; color: var(--t1); }
+.pf-feat .m { font-size: 12px; color: var(--t3); margin-top: 1px; }
+.pf-feat .m b { color: var(--t2); }
+.tonight { font-size: 9px; font-weight: 800; letter-spacing: 1px; color: #06222b; background: var(--cyan);
+  padding: 2px 7px; border-radius: 99px; margin-left: 6px; vertical-align: 1px; box-shadow: 0 0 10px rgba(25,211,245,.5); }
+.free-pill { font-size: 10px; font-weight: 800; letter-spacing: 1px; color: #073018; background: var(--green);
+  padding: 3px 9px; border-radius: 99px; box-shadow: 0 0 12px rgba(109,255,156,.4); flex: none; }
+
+/* section head + rows */
+.sec-head { display: flex; align-items: center; gap: 12px; padding: 6px 20px; }
+.sec-name { font-size: 12px; font-weight: 800; letter-spacing: 2.2px; text-transform: uppercase; color: var(--orange);
+  text-shadow: 0 0 14px rgba(255,122,26,.35); }
+.light .sec-name { text-shadow: none; }
+.sec-rule { flex: 1; height: 1px; background: linear-gradient(90deg, rgba(255,122,26,.4), var(--rule) 60%); }
+.g-row { display: flex; align-items: center; gap: 12px; margin: 0 20px 8px; padding: 9px 12px; border-radius: 14px;
+  background: var(--surface); border: 1px solid var(--rule); }
+.g-row .inf { flex: 1; min-width: 0; }
+.g-row .a { display: block; font-size: 14px; font-weight: 700; color: var(--t1); }
+.g-row .m { display: block; font-size: 11.5px; color: var(--t3); margin-top: 1px; }
+.g-row .m b { color: var(--t2); }
+.g-row .chev { color: var(--t3); }
+.pad-b { padding-bottom: 20px; }
+</style>
+</head>
+<body>
+
+<div class="kit-header"><div class="logo">bndy</div></div>
+<div class="kit-sub">Profile Pages Kit · v1 · artist + venue detail pages</div>
+
+<section>
+  <h2>1 · Artist profile (dark) · Venue profile (dark)</h2>
+  <p class="h2-note">Hero keeps the generic stage banner (simulated here) — but now <b style="color:#c6cddb">fades into the page background</b> with a neon accent hairline at the seam (orange artists, pink live venues). Circular ringed avatar with the gigging dot. Chip badges, Archivo names, readable bio (15px / 1.65 / brighter tier, was small italic muted), genre chips at tap size. Venue page finally gets <b style="color:#c6cddb">Directions</b> + Add a gig. Tabs are neon-underline with count chips.</p>
+  <div class="duo">
+
+    <!-- ARTIST -->
+    <div class="page">
+      <div class="page-tag">Artist · /artists/[id]</div>
+      <div class="hero">
+        <span class="seam"></span>
+        <div class="socials"><span>f</span><span>◎</span><span>▶</span></div>
+      </div>
+      <div class="intro">
+        <div class="pf-avatar photo">R<span class="pf-gigging"></span></div>
+        <div class="pf-ident">
+          <span class="pf-chip">♪ Band</span>
+          <div class="pf-name">The Roseline</div>
+          <div class="pf-meta"><span class="pin">📍</span> Stockport</div>
+        </div>
+      </div>
+      <div class="pf-actions">
+        <button class="btn btn-primary">⇪ &nbsp;Share</button>
+        <button class="btn btn-secondary">▶ Spotify</button>
+      </div>
+      <p class="pf-bio">Indie rock four-piece from Stockport. Big choruses, bigger amps. Regulars across the North West pub circuit since 2019 — expect singalongs, sweat and at least one Oasis cover they swear they'll retire.</p>
+      <div class="pf-genres">
+        <span class="pf-genre hot">Indie Rock</span>
+        <span class="pf-genre">Alt Rock</span>
+        <span class="pf-genre">Britpop</span>
+        <span class="pf-genre">Covers</span>
+      </div>
+      <div class="pf-tabs">
+        <button class="pf-tab active">Gigs <span class="cnt">5</span></button>
+        <button class="pf-tab">Availability <span class="cnt">12</span></button>
+      </div>
+      <div class="pf-feat">
+        <div class="tag">NEXT GIG</div>
+        <div class="row">
+          <div class="gig-date"><span class="dw">THU</span><span class="dy">11</span><span class="mn">JUN</span></div>
+          <div class="inf">
+            <div class="a">The Friendship, Stocksbridge<span class="tonight">TONIGHT</span></div>
+            <div class="m">Sheffield · <b>8:00 PM</b></div>
+          </div>
+          <span class="free-pill">FREE</span>
+        </div>
+      </div>
+      <div class="sec-head"><span class="sec-name">This week</span><span class="sec-rule"></span></div>
+      <div class="g-row">
+        <div class="gig-date"><span class="dw">SAT</span><span class="dy">13</span><span class="mn">JUN</span></div>
+        <div class="inf"><span class="a">The Flying Coach</span><span class="m">Stockport · <b>9:00 PM</b></span></div>
+        <span class="chev">›</span>
+      </div>
+      <div class="g-row pad-b" style="margin-bottom:20px">
+        <div class="gig-date"><span class="dw">SUN</span><span class="dy">14</span><span class="mn">JUN</span></div>
+        <div class="inf"><span class="a">The Acoustic Lounge</span><span class="m">Stockport · <b>7:00 PM</b></span></div>
+        <span class="chev">›</span>
+      </div>
+    </div>
+
+    <!-- VENUE -->
+    <div class="page venue-accent">
+      <div class="page-tag">Venue · /venues/[id]</div>
+      <div class="hero venue">
+        <span class="seam"></span>
+        <div class="socials"><span>f</span><span>🌐</span></div>
+      </div>
+      <div class="intro">
+        <div class="pf-avatar venue">F</div>
+        <div class="pf-ident">
+          <span class="pf-chip venue">▣ Live music venue</span>
+          <div class="pf-name">The Friendship</div>
+          <div class="pf-meta"><span class="pin">📍</span> 536 Manchester Rd, Stocksbridge · Sheffield</div>
+        </div>
+      </div>
+      <div class="pf-actions">
+        <button class="btn btn-primary">⤴ &nbsp;Directions</button>
+        <button class="btn btn-secondary">+ Add a gig</button>
+        <button class="btn btn-ghost">⇪</button>
+      </div>
+      <p class="pf-bio">Proper local with a proper stage. Live music every weekend, cask ales, and a landlord who actually likes bands. Backline available by arrangement.</p>
+      <div class="pf-tiles">
+        <div class="pf-tile"><span class="l">Type</span><span class="v">Pub venue</span></div>
+        <div class="pf-tile"><span class="l">Capacity</span><span class="v">~120</span></div>
+        <div class="pf-tile"><span class="l">Entry</span><span class="v free">FREE</span></div>
+      </div>
+      <div class="pf-tabs">
+        <button class="pf-tab active">What's on <span class="cnt">3</span></button>
+        <button class="pf-tab">About</button>
+      </div>
+      <div class="pf-feat" style="border-color: rgba(255,46,136,.3); background: rgba(255,46,136,.06);">
+        <div class="tag" style="color:#ff7ab1">NEXT GIG</div>
+        <div class="row">
+          <div class="gig-date" style="border-left-color:#ff2e88"><span class="dw" style="color:#ff2e88">THU</span><span class="dy">11</span><span class="mn">JUN</span></div>
+          <div class="inf">
+            <div class="a">The Roseline<span class="tonight">TONIGHT</span></div>
+            <div class="m">Indie Rock · <b>8:00 PM</b></div>
+          </div>
+          <span class="free-pill">FREE</span>
+        </div>
+      </div>
+      <div class="sec-head"><span class="sec-name" style="color:#ff2e88; text-shadow:0 0 14px rgba(255,46,136,.35)">Coming up</span><span class="sec-rule" style="background:linear-gradient(90deg, rgba(255,46,136,.4), var(--rule) 60%)"></span></div>
+      <div class="g-row pad-b" style="margin-bottom:20px">
+        <div class="gig-date" style="border-left-color:#ff2e88"><span class="dw" style="color:#ff2e88">SAT</span><span class="dy">13</span><span class="mn">JUN</span></div>
+        <div class="inf"><span class="a">The Northern Echoes</span><span class="m">Alt Rock · <b>8:30 PM</b></span></div>
+        <span class="chev">›</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>2 · Light theme + mobile readability</h2>
+  <p class="h2-note">Same components on light. The readability spec applies at every width: bio 15px / 1.65 line-height in the second text tier (not muted), max measure 640px; genre chips 12.5px semi-bold at tap size — on mobile they wrap into neat rows instead of a micro-type strip.</p>
+  <div class="duo">
+    <div class="page light">
+      <div class="page-tag">Artist · light</div>
+      <div class="hero">
+        <span class="seam"></span>
+      </div>
+      <div class="intro">
+        <div class="pf-avatar photo">R<span class="pf-gigging"></span></div>
+        <div class="pf-ident">
+          <span class="pf-chip">♪ Band</span>
+          <div class="pf-name">The Roseline</div>
+          <div class="pf-meta"><span class="pin">📍</span> Stockport</div>
+        </div>
+      </div>
+      <div class="pf-actions">
+        <button class="btn btn-primary">⇪ &nbsp;Share</button>
+        <button class="btn btn-secondary">▶ Spotify</button>
+      </div>
+      <p class="pf-bio">Indie rock four-piece from Stockport. Big choruses, bigger amps. Regulars across the North West pub circuit since 2019.</p>
+      <div class="pf-genres" style="padding-bottom:20px">
+        <span class="pf-genre hot">Indie Rock</span>
+        <span class="pf-genre">Alt Rock</span>
+        <span class="pf-genre">Britpop</span>
+      </div>
+    </div>
+    <div class="page" style="max-width:420px">
+      <div class="page-tag">Mobile width (~390px) · bio + genres legible</div>
+      <div class="hero" style="height:150px"><span class="seam"></span></div>
+      <div class="intro" style="margin-top:-38px">
+        <div class="pf-avatar photo" style="width:88px;height:88px;font-size:30px">R<span class="pf-gigging"></span></div>
+        <div class="pf-ident">
+          <span class="pf-chip">♪ Band</span>
+          <div class="pf-name" style="font-size:22px">The Roseline</div>
+          <div class="pf-meta"><span class="pin">📍</span> Stockport</div>
+        </div>
+      </div>
+      <p class="pf-bio">Indie rock four-piece from Stockport. Big choruses, bigger amps. Regulars across the North West pub circuit since 2019 — expect singalongs, sweat and at least one Oasis cover.</p>
+      <div class="pf-genres" style="padding-bottom:20px">
+        <span class="pf-genre hot">Indie Rock</span>
+        <span class="pf-genre">Alt Rock</span>
+        <span class="pf-genre">Britpop</span>
+        <span class="pf-genre">Covers</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
