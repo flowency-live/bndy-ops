@@ -16,7 +16,7 @@
 ## Per-listing pipeline (identical to KLMA-TASK-v2 §pipeline — sanitize billing → split lineups → venue §3 → artist §1A/§2A enrich-before-decide → one discrete event per artist §4/§5 → verify §0.10). Differences only:
 - Times/prices explicit → carry them; missing time → runbook §5.6 defaults, flagged (this SUPERSEDES the original prompt's flat 20:00).
 - externalIds: `{source: "onthecasemusic", id: "<date>-<artist-slug>-<venue-slug>"}`.
-- Artist locations: NE towns — canonical region North East; store the town (§1A.1 city preferred). **Fallback default when §2A evidence gives nothing: "North East UK", locationType `regional`** (ported).
+- Artist location: a North East gig or venue is source-footprint evidence only. Set canonical location only when an official or first-party source states it. Otherwise leave it blank and record the observed gig footprint in the run ledger; never default to the venue town or "North East UK".
 - **Artist search discipline (ported):** search at minConfidence 80 AND the bare-core variant (strip Band/Duo/Trio/Live/Acoustic/Music) AND a spelling-normalised form for short/odd names. **A same/near name already in the North East is a prior run's record — REUSE it even at 70–89%, even when the gig town differs.**
 - **Venue town is never invented** — no town on the address line → skip + flag (§0.8).
 
