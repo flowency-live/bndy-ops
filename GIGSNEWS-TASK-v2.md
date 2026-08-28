@@ -2,6 +2,8 @@
 
 **SUBORDINATE TO `MASTER-IMPORT-RUNBOOK.md` (v1.10+). The runbook wins on any conflict. This file holds ONLY gigs-news-specific procedure and quirks.** Replaces every previous gigs-news task file. Scheduling is Jason-only.
 
+**OUTPUT CONTRACT:** Every run MUST also comply with `RUN-CONTRACT.md` v2.0+ and emit a valid append-only record under `run-ledger/`, including enrichment and canonical read-back evidence.
+
 ## Source — TWO pages, both required
 1. **gigs-news.uk** (NOT .co.uk) — the weekly "What's on This Week" listing. **Client-rendered**: plain fetch returns a shell, read via Chrome after render.
 2. **gigs-news.uk/branded.htm** — the site owner's own band page, carrying a forward gig list ~12 months out. **This is where most future-dated rows live** — the week view alone is a 5-day window. Read both every run.
