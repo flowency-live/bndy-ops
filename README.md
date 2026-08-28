@@ -11,7 +11,8 @@ not change without updating the task prompts that reference them.
 |---|---|
 | `*-TASK-v*.md`, `MASTER-IMPORT-RUNBOOK.md`, `LEMONROCK-AGENT-MANDATE.md`, `BUILD-OPERATING-MODEL.md` (root) | Live runbooks - the prompts/instructions scheduled tasks load. Root paths are load-bearing. |
 | `*-last-page.txt`, `discovery-crawl-state.json`, `discovery-review.jsonl`, `fb-image-progress.json` (root) | Live state and cursors, updated by each run. Root paths are load-bearing. |
-| `run-reports/` | Dated run reports and remediation reports. Every run appends here per RUN-CONTRACT.md. |
+| `run-ledger/` | Append-only, machine-readable per-run records for Backline and Godmode. Every run writes one JSON record that validates against `RUN-LEDGER-SCHEMA.json`. |
+| `run-reports/` | Dated human run reports and remediation reports. Every run appends here per `RUN-CONTRACT.md`. |
 | `cto/` | CTO persona record: CTO-BACKLOG, CTO-DECISION-*, DECISIONS-*, recovery tracker, and `INBOX.md` - the single queue of items needing a CTO ruling. |
 | `cto/work-orders/` | Work orders issued to coding agents (VSCODE-AGENT-*). |
 | `specs/` | Product/technical specs and plans. |
@@ -20,9 +21,10 @@ not change without updating the task prompts that reference them.
 
 ## Contract
 
-See `RUN-CONTRACT.md`. Short version: every scheduled run ends with a report
-in `run-reports/`, a line in `cto/INBOX.md`, and a commit+push. No commit
-means no run.
+See `RUN-CONTRACT.md`. Short version: every scheduled run ends with an
+append-only JSON ledger record, a human report in `run-reports/`, a line in
+`cto/INBOX.md`, and a commit+push. Mutable snapshots are state, not proof of
+canonical activity. No complete evidence set means the run is not evidenced.
 
 Cloud-side counterparts already in git: `bndy-enrichment` (Backline ops/docs
 evidence) and `bndy-website` (public workboard).

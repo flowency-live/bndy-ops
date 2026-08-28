@@ -2,6 +2,8 @@
 
 **SUBORDINATE TO `MASTER-IMPORT-RUNBOOK.md` (v1.9+).** Source id: `gig-spider`. Scheduling Jason-only; **first run SUPERVISED before any schedule** (qualification doctrine — this is new logic).
 
+**OUTPUT CONTRACT:** Every run MUST also comply with `RUN-CONTRACT.md` v2.0+ and emit a valid append-only record under `run-ledger/`, including enrichment and canonical read-back evidence.
+
 ## Mission (Jason, 2026-07-29)
 Nightly organic growth: for existing artists, find gigs bndy doesn't have (their FB page/events + proven sources) and add them — including new venues those gigs reveal. For each venue (existing + newly found), find other acts gigging there and add them with their events. Recurse. **The spider MAY create artists, venues and events unattended — that is what the gates are for** — subject to the evidence bar and caps below.
 

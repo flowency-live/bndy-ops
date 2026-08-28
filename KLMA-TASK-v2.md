@@ -5,6 +5,8 @@
 
 **SUBORDINATE TO `MASTER-IMPORT-RUNBOOK.md` (v1.6+). The runbook wins on any conflict. This file holds ONLY the KLMA-specific procedure and parsing quirks.** Replaces every previous KLMA task file. Scheduling this task is Jason-only; until he does, it runs solely as a supervised one-off with him present.
 
+**OUTPUT CONTRACT:** Every run MUST also comply with `RUN-CONTRACT.md` v2.0+ and emit a valid append-only record under `run-ledger/`, including enrichment and canonical read-back evidence.
+
 ## Source
 KLMA Stoke gig list (Google Sheet). Source id for provenance: `klma-stoke-gig-list`.
 - CSV export is BLOCKED (googleusercontent redirect not allowlisted) → use the **gviz endpoint with `?tqx=out:html`** read via Chrome page text (`out:csv` triggers a download Chrome can't read). Re-align columns (headers can shift; verify column mapping against a known row before parsing). Leading cell may be a float row-id (`46225.64455`) OR a form timestamp (`18/11/2025 18:32:18`) — strip both forms before comparing.

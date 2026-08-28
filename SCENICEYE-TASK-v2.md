@@ -2,6 +2,8 @@
 
 **SUBORDINATE TO `MASTER-IMPORT-RUNBOOK.md` (v1.10+). The runbook wins on any conflict. This file holds ONLY Scenic Eye-specific procedure and quirks.** Replaces every previous sceniceye task file. Scheduling is Jason-only.
 
+**OUTPUT CONTRACT:** Every run MUST also comply with `RUN-CONTRACT.md` v2.0+ and emit a valid append-only record under `run-ledger/`, including enrichment and canonical read-back evidence.
+
 ## Source
 - **sceniceye.co.uk is a FRAMESET with no readable content** — the real guide lives at **scenicmind.co.uk/sceniceye**; navigate there directly.
 - Weekly Thu–Sun guide. Region: Hampshire — Havant / Waterlooville / Emsworth / Hayling Island / Rowlands Castle / Westbourne. Source id: `sceniceye`.
