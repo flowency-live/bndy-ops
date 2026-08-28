@@ -2,6 +2,8 @@
 
 **SUBORDINATE TO `MASTER-IMPORT-RUNBOOK.md` (v1.10+). The runbook wins on any conflict. This file holds ONLY OnTheCase-specific procedure and quirks.** Replaces every previous onthecase task file. Scheduling is Jason-only.
 
+**OUTPUT CONTRACT:** Every run MUST also comply with `RUN-CONTRACT.md` v2.0+ and emit a valid append-only record under `run-ledger/`, including enrichment and canonical read-back evidence.
+
 ## Source
 - Site: **onthecasemusic.co.uk/gigs** (North East England feed: Newcastle / Gateshead / Sunderland / Northumberland / Co. Durham). Source id for provenance: `onthecasemusic`.
 - **CLIENT-RENDERED — Chrome is mandatory.** Load tools first via ToolSearch (`select:mcp__claude-in-chrome__navigate,mcp__claude-in-chrome__get_page_text,mcp__claude-in-chrome__tabs_context_mcp`), then navigate + get_page_text. **If Chrome is not connected: STOP and report the blocker. Do NOT fall back to web fetch, and do not touch bndy.**
