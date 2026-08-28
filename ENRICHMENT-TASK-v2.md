@@ -2,6 +2,8 @@
 
 **SUBORDINATE TO `MASTER-IMPORT-RUNBOOK.md` (v1.9+), especially §2A.3 TIGHTENED.** Supersedes the paused 1am FB-image task. Source id for provenance on edits: `enrichment-v2`. Scheduling Jason-only; first run supervised.
 
+**OUTPUT CONTRACT:** Every run MUST also comply with `RUN-CONTRACT.md` v2.0+ and emit a valid append-only record under `run-ledger/`, including field-level identity evidence and canonical read-back.
+
 ## Mission (Jason ruling 2026-07-29)
 **50 records/night, artists AND venues**, worked to the tightened standard: not just images — full enrichment.
 
