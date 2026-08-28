@@ -25,7 +25,7 @@ Open-mic / jam / karaoke, DJ-only, "to be confirmed", and every past-dated entry
 Identical to KLMA-TASK-v2 (sanitize billing → split lineups → venue §3 → artist §1A/§2A enrich-before-decide → one discrete event per artist §4/§5 → verify §0.10). Source specifics:
 - **Venues**: full address given → `create_venue(name, full address)` geocodes reliably. No town → skip + flag (rare).
 - **Artists**: search at minConfidence 80 AND the bare-core variant (strip Band/Duo/Trio/Live/Acoustic/Music) AND a spelling-normalised form for short/odd names (**"Pheonix" ≈ "Phoenix"**). **A same/near name already sitting in Hampshire/Portsmouth is a prior run's record — REUSE it even at 70–89%, even when the gig town differs.** This region has a documented duplicate history.
-- **New-artist location default: "Hampshire UK", locationType `regional`** — only when §2A page evidence gives nothing better (a page-stated location always wins, §2A.3).
+- **No artist-location default.** A Hampshire or Portsmouth gig is source-footprint evidence only. Set canonical location only when an official or first-party source states it; otherwise leave it blank and preserve the footprint in the run ledger.
 - **Ticket markers**: strip any "🎫Ticket" marker out of the artist/title text and set `ticketed: true` instead — never let the marker reach a name field (§0.6).
 - **Times**: explicit in this source; `startTime` is required. Defaults (§5.6) should almost never be needed — flag if used.
 - externalIds: `{source: "sceniceye", id: "<date>-<artist-slug>-<venue-slug>"}`.

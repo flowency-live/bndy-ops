@@ -1,7 +1,7 @@
 # KLMA-STOKE DAILY IMPORT — TASK DEFINITION v2.2 (2026-07-30)
 
-## NATIONAL-ACT VENUES — never infer artist location from these (Jason ruling 2026-07-30)
-**The Rigger** (Newcastle-under-Lyme, `YOMsEVdj9Y7OMMy88HFV`) · **Eleven** (Sandyford, `8Pky4flebxSt2s36ub3o`) · **Artisan Tap** (Hartshill, `CoS3G3Jr9djE4WSWQqkz`) — bigger rooms that routinely book paid national/touring acts. The §0.7 gig-town fallback is FORBIDDEN for acts appearing here: if the act's own page states no location, set **"UK wide"** (regional). Applies to every act at these venues, including ones already created by earlier runs — see open items.
+## Artist location is evidence-only
+**The Rigger** (Newcastle-under-Lyme, `YOMsEVdj9Y7OMMy88HFV`) · **Eleven** (Sandyford, `8Pky4flebxSt2s36ub3o`) · **Artisan Tap** (Hartshill, `CoS3G3Jr9djE4WSWQqkz`) are clear examples of venues that book touring acts, but the rule applies to every venue. A gig town is source-footprint evidence, not proof of the Artist's canonical home. Set Artist location only when an official or first-party source states it. Otherwise leave it blank; do not substitute the venue town or "UK wide".
 
 **SUBORDINATE TO `MASTER-IMPORT-RUNBOOK.md` (v1.6+). The runbook wins on any conflict. This file holds ONLY the KLMA-specific procedure and parsing quirks.** Replaces every previous KLMA task file. Scheduling this task is Jason-only; until he does, it runs solely as a supervised one-off with him present.
 
@@ -20,8 +20,8 @@ KLMA Stoke gig list (Google Sheet). Source id for provenance: `klma-stoke-gig-li
 2. **Split lineups** (§0.3/§4): `,` `+` `vs` `ft.` etc. → individual acts. Unnameable acts ("+2 more", "TBA") exist only in the event title, never as records. NEVER create a lineup-named artist — the API will bounce it anyway (LINEUP_NAME).
 3. **Venue** (§3): `search_venue(name, city)`; verify city; no match → `create_venue(name, address, city)` — never invent a town; result-name mismatch = reject + stage. Known mappings live in this file's Gotchas.
 4. **Artist, per act** (§1A + §2A — ENRICH BEFORE DECIDE):
-   - If a same/near-name candidate may exist → run §2A FB identification FIRST; pass any found `facebookUrl` into `create_artist`.
-   - `create_artist(name, artistType, location = venue town, facebookUrl?)` → the server resolver decides: `matched` → use that id · `review` → STAGE with candidates, create nothing · `created` → §2A enrichment top-up (actType via edit_artist, genres) · **409/422 → use the existing id / fix the input. NEVER retry with a varied name (§0.9).**
+   - If a same/near-name candidate may exist → run §2A identity research FIRST; pass a `facebookUrl` only when the page is tied to the same act by exact gig footprint, first-party cross-linking or equivalent evidence. Name similarity alone is insufficient.
+   - `create_artist(name, artistType, location?, facebookUrl?)` → include location only when an official or first-party source states it; never pass the venue town as the Artist location. The server resolver decides: `matched` → use that id · `review` → STAGE with candidates, create nothing · `created` → §2A enrichment top-up (actType via edit_artist, genres) · **409/422 → use the existing id / fix the input. NEVER retry with a varied name (§0.9).**
 5. **Event, per act** (§4 interim + §5): one discrete event per artist. `create_event(artistId, venueId, date YYYY-MM-DD ≤12 months out, startTime, isPublic: true, title "«Artist» @ «Venue»", externalIds: [{source: "klma-stoke-gig-list", id: "<stable row hash>"}])`. Multi-act bills: log sibling event ids in the run report (parent events attach retroactively when built). 409 → event exists: top-up missing fields (ticketUrl/price/times) on the EXISTING event only.
 6. **Verify every write** with get_by_id (§0.10).
 
