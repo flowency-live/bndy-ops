@@ -40,7 +40,7 @@ Reject and log, never import: open mics, jams, karaoke, quiz/bingo, **DJ-only ni
 **Cross-region:** "Trilogy Rock Band" and "Lee Michaels" also appear in NE/Stoke sources — mandatory §1A footprint check before matching or creating.
 
 ## Source defaults (ported from original prompt)
-- **New-artist location default: "Greater Manchester UK", locationType `regional`** — use ONLY when §2A page evidence gives nothing better; a page-stated location always wins (§2A.3), and the national-act-venue rule (§0.7) overrides it with "UK wide" where it applies.
+- **No artist-location default.** Greater Manchester, East Cheshire or any gig/venue town is source-footprint evidence only. Set canonical artist location only when an official or first-party source states it; otherwise leave it blank and preserve the footprint in the run ledger. Do not use "UK wide" as a substitute for unknown.
 - **Search discipline before accepting "new"**: the server resolver decides, but when pre-checking, search at minConfidence 25–80 AND the bare-core variant (strip Band/Duo/Trio/Live/Acoustic/Music) AND a spelling-normalised form for short/odd names. A same/near name already sitting in Greater Manchester / North West is a prior run's record — reuse it (§1A), don't create a twin.
 - **Start times**: runbook §5.6 day-based defaults apply (Fri/Sat 21:00, Sun 19:00, afternoon 14:00, other weekdays 20:00) — this SUPERSEDES the original prompt's flat 20:00. Flag every defaulted time in the report.
 
