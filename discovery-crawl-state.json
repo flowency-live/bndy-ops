@@ -1,6 +1,6 @@
 {
   "activePhase": 3,
-  "phaseLabel": "Corridor -> Artisan Tap diary closed + Leek crawled (already covered) - 2026-08-27",
+  "phaseLabel": "Corridor -> U WOT M8 festival cleared + Leek gig guide source found - 2026-08-28",
   "seeded": true,
   "sweepComplete": true,
   "browserIdentity": {
@@ -122,9 +122,9 @@
       "townsRemaining": [
         "Middlewich",
         "Holmes Chapel",
-        "Leek (pubs: Wellington Inn, Red Lion)",
-        "Stoke towns remaining: Longton, Fenton, Tunstall",
-        "Nantwich (Railway Hotel/Globe/Bank Stage/Sacred Orchard venue creates outstanding)"
+        "Longton",
+        "Fenton",
+        "Tunstall"
       ],
       "spiderQueue": "AMF/Crewe Rocks enriched locals (Rivia, Foxglove, Avian, Katie & The Bad Sign, Two Rivers Deep, Six Towns, Turvey, Jane and the Hurricanes) — '<artist> gigs 2026' crawls not yet run",
       "foxloweDone": "2026-07-03 scheduled run: all 7 TIMED Foxlowe diary gigs created (Pentangle, Chadwick, McAloon, Letz Zep x2, Karnataka, Bramwell). Remaining Foxlowe (no time published): GONG 8 Aug, Curved Air 4 Sep, Otway 19 Sep, Wakeman 6 Nov, Soft Machine 20 Nov.",
@@ -893,6 +893,65 @@
         "Foreign-act gate: 5 staged items, awaiting Jason's ruling"
       ],
       "note": "LEEK OPENED AND CLOSED IN ONE RUN. The town is materially already in bndy: 6 of 6 venues matched by google_place_id, 3 of 5 event creates hit the dedup gate. The pattern is now consistent across four runs - the corridor is better covered than the state file records, so ALWAYS attempt the create and let the gate answer. Real remaining value in Leek is the U WOT M8 festival bill and the October blues festival, both multi-artist and both needing a dedicated enrichment run. ents24 venue pages return empty listings; jambase and bandsintown are the productive timed sources for this corridor."
+    },
+    {
+      "date": "2026-08-28",
+      "task": "discovery-crawler-nw",
+      "browser": "OK - sole browser 7ad060c3 (recorded verifiedDeviceId) pinned. NOTE: facebook.com/me now REDIRECTS TO A PAGE ('The Torrists'), not the personal profile, because the session is page-switched. The documented /me check therefore FAILS as written. Verified instead by navigating profile.php?id=100028859839122 and confirming 'Jason Jones' + 308 friends + Profile settings control = own profile. UPDATE THE RUNBOOK CHECK to use the profile.php id, not /me.",
+      "method": "Queue-first, no new ground. Cleared the staged U WOT M8 #9 festival, then worked the newly-found Leek gig guide for entries whose artist already existed.",
+      "uwotm8Festival": {
+        "venue": "The Wilkes Head, Leek 04e2d803-baf2-45ea-a75c-50f99216c8e9",
+        "event": "20a2b654-02e2-4bb5-a01a-dd0dc1014bec FESTIVAL: U WOT M8 #9 @ The Wilkes Head 2026-09-05 15:00 FREE",
+        "sourceCorrection": "AI Mode gave a WRONG 9-act lineup: it ran 'Sexy Party' and 'Machine Mafia' together as one act 'Sexy Party Machine Mafia', AND added 'The Return Project' which is NOT on this bill (that act plays The Roaring Meg, Biddulph on 4 Sep). The authoritative bill is the promoter poster + the John Crimes gig guide, both read on Facebook. ALWAYS confirm an AI Mode lineup against the poster.",
+        "billVerbatim": "LARGE FATHER / DOG TRAIN / MACHINE MAFIA / SLOW PONY / SEXY PARTY / DESEKRATED / NEGENTROP / DENNIE MELLOR / BEN NILSSON - 05/09/26 - THE WILKES HEAD, LEEK, ST13 5DS",
+        "runningOrder": "Ben Nilsson, Dennie Mellor, Sexy Party, Slow Pony, Dog Train, Large Father, Negentrop, Machine Mafia, Desekrated (on stage about 22:00). Published by Desekrated Official 17 Aug.",
+        "timeNote": "Gig guide says 3pm; the band post says music kicks off around 4. Used the published 3pm listing time and put the running order in the description.",
+        "newArtists": {
+          "Large Father": "11b8d5c6-ab93-4e11-8476-16ff89df4e21",
+          "Desekrāted": "f5c8bd08-bd79-44fb-9bbd-ce0d4e9ea448",
+          "Ben Nilsson": "3e0004ee-094e-427f-8579-42307439f967",
+          "Dennie Mellor": "4c3f49cf-4579-43c2-9cef-849816d1ee5e"
+        },
+        "enrichment": "4/4 actType set + enrichment attempt recorded. FB + graph avatar: Large Father (profile.php?id=100076149100115, bio 'Staffordshire four piece navigating the musical cosmos'), Desekrāted (profile.php?id=61590576422009, 'Staffordshire knot DIY noisy music', Leek, full member list in bio). Attempted-no-artist-page (blank on precision): Ben Nilsson - the only presence is a PERSONAL PROFILE (Benedict Nilsson, id 61560764672388, Lives in Leek) so no page and no graph avatar, same call as Sinini Ngwenya; Dennie Mellor - no page at all, but located to Leek by a This is Leek Staffordshire post naming him as co-landlord of The Wilkes Head (he is playing his own pub).",
+        "fiveActsBlocked": "Dog Train, Machine Mafia, Slow Pony, Sexy Party, Negentrop CANNOT be created: create_artist requires a resolvable location and none of the five has any findable location evidence, nor any Facebook page. All five were searched on WebSearch AND Facebook Pages. Slow Pony has two same-name pages, BOTH rejected as foreign/dead: SlowPonyPower (US, self-described zombie page, last active Aug 2025) and Slowponymusic (+1 415 San Francisco number, last post 2019). The five are named verbatim in the event title bill and running order instead. Same shape as the THISTLE block."
+      },
+      "leekGigGuideSource": {
+        "what": "NEW RECURRING SOURCE, high value. John Crimes posts a full Leek + Moorlands gig guide to the Facebook group 'Keeping it Live in Leek! Gigs in Leek and much more!!' (groups/515354939340562) and re-shares it as it updates (last update 26 Aug). It carries VENUE + START TIME + ACT for every gig, which is exactly the data the venue Facebook pages do not publish.",
+        "howToRead": "facebook.com/groups/515354939340562/search/?q=<term> then expand See more on the John Crimes gig guide post. Range captured this run: 29 Aug to 30 Oct 2026.",
+        "worked": [
+          "Sinini Ngwenya @ The Wilkes Head 2026-08-29 17:00 -> event 9d319980-d2d3-457b-a16c-e77f9e1d7697 (artist reused 5850faa8)",
+          "Acoustic Anarchy @ The Cygnet Club, Congleton 2026-08-29 21:00 -> event 33148827-0e91-4859-8308-54c9162bbc08",
+          "Acoustic Anarchy @ The Roebuck 2026-08-31 18:00 -> event ff68afd0-f38f-4335-8719-83954c6023d9",
+          "Acoustic Anarchy @ The Blue Mugge 2026-09-25 19:30 -> event bd5b16ff-a249-4c02-b93b-d015e605532b",
+          "Acoustic Anarchy @ The Wellington Inn 2026-10-24 21:00 -> event a43ff740-ce91-4c42-b76a-b7a52a288bab"
+        ],
+        "acousticAnarchyResolved": "The 2026-08-27 run staged Acoustic Anarchy as ambiguous ('is it the night or the act?') with no time and no venue. ALL THREE blockers are now cleared. It IS an act: facebook.com/acousticanarchy80, 1.7K followers, UK mobile, insta acoustic.anarchy, headlines the Boothen Quarter at Stoke City FC. It ALREADY EXISTED in bndy as nqcmLleNMA4M9roGNINP (klma-stoke-gig-list, created 2025-02-14) and the backend uniqueness gate bounced the create. BACKFILLED this run: artistType band, actType covers, genres Rock/Pop, acoustic true, instagram, bio. It had artistType null and actType empty. A distinct London 'Acoustic Anarchy' page exists (a Brockley acoustic NIGHT) - do not attach it.",
+        "dupBlocked": "Jane and the Hurricanes @ The Roebuck 2026-10-24 -> b61c4c48-22f2-4e36-90e5-0743ea429d60 already existed.",
+        "queueForNextRuns": "All dated AND timed, straight from the guide. Foxlowe Leek (e75a745c): 11 Sep 19:30 Ancient Infinity Orchestra; 23 Sep 19:30 Laura Aston + Georgia Nevada (Georgia Nevada already in bndy); 25 Sep 19:30 Chic Out; 16 Oct 19:30 Kristin Hersh (US, foreign gate); 17 Oct 19:30 Skating Polly (US, foreign gate). Others: 29 Aug 15:00 Rock n Ruin @ The Cock Inn; 31 Aug 16:00 The Missing Link @ The Banker's Draught; 4 Sep 20:00 The Return Project @ The Roaring Meg, Biddulph; 6 Sep 10:00-15:00 Sunday Supplement Music + Olivia and Stu @ Leek Town Centre; 6 Sep 17:00 Indigo @ Benks; 25 Sep 19:00 Nick Sherratt + The Dutchie Ferguson Band + Jez Ward Duo @ YHA Hartington. Already in bndy and correctly skipped: Ozric Tentacles 17 Sep, Otway 19 Sep, Chadwick 20 Sep, McAloon 10 Oct, Letz Zep 30 Oct.",
+        "alsoSpotted": "Leek Blues and Americana Festival 1-4 Oct (lineup at leek-blues-and-americana.org.uk/artists). Congleton Jazz & Blues Festival 29-30 Aug full two-day schedule is posted as an IMAGE in the same group - many venues, many acts, needs a dedicated sub-run and careful image reading."
+      },
+      "apiFindings": [
+        "create_artist location is a HARD REQUIRED field. Omitting it returns an input validation error, not LOCATION_UNRESOLVABLE. An act with no findable town cannot be created at all. This blocked 5 of the 9 U WOT M8 acts.",
+        "create_artist silently dropped facebookUrl, profileImageUrl, actType, genres and nameVariants again on all 4 creates. Every field re-applied via edit_artist and verified with get_by_id.",
+        "The backend same-name-same-region uniqueness gate correctly bounced Acoustic Anarchy and told me to use the existing record.",
+        "edit_artist accepted a macron in the artist name (Desekrāted) without complaint."
+      ],
+      "dataDefectFound": "Artist 'Ben Hannington' 2ddb709e-08e6-42de-bef3-a8ddc209f4a3 has profileImageUrl https://graph.facebook.com/100028859839122/picture?type=large - that is JASON'S OWN personal Facebook id. A public artist record is showing Jason's profile picture. Needs clearing.",
+      "stats": {
+        "newVenues": 0,
+        "venuesDeduped": 3,
+        "newArtists": 4,
+        "artistsBackfilled": 1,
+        "artistsReused": 2,
+        "eventsCreated": 6,
+        "dedupSkipped": 2,
+        "rejected": 0,
+        "staged": 5
+      },
+      "selfAudit": "PASS - 4/4 new artists carry actType plus a recorded enrichment attempt, all re-verified with get_by_id after the edit_artist follow-up. 2 have official UK Facebook + graph avatar; 2 are attempted-no-page and correctly blank. The 1 backfilled artist (Acoustic Anarchy) was brought to the same bar. All searched at minConfidence 25 including bare-core variants before create.",
+      "runawayFlag": "none - frontier not expanded.",
+      "newGroundThisRun": "NONE. Middlewich / Holmes Chapel / Longton / Fenton / Tunstall still uncrawled. The queue-first rule plus the 9-act festival consumed the entity cap.",
+      "note": "The Leek gig guide is the single best time-bearing source found so far on this corridor. It should be read on every run before opening new ground."
     }
   ]
 }

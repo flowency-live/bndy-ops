@@ -1395,51 +1395,51 @@
     "ae3914a9-b0f7-4df7-8055-2152ddad7287": {
       "name": "Tuesday Blue",
       "status": "failed",
-      "attempts": 1,
-      "method": "delegate 728625693899619 (owner 100069728156355) ownership-verified, but graph = blank spacer gPCjrIGykBe.gif",
-      "notes": "Page has no profile photo."
+      "attempts": 2,
+      "method": "delegate 728625693899619 (owner 100069728156355) - ownership-verified page but graph picture returns the blank spacer gPCjrIGykBe.gif on BOTH the delegate id and the owner id - the page has no profile photo",
+      "notes": "Not fixable via graph. Needs upload_artist_image endpoint or a manual image."
     },
     "1532f10a-61ed-4739-845d-d04983ab9166": {
       "name": "Night Patrol",
       "status": "failed",
-      "attempts": 1,
-      "method": "delegate 207789949332454 (owner 100064254660024) ownership-verified, but graph = blank spacer gPCjrIGykBe.gif",
-      "notes": "Page has no profile photo."
+      "attempts": 2,
+      "method": "delegate 207789949332454 (owner 100064254660024) - ownership-verified page but graph picture returns the blank spacer gPCjrIGykBe.gif on BOTH the delegate id and the owner id - the page has no profile photo",
+      "notes": "Not fixable via graph. Needs upload_artist_image endpoint or a manual image."
     },
     "45c9d1ed-e3f8-44b7-987e-c70de9204253": {
       "name": "Storm Kings",
       "status": "failed",
-      "attempts": 1,
-      "method": "delegate 621928027901090 (owner 100063717570225) ownership-verified, but graph = blank spacer gPCjrIGykBe.gif",
-      "notes": "Page has no profile photo."
+      "attempts": 2,
+      "method": "delegate 621928027901090 (owner 100063717570225) - ownership-verified page but graph picture returns the blank spacer gPCjrIGykBe.gif on BOTH the delegate id and the owner id - the page has no profile photo",
+      "notes": "Not fixable via graph. Needs upload_artist_image endpoint or a manual image."
     },
     "dc6fb07c-ea41-46b4-88af-5a99fe4d7741": {
       "name": "NU CALL - Nu-Metal Tribute Band",
       "status": "failed",
-      "attempts": 1,
-      "method": "delegate 1674492116154033 (owner 100063485866107) ownership-verified, but graph = blank spacer gPCjrIGykBe.gif",
-      "notes": "Page (lastcallswindon) has no profile photo. Also check the facebookUrl: bndy name is NU CALL, page is lastcallswindon."
+      "attempts": 2,
+      "method": "delegate 1674492116154033 (owner 100063485866107) - ownership-verified page but graph picture returns the blank spacer gPCjrIGykBe.gif on BOTH the delegate id and the owner id - the page has no profile photo",
+      "notes": "Not fixable via graph. Needs upload_artist_image endpoint or a manual image."
     },
     "e5d8552c-126d-4c90-be8b-77db88ee3e25": {
       "name": "Swanvesta Social Club",
       "status": "failed",
-      "attempts": 1,
-      "method": "vanity /swanvestas - client shell, no owner (2 passes this run, 5s and 7s waits)",
-      "notes": "Retry."
+      "attempts": 2,
+      "method": "vanity /swanvestas - page renders FB \"This content isn't available at the moment\" - the page is gone or renamed",
+      "notes": "BAD URL, not a render failure. Control test this run proved the browser was rendering FB pages normally at the time. Jason: the facebookUrl in bndy needs replacing or clearing."
     },
     "446abe16-538d-4540-b584-17cdc6916216": {
       "name": "James Deane",
       "status": "failed",
-      "attempts": 1,
-      "method": "vanity /jamesdeanemusic - client shell, no owner (2 passes this run)",
-      "notes": "Retry."
+      "attempts": 2,
+      "method": "vanity /jamesdeanemusic - page renders FB \"This content isn't available at the moment\" - the page is gone or renamed",
+      "notes": "BAD URL, not a render failure. Control test this run proved the browser was rendering FB pages normally at the time. Jason: the facebookUrl in bndy needs replacing or clearing."
     },
     "efd257a8-4bcc-4d6c-b5d5-1911dd66283f": {
       "name": "Snubcat",
       "status": "failed",
-      "attempts": 1,
-      "method": "vanity /snubcat - client shell, no owner (2 passes this run)",
-      "notes": "Retry."
+      "attempts": 2,
+      "method": "vanity /snubcat - page renders FB \"This content isn't available at the moment\" - the page is gone or renamed",
+      "notes": "BAD URL, not a render failure. Control test this run proved the browser was rendering FB pages normally at the time. Jason: the facebookUrl in bndy needs replacing or clearing."
     },
     "b13b7fe8-763f-4fcc-807d-f61234a2a6b7": {
       "name": "Bad Knees Blues Band",
@@ -1717,51 +1717,51 @@
     "46317496-20ff-4982-a336-6189a32b0b88": {
       "name": "Alimo",
       "status": "failed",
-      "attempts": 1,
-      "method": "vanity /alimo.band - client shell, no profile_owner at 11s wait",
-      "notes": "Retry next run."
+      "attempts": 2,
+      "method": "vanity /alimo.band - page renders FB \"This content isn't available at the moment\" - the page is gone or renamed",
+      "notes": "BAD URL, not a render failure. Control test this run proved the browser was rendering FB pages normally at the time. Jason: the facebookUrl in bndy needs replacing or clearing."
     },
     "cd2d4285-d0cb-4e34-a025-d0473489d094": {
       "name": "Mr G and the Faith Healers",
       "status": "failed",
-      "attempts": 1,
-      "method": "/people/ URL - client shell, no profile_owner at 12s wait",
-      "notes": "Retry next run."
+      "attempts": 2,
+      "method": "/people/Mr-G-and-The-Faith-Healers/61556096503947/ - page renders FB \"This content isn't available at the moment\" - the page is gone or renamed",
+      "notes": "BAD URL, not a render failure. Control test this run proved the browser was rendering FB pages normally at the time. Jason: the facebookUrl in bndy needs replacing or clearing."
     },
     "92b9455c-25ac-41e0-84d0-011184e0b8b3": {
       "name": "The Mardi Gras Bombers",
       "status": "failed",
-      "attempts": 1,
-      "method": "delegate 297901188047 (owner 100063180700820) ownership-verified, graph = blank spacer gPCjrIGykBe.gif",
-      "notes": "Page has no profile photo. Needs upload_artist_image or manual."
+      "attempts": 2,
+      "method": "delegate 297901188047 (owner 100063180700820) - ownership-verified page but graph picture returns the blank spacer gPCjrIGykBe.gif on BOTH the delegate id and the owner id - the page has no profile photo",
+      "notes": "Not fixable via graph. Needs upload_artist_image endpoint or a manual image."
     },
     "48eeed0c-3e7c-4d44-b2f7-f14d99ed6e1b": {
       "name": "Electric Charm",
       "status": "failed",
-      "attempts": 1,
-      "method": "vanity /electriccharmuk - client shell, no profile_owner at 13s wait",
-      "notes": "Retry next run."
+      "attempts": 2,
+      "method": "vanity /electriccharmuk - page renders FB \"This content isn't available at the moment\" - the page is gone or renamed",
+      "notes": "BAD URL, not a render failure. Control test this run proved the browser was rendering FB pages normally at the time. Jason: the facebookUrl in bndy needs replacing or clearing."
     },
     "cc4065a4-49a2-4af4-acb0-6c50369a9639": {
       "name": "Ray Hatfield",
       "status": "failed",
-      "attempts": 1,
-      "method": "vanity /rayhatfield8851 - client shell, no profile_owner at 13s wait",
-      "notes": "Retry. NOTE possible duplicate of artist 8de26929-73f1-4689-a6d8-14e3bffcba9e (Ray Hatfield, /ray.hatfield.12) - check dedup."
+      "attempts": 2,
+      "method": "vanity /rayhatfield8851 - page renders FB \"This content isn't available at the moment\" - the page is gone or renamed",
+      "notes": "BAD URL, not a render failure. Control test this run proved the browser was rendering FB pages normally at the time. Jason: the facebookUrl in bndy needs replacing or clearing."
     },
     "8c9ae978-aae7-4b2a-8961-6057415b900f": {
       "name": "Ellie Owen",
       "status": "failed",
-      "attempts": 1,
-      "method": "vanity /EllieOwen.music - client shell, no profile_owner at 13s wait",
-      "notes": "Retry next run."
+      "attempts": 2,
+      "method": "vanity /EllieOwen.music - page renders FB \"This content isn't available at the moment\" - the page is gone or renamed",
+      "notes": "BAD URL, not a render failure. Control test this run proved the browser was rendering FB pages normally at the time. Jason: the facebookUrl in bndy needs replacing or clearing."
     },
     "3ad19aa8-0dc2-4eaf-a0fa-7b5bf897d0e7": {
       "name": "Jonny Salt Duo",
       "status": "failed",
-      "attempts": 1,
-      "method": "vanity /JonnySaltMusic - client shell, no profile_owner at 13s wait",
-      "notes": "Retry next run."
+      "attempts": 2,
+      "method": "vanity /JonnySaltMusic - page renders FB \"This content isn't available at the moment\" - the page is gone or renamed",
+      "notes": "BAD URL, not a render failure. Control test this run proved the browser was rendering FB pages normally at the time. Jason: the facebookUrl in bndy needs replacing or clearing."
     },
     "5ce46b6e-15f1-4bf3-b54a-881f296fea45": {
       "name": "Ska Klub",
@@ -1783,6 +1783,43 @@
       "attempts": 1,
       "method": "/BLAGBAND returns FB message: content is not available",
       "notes": "Dead or restricted page. Bad facebookUrl - needs a working page URL from Jason."
+    },
+    "a013d37f-e564-4db2-b9ce-62b3f9d27905": {
+      "name": "Better Luck Next Time (UK)",
+      "attempts": 1,
+      "status": "done",
+      "method": "delegate 240033976090127 (owner 100063552701857), ownership+image verified"
+    },
+    "eff801bf-51dc-451b-a226-386e628a5d63": {
+      "name": "Afterlife Rock Covers Band UK",
+      "attempts": 1,
+      "status": "done",
+      "method": "delegate 1074146169114273 (owner 61572136558797), ownership+image verified"
+    },
+    "e4a53de4-5c14-4535-9506-987518fdeb16": {
+      "name": "Daisy Mae",
+      "attempts": 1,
+      "status": "done",
+      "method": "delegate 116095134823367 (owner 100092600427741), ownership+image verified"
+    },
+    "1095ca3a-d992-4953-9866-93bc0befa222": {
+      "name": "Jessie & The Revolvers",
+      "attempts": 1,
+      "status": "done",
+      "method": "delegate 563854030137275 (owner 61571918052116), ownership+image verified"
+    },
+    "2720785f-0ca8-4e7c-9e09-b26eef8b0355": {
+      "name": "Set In Stone",
+      "attempts": 1,
+      "status": "done",
+      "method": "delegate 105938807861542 (owner 100054803716347), ownership+image verified"
+    },
+    "a7741d63-4109-4afa-a86c-f77ccde57dde": {
+      "name": "Unit 17",
+      "attempts": 1,
+      "status": "failed",
+      "method": "vanity /unit17.band - page renders FB \"This content isn't available at the moment\" - the page is gone or renamed",
+      "notes": "BAD URL, not a render failure. Control test this run proved the browser was rendering FB pages normally at the time. Jason: the facebookUrl in bndy needs replacing or clearing."
     }
   },
   "runs": [
@@ -2085,6 +2122,18 @@
       "remaining": 59,
       "remaining_actionable_via_graph": 9,
       "notes": "Exactly ONE browser connected (deviceId 7ad060c3-b3e0-41c9-9dd4-a8097db94bfa). Preflight clean, logged in, no checkpoint, zero account-safety events. Roster grew 2243 -> 3268 since 2026-08-19. Full 7-page scan found 99 artists with facebookUrl and empty profileImageUrl: 52 NEW, 7 retry-eligible failures at attempts=1, 20 group URLs (graph does not serve groups - not navigated), 8 already-flagged personal-profile/bad-URL blockers (not re-navigated, saves account exposure), 12 permanent-skip at attempts>=3. Processed the first 50 fresh artists to the hard cap. 40 images written, 3 spot-checked with get_by_id and all persisted. 5 vanity URLs did not render profile_owner even at 13s waits. 2 pages return the FB not-available message (Ska Klub, Blag) - bad URLs. 1 page verified but has no profile photo (Mardi Gras Bombers). 1 new-style profile has no delegate_page and graph = placeholder (Cherry Stone). DEFERRED to next run: 2 fresh (Jessie & The Revolvers 1095ca3a-d992-4953-9866-93bc0befa222, Set In Stone 2720785f-0ca8-4e7c-9e09-b26eef8b0355) and 7 retry-eligible. Standing blockers unchanged: upload_artist_image endpoint, and the bad group/event facebookUrls."
+    },
+    {
+      "date": "2026-08-28",
+      "type": "scheduled nightly",
+      "status": "completed",
+      "processed": 20,
+      "succeeded": 5,
+      "failed": 15,
+      "flagged": 0,
+      "remaining": 58,
+      "remaining_actionable_via_graph": 0,
+      "notes": "Exactly ONE browser connected (deviceId 7ad060c3-b3e0-41c9-9dd4-a8097db94bfa). Preflight clean, logged in, no checkpoint, zero account-safety events. Roster 3273 artists (3268 on 2026-08-27). Full scan found 63 artists with facebookUrl and empty profileImageUrl: 6 NEW, 14 retry-eligible failures at attempts=1, 20 group URLs (graph does not serve groups, not navigated), 11 already-flagged personal-profile/bad-URL blockers (not re-navigated, saves account exposure), 12 permanent-skip at attempts>=3. Processed all 20 actionable artists, well under the 50 cap. 5 images written and all 3 spot-checks persisted via get_by_id. NEW FINDING that corrects earlier runs: 10 of the 15 failures return the FB message 'This content isn't available at the moment', which is a DEAD OR RENAMED PAGE, not the 'client shell non-render' recorded in previous runs. After 5 consecutive such results a control navigation to a known-good page (Set In Stone) rendered normally with no checkpoint, which proves the browser and the account were healthy at that moment. These 10 artists carry a bad facebookUrl in bndy and no amount of retrying will fix them. The other 5 failures are ownership-verified pages whose graph picture returns the blank spacer gPCjrIGykBe.gif on BOTH the delegate id and the owner id, so the page has no profile photo. The graph-addressable backlog is now empty: every remaining artist without an image is a group URL, a personal profile, a dead URL or a page with no photo. ACTIONS FOR JASON: (1) build the upload_artist_image endpoint, which unblocks all personal profiles and no-photo pages; (2) replace or clear the 10 dead facebookUrls listed above plus the standing bad group/event URLs (Motley Crude, Hammered, One More Mile, Lazarus, Ska Klub, Blag); (3) consider a rule that stops writing group URLs into facebookUrl, since 20 of the 63 outstanding artists are group links that graph can never serve."
     }
   ]
 }
