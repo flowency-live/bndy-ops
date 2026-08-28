@@ -1,0 +1,541 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bndy.co.uk/schemas/cowork-run-ledger-v1.json",
+  "title": "BNDY Cowork scheduled-task run ledger",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "runId",
+    "task",
+    "sourceId",
+    "mode",
+    "startedAt",
+    "finishedAt",
+    "status",
+    "inputs",
+    "counts",
+    "enrichmentHealth",
+    "records",
+    "issues"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0"
+    },
+    "runId": {
+      "type": "string",
+      "minLength": 8
+    },
+    "task": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sourceId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "mode": {
+      "enum": [
+        "canonical-writer",
+        "shadow",
+        "no-write"
+      ]
+    },
+    "startedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "finishedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "status": {
+      "enum": [
+        "succeeded",
+        "partial",
+        "blocked",
+        "failed",
+        "no-change"
+      ]
+    },
+    "inputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "kind",
+          "ref"
+        ],
+        "properties": {
+          "kind": {
+            "enum": [
+              "source-capture",
+              "cursor",
+              "state",
+              "prior-ledger",
+              "canonical-read"
+            ]
+          },
+          "ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "capturedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        }
+      }
+    },
+    "counts": {
+      "$ref": "#/$defs/counts"
+    },
+    "enrichmentHealth": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "eligibleArtists",
+        "artistTypeClassified",
+        "actTypeClassified",
+        "genresEvidenceBacked",
+        "acousticClassified",
+        "officialLinksConfirmed",
+        "attemptedNoOfficialPresence",
+        "parkedForInsufficientEvidence",
+        "wrongIdentityLinks"
+      ],
+      "properties": {
+        "eligibleArtists": {
+          "$ref": "#/$defs/nonNegativeInteger"
+        },
+        "artistTypeClassified": {
+          "$ref": "#/$defs/nonNegativeInteger"
+        },
+        "actTypeClassified": {
+          "$ref": "#/$defs/nonNegativeInteger"
+        },
+        "genresEvidenceBacked": {
+          "$ref": "#/$defs/nonNegativeInteger"
+        },
+        "acousticClassified": {
+          "$ref": "#/$defs/nonNegativeInteger"
+        },
+        "officialLinksConfirmed": {
+          "$ref": "#/$defs/nonNegativeInteger"
+        },
+        "attemptedNoOfficialPresence": {
+          "$ref": "#/$defs/nonNegativeInteger"
+        },
+        "parkedForInsufficientEvidence": {
+          "$ref": "#/$defs/nonNegativeInteger"
+        },
+        "wrongIdentityLinks": {
+          "$ref": "#/$defs/nonNegativeInteger"
+        }
+      }
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/record"
+      }
+    },
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "severity",
+          "code",
+          "message",
+          "needsHumanReview"
+        ],
+        "properties": {
+          "severity": {
+            "enum": [
+              "info",
+              "warning",
+              "error",
+              "critical"
+            ]
+          },
+          "code": {
+            "type": "string",
+            "minLength": 1
+          },
+          "message": {
+            "type": "string",
+            "minLength": 1
+          },
+          "recordId": {
+            "type": "string"
+          },
+          "needsHumanReview": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "push": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "pending",
+            "succeeded",
+            "failed"
+          ]
+        },
+        "error": {
+          "type": "string"
+        }
+      }
+    },
+    "extensions": {
+      "type": "object"
+    }
+  },
+  "$defs": {
+    "nonNegativeInteger": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "discovered",
+        "matched",
+        "created",
+        "updated",
+        "cancelledOrHidden",
+        "skipped",
+        "parked",
+        "rejected",
+        "errors"
+      ],
+      "properties": {
+        "discovered": {
+          "$ref": "#/$defs/nonNegativeInteger"
+        },
+        "matched": {
+          "$ref": "#/$defs/nonNegativeInteger"
+        },
+        "created": {
+          "$ref": "#/$defs/nonNegativeInteger"
+        },
+        "updated": {
+          "$ref": "#/$defs/nonNegativeInteger"
+        },
+        "cancelledOrHidden": {
+          "$ref": "#/$defs/nonNegativeInteger"
+        },
+        "skipped": {
+          "$ref": "#/$defs/nonNegativeInteger"
+        },
+        "parked": {
+          "$ref": "#/$defs/nonNegativeInteger"
+        },
+        "rejected": {
+          "$ref": "#/$defs/nonNegativeInteger"
+        },
+        "errors": {
+          "$ref": "#/$defs/nonNegativeInteger"
+        }
+      }
+    },
+    "evidenceBackedValue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "outcome",
+        "evidenceRefs"
+      ],
+      "properties": {
+        "outcome": {
+          "enum": [
+            "confirmed",
+            "unknown",
+            "conflicted",
+            "not-applicable"
+          ]
+        },
+        "value": {},
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "evidenceRefs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "officialLink": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "platform",
+        "outcome",
+        "evidenceRefs"
+      ],
+      "properties": {
+        "platform": {
+          "enum": [
+            "website",
+            "facebook",
+            "instagram",
+            "bandcamp",
+            "spotify",
+            "youtube",
+            "other"
+          ]
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "outcome": {
+          "enum": [
+            "identity-confirmed",
+            "attempted-no-official-presence",
+            "conflicted",
+            "rejected-wrong-identity"
+          ]
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "evidenceRefs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "recordId",
+        "entityType",
+        "operation",
+        "result",
+        "sourceRef",
+        "identity",
+        "fieldChanges",
+        "readback"
+      ],
+      "properties": {
+        "recordId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "entityType": {
+          "enum": [
+            "artist",
+            "venue",
+            "event",
+            "festival",
+            "source-record"
+          ]
+        },
+        "operation": {
+          "enum": [
+            "create",
+            "update",
+            "cancel-or-hide",
+            "match",
+            "none"
+          ]
+        },
+        "result": {
+          "enum": [
+            "succeeded",
+            "skipped",
+            "parked",
+            "rejected",
+            "failed"
+          ]
+        },
+        "canonicalId": {
+          "type": "string"
+        },
+        "sourceRef": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sourceId",
+            "evidenceRefs"
+          ],
+          "properties": {
+            "sourceId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "nativeId": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string",
+              "format": "uri"
+            },
+            "evidenceRefs": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "identity": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "decision",
+            "evidenceRefs"
+          ],
+          "properties": {
+            "decision": {
+              "enum": [
+                "created-new",
+                "matched-existing",
+                "parked",
+                "conflicted",
+                "rejected",
+                "not-applicable"
+              ]
+            },
+            "confidence": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "candidateCanonicalIds": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "reason": {
+              "type": "string"
+            },
+            "evidenceRefs": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "fieldChanges": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "field",
+              "after",
+              "evidenceRefs"
+            ],
+            "properties": {
+              "field": {
+                "type": "string",
+                "minLength": 1
+              },
+              "before": {},
+              "after": {},
+              "evidenceRefs": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        },
+        "artistEnrichment": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "artistType",
+            "actType",
+            "genres",
+            "acoustic",
+            "officialLinks"
+          ],
+          "properties": {
+            "artistType": {
+              "$ref": "#/$defs/evidenceBackedValue"
+            },
+            "actType": {
+              "$ref": "#/$defs/evidenceBackedValue"
+            },
+            "genres": {
+              "$ref": "#/$defs/evidenceBackedValue"
+            },
+            "acoustic": {
+              "$ref": "#/$defs/evidenceBackedValue"
+            },
+            "officialLinks": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/officialLink"
+              }
+            }
+          }
+        },
+        "readback": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status"
+          ],
+          "properties": {
+            "status": {
+              "enum": [
+                "verified",
+                "not-required",
+                "failed"
+              ]
+            },
+            "checkedAt": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "canonicalId": {
+              "type": "string"
+            },
+            "error": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}
