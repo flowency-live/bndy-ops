@@ -952,6 +952,58 @@
       "runawayFlag": "none - frontier not expanded.",
       "newGroundThisRun": "NONE. Middlewich / Holmes Chapel / Longton / Fenton / Tunstall still uncrawled. The queue-first rule plus the 9-act festival consumed the entity cap.",
       "note": "The Leek gig guide is the single best time-bearing source found so far on this corridor. It should be read on every run before opening new ground."
+    },
+    {
+          "date": "2026-08-29",
+          "task": "discovery-crawler-nw",
+          "browser": "HALT - zero connected browsers (list_connected_browsers returned []). No AI Mode, no Facebook reads. Worked the pre-verified Leek gig guide queue (captured 2026-08-28) via WebSearch + web_fetch, per the 2026-08-18 precedent.",
+          "method": "Queue-first only. Venue addresses verified via whatpub/CAMRA (Bankers Draught 83 Haywood St ST13 5JN) and whatpub/findmea (Roaring Meg 40 Pennine Way ST8 7EA). Artist identities via WebSearch only.",
+          "newVenues": {
+                "Roaring Meg (Biddulph)": "6b11c30d-1b3f-49ac-ae1a-15acd3cc13aa"
+          },
+          "venuesDeduped": {
+                "The Bankers Draught (Leek)": "67696c63-3da1-4970-b376-2fcb4c2fcbdf - already existed by google_place_id"
+          },
+          "newArtists": {
+                "The Missing Link": "0b28ba47-f44d-4fb9-b328-f8cbf3e50008",
+                "Laura Aston": "ba783847-951c-4490-a53f-6e82a3fdc888"
+          },
+          "eventsCreated": [
+                "61e276e8 The Missing Link @ The Bankers Draught 2026-08-31 16:00",
+                "54430e31 The Return Project @ Roaring Meg 2026-09-04 20:00 (artist reused feb53582, klma)",
+                "e17d3066 Laura Aston + Georgia Nevada @ Foxlowe 2026-09-23 19:30 ticketed gigantic (co-bill linked at creation; Georgia Nevada reused d6907319)",
+                "0fc0a9e7 Indigo @ Benks 2026-09-06 17:00 (artist reused 2a478bff, venue existed e279bada)"
+          ],
+          "dupBlocked": [
+                "Chic Out @ Foxlowe 2026-09-25 -> d5d31d90 already existed (5th run in a row where state lagged the DB)"
+          ],
+          "enrichment": "2/2 new artists FB + graph avatar + insta + genres + actType at creation, re-applied via edit_artist (known silent-drop) and confirmed in the edit response. The Missing Link (MissingLinkStoke, Stoke five-piece rock'n'soul, covers). Laura Aston (lauraaston1993 Birmingham, +misslauraaston insta, +lauraaston.com, country originals, noSpider national touring). Backfill ATTEMPTED on reused The Return Project (feb53582): only candidate 'The Return Band Page' has US member names, rejected - blank stands.",
+          "staged": [
+                "Rock n Ruin @ Cock Inn 29.8 (act unresolvable, same-day - expires)",
+                "YHA Hartington Hall 3-act bill 25.9 (all acts unresolvable, venue not created)",
+                "Sunday Supplement + Olivia and Stu @ Leek Town Centre 6.9 (not a venue)",
+                "Leek Blues & Americana 1-4 Oct (events page unpublished; April Moon CAN + Debbie Bond US = foreign gate)"
+          ],
+          "stats": {
+                "newVenues": 1,
+                "venuesDeduped": 1,
+                "newArtists": 2,
+                "artistsReused": 3,
+                "eventsCreated": 4,
+                "dedupSkipped": 1,
+                "rejected": 0,
+                "staged": 4
+          },
+          "selfAudit": "PASS - 2/2 new artists carry actType + successful recorded enrichment (FB + graph avatar + insta on both). Both searched at minConfidence 25 incl. bare-core variants before create; The Missing Link resolved via confirmNew after 64%/60% false candidates.",
+          "runawayFlag": "none - frontier not expanded; Laura Aston is a noSpider national touring act, The Missing Link is a local covers leaf.",
+          "remainingBlocked": [
+                "Browser: zero connected - AI Mode new ground (Middlewich/Holmes Chapel/Longton/Fenton/Tunstall) and all FB-only sources blocked",
+                "Congleton Jazz & Blues 29-30 Aug: schedule is an FB image, browser needed - window closes 30 Aug",
+                "The Underground 3 gigs (act identity / foreign gate)",
+                "Foreign-act gate: unchanged, awaiting Jason's ruling",
+                "edit_event artistIds-append gap: unchanged"
+          ],
+          "note": "Leek gig guide queue is now CLEAR except items blocked on act identity or venue-modelling. Next run with a browser: re-read the gig guide (John Crimes updates it), FB pass for the staged unresolvable acts, then open Middlewich/Holmes Chapel/Stoke remainder."
     }
   ]
 }
