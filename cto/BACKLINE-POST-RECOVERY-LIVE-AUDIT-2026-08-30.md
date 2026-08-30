@@ -1,10 +1,12 @@
 # BNDY Backline post-recovery live audit
 
-Status: **IN PROGRESS**
+Status: **COMPLETE**
 
-Latest completed phase: **Phase 16 — Cowork inventory boundary**
+Latest completed phase: **Final synthesis and safety verdict**
 
 Audit started: `2026-08-30T20:18:29.598Z`
+
+Audit completed: `2026-08-30T22:01:57.224Z`
 
 Required account: `771551874768`
 
@@ -16,21 +18,23 @@ Safety boundary: this audit does not deploy, invoke Lambda functions, change inf
 
 ## 1. Executive verdict
 
-The audit is not yet complete. No final resumption or deployment verdict is issued at Phase 16.
+**Overall verdict: the recovered estate is observable and its main CloudFormation shapes are reproducible, but it is not deployment-safe and canonical activity is not contained estate-wide.** Read-only control-plane/repository work and isolated local implementation can resume. Enrichment deployment, stream/hydration enablement and provider activation cannot. Signals PR #1 is the only reviewed safety-only change currently suitable to merge, and merge must not imply deployment.
 
 | Question | Verdict | Reason |
 | --- | --- | --- |
-| Is the recovered serverless API stack stable? | UNVERIFIED | It is `UPDATE_COMPLETE`, but a post-closure local SAM deploy rewrote 23 functions from an `UNMAPPED` source; Source Inspector is responsive but unmanaged, Source Runs recorded 14 errors, and drift was partial. |
-| Is Enrichment runtime state verified? | NO | The source-freshness alarm is live `ALARM`, Projection has 37 DLQ messages/111 application error records, and the deployed Git SHA is `UNMAPPED`. Controls remain fail-closed. |
+| Is the recovered serverless API stack stable? | **NO** | The stack is `UPDATE_COMPLETE` and its 37-resource shape is reproducible, but 23 deployed packages remain `UNMAPPED`; 17 template functions are on a non-updateable runtime; Source Inspector's route is unmanaged; Source Runs recorded 14 errors; drift coverage was partial; and a stale executable change set remains. |
+| Is Enrichment runtime state verified? | **NO** | Source freshness is in `ALARM`, Projection has 37 DLQ messages/111 application-error records, the deployed revision is `UNMAPPED`, and clean default-head parity tests fail. Its source projection controls are fail-closed, but Capture/paid-provider paths remain armed. |
 | Are CloudFormation owners coherent? | NO | Core stack ownership is mapped, but canonical tables and the Source Inspector route/integration have no CloudFormation owner, and two cross-repository deployment paths remain. |
 | Are automatic deployment bypasses contained? | NO | Current workflow inspection proves the Source Inspector and Capture bypasses remain armed. |
-| Are canonical writes proven disabled? | UNVERIFIED | Live controls, stream mappings and writer gates are pending. |
-| Is it safe to resume read-only Backline work? | NO | The required live audit is incomplete. |
-| Is it safe to resume local implementation? | NO | The required live audit is incomplete. |
-| Is it safe to merge safety-only changes? | NO | Signals PR 1 is mergeable and passing, but automatic deployment bypasses and live ownership checks remain unresolved. |
-| Is it safe to deploy Enrichment? | NO | Runtime, ownership and proposed differences are pending. |
-| Is it safe to enable streams or hydration? | NO | Explicitly outside the current safety boundary. |
-| Is it safe to activate providers? | NO | Explicitly outside the current safety boundary. |
+| Are canonical writes proven disabled? | **NO** | Backline source projection and Signals automation are fail-closed, but recent Cowork tasks demonstrably write canonical records and the enabled Capture processor writes directly to canonical APIs outside the global projection gate. |
+| Is it safe to resume read-only Backline work? | **YES, bounded** | Repository/local-artifact work and AWS control-plane inspection may resume under the audit boundary: no product calls, message access, secret reads, invocations or mutations. |
+| Is it safe to resume local implementation? | **YES, isolated** | Use clean branches/worktrees, preserve the user's dirty trees, keep writers/providers fail-closed and do not attach implementation work to an automatic deployment path. |
+| Is it safe to merge safety-only changes? | **YES — Signals PR #1 only** | Refreshed PR head `7e1456d` remains open, mergeable, clean and green; its bounded delta fails closed. Merge only after human review and confirmation that it will not deploy. This audit did not merge it. |
+| Is it safe to deploy Enrichment? | **NO** | Runtime/DLQ/alarm findings, failed parity gates, active bypasses, direct Capture writing and unmapped release provenance remain unresolved. |
+| Is it safe to enable streams or hydration? | **NO** | Canonical tables lack declared owners/protections, writer authority is not singular and replay safety is unknown. |
+| Is it safe to activate providers? | **NO** | Gemini-capable Capture and Google mappings are already wired; provider cost/data boundaries, canonical-write containment and validation are not ready for expansion. |
+
+These verdicts are point-in-time conclusions from the evidence timestamps in each phase. Final remote-head refresh confirmed that Enrichment `72a9c23`, Serverless `db7f508`, Signals `db85ecd`, Capture `7693e16`, App `4d6e662` and Backstage `28277ef` still match the validated snapshots. The user's Enrichment deployment and App/Backstage cosmetic pushes are expected parallel work, not unauthorised mutations.
 
 ## 2. Identity and audit scope
 
@@ -817,7 +821,7 @@ Event history was queried from `2026-08-30T12:00:00Z` through phase end. AWS rec
 | --- | --- | --- | --- | --- | --- |
 | 13:45:37–13:51:49 | `bndy-serverless-api` surgical auth recovery: change set created/executed; Users/Uploads configuration and code updated; permissions restored | `bndy-deployer`, local AWS CLI/CloudFormation | Expected incident-recovery work documented by the closure report; final permission events completed seconds after the recorded closure instant | Partly | Owner-coherent CloudFormation recovery; no separate bypass |
 | 16:06:42–16:08:49 | `bndy-serverless-api` SAM change set created/executed; **23 Lambda code packages** updated | `bndy-deployer`, local SAM CLI 1.159.1 on Windows | Post-closure deployment, not a GitHub workflow. CloudTrail/CloudFormation cannot map its local build deterministically to a clean Git SHA, so revision is `UNMAPPED` | **Yes** | Correct owning stack, but recovery snapshot/source provenance superseded |
-| 16:35:37–16:38:55 | `bndy-capture` SAM change set created/executed; WhatsApp secret, DLQ/queue, worker, event mapping and webhook permissions created; Capture Lambda/API updated | `bndy-deployer`, local SAM CLI 1.159.1 on Windows | Post-closure feature deployment; no Capture GitHub run in the audit window and deployed revision remains `UNMAPPED` pending deterministic build comparison | **Yes** | Correct owning stack; not either serverless hot-deploy bypass |
+| 16:35:37–16:38:55 | `bndy-capture` SAM change set created/executed; WhatsApp secret, DLQ/queue, worker, event mapping and webhook permissions created; Capture Lambda/API updated | `bndy-deployer`, local SAM CLI 1.159.1 on Windows | Post-closure feature deployment; no Capture GitHub run in the audit window. Phase 15 proved the clean head reproduces its 13-resource configuration shape, but package identity remains `UNMAPPED` | **Yes** | Correct owning stack; not either serverless hot-deploy bypass |
 | 18:03:43–18:03:58 | Two direct Source Inspector reconcilers created/deleted/recreated the production integration and route | AWS account root via GitHub-hosted AWS CLI; runs `33326965685` / `33326976298` | Uncontrolled post-closure mutation; exact six-event lineage is in Section 7 | **Yes** | **Violation:** unmanaged direct CLI path and root credential boundary |
 | 18:44:06 | `surgical-sourceruns-db7f5086-20260830194405` change set created but not executed | `bndy-deployer`, local AWS CLI | Still `CREATE_COMPLETE / AVAILABLE`; would modify HTTP API body and Source Runs Lambda code without replacement | **Yes** | No live resource changed, but an executable stale release artefact remains |
 | 20:08:27–20:10:34 | `BndyEnrichmentStack` CDK change set created/executed; 11 existing Lambda packages updated; Source Health worker/rule/alarm created | scoped CDK deploy/execution roles, local `aws-cdk-jason` session | User-confirmed parallel Enrichment deployment; explicitly excluded from incident/unauthorised findings and adopted as live baseline | **Yes** | Correct owning stack and scoped role; deployment exposed live freshness ALARM |
@@ -836,7 +840,27 @@ CloudTrail therefore disproves any claim that recovery closure was the final pro
 
 ## 12. Canonical-write safety
 
-Pending synthesis from Phases 6, 8–10 and 13.
+The global Backline projection control is fail-closed: the exact `CONTROL#PROJECTION / GLOBAL` item is absent, and the runtime returns enabled only for an explicit boolean `true`. The named Cowork-owned sources are also shadowed. This protects the Enrichment projection engine only; it is not an estate-wide kill switch.
+
+| Write/provider path | Live automatic boundary | Effective gate at audit time | Safety conclusion |
+| --- | --- | --- | --- |
+| Enrichment source projection worker | Projection SQS mapping enabled; primary queue empty, DLQ contains 37 terminal failures | Global control absent → false; Cowork-owned sources are shadowed and/or have non-AWS writer authority | **Canonical writes disabled for this engine.** Do not infer replay safety from the empty primary queue or enable the control while the DLQ is unexplained. |
+| Canonical-change hydration | No canonical-change worker, queue, mappings or stream parameters/resources in the deployed stack | CDK context defaults false and the stack was synthesized false | **Disabled/not deployed.** Enabling it would cross table-ownership and replay boundaries. |
+| Signals source runners | Dev/prod rules disabled; production source functions reserved concurrency `0` | Live containment is effective, but current main IaC expects five prod rules enabled and Intelligence `DRY_RUN=false` | **Automatic canonical writing live-disabled but not template-safe.** PR #1 encodes the fail-closed state; merge and deploy remain separate approvals. |
+| Cowork source tasks | Four completed source heartbeats and one failed firing on 30 August; current scheduler export unavailable | Runbook gates constrain writes but there is no audited global disable; recent ledger rows record canonical creates | **Not disabled.** Cowork remains a demonstrated direct canonical writer and overlaps active Backline acquisition for KLMA, GigsNews and On The Case. |
+| Capture scanner and `bndy-capture-processor` | Five-minute scanner rule and processor SQS mapping enabled; queue was empty at Phase 11 | Processor code does not consult Backline's global projection control. A non-cancelled resolved capture calls canonical Artist/Venue/Event APIs directly | **Not disabled.** This is an independent canonical-writer path. It is also a live Gemini-provider path whenever capture work arrives. |
+| Google Discovery worker | Daily planner rule and SQS mapping enabled; planner input was `entities=[]`; queue/DLQ empty at Phase 11 | No provider-disable flag was found in deployed wiring; work availability currently limits invocation | **Provider-capable, not safely classifiable as inactive.** It does not itself call the canonical BNDY API, but expanding or testing it requires separate approval. |
+| Entity Enrichment queue | Primary/DLQ empty and no Lambda mapping | No consumer | **Dormant.** Do not attach a consumer as part of unrelated recovery. |
+
+### Canonical safety verdict
+
+- **Backline source projection:** fail-closed at the observed instant.
+- **Canonical streams/hydration:** absent and disabled.
+- **Signals automatic source writing:** live-contained, but current main can undo containment on deploy.
+- **Estate-wide canonical writes:** **not disabled** because Cowork and Capture bypass the Backline projection control by design.
+- **Provider inactivity:** **not proven** because Capture and Google provider mappings/schedules are armed, even though scoped queues were empty at Phase 11 and the audit invoked nothing.
+
+No control should be relaxed to test these conclusions. A safe recovery must first establish one owner and one explicit kill switch for every canonical-writer/provider path.
 
 ## 13. CDK/SAM differences
 
@@ -972,6 +996,14 @@ Cowork cannot be described as disabled or paused. Its task-control inventory is 
 - **Required decision:** obtain a current Cowork task export through the authorised operator, identify one acquisition/writer authority per source, and pause or retire duplicates through a separately approved change.
 - **HITL approval:** Yes — inspecting or changing the Cowork scheduler is outside this artefact-only audit.
 
+### P1 — Capture is an armed canonical-writer/provider path outside the global projection gate
+
+- **Evidence:** the live Capture scanner rule is enabled every five minutes and the Capture Processing SQS mapping is enabled. Default-head processor code fetches the Gemini credential, resolves captures and directly calls canonical Artist/Venue/Event write endpoints without consulting `CONTROL#PROJECTION / GLOBAL`. The queue was empty at Phase 11; the audit invoked neither path.
+- **Affected resource:** `bndy-capture-scan`, `bndy-capture-processor`, Capture Processing queue, Gemini and canonical BNDY APIs.
+- **Impact:** the global Backline control cannot establish estate-wide write containment or provider inactivity. New Capture work can incur provider use and canonical mutations while source projection remains fail-closed.
+- **Required decision:** define an explicit fail-closed operational gate for Capture/provider processing, preserve the user-facing intake contract, and make Enrichment CDK the single release authority before any provider expansion or replay.
+- **HITL approval:** Yes — any rule, mapping, function, secret/provider or product-flow change is outside this audit.
+
 ### P1 — Production Source Runner template would re-enable five contained triggers
 
 - **Evidence:** fresh detection `ef8fee70-a4b1-11f1-8320-02bc20eea893` reports five `/State` differences: template `ENABLED`, live `DISABLED` for GigsNews, KLMA, On The Case, ScenicEye and the intelligence-pass S3 trigger.
@@ -1078,9 +1110,23 @@ Cowork cannot be described as disabled or paused. Its task-control inventory is 
 
 ## 16. Minimum safe recovery sequence
 
-Pending final synthesis. No recovery action will be implemented by this audit.
+No recovery action was implemented by this audit. The minimum safe sequence is:
 
-Checkpoint after Phase 16: Phases 1–16 are evidenced. Final synthesis must complete Sections 1, 12 and 16, issue every required explicit verdict, refresh App/Backstage remote heads if they changed again, and commit without pushing.
+1. **Hold the mutation boundary.** Do not deploy any scoped stack, execute the stale Source Runs change set, enable streams/hydration/schedules/mappings/providers, read or redrive queue messages, or run production acceptance workflows. Continue only bounded read-only work and isolated local implementation.
+2. **Contain the two deployment bypass classes.** Through an approved security/repository change, stop the Source Inspector main-branch reconciler and both Capture hot-deploy workflows. Remove static/root deployment authority, rotate/revoke the root credential through the account-security process, and retain evidence. Do not rerun either workflow as a diagnostic.
+3. **Assign one infrastructure owner per orphan or shared resource.** Put the Source Inspector route/integration under one CloudFormation template; confirm Enrichment CDK as the sole Capture processor release owner; and designate import/adoption owners for canonical Artists/Venues/Events and the production Signals bucket. No resource may be recreated or replaced during adoption.
+4. **Encode fail-closed runtime state before any deployment.** Human-review and merge Signals PR #1 only if merge cannot auto-deploy. Keep all live Signals rules disabled and production concurrency at `0`. Design a separate default-off Capture/provider control that gates both provider use and canonical API calls before secret/API access while preserving intake; validate it locally. Do not deploy current Signals main or the Capture change yet.
+5. **Obtain the current Cowork scheduler export and choose one source authority.** Record exact task IDs, names, enabled/paused state and cadence. For Insangel, KLMA, GigsNews, ScenicEye and On The Case, designate one acquisition path and one canonical writer; then approve pauses/retirements for duplicates. Resolve Insangel's repeated capture-surface failure and the ScenicEye/GigsNews catalog/cadence contradictions without enabling Backline projection.
+6. **Restore reproducible release gates.** Map live Lambda packages to immutable artefacts, migrate all 17 Serverless/Source Inspector `nodejs20.x` definitions, fix Enrichment KLMA/GigsNews parity, add Capture's lockfile, and repair Backstage's type/lint/test gates. Discard or supersede the stale Source Runs change set through its owner; never execute it as a shortcut.
+7. **Diagnose runtime failures without touching messages or controls.** Explain the Projection DLQ's 37 failures and 111 error records using approved aggregate evidence first; root-cause Source Runs' 14 errors and the Source Health ALARM; reconcile GigsNews stale/ScenicEye missing state. Message inspection/redrive requires a separate replay plan with idempotency, scope and rollback approval.
+8. **Add stateful-resource and observability protections as reviewed non-replacement changes.** Plan PITR/deletion protection for recovered tables, explicit alert ownership/actions for DLQ age/depth and function errors, and bounded log retention. Review each proposed template difference before execution.
+9. **Prepare one bounded safety deployment at a time.** Start only after steps 1–8 have evidence and approval. Require an immutable Git/artifact mapping, clean build/tests/lint, exact deployed-versus-proposed diff, no replacement or IAM broadening, separately approved ownership adoption, explicit rollback, observation window and named operator. Deploy no feature/provider activation with a containment change.
+10. **Verify containment after each approved change.** Re-run stack/resource ownership, drift, mappings/rules/concurrency, queue attributes, alarms and aggregate logs. Keep canonical projection false, Capture/provider gates fail-closed and Signals contained until the evidence report is updated and independently reviewed.
+11. **Consider streams, hydration, provider expansion and canonical replay only as separate final decisions.** Each requires singular ownership, an empty/explained failure backlog, cost/privacy limits, canary scope, idempotency and rollback. None is authorised by completion of this audit.
+
+### Recovery decision boundary
+
+The non-mutating hold in step 1 and local/read-only investigation can begin now. Every repository merge, workflow/credential change, AWS mutation, Cowork task action, message access/redrive, deployment, stream/hydration change or provider activation requires explicit human approval. Completion of a preceding step is not standing approval for the next one.
 
 ## 17. Evidence appendix
 
@@ -1320,3 +1366,14 @@ Comparison classification was restricted to logical IDs, resource types, changed
 | Read canonical runbook write-contract lines | 0 | Proved that import tasks may create/edit BNDY records under gates and must read each write back. |
 
 No Cowork product surface was opened, no task was invoked or changed, and no product endpoint or canonical record was accessed.
+
+### Final synthesis command record
+
+| Command family | Exit | Evidence obtained |
+| --- | ---: | --- |
+| Local source review of Capture processor, BNDY client, projection control and CDK wiring in the isolated Enrichment worktree | 0 | Proved the distinction between fail-closed source projection and the independently wired Capture canonical-writer/Gemini path. No secret value or endpoint was accessed. |
+| `git ls-remote` for Enrichment, Serverless API, Signals, Capture, App and Backstage default branches | 0 | All six remote heads still equal the immutable snapshots validated in Phases 14–15. Active dirty worktrees were not fetched, checked out or edited. |
+| `gh pr view 1` for Signals, selected status fields only | 0 | PR head `7e1456d090d841c4cb8410799c097af215397b4b` remains open, non-draft, `MERGEABLE` / `CLEAN`, with its test check successful and base still `db85ecd`. |
+| Report consistency searches and `git diff --check` | 0 | Removed pending-phase markers, reconciled Cowork references and validated the final Markdown diff before commit. |
+
+The final synthesis made no AWS call. It did not invoke a Lambda/provider/product endpoint, access a message or secret, change a workflow/configuration, create a change set, deploy, merge or push.
