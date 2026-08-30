@@ -2,7 +2,7 @@
 
 Status: **IN PROGRESS**
 
-Latest completed phase: **Phase 8 — DynamoDB ownership, streams and controls**
+Latest completed phase: **Phase 9 — SSM stream-reference metadata**
 
 Audit started: `2026-08-30T20:18:29.598Z`
 
@@ -16,7 +16,7 @@ Safety boundary: this audit does not deploy, invoke Lambda functions, change inf
 
 ## 1. Executive verdict
 
-The audit is not yet complete. No final resumption or deployment verdict is issued at Phase 8.
+The audit is not yet complete. No final resumption or deployment verdict is issued at Phase 9.
 
 | Question | Verdict | Reason |
 | --- | --- | --- |
@@ -590,9 +590,18 @@ Exact `SOURCE#<id> / CONFIG` reads were limited to the ten in-scope safety recor
 
 These exact records prove the current Backline projection engine is fail-closed for the named sources. They do not yet prove every external Signals/Cowork writer is contained.
 
-### Phase 9 SSM
+### Phase 9 — SSM stream references
 
-Pending.
+| Parameter | Type / version | Last modified UTC | CloudFormation owner | Live target consistency |
+| --- | --- | --- | --- | --- |
+| `/bndy/claims/stream-arn` | `String` / 1 | `2026-08-30T00:02:08.095Z` | `bndy-serverless-api` / `EntityClaimsStreamArnParameter` | Matches the current `bndy-entity-claims` stream label `2026-08-29T16:15:10.440` and enabled mapping exactly. |
+| `/bndy/canonical/artists/stream-arn` | **Absent** | — | None | Consistent with Artists stream disabled and no mapping. |
+| `/bndy/canonical/venues/stream-arn` | **Absent** | — | None | Consistent with Venues stream disabled and no mapping. |
+| `/bndy/canonical/events/stream-arn` | **Absent** | — | None | Consistent with Events stream disabled and no mapping. |
+
+Only the Claims reference appears in a relevant deployed template: `bndy-serverless-api` owns it and `BndyEnrichmentStack` resolves it. No deployed template contains a canonical Artist/Venue/Event stream-ARN path. The Claims parameter value was read without decryption because it is the expressly approved non-secret `String` stream reference; only its sanitised table name/stream label is retained.
+
+The three absent canonical parameters are fail-closed evidence, not an error requiring repair. Creating them is part of the future explicit stream-activation sequence and is not authorised now.
 
 ## 10. Schedules and source authority
 
@@ -803,3 +812,15 @@ No API route, Lambda or product endpoint was invoked.
 | Read-only source inspection of `control-store.ts` and source registry definitions | 0 | Proved absence of the control item evaluates false and identified exact permitted source keys. |
 
 No application item, user data, queue message or private evidence was read.
+
+### Phase 9 command record
+
+| Command family | Exit | Evidence obtained |
+| --- | ---: | --- |
+| `aws ssm get-parameter --name /bndy/claims/stream-arn --no-with-decryption` | 0 | Approved non-secret String metadata/value, sanitised to table and stream label. |
+| Exact `get-parameter --no-with-decryption` for the three canonical stream paths | 254 `ParameterNotFound` each | Confirmed fail-closed absence. |
+| In-memory deployed-template regex restricted to `*stream-arn` paths | 0 | Claims path appears only in Serverless API and Enrichment; no canonical stream paths appear. |
+| Initial exact `describe-parameters` filter | 0 but false negative | CLI filter construction was corrected with exact `get-parameter`; it did not change state. |
+| Diagnostic `BeginsWith=/bndy/` metadata query | 0 | This was broader than the required scope and returned only names/types/timestamps for six unrelated secure parameters. No value or decryption was requested; the unrelated metadata was discarded and is not reproduced. |
+
+The last command is recorded as an audit-scope deviation. It exposed no secret value and caused no mutation.
