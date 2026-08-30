@@ -2,7 +2,7 @@
 
 Status: **IN PROGRESS**
 
-Latest completed phase: **Phase 15 — safe CDK/SAM difference report**
+Latest completed phase: **Phase 16 — Cowork inventory boundary**
 
 Audit started: `2026-08-30T20:18:29.598Z`
 
@@ -16,7 +16,7 @@ Safety boundary: this audit does not deploy, invoke Lambda functions, change inf
 
 ## 1. Executive verdict
 
-The audit is not yet complete. No final resumption or deployment verdict is issued at Phase 15.
+The audit is not yet complete. No final resumption or deployment verdict is issued at Phase 16.
 
 | Question | Verdict | Reason |
 | --- | --- | --- |
@@ -373,7 +373,7 @@ The current `Original` template body was retrieved for every relevant stack. Dig
 - `bndy-capture-processor` has one live CloudFormation owner but three code-release authorities: Enrichment CDK and two direct serverless-repository workflows.
 - The Source Inspector Lambda has a small dedicated stack; its production HTTP API route and integration have no stack owner and are reconstructed destructively by CLI.
 - The historical `bndy-infrastructure` repository owns none of the scoped live resources and remains non-authoritative.
-- Source acquisition authority is not singular: On The Case exists in both Enrichment and Signals, with Cowork still pending Phase 16.
+- Source acquisition authority is not singular: Phase 16 adds recent Cowork execution evidence to the overlapping Backline and Signals implementations.
 
 ## 6. Lambda and trigger inventory
 
@@ -664,14 +664,14 @@ EventBridge Scheduler has **zero** matching BNDY/Backline/Capture/Source/Signals
 | Source | Effective AWS path | Current writer/projection gate | Last success evidence | Duplicate acquisition/writer risk |
 | --- | --- | --- | --- | --- |
 | Lemonrock | New-gigs + cancellations hourly; future health daily; future reconcile monthly; rules enabled and delivering | Registry `enabled=true`, `shadow=true`, writer `aws`; global projection false | New/cancellations succeeded at 21:15Z; future reconcile at 02:10Z; zero consecutive failures | No Signals runner; one-off workflows/marker remain separate evidence paths |
-| On The Case | Enrichment direct hourly rule enabled; Signals dev/prod disabled and prod concurrency 0 | Registry shadow true, writer `cowork`; global projection false | Successful runtime state at 20:54:32Z; zero consecutive failures | **Yes:** active Backline acquisition plus disabled Signals code and potentially Cowork |
-| KLMA | Enrichment registry dispatcher hourly; config due `2026-08-31T08:00:00Z`; Signals rules disabled/concurrency 0 | Registry shadow true, writer `cowork`, additive-only cap 500; global projection false | Successful runtime state at 08:54:52Z; zero consecutive failures | **Yes:** registry, dormant Signals and potentially Cowork |
-| GigsNews | Enrichment registry dispatcher hourly; stored next due `2026-09-04T08:00:00Z`; Signals disabled/concurrency 0 | Registry shadow true, writer `cowork`; global projection false | **Stale:** last success 28 Aug 14:30Z; Source Health ALARM | **Yes:** registry, dormant Signals and potentially Cowork; cadence contradicts daily freshness policy |
-| ScenicEye | Registry source disabled; Signals rules disabled/concurrency 0 | Shadow true, writer `cowork`; global projection false | **Missing:** no runtime state; compiled catalog still monitors it as enabled | Potential Cowork only; no active AWS acquisition; registry/catalog authority conflicts |
-| Insangel | Registry source disabled; no Signals rule/function | Shadow true, writer `cowork`; global projection false | None in AWS | Potential Cowork only |
+| On The Case | Enrichment direct hourly rule enabled; Signals dev/prod disabled and prod concurrency 0 | Registry shadow true, writer `cowork`; global projection false | Successful runtime state at 20:54:32Z; zero consecutive failures | **Yes:** active Backline acquisition and recently completed Cowork task, plus dormant Signals code |
+| KLMA | Enrichment registry dispatcher hourly; config due `2026-08-31T08:00:00Z`; Signals rules disabled/concurrency 0 | Registry shadow true, writer `cowork`, additive-only cap 500; global projection false | Successful runtime state at 08:54:52Z; zero consecutive failures | **Yes:** Backline registry acquisition and recently completed Cowork task, plus dormant Signals code |
+| GigsNews | Enrichment registry dispatcher hourly; stored next due `2026-09-04T08:00:00Z`; Signals disabled/concurrency 0 | Registry shadow true, writer `cowork`; global projection false | **Stale:** last success 28 Aug 14:30Z; Source Health ALARM | **Yes:** Backline registry acquisition and recently completed Cowork task, plus dormant Signals code; cadence contradicts daily freshness policy |
+| ScenicEye | Registry source disabled; Signals rules disabled/concurrency 0 | Shadow true, writer `cowork`; global projection false | **Missing:** no runtime state; compiled catalog still monitors it as enabled | Recently completed Cowork task; no active AWS acquisition, but registry/catalog authority conflicts and dormant Signals remain |
+| Insangel | Registry source disabled; no Signals rule/function | Shadow true, writer `cowork`; global projection false | None in AWS | Recent Cowork task firing failed after two consecutive capture-surface failures; no active AWS acquisition |
 | Signals intelligence pass | Dev/prod event rules disabled; production function reserved concurrency 0; S3 EventBridge emission remains enabled | `DRY_RUN` name present; value checked through template/config in canonical-write synthesis | 0 rule deliveries/failures in window | Dormant path remains template-enabled and can be reactivated by redeploy |
 
-No AWS schedule currently gives Signals canonical-writer authority. Enrichment is actively acquiring Lemonrock/On The Case and polling the registry, but its source/global controls keep canonical projection fail-closed. Current Cowork authority remains pending Phase 16 and prevents declaring the cross-system source boundary fully singular.
+No AWS schedule currently gives Signals canonical-writer authority. Enrichment is actively acquiring Lemonrock/On The Case and polling the registry, but its source/global controls keep canonical projection fail-closed. Phase 16 proves recent write-capable Cowork task execution but cannot prove its current scheduler controls; the cross-system source boundary is not singular.
 
 ## 11. Queues, alarms and logs
 
@@ -886,7 +886,25 @@ Template shape is reproducible, but release provenance is not. “No structural 
 
 ## 14. Cowork inventory
 
-Pending Phase 16.
+### Phase 16 — available operational artefacts and task evidence
+
+**CURRENT COWORK INVENTORY UNAVAILABLE.** No current Cowork scheduler export, task-ID export, enabled/paused-state export or configured-cadence export exists in the available BNDY operational artefacts. The audit searched the canonical population workspace and scoped operations repository without accessing a Cowork product surface. `TASK-PROMPTS-v4.md` is a prompt-definition document, not an installed-task export; `SCHEDULED-TASK-PROMPTS-v3.md` contains older labels and was superseded by v4; and `BNDY-RECOVERY-TRACKER.md` marks itself superseded and says not to cite it as current state.
+
+The strongest current evidence is the canonical heartbeat directory and append-only `run-summary.jsonl`. The heartbeat contract says one file is written for every firing and `completed` means the task ran. It proves recent execution outcomes, not the scheduler's current enabled flag, task ID or configured cadence. Firings recur at daily-shaped morning times, with additional out-of-pattern runs on 27 and 29 August; exact configured cadence is therefore **UNVERIFIED**.
+
+`TASK-PROMPTS-v4.md` names the five current source slugs and directs each import through `RUNBOOK.md` Section 6A. That runbook pipelines source rows into BNDY, permits creates/edits under gates and requires read-back verification. The ledger records actual non-zero writes. Cowork is therefore a demonstrated canonical-writer path even though its current scheduler control plane is unavailable.
+
+| Source | Cowork task identity / generation | Scheduler state and cadence | Latest observed run / last successful run | Canonical-writer capability | Corresponding Backline path | Corresponding Signals path | Duplicate-execution risk |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Insangel | Current task name/ID **UNVERIFIED**; v4 slug `insangel`; historical v3 label `Bv2a insangel` | **UNVERIFIED**; recent daily-shaped firings observed | Latest fired `2026-08-30T05:02:52Z`, failed at `6A.3 no-capture-surface`; last success fired `2026-08-28T05:02:32Z`, completed `05:17:00Z` | Yes; last-success ledger records eight gigs added | `insangel-daily-import`: disabled, shadow, writer `cowork` | None found | One recently firing Cowork path now; latent duplicate if Backline is enabled. Repeated capture failure remains unresolved. |
+| KLMA | Current task name/ID **UNVERIFIED**; v4 slug `klma-stoke-gig-list`; historical v3 label `Bv2a KLMA` | **UNVERIFIED**; recent daily-shaped firings observed | Fired `2026-08-30T03:08:52Z`; completed `03:21:00Z`; ledger records five gigs added | Yes | `klma-stoke-gig-list`: enabled, shadow, writer `cowork`; registry dispatcher acquisition | `bndy-klma-runner-{dev,prod}`; rules disabled, prod concurrency `0` | **Active duplicate acquisition:** Cowork plus Backline. Backline cannot project while global control is absent; Signals remains a latent writer. |
+| GigsNews | Current task name/ID **UNVERIFIED**; v4 slug `gigs-news`; historical v3 label `BV2a GigsNews` | **UNVERIFIED**; recent daily-shaped firings observed | Authoritative `gigs-news` heartbeat fired `2026-08-30T04:07:17Z`; completed `04:16:00Z`; zero writes. The duplicate `gigs-news-uk` heartbeat is marked superseded and is not a sixth task | Yes; earlier ledger entries record writes | `gigs-news-daily-import`: enabled, shadow, writer `cowork`; registry dispatcher acquisition; Backline health state is stale | `bndy-gigs-news-runner-{dev,prod}`; rules disabled, prod concurrency `0` | **Active duplicate acquisition:** Cowork plus Backline. Backline projection is gated; Signals remains a latent writer. |
+| ScenicEye | Current task name/ID **UNVERIFIED**; v4 slug `sceniceye`; historical v3 label `Bv2a ScenicEye` | **UNVERIFIED**; recent daily-shaped firings observed | Fired `2026-08-30T04:36:30Z`; completed `04:53:00Z`; ledger records two gigs added | Yes | `sceniceye-daily-import`: live registry disabled and shadow; deployed compiled health catalog still treats it as enabled | `bndy-sceniceye-runner-{dev,prod}`; rules disabled, prod concurrency `0` | Cowork is the only observed current execution path, but contradictory Backline catalog/config creates latent duplicate and monitoring risk; Signals is also latent. |
+| On The Case | Current task name/ID **UNVERIFIED**; v4 slug `onthecasemusic`; historical v3 label `Bv2a otcm` | **UNVERIFIED**; recent daily-shaped firings observed | Fired `2026-08-30T03:31:10Z`; completed `03:51:00Z`; zero writes | Yes; prior ledger entries record writes | `onthecase-gig-index`: enabled, shadow, writer `cowork`; direct hourly acquisition rule | `bndy-onthecase-runner-{dev,prod}`; rules disabled, prod concurrency `0` | **Active duplicate acquisition:** Cowork plus hourly Backline. Backline projection is gated; Signals remains a latent writer. |
+
+### Phase 16 conclusion
+
+Cowork cannot be described as disabled or paused. Its task-control inventory is unavailable, and fresh heartbeats prove four completed source runs plus one failed source run on 30 August. Backline's global projection gate prevents its shadow acquisitions from becoming canonical writes, and Signals automatic paths are live-contained, but Cowork independently retains demonstrated canonical-write authority. Canonical writes are therefore **not proven disabled estate-wide**, and the acquisition boundary is already duplicated for KLMA, GigsNews and On The Case.
 
 ## 15. Findings ranked by severity
 
@@ -945,6 +963,14 @@ Pending Phase 16.
 - **Impact:** donor-evidence and source-normalisation parity is not proven, so the otherwise code-only proposed Enrichment update is not safe to deploy.
 - **Required decision:** reconcile fixtures/manifests or implementation through reviewed source changes and restore the full suite to green.
 - **HITL approval:** No for local correction; yes for deployment.
+
+### P1 — Current Cowork scheduler authority is unavailable while canonical-writing tasks still fire
+
+- **Evidence:** no current scheduler/task export exists in the scoped BNDY artefacts. The v4 task definition names five source imports and delegates them to the canonical-writing runbook; heartbeats on 30 August record completed KLMA, GigsNews, ScenicEye and On The Case runs plus a failed Insangel run. The append-only ledger records recent canonical creates. Historical task labels exist only in superseded v3 material.
+- **Affected resource:** Cowork source tasks for Insangel, KLMA, GigsNews, ScenicEye and On The Case, plus their overlapping Backline/Signals acquisition paths.
+- **Impact:** operators cannot prove current enabled state, configured cadence or task IDs, cannot demonstrate estate-wide write containment, and have active duplicate acquisition for KLMA, GigsNews and On The Case.
+- **Required decision:** obtain a current Cowork task export through the authorised operator, identify one acquisition/writer authority per source, and pause or retire duplicates through a separately approved change.
+- **HITL approval:** Yes — inspecting or changing the Cowork scheduler is outside this artefact-only audit.
 
 ### P1 — Production Source Runner template would re-enable five contained triggers
 
@@ -1054,7 +1080,7 @@ Pending Phase 16.
 
 Pending final synthesis. No recovery action will be implemented by this audit.
 
-Checkpoint after Phase 15: Phases 1–15 are evidenced. Phase 16 must search only available BNDY operational artefacts/task exports and must state `CURRENT COWORK INVENTORY UNAVAILABLE` if no current export exists. Final synthesis must then complete Sections 1, 12, 14 and 16, issue every required explicit verdict, refresh App/Backstage remote heads if they changed again, and commit without pushing.
+Checkpoint after Phase 16: Phases 1–16 are evidenced. Final synthesis must complete Sections 1, 12 and 16, issue every required explicit verdict, refresh App/Backstage remote heads if they changed again, and commit without pushing.
 
 ## 17. Evidence appendix
 
@@ -1282,3 +1308,15 @@ All AWS access in this phase was read-only CDK lookup. No Lambda, provider, endp
 | Capture clean SAM build versus deployed template | 0 | Exact 13-resource and top-level configuration match after treating both `CodeUri` values as code identities. |
 
 Comparison classification was restricted to logical IDs, resource types, changed property names, route structure and explicit safety booleans. Parameter/secret values and deployed asset paths are not reproduced. No stack, function, route, table, stream, mapping, schedule, alarm or provider was modified or invoked.
+
+### Phase 16 command record
+
+| Command family | Exit | Evidence obtained |
+| --- | ---: | --- |
+| Scoped `rg --files` search in the canonical population workspace and `bndy-ops` | 0 | Found prompt-definition documents and operational ledgers, but no current Cowork scheduler/task export with task IDs, enablement or cadence. |
+| Read `TASK-PROMPTS-v4.md`, superseded v3 prompts and the superseded recovery tracker | 0 | Current source slugs and write-capable prompt contract; historical labels only; explicit warning against treating the older tracker as current. |
+| Read heartbeat contract and exact latest/last-success heartbeat files | 0 | One-file-per-firing semantics and current outcomes/timestamps for the five named sources. The superseded `gigs-news-uk` duplicate was excluded. |
+| Parse selected fields from `data/state/run-summary.jsonl` | 0 after local path correction | Outcome and aggregate create counts only; no entity IDs, payloads or product calls. An initial command accidentally addressed the current directory and returned a harmless local read error before the explicit ledger path was supplied. |
+| Read canonical runbook write-contract lines | 0 | Proved that import tasks may create/edit BNDY records under gates and must read each write back. |
+
+No Cowork product surface was opened, no task was invoked or changed, and no product endpoint or canonical record was accessed.
