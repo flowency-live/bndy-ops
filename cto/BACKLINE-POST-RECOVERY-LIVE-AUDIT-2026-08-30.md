@@ -2,7 +2,7 @@
 
 Status: **IN PROGRESS**
 
-Latest completed phase: **Phase 11 — queues and dead-letter state**
+Latest completed phase: **Phase 12 — alarms and logs**
 
 Audit started: `2026-08-30T20:18:29.598Z`
 
@@ -16,12 +16,12 @@ Safety boundary: this audit does not deploy, invoke Lambda functions, change inf
 
 ## 1. Executive verdict
 
-The audit is not yet complete. No final resumption or deployment verdict is issued at Phase 11.
+The audit is not yet complete. No final resumption or deployment verdict is issued at Phase 12.
 
 | Question | Verdict | Reason |
 | --- | --- | --- |
-| Is the recovered serverless API stack stable? | UNVERIFIED | It is `UPDATE_COMPLETE`; the Source Inspector route is singular/coherent but unmanaged and functionally unverified, and stack drift was partial. |
-| Is Enrichment runtime state verified? | PARTIAL | All functions are active/successful, mappings and schedules are coherent, and controls fail closed; 37 recent Projection DLQ messages still require diagnosis and logs are pending. The deployed Git SHA is `UNMAPPED`. |
+| Is the recovered serverless API stack stable? | UNVERIFIED | It is `UPDATE_COMPLETE`; the Source Inspector route is singular and demonstrably responsive but unmanaged, Source Runs recorded 14 Lambda errors, and stack drift was partial. |
+| Is Enrichment runtime state verified? | NO | The source-freshness alarm is live `ALARM`, Projection has 37 DLQ messages/111 application error records, and the deployed Git SHA is `UNMAPPED`. Controls remain fail-closed. |
 | Are CloudFormation owners coherent? | NO | Core stack ownership is mapped, but canonical tables and the Source Inspector route/integration have no CloudFormation owner, and two cross-repository deployment paths remain. |
 | Are automatic deployment bypasses contained? | NO | Current workflow inspection proves the Source Inspector and Capture bypasses remain armed. |
 | Are canonical writes proven disabled? | UNVERIFIED | Live controls, stream mappings and writer gates are pending. |
@@ -490,7 +490,7 @@ The production HTTP API is `qry0k6pmd0`, identified from the `bndy-serverless-ap
 | Lambda target | `bndy-source-inspector-SourceInspectorFunction-a7P9shrPou6W` |
 | Authorisation | `NONE`; API key not required; no authorizer ID |
 | Duplicates | Exactly one matching route and one integration targeting the Source Inspector Lambda |
-| Functional result | **UNVERIFIED** — the audit did not invoke the endpoint; both historical post-closure smoke jobs failed |
+| Functional result | **RESPONSIVE, CONTRACT UNVERIFIED** — aggregate access logs show 11 requests since 12:00Z: five 200, three 400 and three 422 responses; both post-closure smoke jobs still failed |
 
 Structural coherence does not equal managed ownership or functional health.
 
@@ -520,9 +520,9 @@ All six events used AWS CLI 2.36.29 on a GitHub-hosted Ubuntu runner. CloudTrail
 - **Did it run?** Yes. Two post-closure workflow-run jobs executed concurrently after separate successful-but-non-deploying `Deploy BNDY API` runs.
 - **Did it deploy?** It did not SAM-deploy Lambda code: source-change detection was false and both SAM steps were skipped. It did directly create/delete API Gateway resources.
 - **What changed?** The first run created integration `cxos6l6` and route `yr5ji0e`; the second deleted both and installed current integration `x5ygbhg` and route `j9f4rqn`.
-- **Does the route currently work?** **UNVERIFIED.** It is structurally wired to the expected active Lambda, but both smoke jobs failed and the route was not invoked by this audit.
+- **Does the route currently work?** **Partially verified.** Without invoking it, the audit observed five HTTP 200 responses and six validation-class 400/422 responses in aggregate access logs through 20:08Z. The integration is responsive, but the failed workflow assertions mean the expected smoke contract remains unverified.
 - **Is automation still armed?** **Yes.** `deploy-source-inspector.yml` remains active. Successful completion of `Deploy BNDY API` on `master` triggers it even when that workflow's deployment job is skipped. Source-code detection gates only SAM build/deploy, not destructive route reconciliation.
-- **Does recovery closure remain valid?** The statement that the serverless CloudFormation recovery completed at 13:51 remains historically valid. Its route snapshot is no longer authoritative because unmanaged root-credential mutations occurred at 18:03. The recovered stack must not be called wholly stable while this route remains outside CloudFormation and functionally unverified.
+- **Does recovery closure remain valid?** The statement that the serverless CloudFormation recovery completed at 13:51 remains historically valid. Its route snapshot is no longer authoritative because unmanaged root-credential mutations occurred at 18:03. The recovered stack must not be called wholly stable while this responsive route remains outside CloudFormation and its smoke contract fails.
 
 ## 8. Capture hot-deploy analysis
 
@@ -639,11 +639,11 @@ EventBridge Scheduler has **zero** matching BNDY/Backline/Capture/Source/Signals
 
 | Source | Effective AWS path | Current writer/projection gate | Last success evidence | Duplicate acquisition/writer risk |
 | --- | --- | --- | --- | --- |
-| Lemonrock | New-gigs + cancellations hourly; future health daily; future reconcile monthly; rules enabled and delivering | Registry `enabled=true`, `shadow=true`, writer `aws`; global projection false | EventBridge target delivery at 20:15Z; source-level success/log health pending Phase 12 | No Signals runner; one-off workflows/marker remain separate evidence paths |
-| On The Case | Enrichment direct hourly rule enabled; Signals dev/prod disabled and prod concurrency 0 | Registry shadow true, writer `cowork`; global projection false | EventBridge delivery at 20:50Z; source outcome pending logs | **Yes:** active Backline acquisition plus disabled Signals code and potentially Cowork |
-| KLMA | Enrichment registry dispatcher hourly; config due `2026-08-31T08:00:00Z`; Signals rules disabled/concurrency 0 | Registry shadow true, writer `cowork`, additive-only cap 500; global projection false | Registry `lastScheduledAt=2026-08-30T08:54:52Z`; outcome pending logs | **Yes:** registry, dormant Signals and potentially Cowork |
-| GigsNews | Enrichment registry dispatcher hourly; stored next due `2026-09-04T08:00:00Z`; Signals disabled/concurrency 0 | Registry shadow true, writer `cowork`; global projection false | No same-day source-success evidence yet | **Yes:** registry, dormant Signals and potentially Cowork |
-| ScenicEye | Registry source disabled; Signals rules disabled/concurrency 0 | Shadow true, writer `cowork`; global projection false | None in AWS window | Potential Cowork only; no active AWS acquisition |
+| Lemonrock | New-gigs + cancellations hourly; future health daily; future reconcile monthly; rules enabled and delivering | Registry `enabled=true`, `shadow=true`, writer `aws`; global projection false | New/cancellations succeeded at 21:15Z; future reconcile at 02:10Z; zero consecutive failures | No Signals runner; one-off workflows/marker remain separate evidence paths |
+| On The Case | Enrichment direct hourly rule enabled; Signals dev/prod disabled and prod concurrency 0 | Registry shadow true, writer `cowork`; global projection false | Successful runtime state at 20:54:32Z; zero consecutive failures | **Yes:** active Backline acquisition plus disabled Signals code and potentially Cowork |
+| KLMA | Enrichment registry dispatcher hourly; config due `2026-08-31T08:00:00Z`; Signals rules disabled/concurrency 0 | Registry shadow true, writer `cowork`, additive-only cap 500; global projection false | Successful runtime state at 08:54:52Z; zero consecutive failures | **Yes:** registry, dormant Signals and potentially Cowork |
+| GigsNews | Enrichment registry dispatcher hourly; stored next due `2026-09-04T08:00:00Z`; Signals disabled/concurrency 0 | Registry shadow true, writer `cowork`; global projection false | **Stale:** last success 28 Aug 14:30Z; Source Health ALARM | **Yes:** registry, dormant Signals and potentially Cowork; cadence contradicts daily freshness policy |
+| ScenicEye | Registry source disabled; Signals rules disabled/concurrency 0 | Shadow true, writer `cowork`; global projection false | **Missing:** no runtime state; compiled catalog still monitors it as enabled | Potential Cowork only; no active AWS acquisition; registry/catalog authority conflicts |
 | Insangel | Registry source disabled; no Signals rule/function | Shadow true, writer `cowork`; global projection false | None in AWS | Potential Cowork only |
 | Signals intelligence pass | Dev/prod event rules disabled; production function reserved concurrency 0; S3 EventBridge emission remains enabled | `DRY_RUN` name present; value checked through template/config in canonical-write synthesis | 0 rule deliveries/failures in window | Dormant path remains template-enabled and can be reactivated by redeploy |
 
@@ -672,7 +672,118 @@ The latest CloudWatch `ApproximateAgeOfOldestMessage` datapoints were approximat
 
 The empty Entity Enrichment queue has a declared DLQ but no event-source mapping. This is a dormant, consumerless path rather than a current backlog. Its intended owner/activation contract must be confirmed before any producer is enabled.
 
-Alarm and log-group evidence remains pending Phase 12.
+### Phase 12 — alarms and logs
+
+Observed through `2026-08-30T21:16Z`. The estate has only **12** metric alarms in the region and no composite alarms. Exactly one metric alarm is scoped to the 74 relevant Lambdas, 17 queues, 19 rules or their state tables:
+
+| Alarm | Current state / updated | Metric and condition | Missing data | Actions | Evidence conclusion |
+| --- | --- | --- | --- | --- | --- |
+| `BndyEnrichmentStack-SourceFreshnessAlarm66469858-VnVwZzBtTl7L` | **ALARM** / 21:11:13Z | Source Health Lambda `Errors` Sum ≥1, one 300s period | `notBreaching` | None — no alarm, OK or insufficient-data action | Created by the 20:08 Enrichment deployment; changed from OK-on-missing-data at 20:11Z to ALARM after the first scheduled health evaluation failed |
+
+There are **no scoped alarms** for the other 73 functions, any queue/DLQ depth or age, EventBridge delivery, API Gateway errors, DynamoDB throttling or the global projection control. The only relevant alarm has no notification/remediation action, so its ALARM state is visible only to a polling operator.
+
+#### Source freshness failure
+
+Lambda metrics record three Source Health invocations and three errors, with zero throttles, at 21:09Z–21:12Z. The EventBridge target has no DLQ or explicit retry policy; the closely spaced attempts are consistent with asynchronous delivery retries after the initial failure. Aggregate log classification proves the handler threw `Daily source freshness gate failed` and reported:
+
+| Coverage root | Health result | Exact runtime-state evidence | Configuration conflict |
+| --- | --- | --- | --- |
+| `gigs-news-daily-import` | **Stale** | Last run/success `2026-08-28T14:30:32.524Z`, zero consecutive failures | Declares daily cadence and 26h maximum staleness, but live config's next due time is `2026-09-04T08:00:00Z` |
+| `sceniceye-daily-import` | **Missing** | Exact `SOURCE#... / STATE` item absent | Deployed code catalog monitors it as an enabled daily coverage root; live registry config disables it |
+| Other five monitored roots | Healthy | KLMA, three Lemonrock roots and On The Case all have current successful state and zero consecutive failures | No health-gate conflict observed |
+
+This is not a timeout, throttle or initialization failure. The alarm is exposing inconsistent source cadence/enablement authority across compiled catalog, registry config and runtime state.
+
+#### Lambda metrics and aggregate error classes
+
+From 12:00Z through 21:09Z, only three ordinary functions had non-zero Lambda `Errors`: Source Runs 14/58 invocations, serverless Events 1/476, and Enrichment Google Discovery 1/240. Source Health subsequently added 3/3. All 74 functions reported zero throttles. Source Inspector had 11 invocations and zero Lambda errors; its API access log independently records five 200, three 400 and three 422 responses for the exact route.
+
+The Projection worker had 407 invocations and zero Lambda-level errors because it uses partial-batch responses, but aggregate logs contain exactly **111** `ERROR`/exception-class records. That is exactly three attempts for each of the 37 messages now in its DLQ and is strong correlation, not a message-body inspection. Targeted aggregate searches did not match invalid payload, unknown source, unreadable claims, control-read, API, resolution-review, verification, credential, access-denied or network categories; the precise failure class remains unresolved.
+
+Across 16,999 log records (approximately 3.10 MB scanned), aggregate-only Logs Insights queries returned zero initialization errors, timeouts, throttles and generic failed-batch markers. The broad `ERROR|Exception|Unhandled` classification returned Projection 111, Festivals 62, Google Discovery 3 and Events 1. Festivals' 62 application log records occurred with zero Lambda errors, so keyword counts are not treated as failed invocations. Source Runs' 14 Lambda errors occurred from 16:30Z through 20:00Z and ceased in its later 20:15Z–20:35Z invocations; no initialization/timeout/throttle/generic-error signature classified them.
+
+#### Log-group inventory
+
+For every row below the log group is `/aws/lambda/<function>`. Stored bytes are control-plane approximations observed around 21:05Z. `Never` means no retention policy; `Absent` means the function has never created its default group. Source Health created its group during the first scheduled evaluation after the initial inventory.
+
+| Function | Retention | Stored bytes | Latest event UTC |
+| --- | ---: | ---: | --- |
+| `bndy-capture-CaptureFunction-BVTWEGNTT6jJ` | Never | 1,897,621 | 2026-08-30 20:46:01 |
+| `bndy-capture-processor` | Never | 186,573 | 2026-08-29 19:07:08 |
+| `bndy-capture-scan` | Never | 1,712,953 | 2026-08-30 20:46:01 |
+| `bndy-capture-WhatsAppWorkerFunction-kga4qq5E2vHX` | Absent | — | — |
+| `bndy-gigs-news-runner-dev` | 30d | 0 | 2026-06-17 13:01:14 |
+| `bndy-gigs-news-runner-prod` | 30d | 0 | 2026-07-27 08:00:25 |
+| `bndy-intelligence-pass-dev` | 30d | 0 | 2026-06-18 13:40:03 |
+| `bndy-intelligence-pass-prod` | 30d | 0 | 2026-07-27 08:30:59 |
+| `bndy-klma-runner-dev` | 30d | 0 | No events |
+| `bndy-klma-runner-prod` | 30d | 0 | 2026-07-27 08:00:20 |
+| `bndy-onthecase-runner-dev` | 30d | 0 | 2026-06-17 13:01:16 |
+| `bndy-onthecase-runner-prod` | 30d | 0 | 2026-07-27 03:05:47 |
+| `bndy-sceniceye-runner-dev` | 30d | 0 | 2026-06-18 13:39:00 |
+| `bndy-sceniceye-runner-prod` | 30d | 0 | 2026-07-27 08:30:57 |
+| `bndy-serverless-api-ArtistsFunction-4wCJA9JLMwF5` | Never | 24,802,331 | 2026-08-30 20:49:56 |
+| `bndy-serverless-api-ArtistSongsFunction-gbHmDyNdSoSx` | Never | 6,806,731 | 2026-08-30 19:18:43 |
+| `bndy-serverless-api-AuthFunction-gKJksEC1lGjw` | Never | 4,350,312 | 2026-08-30 20:51:21 |
+| `bndy-serverless-api-BuildersFunction-uOQgtdHFxjtK` | Never | 318,185 | 2026-08-30 20:39:20 |
+| `bndy-serverless-api-CalendarFunction-pm1VDgjlUJls` | Never | 5,445,868 | 2026-08-30 20:06:17 |
+| `bndy-serverless-api-ClaimsFunction-CHixeE5rBsCH` | Never | 0 | 2026-08-30 16:30:41 |
+| `bndy-serverless-api-EntityInvitesFunction-paSUVSTSsnQv` | Absent | — | — |
+| `bndy-serverless-api-EntityMembershipsFunction-5eCV4kiEvcg5` | Absent | — | — |
+| `bndy-serverless-api-EventsAgentFunction-axkjUtQOMf5T` | Never | 42,196 | 2026-08-30 00:11:45 |
+| `bndy-serverless-api-EventsCuratorFunction-v6iLLgPxrRkg` | Never | 5,128 | 2026-08-22 17:17:07 |
+| `bndy-serverless-api-EventsFunction-03skAPFIwe9g` | Never | 32,158,476 | 2026-08-30 21:02:41 |
+| `bndy-serverless-api-ExpensesFunction-Bnz5w8tLpkb8` | Never | 557,682 | 2026-08-30 19:18:19 |
+| `bndy-serverless-api-FestivalsFunction-ltYkkG704zfV` | Never | 334,008 | 2026-08-30 20:52:37 |
+| `bndy-serverless-api-InvitesFunction-yhX3zozC79xA` | Never | 142,534 | 2026-08-29 20:04:13 |
+| `bndy-serverless-api-IssuesFunction-5IgjRk6sRhe8` | Absent | — | — |
+| `bndy-serverless-api-JoinAnalyticsFunction-klzLo4lX7qqK` | Absent | — | — |
+| `bndy-serverless-api-MembershipsFunction-adBmJyeWuWLA` | Never | 2,195,809 | 2026-08-30 20:39:23 |
+| `bndy-serverless-api-NotificationsFunction-jSSPxlg9MAcR` | Never | 2,307,569 | 2026-08-30 20:41:21 |
+| `bndy-serverless-api-OwnershipFunction-finwDwrKVzch` | Absent | — | — |
+| `bndy-serverless-api-SetlistsFunction-wUqy1CYSx17Y` | Never | 23,332,273 | 2026-08-30 19:23:18 |
+| `bndy-serverless-api-SongsFunction-c3eFxAdsTmeS` | Never | 1,077,922 | 2026-08-27 21:51:21 |
+| `bndy-serverless-api-SourceRunsFunc-bUjoJCjAxPH2` | Never | 212,400 | 2026-08-30 20:39:24 |
+| `bndy-serverless-api-SpotifyFunction-dfAWTwGUnJFf` | Never | 1,416,836 | 2026-08-17 18:52:10 |
+| `bndy-serverless-api-UploadsFunction-AZ3judAhrxT2` | Never | 73,631 | 2026-08-30 20:52:13 |
+| `bndy-serverless-api-UsersFunction-HNQeQw7kJO9b` | Never | 1,931,205 | 2026-08-30 20:59:56 |
+| `bndy-serverless-api-VenueCRMFunction-Pq0Nqtm5MJUc` | Never | 1,313,193 | 2026-08-30 19:18:21 |
+| `bndy-serverless-api-VenuesFunction-z91LnIIRKHhq` | Never | 67,609,659 | 2026-08-30 20:48:37 |
+| `bndy-signals-claim-review-dev` | Never | 1,026 | 2026-05-03 17:25:55 |
+| `bndy-signals-claim-review-prod` | Absent | — | — |
+| `bndy-signals-clarification-api-dev` | Never | 1,116 | 2026-05-05 08:24:33 |
+| `bndy-signals-clarification-api-prod` | Absent | — | — |
+| `bndy-signals-clarification-gen-dev` | Never | 5,472 | 2026-08-22 13:48:27 |
+| `bndy-signals-clarification-gen-prod` | Absent | — | — |
+| `bndy-signals-event-candidate-api-dev` | Never | 1,023 | 2026-05-04 13:06:29 |
+| `bndy-signals-event-candidate-api-prod` | Absent | — | — |
+| `bndy-signals-extractor-dev` | Never | 12,602 | 2026-08-22 13:48:16 |
+| `bndy-signals-extractor-prod` | Absent | — | — |
+| `bndy-signals-failure-handler-dev` | Never | 11,835 | 2026-05-04 22:12:19 |
+| `bndy-signals-failure-handler-prod` | Absent | — | — |
+| `bndy-signals-get-dev` | Never | 21,038 | 2026-08-22 13:48:26 |
+| `bndy-signals-get-prod` | Absent | — | — |
+| `bndy-signals-intake-dev` | Never | 15,308 | 2026-08-22 13:48:14 |
+| `bndy-signals-intake-prod` | Absent | — | — |
+| `bndy-signals-interpreter-dev` | Never | 25,412 | 2026-08-22 13:48:25 |
+| `bndy-signals-interpreter-prod` | Absent | — | — |
+| `bndy-signals-pack-builder-dev` | Never | 5,670 | 2026-08-22 13:48:26 |
+| `bndy-signals-pack-builder-prod` | Absent | — | — |
+| `bndy-source-inspector-SourceInspectorFunction-a7P9shrPou6W` | Never | 69,190 | 2026-08-30 20:08:02 |
+| `BndyEnrichmentStack-BacklineAdminApi9B1E7442-64rdprEIyZ9E` | Never | 8,812 | 2026-08-27 21:16:17 |
+| `BndyEnrichmentStack-BrowserSourceWorkerCA2BC3A6-KeJDw5n4rGX0` | Never | 4,698 | 2026-08-28 13:37:43 |
+| `BndyEnrichmentStack-ClaimAuthorityStreamWorker0E6B-SWUTdZhEakId` | Never | 561 | 2026-08-29 17:02:37 |
+| `BndyEnrichmentStack-GoogleDiscoveryWorker66B9CA30-Nc72FG6J3ShU` | Never | 2,510,604 | 2026-08-30 19:28:11 |
+| `BndyEnrichmentStack-ProjectionWorker2E654DBF-8omMuPbBsAna` | Never | 15,492,342 | 2026-08-30 20:26:11 |
+| `BndyEnrichmentStack-ScanPlannerBC522289-D9WXLIcdx9Wi` | Never | 13,388 | 2026-08-30 19:16:27 |
+| `BndyEnrichmentStack-SourceDispatcherB94114BB-RqgXyjZuSD0a` | Never | 150,757 | 2026-08-30 20:54:52 |
+| `BndyEnrichmentStack-SourceHealthWorkerB381903F-CXSWKQigdrRx` | Never | 0 | 2026-08-30 21:09:40 |
+| `BndyEnrichmentStack-SourceWorker336FEA29-ghZk2mBRjOks` | Never | 41,735,989 | 2026-08-30 20:54:32 |
+| `BndyEnrichmentStack-TrustLoop620D9456-uGPEj1SDMLZy` | Never | 1,879 | 2026-08-30 03:35:40 |
+| `BndySourceRunner-dev-LogRetentionaae0aa3c5b4d4f87b-xEgUBaG6XHb0` | 1d | 0 | 2026-06-18 12:03:21 |
+| `BndySourceRunner-prod-LogRetentionaae0aa3c5b4d4f87-tNd3hAHRxcPu` | 1d | 0 | 2026-06-18 13:16:34 |
+
+At phase end, 16 functions had no log group, 10 Source Runner business functions retained logs for 30 days, two CDK retention helpers retained one day, and all other existing Lambda groups retained indefinitely. The API access group `/aws/apigateway/bndy-api` also retains indefinitely, stores approximately 30.8 MB and was last active at 21:01:38Z.
 
 ## 12. Canonical-write safety
 
@@ -716,7 +827,7 @@ Pending Phase 16.
 
 - **Evidence:** `db7f508` has failed `source-inspector/fail-smoke` and `source-inspector/deploy` statuses from two failed jobs.
 - **Affected resource:** serverless API release confidence and the Source Inspector route.
-- **Impact:** default head cannot be treated as fully green, and the route's functional state remains unverified.
+- **Impact:** default head cannot be treated as fully green. The route is responsive in aggregate access logs, but the expected smoke contract remains unverified.
 - **Required decision:** diagnose after the route ownership boundary is contained; do not rerun the mutating workflow as a diagnostic.
 - **HITL approval:** Required for any remediation; not required for continued read-only investigation.
 
@@ -728,9 +839,17 @@ Pending Phase 16.
 - **Required decision:** merge/adopt fail-closed IaC without deploying it automatically, then review a bounded deployment under separate approval.
 - **HITL approval:** Yes; this audit will not reconcile drift.
 
+### P1 — Source freshness control is in ALARM with contradictory source authority
+
+- **Evidence:** the only scoped alarm changed to `ALARM` at 21:11:13Z; Source Health recorded three invocations/three errors and zero throttles. Count-only logs identify `gigs-news-daily-import` as stale and `sceniceye-daily-import` as missing. GigsNews last succeeded on 28 August despite daily/26h policy and is not due until 4 September; ScenicEye is monitored as enabled in deployed code but disabled in live registry config.
+- **Affected resource:** Source Health worker/rule/alarm, GigsNews and ScenicEye source authority and daily coverage claims.
+- **Impact:** the newly deployed health gate immediately disproves current daily-coverage health. Its alarm has no action and EventBridge has no DLQ, so failure is silent outside polling and can retry without quarantine.
+- **Required decision:** reconcile compiled catalog, registry enablement and effective cadence before declaring the source estate healthy; add an approved notification/DLQ design separately.
+- **HITL approval:** Yes for configuration, schedule, alarm action or DLQ changes; no for continued read-only diagnosis.
+
 ### P1 — Projection DLQ contains 37 recent terminal failures
 
-- **Evidence:** exact SQS control-plane attributes show 37 visible messages, zero in flight and zero delayed in `BndyEnrichmentStack-ProjectionDLQ7E1DC66F-PxEmZhDGVUV6`; the latest `ApproximateAgeOfOldestMessage` datapoint is 1,656 seconds. The primary Projection queue is empty and its mapping is enabled.
+- **Evidence:** exact SQS control-plane attributes show 37 visible messages, zero in flight and zero delayed in `BndyEnrichmentStack-ProjectionDLQ7E1DC66F-PxEmZhDGVUV6`; the latest `ApproximateAgeOfOldestMessage` datapoint is 1,656 seconds. Aggregate logs contain exactly 111 Projection error records—three attempts per DLQ message—while partial-batch handling leaves Lambda `Errors` at zero. The primary queue is empty and its mapping is enabled.
 - **Affected resource:** Enrichment projection worker, Projection queue/DLQ and any canonical entity operations represented by those messages.
 - **Impact:** runtime health cannot be declared while recent work has exhausted the three-attempt redrive policy. The audit intentionally did not read message bodies, so failure class and replay safety are unknown.
 - **Required decision:** diagnose from aggregate logs and approved operational metadata; any message inspection, purge or redrive requires a separately reviewed recovery procedure. Do not enable global projection to test it.
@@ -751,6 +870,22 @@ Pending Phase 16.
 - **Impact:** readers can falsely conclude that commit `3d6f242` is deployed.
 - **Required decision:** replace the field with a deterministic deployed artifact mapping or explicitly use `UNMAPPED`.
 - **HITL approval:** Yes for repository correction; no for documenting the discrepancy.
+
+### P2 — Scoped alarm and log-retention coverage is insufficient
+
+- **Evidence:** only one of 12 regional alarms covers any of 74 scoped Lambdas, 17 queues or 19 EventBridge rules; none covers queue depth/age, API errors or partial-batch failures. The one scoped alarm has no action. Forty-six existing Lambda groups and the API access group retain indefinitely; 16 functions have no group because they have not run.
+- **Affected resource:** Backline, Capture, Source Inspector and Signals operational detection and log-cost/privacy boundaries.
+- **Impact:** the Projection DLQ accumulated without an alarm and the Source Health alarm is silent; most logs have no bounded retention policy.
+- **Required decision:** define alert ownership and reviewed thresholds/actions, including DLQ age/depth and partial-batch failure signals, plus explicit retention by data class.
+- **HITL approval:** Yes — alarms, notification targets and retention are configuration changes outside this audit.
+
+### P2 — Source Runs recorded 14 unalarmed Lambda errors
+
+- **Evidence:** 58 invocations and 14 Lambda `Errors` from 12:00Z–21:09Z, concentrated between 16:30Z and 20:00Z; zero throttles. Later 20:15Z–20:35Z invocations had no errors, and aggregate log categories did not identify initialization, timeout, throttle or generic exception signatures.
+- **Affected resource:** serverless API Source Runs/Backline Explorer observability function.
+- **Impact:** the operational read surface had a 24.1% function-error rate over the window without an alarm. The later clean calls reduce current severity, but root cause remains unknown.
+- **Required decision:** correlate application/request context through the normal owner process without exposing tokens or user data; add an appropriate error-rate alarm after confirming expected failure semantics.
+- **HITL approval:** No for read-only diagnosis; yes for code, deployment or alarm changes.
 
 ### P2 — Recovered entity tables lack table-level recovery protections
 
@@ -928,3 +1063,19 @@ No schedule, notification, target or function was invoked or modified.
 | Initial physical-ID-to-queue-name conversion attempt | Non-zero for individual lookups; wrapper exit 0 | CloudFormation already returned queue URLs, so passing each URL as `--queue-name` caused harmless `NonExistentQueue` errors. The command was corrected to use each URL directly; no queue state changed. |
 
 No queue message was received, inspected, moved, deleted, purged or redriven.
+
+### Phase 12 command record
+
+| Command family | Exit | Evidence obtained |
+| --- | ---: | --- |
+| `aws cloudwatch describe-alarms` and exact alarm refresh/history fields | 0 | Twelve regional metric alarms, zero composite alarms, exactly one scoped alarm; current ALARM state, threshold, missing-data behaviour and empty action lists. |
+| CloudFormation-owned function correlation plus `aws logs describe-log-groups` / `describe-log-streams` | 0 after correction | Existence, retention, stored bytes and latest event for every one of 74 function destinations and the production API access group. Two initially mistyped Signals stack names (`API` rather than exact `Api`) returned harmless validation errors and were corrected. |
+| `aws cloudwatch get-metric-data` in bounded batches for 74 × Invocations/Errors/Throttles | 0 after correction | Full function metric totals through 21:09Z. A first single Windows command exceeded the process argument-length limit; queries were split into 12-function batches without changing scope. |
+| `aws cloudwatch get-metric-statistics` for Source Health and Source Runs | 0 after correction | Minute/five-minute invocation, error, throttle and duration datapoints. One malformed comma-separated `--statistics` attempt was rejected, then corrected to separate values. |
+| Aggregate Logs Insights over two ≤50-group batches | 0 | Initialization query IDs `2953f531-...`, `891721e1-...`; exception IDs `f91ada2c-...`, `857a1053-...`; timeout IDs `fab0b843-...`, `46a0a618-...`; throttle IDs `f4503071-...`, `8c4fd791-...`; failed-batch IDs `f87b6ef4-...`, `f1055eef-...`. Only aggregate counts by log group were returned. |
+| Targeted Projection aggregate classifiers | 0 | Ten query IDs covering payload/source/claim/control/API/resolution/verification/credential/access/network classes; all returned zero while the broad error count remained 111. No message text or identifier was returned. |
+| Targeted Source Health aggregate classifiers | 0 | Query IDs `2e903568-...`, `55f5a2b4-...`, `38dc16bd-...` proved freshness-gate, missing and stale signatures; positive source classifiers `035e87f9-...` and `55eac3e7-...` identified only GigsNews stale and ScenicEye missing. |
+| Seven exact DynamoDB `SOURCE#<id> / STATE` consistent reads with a five-field projection | 0 after correction | Source run/success/failure timestamps and consecutive-failure count needed to explain the alarm. An initial incorrect physical table name returned `ResourceNotFoundException`; the exact ledger-owned table was then used. No scan, cursor, observation, metadata or entity data was read. |
+| API Gateway stage inspection, aggregate API metrics and access-log Insights query `0dd0d232-...` | 0 | Access logging configuration, disabled per-route detailed metrics, stage-level traffic/errors, and exact Source Inspector route response-status counts without request IDs, errors or bodies. |
+
+No log message body, request ID, user identifier, token, queue message or entity payload was emitted into the audit evidence. Logs Insights operations were read-only and restricted to the audit window.
