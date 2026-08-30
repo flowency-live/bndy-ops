@@ -2,7 +2,7 @@
 
 Status: **IN PROGRESS**
 
-Latest completed phase: **Phase 5 — deployed templates and ownership ledger**
+Latest completed phase: **Phase 6 — Lambda and event-source inventory**
 
 Audit started: `2026-08-30T20:18:29.598Z`
 
@@ -16,12 +16,12 @@ Safety boundary: this audit does not deploy, invoke Lambda functions, change inf
 
 ## 1. Executive verdict
 
-The audit is not yet complete. No final resumption or deployment verdict is issued at Phase 5.
+The audit is not yet complete. No final resumption or deployment verdict is issued at Phase 6.
 
 | Question | Verdict | Reason |
 | --- | --- | --- |
 | Is the recovered serverless API stack stable? | UNVERIFIED | It is `UPDATE_COMPLETE`, but its fresh drift diagnostic was partial and the live Source Inspector route remains pending. |
-| Is Enrichment runtime state verified? | PARTIAL | The stack is `UPDATE_COMPLETE` after user-confirmed parallel CDK work; runtime inventory is pending. |
+| Is Enrichment runtime state verified? | PARTIAL | All functions are active/successful and mappings are coherent; logs, controls and schedules are still pending. The deployed Git SHA is `UNMAPPED`. |
 | Are CloudFormation owners coherent? | NO | Core stack ownership is mapped, but canonical tables and the Source Inspector route/integration have no CloudFormation owner, and two cross-repository deployment paths remain. |
 | Are automatic deployment bypasses contained? | NO | Current workflow inspection proves the Source Inspector and Capture bypasses remain armed. |
 | Are canonical writes proven disabled? | UNVERIFIED | Live controls, stream mappings and writer gates are pending. |
@@ -353,7 +353,128 @@ The current `Original` template body was retrieved for every relevant stack. Dig
 
 ## 6. Lambda and trigger inventory
 
-Pending Phase 6.
+### Complete Lambda configuration snapshot
+
+All **74** functions are `Zip` package type, have 512 MiB ephemeral storage, are `Active`, and have `Successful` last-update status. Every function exposes only `$LATEST`; therefore no aliases or provisioned-concurrency configurations exist. No function has a Lambda dead-letter configuration (queue redrive is inventoried separately). All functions use x86_64 except the two `bndy-capture` functions, which use arm64.
+
+Tracing is `Active` for all serverless API and Capture functions and `PassThrough` elsewhere. The shared layer `bndy-jwt:3` is attached to Source Inspector and all serverless API functions except `JoinAnalyticsFunction`; no other relevant function has a layer. Reserved concurrency is absent except:
+
+- Enrichment `SourceWorker336FEA29`: `2`.
+- Production `bndy-gigs-news-runner-prod`, `bndy-klma-runner-prod`, `bndy-onthecase-runner-prod`, `bndy-sceniceye-runner-prod`, and `bndy-intelligence-pass-prod`: `0` (fail-closed).
+- The production Source Runner custom log-retention provider has no reservation.
+
+Times below are UTC. Environment **values were never emitted**.
+
+| Owning stack | Logical ID | Function name | Runtime / arch | Handler | Code SHA-256 | Last modified UTC | MiB / timeout s | Environment variable names |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| `bndy-capture` | `CaptureFunction` | `bndy-capture-CaptureFunction-BVTWEGNTT6jJ` | python3.12 / arm64 | `app.lambda_handler` | `H5RUMJTOSX4OjfvNHrmmpz8lNn+R1DFdhcBY2YXI2dA=` | 2026-08-30 16:38:39 | 256 / 10 | ALLOWED_ORIGIN, CAPTURE_TOKEN, CAPTURES_TABLE, IMAGE_BUCKET, PUBLIC_ALLOWED_ORIGINS, PUBLIC_MAX_IMAGE_BYTES, PUBLIC_RATE_LIMIT, PUBLIC_RATE_WINDOW_SECONDS, WHATSAPP_ENABLED, WHATSAPP_GRAPH_VERSION, WHATSAPP_QUEUE_URL, WHATSAPP_SECRET_ARN |
+| `bndy-capture` | `WhatsAppWorkerFunction` | `bndy-capture-WhatsAppWorkerFunction-kga4qq5E2vHX` | python3.12 / arm64 | `app.whatsapp_worker_handler` | `H5RUMJTOSX4OjfvNHrmmpz8lNn+R1DFdhcBY2YXI2dA=` | 2026-08-30 16:38:34 | 256 / 30 | ALLOWED_ORIGIN, CAPTURE_TOKEN, CAPTURES_TABLE, IMAGE_BUCKET, PUBLIC_ALLOWED_ORIGINS, PUBLIC_MAX_IMAGE_BYTES, PUBLIC_RATE_LIMIT, PUBLIC_RATE_WINDOW_SECONDS, WHATSAPP_ENABLED, WHATSAPP_GRAPH_VERSION, WHATSAPP_QUEUE_URL, WHATSAPP_SECRET_ARN |
+| `bndy-serverless-api` | `ArtistsFunction` | `bndy-serverless-api-ArtistsFunction-4wCJA9JLMwF5` | nodejs22.x / x86_64 | `handler.handler` | `zWpCnUZhbdWFa3+SfsIXk1do4z5NkS0byKBY5bL4lCA=` | 2026-08-30 16:08:36 | 512 / 30 | GATE_MODE, JWT_SECRET, MCP_SERVICE_TOKEN, NODE_ENV, UNIQUE_KEYS_TABLE |
+| `bndy-serverless-api` | `ArtistSongsFunction` | `bndy-serverless-api-ArtistSongsFunction-gbHmDyNdSoSx` | nodejs20.x / x86_64 | `handler.handler` | `/MdBJwIiUm/lA92wUrdugFwUuwZWGoFYHyLdhEJj0ic=` | 2026-08-29 21:21:18 | 512 / 30 | GATE_MODE, JWT_SECRET, NODE_ENV, UNIQUE_KEYS_TABLE |
+| `bndy-serverless-api` | `AuthFunction` | `bndy-serverless-api-AuthFunction-gKJksEC1lGjw` | nodejs22.x / x86_64 | `handler.handler` | `1XRvsBVVh2w+RtDffoFuGA3wBIzAn25eMchx3Sn/rE8=` | 2026-08-30 16:08:36 | 512 / 30 | COGNITO_USER_POOL_CLIENT_ID, COGNITO_USER_POOL_CLIENT_SECRET, GATE_MODE, JWT_SECRET, NODE_ENV, UNIQUE_KEYS_TABLE |
+| `bndy-serverless-api` | `BuildersFunction` | `bndy-serverless-api-BuildersFunction-uOQgtdHFxjtK` | nodejs20.x / x86_64 | `handler.handler` | `+bENEjhYbdJ9nckez+a0TkXOZ8OULf0ILHih4tJnXCw=` | 2026-08-29 21:21:17 | 512 / 30 | BUILDER_VENUES_TABLE, BUILDER_WHITELIST, BUILDERS_TABLE, GATE_MODE, JWT_SECRET, NODE_ENV, UNIQUE_KEYS_TABLE |
+| `bndy-serverless-api` | `CalendarFunction` | `bndy-serverless-api-CalendarFunction-pm1VDgjlUJls` | nodejs20.x / x86_64 | `handler.handler` | `4DGeBTv+X9QzR/YKuYhlrNPzsEAuYBKiRht3WZtiyM4=` | 2026-08-30 16:08:36 | 1024 / 60 | GATE_MODE, JWT_SECRET, NODE_ENV, UNIQUE_KEYS_TABLE |
+| `bndy-serverless-api` | `ClaimsFunction` | `bndy-serverless-api-ClaimsFunction-CHixeE5rBsCH` | nodejs22.x / x86_64 | `handler.handler` | `yhsYDgPIqss8e/Qg0D0ES/GY3cZGQyT81MlMpYVf9r8=` | 2026-08-30 16:08:36 | 512 / 30 | ENTITY_CLAIMS_TABLE, ENTITY_MEMBERSHIPS_TABLE, GATE_MODE, JWT_SECRET, NODE_ENV, UNIQUE_KEYS_TABLE |
+| `bndy-serverless-api` | `EntityInvitesFunction` | `bndy-serverless-api-EntityInvitesFunction-paSUVSTSsnQv` | nodejs22.x / x86_64 | `handler.handler` | `DRIPgHfg9T9yNuKKFlkFA2CnvPePXH9ufq+Ur7BewUg=` | 2026-08-30 16:08:36 | 512 / 30 | ENTITY_INVITES_TABLE, ENTITY_MEMBERSHIPS_TABLE, GATE_MODE, JWT_SECRET, NODE_ENV, UNIQUE_KEYS_TABLE |
+| `bndy-serverless-api` | `EntityMembershipsFunction` | `bndy-serverless-api-EntityMembershipsFunction-5eCV4kiEvcg5` | nodejs22.x / x86_64 | `handler.handler` | `cdZ/i5dtA0uxDeoA4TeM1mnuruV7S9t5Lg4i4i0Cq+c=` | 2026-08-30 16:08:36 | 512 / 30 | ENTITY_MEMBERSHIPS_TABLE, GATE_MODE, JWT_SECRET, NODE_ENV, UNIQUE_KEYS_TABLE |
+| `bndy-serverless-api` | `EventsAgentFunction` | `bndy-serverless-api-EventsAgentFunction-axkjUtQOMf5T` | nodejs20.x / x86_64 | `handler.handler` | `+SbS3fRkLyRFxZAgwStkbjvZcxq441xl/AiMm2xK0Uo=` | 2026-08-30 16:08:35 | 512 / 300 | GATE_MODE, JWT_SECRET, NODE_ENV, UNIQUE_KEYS_TABLE |
+| `bndy-serverless-api` | `EventsCuratorFunction` | `bndy-serverless-api-EventsCuratorFunction-v6iLLgPxrRkg` | nodejs20.x / x86_64 | `handler.handler` | `4DGeBTv+X9QzR/YKuYhlrNPzsEAuYBKiRht3WZtiyM4=` | 2026-08-30 16:08:36 | 1024 / 60 | GATE_MODE, JWT_SECRET, MCP_SERVICE_TOKEN, NODE_ENV, UNIQUE_KEYS_TABLE |
+| `bndy-serverless-api` | `EventsFunction` | `bndy-serverless-api-EventsFunction-03skAPFIwe9g` | nodejs22.x / x86_64 | `handler.handler` | `4DGeBTv+X9QzR/YKuYhlrNPzsEAuYBKiRht3WZtiyM4=` | 2026-08-30 16:08:36 | 1024 / 60 | GATE_MODE, JWT_SECRET, MCP_SERVICE_TOKEN, NODE_ENV, UNIQUE_KEYS_TABLE |
+| `bndy-serverless-api` | `ExpensesFunction` | `bndy-serverless-api-ExpensesFunction-Bnz5w8tLpkb8` | nodejs20.x / x86_64 | `handler.handler` | `a4fZk1aI2UJOkDUDx1xPkNoX3it7jaeceec1RM2Bf3Y=` | 2026-08-30 16:08:36 | 512 / 30 | GATE_MODE, JWT_SECRET, NODE_ENV, UNIQUE_KEYS_TABLE |
+| `bndy-serverless-api` | `FestivalsFunction` | `bndy-serverless-api-FestivalsFunction-ltYkkG704zfV` | nodejs20.x / x86_64 | `handler.handler` | `kRMFYRPB6kLWHw7jEcasydIEG6KC1iVsFEuSqO6wO3Y=` | 2026-08-30 16:08:36 | 512 / 30 | GATE_MODE, JWT_SECRET, MCP_SERVICE_TOKEN, NODE_ENV, UNIQUE_KEYS_TABLE |
+| `bndy-serverless-api` | `InvitesFunction` | `bndy-serverless-api-InvitesFunction-yhX3zozC79xA` | nodejs20.x / x86_64 | `handler.handler` | `cUx/lza8GW3UfeWXKkj1T68tZtbPYYuQwJg8hKcg0KQ=` | 2026-08-30 16:08:36 | 512 / 30 | GATE_MODE, JWT_SECRET, NODE_ENV, UNIQUE_KEYS_TABLE |
+| `bndy-serverless-api` | `IssuesFunction` | `bndy-serverless-api-IssuesFunction-5IgjRk6sRhe8` | nodejs20.x / x86_64 | `handler.handler` | `I9+ybihEr9TfMpOjyN6RGY2r2EjniG58f1sPgTiOZRw=` | 2026-08-29 21:21:17 | 512 / 30 | GATE_MODE, JWT_SECRET, NODE_ENV, UNIQUE_KEYS_TABLE |
+| `bndy-serverless-api` | `JoinAnalyticsFunction` | `bndy-serverless-api-JoinAnalyticsFunction-klzLo4lX7qqK` | nodejs22.x / x86_64 | `handler.handler` | `683f5QVSvFzXW7ZgokaLSEwAafXEGyqjvOQ4/X//ZQA=` | 2026-08-30 16:08:36 | 512 / 30 | GATE_MODE, JOIN_ANALYTICS_TABLE, NODE_ENV, UNIQUE_KEYS_TABLE |
+| `bndy-serverless-api` | `MembershipsFunction` | `bndy-serverless-api-MembershipsFunction-adBmJyeWuWLA` | nodejs20.x / x86_64 | `handler.handler` | `Q6fb/tRrYfdX4aqpdY87lSJZRg6MpFzh2aVDfOrEsns=` | 2026-08-30 16:08:36 | 512 / 30 | GATE_MODE, JWT_SECRET, NODE_ENV, UNIQUE_KEYS_TABLE |
+| `bndy-serverless-api` | `NotificationsFunction` | `bndy-serverless-api-NotificationsFunction-jSSPxlg9MAcR` | nodejs20.x / x86_64 | `handler.handler` | `Eo2r1O+JTNecjeyiKg3pB9ieJKQO4hPVTAgCob+/R64=` | 2026-08-30 16:08:36 | 512 / 30 | GATE_MODE, JWT_SECRET, NODE_ENV, UNIQUE_KEYS_TABLE |
+| `bndy-serverless-api` | `OwnershipFunction` | `bndy-serverless-api-OwnershipFunction-finwDwrKVzch` | nodejs22.x / x86_64 | `handler.handler` | `0wIyB/+ADLjMvhPetzrpKRUTzojx14hJuNV3eawAOg8=` | 2026-08-30 16:08:36 | 512 / 30 | ARTIST_MEMBERSHIPS_TABLE, ENTITY_MEMBERSHIPS_TABLE, GATE_MODE, JWT_SECRET, NODE_ENV, UNIQUE_KEYS_TABLE |
+| `bndy-serverless-api` | `SetlistsFunction` | `bndy-serverless-api-SetlistsFunction-wUqy1CYSx17Y` | nodejs20.x / x86_64 | `handler.handler` | `UIGccEPzjTJx83nHArisbhbY8jogtPHr9jldKfWUqwI=` | 2026-08-30 16:08:36 | 512 / 30 | GATE_MODE, JWT_SECRET, NODE_ENV, UNIQUE_KEYS_TABLE |
+| `bndy-serverless-api` | `SongsFunction` | `bndy-serverless-api-SongsFunction-c3eFxAdsTmeS` | nodejs20.x / x86_64 | `handler.handler` | `H8VJpgLqHM2P/oqnvssc9W5gCet8d8zPlklrsAGrXOk=` | 2026-08-29 21:21:17 | 512 / 30 | GATE_MODE, JWT_SECRET, NODE_ENV, UNIQUE_KEYS_TABLE |
+| `bndy-serverless-api` | `SourceRunsFunc` | `bndy-serverless-api-SourceRunsFunc-bUjoJCjAxPH2` | nodejs20.x / x86_64 | `handler.handler` | `36//BnACPOPrDelyGdUtrc4w5DBoFNse7Wd3zYtzysM=` | 2026-08-30 16:08:36 | 512 / 30 | GATE_MODE, NODE_ENV, SOURCE_RUNS_BUCKET, SOURCE_RUNS_TOKEN, UNIQUE_KEYS_TABLE |
+| `bndy-serverless-api` | `SpotifyFunction` | `bndy-serverless-api-SpotifyFunction-dfAWTwGUnJFf` | nodejs20.x / x86_64 | `handler.handler` | `eFWvlvhqHdANfMnl0I///ljl5hwdmj7SMb21cKXGvU4=` | 2026-08-30 16:08:36 | 512 / 30 | GATE_MODE, JWT_SECRET, NODE_ENV, SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET, UNIQUE_KEYS_TABLE |
+| `bndy-serverless-api` | `UploadsFunction` | `bndy-serverless-api-UploadsFunction-AZ3judAhrxT2` | nodejs22.x / x86_64 | `handler.handler` | `3DJmV+Qu/dbpl3ZeFTIjgrsmGCp9pgjLI/kPNW6MXDA=` | 2026-08-30 16:08:36 | 512 / 30 | GATE_MODE, JWT_SECRET, NODE_ENV, UNIQUE_KEYS_TABLE |
+| `bndy-serverless-api` | `UsersFunction` | `bndy-serverless-api-UsersFunction-HNQeQw7kJO9b` | nodejs22.x / x86_64 | `handler.handler` | `0EZuMMDff9dp4+7neU9voNEpfXqlSN++KM3tPbklAgk=` | 2026-08-30 16:08:36 | 512 / 30 | GATE_MODE, JWT_SECRET, NODE_ENV, UNIQUE_KEYS_TABLE |
+| `bndy-serverless-api` | `VenueCRMFunction` | `bndy-serverless-api-VenueCRMFunction-Pq0Nqtm5MJUc` | nodejs20.x / x86_64 | `handler.handler` | `7rvLbsrl7BLriM0vX0xWVASbEk0pIPsdkXr/ORAyKdg=` | 2026-08-30 16:08:36 | 512 / 30 | GATE_MODE, JWT_SECRET, NODE_ENV, UNIQUE_KEYS_TABLE |
+| `bndy-serverless-api` | `VenuesFunction` | `bndy-serverless-api-VenuesFunction-z91LnIIRKHhq` | nodejs22.x / x86_64 | `handler.handler` | `aQAvjgh0nlPhBTv0Qdn/OVirrKCjZGHGFFptKJ6+WjU=` | 2026-08-30 16:08:36 | 512 / 30 | ENTITY_MEMBERSHIPS_TABLE, GATE_MODE, GOOGLE_PLACES_API_KEY, JWT_SECRET, MCP_SERVICE_TOKEN, NODE_ENV, UNIQUE_KEYS_TABLE, VENUE_GROUPS_TABLE |
+| `bndy-source-inspector` | `SourceInspectorFunction` | `bndy-source-inspector-SourceInspectorFunction-a7P9shrPou6W` | nodejs20.x / x86_64 | `source-inspector-v3.handler` | `NArX64RXocHu7qxyRIXVmJbdNhQjbzgJs21ejsYmejQ=` | 2026-08-24 16:54:01 | 256 / 8 | ARTISTS_TABLE, NODE_ENV, UNIQUE_KEYS_TABLE |
+| `BndyEnrichmentStack` | `BacklineAdminApi9B1E7442` | `BndyEnrichmentStack-BacklineAdminApi9B1E7442-64rdprEIyZ9E` | nodejs22.x / x86_64 | `index.handler` | `+4TL8uqhiyUP2Oqj98P9rZ29u0xZr5qawnfhAfTVtHY=` | 2026-08-30 20:08:48 | 512 / 30 | BNDY_SERVICE_SECRET_NAME, STATE_TABLE |
+| `BndyEnrichmentStack` | `BrowserSourceWorkerCA2BC3A6` | `BndyEnrichmentStack-BrowserSourceWorkerCA2BC3A6-KeJDw5n4rGX0` | nodejs22.x / x86_64 | `index.handler` | `fSIGu5/JhICQO4Zu4HER+KJmjy0sDYPsCMD/zLEKuLY=` | 2026-08-30 20:08:51 | 3072 / 840 | EVIDENCE_BUCKET, PROJECTION_QUEUE_URL, STATE_TABLE |
+| `BndyEnrichmentStack` | `CaptureProcessorA6E403AD` | `bndy-capture-processor` | nodejs22.x / x86_64 | `index.handler` | `1j4JD/627XAzmPI0kqcofyETrx4MG0K9I2ZZhKCdfqw=` | 2026-08-30 20:08:49 | 1024 / 300 | BNDY_API_BASE, BNDY_SERVICE_SECRET_NAME, CAPTURE_API_BASE, CAPTURE_SECRET_NAME, GEMINI_MODEL, GEMINI_SECRET_ARN, SEARCH_HORIZON_DAYS |
+| `BndyEnrichmentStack` | `CaptureScannerA0D85922` | `bndy-capture-scan` | nodejs22.x / x86_64 | `index.handler` | `p4LQWpiEJ0ndfwPEH/38m2057yNJQvxWjcFNz1aJM6o=` | 2026-08-30 20:08:49 | 512 / 60 | CAPTURE_API_BASE, CAPTURE_QUEUE_URL, CAPTURE_SCAN_LIMIT, CAPTURE_SECRET_NAME |
+| `BndyEnrichmentStack` | `ClaimAuthorityStreamWorker0E6B1DD9` | `BndyEnrichmentStack-ClaimAuthorityStreamWorker0E6B-SWUTdZhEakId` | nodejs22.x / x86_64 | `index.handler` | `6DWLsfYE5IutVciurLJbS/LnnHKtFT82TQK9GBbCm1w=` | 2026-08-30 20:08:49 | 256 / 30 | STATE_TABLE |
+| `BndyEnrichmentStack` | `GoogleDiscoveryWorker66B9CA30` | `BndyEnrichmentStack-GoogleDiscoveryWorker66B9CA30-Nc72FG6J3ShU` | nodejs22.x / x86_64 | `index.handler` | `IdlSyh7rDZIDsCeM4etR996apXQ5XMcd4Bb84yB39XU=` | 2026-08-30 20:09:12 | 1024 / 300 | EVIDENCE_BUCKET, GEMINI_MODEL, GEMINI_SECRET_ARN, SEARCH_HORIZON_DAYS, STATE_TABLE |
+| `BndyEnrichmentStack` | `ProjectionWorker2E654DBF` | `BndyEnrichmentStack-ProjectionWorker2E654DBF-8omMuPbBsAna` | nodejs22.x / x86_64 | `index.handler` | `19Os1uol99j/VraLiX7v1zoNn1PfeLMnZlPpCZGutzA=` | 2026-08-30 20:08:49 | 1024 / 240 | BNDY_API_BASE, BNDY_SERVICE_SECRET_NAME, ENTITY_ENRICHMENT_QUEUE_URL, STATE_TABLE |
+| `BndyEnrichmentStack` | `ScanPlannerBC522289` | `BndyEnrichmentStack-ScanPlannerBC522289-D9WXLIcdx9Wi` | nodejs22.x / x86_64 | `index.handler` | `h2BvKOT8QDOTYbs2XFBJGAZjfjK/XJE9b5nblW/tbQE=` | 2026-08-30 20:08:49 | 1024 / 30 | GOOGLE_QUEUE_URL, STATE_TABLE |
+| `BndyEnrichmentStack` | `SourceDispatcherB94114BB` | `BndyEnrichmentStack-SourceDispatcherB94114BB-RqgXyjZuSD0a` | nodejs22.x / x86_64 | `index.handler` | `m1/o/ZX4t5vebRCJbfV3r0yNNqTdlhKx3IF3vwNy21c=` | 2026-08-30 20:08:49 | 512 / 30 | BROWSER_SCAN_QUEUE_URL, PROJECTION_QUEUE_URL, SOURCE_SCAN_QUEUE_URL, STATE_TABLE |
+| `BndyEnrichmentStack` | `SourceHealthWorkerB381903F` | `BndyEnrichmentStack-SourceHealthWorkerB381903F-CXSWKQigdrRx` | nodejs22.x / x86_64 | `index.handler` | `NyNAX2uuLYVXW2N2nrLghLDLioYJCpqkS/wEVfkDFcY=` | 2026-08-30 20:09:22 | 256 / 30 | STATE_TABLE |
+| `BndyEnrichmentStack` | `SourceWorker336FEA29` | `BndyEnrichmentStack-SourceWorker336FEA29-ghZk2mBRjOks` | nodejs22.x / x86_64 | `index.handler` | `6/f+WsAQLGRDxj9youufEy95Jhemdnr+wvJ2eSm2eBU=` | 2026-08-30 20:08:49 | 1024 / 840 | EVIDENCE_BUCKET, PROJECTION_QUEUE_URL, SOURCE_SCAN_QUEUE_URL, STATE_TABLE |
+| `BndyEnrichmentStack` | `TrustLoop620D9456` | `BndyEnrichmentStack-TrustLoop620D9456-uGPEj1SDMLZy` | nodejs22.x / x86_64 | `index.handler` | `EdVTt6MiaQVqPOf43c3nT+HCbLAR5QnfODzjvzcMpAc=` | 2026-08-30 20:08:49 | 1024 / 600 | STATE_TABLE |
+| `BndySignals-Api-dev` | `ClaimReviewFn0A50568D` | `bndy-signals-claim-review-dev` | nodejs20.x / x86_64 | `index.handler` | `HDYseWQYXLsD16jX592GDy6fapUBpEpXHcgLBAwQWuI=` | 2026-06-16 22:33:10 | 256 / 30 | SIGNALS_TABLE, STAGE |
+| `BndySignals-Api-dev` | `ClarificationApiFnB1350347` | `bndy-signals-clarification-api-dev` | nodejs20.x / x86_64 | `index.handler` | `QZJl4b1dasfSvAaBWLgLAzdt0j1ZEj6Jo9/Dek1DWdc=` | 2026-05-05 08:13:13 | 256 / 30 | SIGNALS_TABLE, STAGE |
+| `BndySignals-Api-dev` | `EventCandidateApiFnD7145113` | `bndy-signals-event-candidate-api-dev` | nodejs20.x / x86_64 | `index.handler` | `7cicmdN+BkwsBw2/qAZSp46HKVuokK2PHKzqbQWzyFs=` | 2026-05-04 13:01:39 | 256 / 30 | SIGNALS_TABLE, STAGE |
+| `BndySignals-Api-dev` | `SignalGetFn57AC2379` | `bndy-signals-get-dev` | nodejs20.x / x86_64 | `index.handler` | `dssoGUcLS0xGWw2WH4LVtXD+7sEqZGZRM7wLp65FByU=` | 2026-05-04 22:49:03 | 256 / 30 | SIGNALS_BUCKET, SIGNALS_TABLE, STAGE |
+| `BndySignals-Api-dev` | `SignalIntakeFn2670C829` | `bndy-signals-intake-dev` | nodejs20.x / x86_64 | `index.handler` | `9eUzOutKYNWehK8gIwjWgVAQ0FTuHsp9qrAWZDeiV6c=` | 2026-05-04 22:18:33 | 256 / 30 | SIGNAL_WORKFLOW_ARN, SIGNALS_BUCKET, SIGNALS_TABLE, STAGE |
+| `BndySignals-Api-prod` | `ClaimReviewFn0A50568D` | `bndy-signals-claim-review-prod` | nodejs20.x / x86_64 | `index.handler` | `HDYseWQYXLsD16jX592GDy6fapUBpEpXHcgLBAwQWuI=` | 2026-06-17 13:41:50 | 256 / 30 | SIGNALS_TABLE, STAGE |
+| `BndySignals-Api-prod` | `ClarificationApiFnB1350347` | `bndy-signals-clarification-api-prod` | nodejs20.x / x86_64 | `index.handler` | `QZJl4b1dasfSvAaBWLgLAzdt0j1ZEj6Jo9/Dek1DWdc=` | 2026-06-17 13:41:50 | 256 / 30 | SIGNALS_TABLE, STAGE |
+| `BndySignals-Api-prod` | `EventCandidateApiFnD7145113` | `bndy-signals-event-candidate-api-prod` | nodejs20.x / x86_64 | `index.handler` | `7cicmdN+BkwsBw2/qAZSp46HKVuokK2PHKzqbQWzyFs=` | 2026-06-17 13:41:50 | 256 / 30 | SIGNALS_TABLE, STAGE |
+| `BndySignals-Api-prod` | `SignalGetFn57AC2379` | `bndy-signals-get-prod` | nodejs20.x / x86_64 | `index.handler` | `dssoGUcLS0xGWw2WH4LVtXD+7sEqZGZRM7wLp65FByU=` | 2026-06-17 13:41:50 | 256 / 30 | SIGNALS_BUCKET, SIGNALS_TABLE, STAGE |
+| `BndySignals-Api-prod` | `SignalIntakeFn2670C829` | `bndy-signals-intake-prod` | nodejs20.x / x86_64 | `index.handler` | `9eUzOutKYNWehK8gIwjWgVAQ0FTuHsp9qrAWZDeiV6c=` | 2026-06-17 13:41:50 | 256 / 30 | SIGNAL_WORKFLOW_ARN, SIGNALS_BUCKET, SIGNALS_TABLE, STAGE |
+| `BndySignals-Workflow-dev` | `ClarificationGeneratorFn2F86C6CB` | `bndy-signals-clarification-gen-dev` | nodejs20.x / x86_64 | `index.handler` | `vjWKElDYBJT2PRHUjBBlNjd8zfFM+C3Y9OMm9wiPrkc=` | 2026-05-04 22:17:26 | 256 / 60 | SIGNALS_TABLE, STAGE |
+| `BndySignals-Workflow-dev` | `ExtractorFn0C95F7E9` | `bndy-signals-extractor-dev` | nodejs20.x / x86_64 | `index.handler` | `+S6jBdwAd+o+9SPJUyV/ouis4aalCN2GBv66VLWY6Cw=` | 2026-05-03 18:13:49 | 1024 / 300 | SIGNALS_BUCKET, SIGNALS_TABLE, STAGE |
+| `BndySignals-Workflow-dev` | `FailureHandlerFn01314552` | `bndy-signals-failure-handler-dev` | nodejs20.x / x86_64 | `index.handler` | `Ded+dQp1VF4359+Z8p7Ys02utsHTUQitGo7faXkTsv4=` | 2026-05-01 23:11:49 | 256 / 30 | DLQ_URL, SIGNALS_TABLE, STAGE |
+| `BndySignals-Workflow-dev` | `InterpreterFn608A6A2E` | `bndy-signals-interpreter-dev` | nodejs20.x / x86_64 | `index.handler` | `5bDXFJ7bmyL34EbJQU1pMKtLJObou26Ncg6WN0j0Q6c=` | 2026-05-04 22:48:23 | 1024 / 300 | BEDROCK_MODEL_ID, MODEL_INPUT_COST_PER_1K, MODEL_OUTPUT_COST_PER_1K, SIGNALS_TABLE, STAGE |
+| `BndySignals-Workflow-dev` | `PackBuilderFn77373EE1` | `bndy-signals-pack-builder-dev` | nodejs20.x / x86_64 | `index.handler` | `BtNx5cD+J3MlAtpHP0HwcPBesb2Z8kehXho4tOi4qRg=` | 2026-05-04 22:48:24 | 512 / 120 | SIGNALS_TABLE, STAGE |
+| `BndySignals-Workflow-prod` | `ClarificationGeneratorFn2F86C6CB` | `bndy-signals-clarification-gen-prod` | nodejs20.x / x86_64 | `index.handler` | `vjWKElDYBJT2PRHUjBBlNjd8zfFM+C3Y9OMm9wiPrkc=` | 2026-06-17 13:39:42 | 256 / 60 | SIGNALS_TABLE, STAGE |
+| `BndySignals-Workflow-prod` | `ExtractorFn0C95F7E9` | `bndy-signals-extractor-prod` | nodejs20.x / x86_64 | `index.handler` | `+S6jBdwAd+o+9SPJUyV/ouis4aalCN2GBv66VLWY6Cw=` | 2026-06-17 13:39:43 | 1024 / 300 | SIGNALS_BUCKET, SIGNALS_TABLE, STAGE |
+| `BndySignals-Workflow-prod` | `FailureHandlerFn01314552` | `bndy-signals-failure-handler-prod` | nodejs20.x / x86_64 | `index.handler` | `Ded+dQp1VF4359+Z8p7Ys02utsHTUQitGo7faXkTsv4=` | 2026-06-17 13:40:09 | 256 / 30 | DLQ_URL, SIGNALS_TABLE, STAGE |
+| `BndySignals-Workflow-prod` | `InterpreterFn608A6A2E` | `bndy-signals-interpreter-prod` | nodejs20.x / x86_64 | `index.handler` | `5bDXFJ7bmyL34EbJQU1pMKtLJObou26Ncg6WN0j0Q6c=` | 2026-06-17 13:39:42 | 1024 / 300 | BEDROCK_MODEL_ID, MODEL_INPUT_COST_PER_1K, MODEL_OUTPUT_COST_PER_1K, SIGNALS_TABLE, STAGE |
+| `BndySignals-Workflow-prod` | `PackBuilderFn77373EE1` | `bndy-signals-pack-builder-prod` | nodejs20.x / x86_64 | `index.handler` | `BtNx5cD+J3MlAtpHP0HwcPBesb2Z8kehXho4tOi4qRg=` | 2026-06-17 13:39:42 | 512 / 120 | SIGNALS_TABLE, STAGE |
+| `BndySourceRunner-dev` | `GigsNewsRunnerFn5895B928` | `bndy-gigs-news-runner-dev` | nodejs20.x / x86_64 | `index.handler` | `bJUSwbbRhRFitjWkkpMrlmx3WDy7n7D4Ey9smIQzggU=` | 2026-06-18 18:08:46 | 2048 / 300 | BNDY_API_BASE, BNDY_SOURCE_RUNS_BUCKET, NODE_ENV, SOURCE_REVIEW_TABLE, SOURCE_STATE_TABLE, STAGE |
+| `BndySourceRunner-dev` | `IntelligencePassFn534CBC29` | `bndy-intelligence-pass-dev` | nodejs20.x / x86_64 | `index.handler` | `i0xOwjqBmnCVf+ZJwxp1XnuuRQz0ssDzPgnwqv5biLs=` | 2026-06-18 13:08:27 | 1024 / 300 | BNDY_API_BASE, BNDY_API_URL, BNDY_SOURCE_RUNS_BUCKET, DRY_RUN, MAX_COST_PER_RUN, MAX_ITEMS_PER_RUN, NODE_ENV, SOURCE_REVIEW_TABLE, SOURCE_RUNS_BUCKET, SOURCE_STATE_TABLE, STAGE |
+| `BndySourceRunner-dev` | `KlmaRunnerFn0E5EC8FB` | `bndy-klma-runner-dev` | nodejs20.x / x86_64 | `index.handler` | `paMQVZF5hfQaRZLIFukaGGZKeOX3tv0L+Q+LKsm87W8=` | 2026-06-18 18:08:43 | 512 / 300 | BNDY_API_BASE, BNDY_SOURCE_RUNS_BUCKET, NODE_ENV, SOURCE_REVIEW_TABLE, SOURCE_STATE_TABLE, STAGE |
+| `BndySourceRunner-dev` | `LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A` | `BndySourceRunner-dev-LogRetentionaae0aa3c5b4d4f87b-xEgUBaG6XHb0` | nodejs24.x / x86_64 | `index.handler` | `pGKLvOYNjMKMXsm2uFkMPuAFBE+yi4V7pWHVTZAKGfo=` | 2026-06-16 22:30:18 | 128 / 900 | — |
+| `BndySourceRunner-dev` | `OnTheCaseRunnerFnCCCCCA8C` | `bndy-onthecase-runner-dev` | nodejs20.x / x86_64 | `index.handler` | `VeCzt2AMX4cYi8FgSmNInHQexOeGWsorZs1GfZ75/gw=` | 2026-06-18 18:08:46 | 2048 / 300 | BNDY_API_BASE, BNDY_SOURCE_RUNS_BUCKET, NODE_ENV, SOURCE_REVIEW_TABLE, SOURCE_STATE_TABLE, STAGE |
+| `BndySourceRunner-dev` | `ScenicEyeRunnerFn00C951E2` | `bndy-sceniceye-runner-dev` | nodejs20.x / x86_64 | `index.handler` | `ECxAo8U+cMH53E/e4bBOb0Hpt9/CHi7JRk7vIIa1xBc=` | 2026-06-18 18:08:47 | 2048 / 300 | BNDY_API_BASE, BNDY_SOURCE_RUNS_BUCKET, NODE_ENV, SOURCE_REVIEW_TABLE, SOURCE_STATE_TABLE, STAGE |
+| `BndySourceRunner-prod` | `GigsNewsRunnerFn5895B928` | `bndy-gigs-news-runner-prod` | nodejs20.x / x86_64 | `index.handler` | `bJUSwbbRhRFitjWkkpMrlmx3WDy7n7D4Ey9smIQzggU=` | 2026-06-18 18:23:04 | 2048 / 300 | BNDY_API_BASE, BNDY_SOURCE_RUNS_BUCKET, NODE_ENV, SOURCE_REVIEW_TABLE, SOURCE_STATE_TABLE, STAGE |
+| `BndySourceRunner-prod` | `IntelligencePassFn534CBC29` | `bndy-intelligence-pass-prod` | nodejs20.x / x86_64 | `index.handler` | `i0xOwjqBmnCVf+ZJwxp1XnuuRQz0ssDzPgnwqv5biLs=` | 2026-06-18 13:16:25 | 1024 / 300 | BNDY_API_BASE, BNDY_API_URL, BNDY_SOURCE_RUNS_BUCKET, DRY_RUN, MAX_COST_PER_RUN, MAX_ITEMS_PER_RUN, NODE_ENV, SOURCE_REVIEW_TABLE, SOURCE_RUNS_BUCKET, SOURCE_STATE_TABLE, STAGE |
+| `BndySourceRunner-prod` | `KlmaRunnerFn0E5EC8FB` | `bndy-klma-runner-prod` | nodejs20.x / x86_64 | `index.handler` | `paMQVZF5hfQaRZLIFukaGGZKeOX3tv0L+Q+LKsm87W8=` | 2026-06-18 18:23:00 | 512 / 300 | BNDY_API_BASE, BNDY_SOURCE_RUNS_BUCKET, NODE_ENV, SOURCE_REVIEW_TABLE, SOURCE_STATE_TABLE, STAGE |
+| `BndySourceRunner-prod` | `LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A` | `BndySourceRunner-prod-LogRetentionaae0aa3c5b4d4f87-tNd3hAHRxcPu` | nodejs24.x / x86_64 | `index.handler` | `pGKLvOYNjMKMXsm2uFkMPuAFBE+yi4V7pWHVTZAKGfo=` | 2026-06-17 13:36:50 | 128 / 900 | — |
+| `BndySourceRunner-prod` | `OnTheCaseRunnerFnCCCCCA8C` | `bndy-onthecase-runner-prod` | nodejs20.x / x86_64 | `index.handler` | `VeCzt2AMX4cYi8FgSmNInHQexOeGWsorZs1GfZ75/gw=` | 2026-06-18 18:22:57 | 2048 / 300 | BNDY_API_BASE, BNDY_SOURCE_RUNS_BUCKET, NODE_ENV, SOURCE_REVIEW_TABLE, SOURCE_STATE_TABLE, STAGE |
+| `BndySourceRunner-prod` | `ScenicEyeRunnerFn00C951E2` | `bndy-sceniceye-runner-prod` | nodejs20.x / x86_64 | `index.handler` | `ECxAo8U+cMH53E/e4bBOb0Hpt9/CHi7JRk7vIIa1xBc=` | 2026-06-18 18:23:04 | 2048 / 300 | BNDY_API_BASE, BNDY_SOURCE_RUNS_BUCKET, NODE_ENV, SOURCE_REVIEW_TABLE, SOURCE_STATE_TABLE, STAGE |
+
+### Environment-name classification
+
+- **Canonical-write controls:** no Lambda has an environment variable named `CANONICAL_WRITE`, `CANONICAL_WRITES`, `WRITE_CANONICAL` or equivalent. This absence is not proof that code cannot write; state-table and IAM/runtime gates are checked later.
+- **Dry-run controls:** only the two Signals intelligence-pass functions expose `DRY_RUN`.
+- **Projection controls:** no boolean projection-control environment name exists. `PROJECTION_QUEUE_URL` is a queue reference, not an enablement flag; the global projection control is stored in DynamoDB and checked in Phase 8.
+- **Queue/table/bucket references:** names include `*_QUEUE_URL`, `*_TABLE`, `STATE_TABLE`, `EVIDENCE_BUCKET`, `SIGNALS_BUCKET`, `SOURCE_RUNS_BUCKET`, and `IMAGE_BUCKET`.
+- **Provider configuration:** names include `GEMINI_MODEL`, `GEMINI_SECRET_ARN`, `GOOGLE_PLACES_API_KEY`, `BEDROCK_MODEL_ID`, model-cost controls, Spotify/Cognito identifiers and secret references. No value was read or reported.
+- **API/source identifiers:** `BNDY_API_BASE`, `BNDY_API_URL`, `CAPTURE_API_BASE`, `NODE_ENV`, `STAGE`, source-state/review names, run limits and source-run buckets.
+
+### Event-source mappings
+
+Only seven mappings exist for the 74 scoped functions; all are enabled. No canonical Artists, Venues or Events stream mapping exists.
+
+| UUID | Function | Source | State / result | Batch / window | Partial batch | Max concurrency | Destination |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| `ff22b7c3-d782-4932-a165-20f6558b5ac1` | Claim Authority worker | DynamoDB `bndy-entity-claims` stream | Enabled / `OK` | 10 / 0s | None | None | No success/failure destination |
+| `4ca3a209-8df6-4071-9d52-651a4fb791b4` | Browser Source worker | SQS Browser Scan queue | Enabled / no result reported | 1 / 0s | `ReportBatchItemFailures` | None | None |
+| `42e9930c-074b-44d9-97d2-2fb15fc32564` | Projection worker | SQS Projection queue | Enabled / no result reported | 1 / 0s | `ReportBatchItemFailures` | None | None |
+| `a17dc72f-e8b6-49ce-b3cc-133fd8b25796` | Source worker | SQS Source Scan queue | Enabled / no result reported | 1 / 0s | `ReportBatchItemFailures` | 2 | None |
+| `31929135-0183-4beb-82d7-d8236a544da0` | `bndy-capture-processor` | SQS Capture Processing queue | Enabled / no result reported | 1 / 0s | `ReportBatchItemFailures` | None | None |
+| `a93e7053-5197-4ac2-b661-bab4a7149600` | Google Discovery worker | SQS Google Discovery queue | Enabled / no result reported | 1 / 0s | `ReportBatchItemFailures` | None | None |
+| `c2250d62-dbf0-4498-a809-640d821fd6a5` | Capture WhatsApp worker | SQS WhatsApp queue | Enabled / no result reported | 1 / 0s | `ReportBatchItemFailures` | None | None |
+
+The Claims mapping starts at `LATEST`, bisects batches on error, has unlimited record age, three retry attempts and parallelisation factor 1. It points exactly to `bndy-entity-claims/stream/2026-08-29T16:15:10.440`. No mapping is disabled, failed or unexpected from its owning template.
+
+### Required point determinations
+
+- **Claim authority:** mapped and enabled against `bndy-entity-claims`; last processing result is `OK`.
+- **Canonical streams:** no Artist, Venue or Event stream mapping exists.
+- **Source Inspector backend:** `bndy-source-inspector-SourceInspectorFunction-a7P9shrPou6W`, handler `source-inspector-v3.handler`, hash `NArX64RXocHu7qxyRIXVmJbdNhQjbzgJs21ejsYmejQ=`, last modified `2026-08-24T16:54:01Z`.
+- **Capture processor:** hash `1j4JD/627XAzmPI0kqcofyETrx4MG0K9I2ZZhKCdfqw=`, last modified `2026-08-30T20:08:49Z`. This aligns with the user-confirmed CDK stack update, not either Capture hot-deploy workflow; neither named workflow ran on 30 August.
+- **Enrichment deployed revision:** the deployed template is byte-structurally equal after JSON normalisation to local `cdk.out/BndyEnrichmentStack.template.json` produced immediately before the 20:08 deployment, including all twelve asset keys. The source worktree was at `39bae4fcbbe86a27b8e936225c94331cbb343d1c` but dirty, and was three commits behind remote `main`. Therefore the deterministic template/artifact is mapped, but the deployed Git revision remains **`UNMAPPED`**; it must not be labelled `3d6f242` or `39bae4f`.
+
 
 ## 7. Source Inspector incident-after-incident analysis
 
@@ -375,7 +496,7 @@ Phase 2 result:
 - Both retain long-lived AWS credential configuration and direct `aws lambda update-function-code` capability against the CDK-owned processor.
 - Both can invoke production scanners and mutate Capture records during their acceptance path; they are not ordinary tests.
 - Their path filters require a push changing the workflow file itself, reducing accidental frequency but not removing the ownership bypass.
-- The current processor hash and last-modified time will be compared with workflow history in Phase 6 and CloudTrail in Phase 13.
+- The current processor hash is `1j4JD/627XAzmPI0kqcofyETrx4MG0K9I2ZZhKCdfqw=` and last-modified time is `2026-08-30T20:08:49Z`. That aligns with the user-confirmed Enrichment CDK update, not either hot-deploy workflow; neither named workflow ran on 30 August. CloudTrail mutation history is still independently checked in Phase 13.
 
 ## 9. DynamoDB, streams and SSM
 
@@ -537,3 +658,15 @@ AWS does not return a completion timestamp from `describe-stack-drift-detection-
 | `aws cloudformation describe-stack-resources --physical-resource-id ...` | 0 for imported tables; 255 for the three canonical tables | The four imported tables resolve to `bndy-serverless-api`; canonical tables return no stack owner. The validation error is negative ownership evidence, not an access failure. |
 | In-memory literal/type search of the two deployed Source Inspector-related templates | 0 | Neither template contains `AWS::ApiGatewayV2::Route` or `AWS::ApiGatewayV2::Integration`; no template or secret values were written to the report. |
 | `rg` across scoped repositories | 0 with one Windows `nul` warning | Intended repository references and evidence that canonical tables are application dependencies. Generated/build paths were excluded where practical; no files changed. |
+
+### Phase 6 command record
+
+| Command family | Exit | Evidence obtained |
+| --- | ---: | --- |
+| `aws lambda list-functions` and `--function-version ALL` | 0 | All 74 stack-owned function configurations, code hashes, last-modified times, runtime/architecture/package/handler, resources, tracing, layers, DLQ and environment **names**; only `$LATEST` exists. |
+| `aws lambda get-function-configuration --function-name ...` for all 74 functions | 0 | Every function is `Active` with `Successful` last update. Values and status reasons were not emitted. |
+| `aws lambda get-function-concurrency --function-name ...` for all 74 functions | 0 | Reserved-concurrency inventory, including Enrichment cap 2 and five fail-closed production Signals reservations at 0. |
+| `aws lambda list-event-source-mappings` and `get-event-source-mapping` for Claims | 0 | All seven scoped mappings and detailed Claims-stream retry/batch configuration. No message/item consumption occurred. |
+| Normalised deployed-template versus local `cdk.out` comparison | 0 | Exact Enrichment template equality and asset-key mapping; dirty worktree prevents a deterministic Git-SHA claim. |
+
+Because all functions have only `$LATEST`, Lambda aliases and provisioned concurrency are structurally absent: aliases require a published version, and provisioned concurrency cannot target `$LATEST`. No paid provider, product endpoint or Lambda was invoked.
