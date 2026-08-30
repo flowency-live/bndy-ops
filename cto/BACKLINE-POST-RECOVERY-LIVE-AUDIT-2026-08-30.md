@@ -1,9 +1,13 @@
 # BNDY Backline post-recovery live audit
 
-Status: **IN PROGRESS**  
-Latest completed phase: **Phase 2 — repository truth and CI**  
-Audit started: `2026-08-30T20:18:29.598Z`  
-Required account: `771551874768`  
+Status: **IN PROGRESS**
+
+Latest completed phase: **Phase 3 — CloudFormation inventory**
+
+Audit started: `2026-08-30T20:18:29.598Z`
+
+Required account: `771551874768`
+
 Required region: `eu-west-2`
 
 This report is the incremental evidence record for the definitive post-recovery audit following the SAM/CDK infrastructure collision of 29–30 August 2026. Live AWS state is authoritative. Repository state, prior reports and the interrupted audit transcript are supporting evidence only.
@@ -12,14 +16,14 @@ Safety boundary: this audit does not deploy, invoke Lambda functions, change inf
 
 ## 1. Executive verdict
 
-The audit is not yet complete. No resumption or deployment verdict is issued at Phase 1.
+The audit is not yet complete. No final resumption or deployment verdict is issued at Phase 3.
 
 | Question | Verdict | Reason |
 | --- | --- | --- |
-| Is the recovered serverless API stack stable? | UNVERIFIED | Stack, drift, route and runtime checks are pending. |
-| Is Enrichment runtime state verified? | PARTIAL | AWS identity and read access are verified; runtime inventory is pending. |
-| Are CloudFormation owners coherent? | PARTIAL | Prior evidence identifies collisions; live ownership verification is pending. |
-| Are automatic deployment bypasses contained? | NO | Prior evidence says the workflows remain armed; current repository and CI verification is pending. |
+| Is the recovered serverless API stack stable? | UNVERIFIED | It is currently `UPDATE_COMPLETE`; fresh drift, route and runtime checks are pending. |
+| Is Enrichment runtime state verified? | PARTIAL | The stack is `UPDATE_COMPLETE` after user-confirmed parallel CDK work; runtime inventory is pending. |
+| Are CloudFormation owners coherent? | PARTIAL | Twelve relevant active stacks are identified; the resource-level ledger is pending. |
+| Are automatic deployment bypasses contained? | NO | Current workflow inspection proves the Source Inspector and Capture bypasses remain armed. |
 | Are canonical writes proven disabled? | UNVERIFIED | Live controls, stream mappings and writer gates are pending. |
 | Is it safe to resume read-only Backline work? | NO | The required live audit is incomplete. |
 | Is it safe to resume local implementation? | NO | The required live audit is incomplete. |
@@ -51,7 +55,7 @@ The initially named documentation folder was not a Git worktree. The exact scope
 Authoritative starting evidence read:
 
 - `bndy-ops/cto/BACKLINE-RECOVERY-CHECKPOINT-2026-08-30.md`.
-- `bndy-website/docs/SERVERLESS-API-INCIDENT-RECOVERY-2026-08-30.md` is not present in the currently available website worktree and remains to be obtained through read-only repository inspection.
+- `bndy-website/docs/SERVERLESS-API-INCIDENT-RECOVERY-2026-08-30.md` was absent from the stale local worktree and was read from `origin/main` without checkout.
 - `Troubleshooting Logs/prompt1.txt` was inspected as an interrupted historical transcript. Its live observations will be independently revalidated, and unsanitised identifiers from it will not be copied into this report.
 
 ### Fixed live scope
@@ -162,7 +166,80 @@ The current marker records skipped bootstrap run `33326926450` and copies that r
 
 ## 4. Stack inventory and drift
 
-Pending Phases 3–4.
+### Phase 3 result — active stack discovery
+
+**Inventory complete.** At `2026-08-30T20:25:58.828Z`–`2026-08-30T20:30:24.845Z`, twelve active top-level stacks met the fixed name/resource scope. No relevant stack is nested, in progress, failed, rolling back, deleting or under review. Only `bndy-serverless-api` has termination protection enabled.
+
+| Stack | Status | Created UTC | Last update UTC | Termination protection | Resources |
+| --- | --- | --- | --- | --- | ---: |
+| `BndyEnrichmentStack` | `UPDATE_COMPLETE` | 2026-08-11 13:49:49 | **2026-08-30 20:08:43** | No | 79 |
+| `bndy-serverless-api` | `UPDATE_COMPLETE` | 2025-09-25 15:12:27 | 2026-08-30 16:08:30 | **Yes** | 308 |
+| `bndy-capture` | `UPDATE_COMPLETE` | 2026-08-02 20:49:34 | 2026-08-30 16:36:03 | No | 30 |
+| `bndy-source-inspector` | `UPDATE_COMPLETE` | 2026-08-21 22:54:38 | 2026-08-24 16:53:56 | No | 2 |
+| `BndySignals-Storage-dev` | `UPDATE_COMPLETE` | 2026-05-01 23:05:23 | 2026-06-16 22:29:50 | No | 3 |
+| `BndySignals-Workflow-dev` | `UPDATE_COMPLETE` | 2026-05-01 23:06:01 | 2026-06-16 22:32:34 | No | 20 |
+| `BndySignals-Api-dev` | `UPDATE_COMPLETE` | 2026-05-01 23:08:01 | 2026-06-16 22:33:04 | No | 66 |
+| `BndySignals-Storage-prod` | `CREATE_COMPLETE` | 2026-06-17 13:21:34 | 2026-06-17 13:36:03 | No | 2 |
+| `BndySignals-Workflow-prod` | `CREATE_COMPLETE` | 2026-06-17 13:38:52 | 2026-06-17 13:39:00 | No | 20 |
+| `BndySignals-Api-prod` | `CREATE_COMPLETE` | 2026-06-17 13:40:59 | 2026-06-17 13:41:08 | No | 66 |
+| `BndySourceRunner-dev` | `UPDATE_COMPLETE` | 2026-06-16 10:21:55 | 2026-06-18 18:08:37 | No | 36 |
+| `BndySourceRunner-prod` | `UPDATE_COMPLETE` | 2026-06-15 19:22:46 | 2026-06-18 18:22:47 | No | 36 |
+
+The exact stack IDs are:
+
+- `BndyEnrichmentStack`: `arn:aws:cloudformation:eu-west-2:771551874768:stack/BndyEnrichmentStack/85600010-958b-11f1-adde-02eb3f35187b`
+- `bndy-serverless-api`: `arn:aws:cloudformation:eu-west-2:771551874768:stack/bndy-serverless-api/0c629c00-9a22-11f0-a06b-0614d0c62539`
+- `bndy-capture`: `arn:aws:cloudformation:eu-west-2:771551874768:stack/bndy-capture/ab4063d0-8eb3-11f1-8a65-06d0992ab9bf`
+- `bndy-source-inspector`: `arn:aws:cloudformation:eu-west-2:771551874768:stack/bndy-source-inspector/494a9f10-9db3-11f1-a5e7-0ac3b6b0c895`
+- `BndySignals-Storage-dev`: `arn:aws:cloudformation:eu-west-2:771551874768:stack/BndySignals-Storage-dev/3bb79be0-45b2-11f1-a787-02c1e00f88fb`
+- `BndySignals-Workflow-dev`: `arn:aws:cloudformation:eu-west-2:771551874768:stack/BndySignals-Workflow-dev/5270b790-45b2-11f1-86e0-0addf44d4233`
+- `BndySignals-Api-dev`: `arn:aws:cloudformation:eu-west-2:771551874768:stack/BndySignals-Api-dev/99fac600-45b2-11f1-9eff-06be37588ce7`
+- `BndySignals-Storage-prod`: `arn:aws:cloudformation:eu-west-2:771551874768:stack/BndySignals-Storage-prod/760e5f10-6a4f-11f1-8764-0a7bb1e4c037`
+- `BndySignals-Workflow-prod`: `arn:aws:cloudformation:eu-west-2:771551874768:stack/BndySignals-Workflow-prod/e0cea3d0-6a51-11f1-9688-020596a13c63`
+- `BndySignals-Api-prod`: `arn:aws:cloudformation:eu-west-2:771551874768:stack/BndySignals-Api-prod/2cb862e0-6a52-11f1-92d0-06a7d7c8f61b`
+- `BndySourceRunner-dev`: `arn:aws:cloudformation:eu-west-2:771551874768:stack/BndySourceRunner-dev/32cacfa0-696d-11f1-8860-025b594bc23b`
+- `BndySourceRunner-prod`: `arn:aws:cloudformation:eu-west-2:771551874768:stack/BndySourceRunner-prod/96e0bfa0-68ef-11f1-a8f7-0281c4bdaeff`
+
+### Resource counts by type
+
+| Stack/domain | Type counts |
+| --- | --- |
+| Enrichment | Lambda 12; event-source mappings 6; EventBridge rules 9; SQS queues 13; DynamoDB tables 1; IAM roles/policies 12/12; Lambda permissions 7; Lambda URLs 1; S3 buckets/policies 1/1; Secrets Manager secrets 1; alarms 1; CDK metadata 1. |
+| Serverless API | API Gateway v2 APIs/stages 1/1; Lambda functions 27; Lambda permissions 270; DynamoDB tables 8; SSM parameters 1. |
+| Capture | API Gateway v2 APIs/stages/domain/mapping 1 each; Lambda functions 2; event-source mappings 1; Lambda permissions 13; DynamoDB tables 1; SQS queues 2; S3 buckets 1; IAM roles 2; secrets 2; certificate and Route 53 record 1 each. |
+| Source Inspector | Lambda functions 1; Lambda permissions 1. |
+| Signals Storage dev/prod | DynamoDB tables 1 each; dev also has one S3 bucket; CDK metadata 1 each. |
+| Signals Workflow dev/prod | Lambda functions 5, IAM roles/policies 6/6, SQS queues 1, Step Functions state machines 1 and CDK metadata 1 in each environment. |
+| Signals API dev/prod | REST APIs/stages/deployments 1 each, API resources 11, methods 20, Lambda functions 5, Lambda permissions 16, IAM roles/policies 5/5 and CDK metadata 1 in each environment. |
+| Source Runner dev/prod | Lambda functions 6, EventBridge rules 5, Lambda permissions 5, DynamoDB tables 2, IAM roles/policies 6/6, custom log-retention resources 5 and CDK metadata 1 in each environment. |
+
+### Sanitised parameters, outputs, tags and relationships
+
+Parameter **values** were deliberately not emitted. Key names prove the configuration surface without revealing `JwtSecret`, WhatsApp tokens, Capture tokens or app secrets. Output values were likewise deferred to the resource ownership ledger, where only non-secret physical identifiers are included.
+
+| Stack group | Parameter keys | Output keys | Tags / relationship |
+| --- | --- | --- | --- |
+| Enrichment | resolved claims-stream SSM reference; `BootstrapVersion` | 21 keys covering worker/function names, queue URLs, evidence bucket, state table, admin API URL and secret ARN | No tags; top-level. |
+| Serverless API | `JwtSecret`, `Stage` | HTTP API ID/URL and selected function ARNs | No tags; top-level. |
+| Capture | 14 keys covering domain/origin/rate limits and WhatsApp/Capture secret inputs | API URLs, webhook URL, table/bucket/function/queue names and secret ARNs | No tags; top-level. |
+| Source Inspector | `BndyHttpApiId` | `SourceInspectorFunctionArn` | No tags; top-level. |
+| Signals and Source Runner | `BootstrapVersion` | Environment-specific storage, workflow, DLQ, API, source table and runner function identifiers | No tags; all top-level. |
+
+### Discovery boundary
+
+Five active BNDY-named stacks were inspected and excluded: `bndy-remote-mcp`, `bndy-remote-mcp-bootstrap`, `bndy-brass-api`, `bndy-builder-tables`, and `bndy-calendar-sync`. Their names and physical/logical resources do not implement Backline, Capture, Source Inspector, Signals, source runners, interpretation or intelligence. The first three contain only remote MCP/bootstrap or Brass API resources; the latter two contain generic builder/calendar tables.
+
+### Rollback and failure events since `2026-08-29T18:00:00Z`
+
+Only `bndy-serverless-api` has matching events. At `2026-08-29T22:25:32Z` its attempted update failed because the four physical tables `bndy-entity-claims`, `bndy-entity-memberships`, `bndy-entity-invites`, and `bndy-join-analytics` already existed; the SAM dependency nested stack was cancelled and the parent reached `UPDATE_ROLLBACK_COMPLETE` at `22:26:00Z`. Later recovery/import work brought the stack to its current `UPDATE_COMPLETE` status. The other eleven relevant stacks have no failure/rollback event in the requested window.
+
+### Concurrent Enrichment baseline
+
+The stack update timestamp changed during the broader audit window. CloudFormation events show a user-initiated CDK change set executed at `2026-08-30T20:08:43Z` and completed at `20:10:34Z`, updating ten existing Lambdas and creating the source-health worker/rule/permission/IAM resources/alarm. CloudTrail event `72437377-06fa-40db-bc67-2c61262c0893` identifies a CDK `ExecuteChangeSet` through the `aws-cdk-jason` assumed deploy role. The user confirmed this was isolated parallel Enrichment work. It is therefore not classified as an audit violation or finding, but it invalidates earlier Enrichment template/drift observations; Phase 4 onward uses the post-update state.
+
+### Fresh drift
+
+Pending Phase 4. No historical drift result will be treated as current.
 
 ## 5. Resource ownership ledger
 
@@ -304,3 +381,15 @@ Phase 2 completed at `2026-08-30T20:31:00Z` (rounded command-window end). All re
 - The Source Inspector smoke failure point is inferred from ordered shell output because the workflow did not print an assertion label.
 - No current deployed Lemonrock commit mapping is available from repository/CI evidence; it remains `UNMAPPED`.
 - The website and several code worktrees are intentionally behind their remote default heads. Later validation will use isolated temporary worktrees rather than modifying them.
+
+### Phase 3 command record
+
+| UTC window | Command family | Exit | Evidence obtained |
+| --- | --- | ---: | --- |
+| `2026-08-30T20:25:58Z`–`20:30:24Z` | `aws cloudformation describe-stacks --region eu-west-2` | 0 | All active stacks, exact IDs, status, timestamps, termination protection, parent/root relationship, parameter/output keys and tags. |
+| Same | `aws cloudformation list-stack-resources --stack-name ...` for all BNDY-named stacks | 0 | Scope discovery, exact resource totals and counts by type; excluded-stack boundary. |
+| Same | `aws cloudformation describe-stack-events --stack-name ...` for all twelve relevant stacks | 0 | Failure/rollback events since the required cutoff. |
+| Same | `aws cloudtrail lookup-events --lookup-attributes AttributeKey=ResourceName,AttributeValue=BndyEnrichmentStack` | 0 | Sanitised CDK change-set actor, event name/time and event IDs for the concurrent update. |
+| Same | `aws cloudformation describe-termination-protection ...` | 252 | Audit-command correction: that read operation does not exist in AWS CLI v2. Termination protection was then read successfully from `DescribeStacks.EnableTerminationProtection`; no update call was made. |
+
+Phase 3 did not call any mutation API. The Enrichment mutation observed in the same wall-clock window was separate user-confirmed parallel work, and the live inventory was refreshed after it completed.
