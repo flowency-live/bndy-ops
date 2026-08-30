@@ -2,7 +2,7 @@
 
 Status: **IN PROGRESS**
 
-Latest completed phase: **Phase 6 — Lambda and event-source inventory**
+Latest completed phase: **Phase 7 — Source Inspector API investigation**
 
 Audit started: `2026-08-30T20:18:29.598Z`
 
@@ -16,11 +16,11 @@ Safety boundary: this audit does not deploy, invoke Lambda functions, change inf
 
 ## 1. Executive verdict
 
-The audit is not yet complete. No final resumption or deployment verdict is issued at Phase 6.
+The audit is not yet complete. No final resumption or deployment verdict is issued at Phase 7.
 
 | Question | Verdict | Reason |
 | --- | --- | --- |
-| Is the recovered serverless API stack stable? | UNVERIFIED | It is `UPDATE_COMPLETE`, but its fresh drift diagnostic was partial and the live Source Inspector route remains pending. |
+| Is the recovered serverless API stack stable? | UNVERIFIED | It is `UPDATE_COMPLETE`; the Source Inspector route is singular/coherent but unmanaged and functionally unverified, and stack drift was partial. |
 | Is Enrichment runtime state verified? | PARTIAL | All functions are active/successful and mappings are coherent; logs, controls and schedules are still pending. The deployed Git SHA is `UNMAPPED`. |
 | Are CloudFormation owners coherent? | NO | Core stack ownership is mapped, but canonical tables and the Source Inspector route/integration have no CloudFormation owner, and two cross-repository deployment paths remain. |
 | Are automatic deployment bypasses contained? | NO | Current workflow inspection proves the Source Inspector and Capture bypasses remain armed. |
@@ -478,14 +478,51 @@ The Claims mapping starts at `LATEST`, bisects batches on error, has unlimited r
 
 ## 7. Source Inspector incident-after-incident analysis
 
-Phase 2 CI finding; live route state and CloudTrail correlation continue in Phases 7 and 13.
+### Current live API state
+
+The production HTTP API is `qry0k6pmd0`, identified from the `bndy-serverless-api` stack output and live stack resource. It currently has 271 routes and 271 integrations.
+
+| Property | Live value |
+| --- | --- |
+| Route key / ID | `POST /api/community/source/inspect` / `j9f4rqn` |
+| Integration target / ID | `integrations/x5ygbhg` / `x5ygbhg` |
+| Integration | `AWS_PROXY`, method `POST`, payload `2.0`, timeout 8,000 ms |
+| Lambda target | `bndy-source-inspector-SourceInspectorFunction-a7P9shrPou6W` |
+| Authorisation | `NONE`; API key not required; no authorizer ID |
+| Duplicates | Exactly one matching route and one integration targeting the Source Inspector Lambda |
+| Functional result | **UNVERIFIED** — the audit did not invoke the endpoint; both historical post-closure smoke jobs failed |
+
+Structural coherence does not equal managed ownership or functional health.
+
+### Template ownership
+
+- The deployed `bndy-serverless-api` template contains no `source/inspect` literal and no `AWS::ApiGatewayV2::Route` or `AWS::ApiGatewayV2::Integration` resource.
+- The deployed `bndy-source-inspector` template contains one source-inspect reference in its Lambda permission, but its only resources are the Lambda and permission. It contains no route or integration resource.
+- Therefore route `j9f4rqn` and integration `x5ygbhg` are **unmanaged CLI-created resources**. CloudFormation drift cannot assess them.
+
+### Post-closure mutation lineage
+
+Incident recovery was recorded complete at `2026-08-30T13:51:28Z`. The following direct API Gateway mutations happened after closure:
+
+| UTC | Event | Target | CloudTrail event ID | Workflow correlation |
+| --- | --- | --- | --- | --- |
+| 18:03:43 | `CreateIntegration` | `cxos6l6` → Source Inspector Lambda | `45903cad-2441-4307-b600-0f410b770711` | Run `33326965685`, session marker `sid/00153a38405e` |
+| 18:03:44 | `CreateRoute` | temporary route `yr5ji0e` → `cxos6l6` | `c0b883d4-7dc1-46d7-b577-da16683f715f` | Run `33326965685` |
+| 18:03:52 | `DeleteRoute` | route `yr5ji0e` | `5edd344e-24d7-4492-8b23-c9e3e375d73b` | Run `33326976298`, session marker `sid/f0201d73702f` |
+| 18:03:56 | `DeleteIntegration` | integration `cxos6l6` | `bab9b56a-a21a-42b3-bf10-9f8463c4e2c4` | Run `33326976298` |
+| 18:03:57 | `CreateIntegration` | current `x5ygbhg` → Source Inspector Lambda | `5315b3f4-2522-4dea-b80e-1bd48ff8a452` | Run `33326976298` |
+| 18:03:58 | `CreateRoute` | current `j9f4rqn` → `x5ygbhg` | `d96aee99-9452-434d-aebb-4e26b59cf529` | Run `33326976298` |
+
+All six events used AWS CLI 2.36.29 on a GitHub-hosted Ubuntu runner. CloudTrail identifies `userIdentity.type=Root`, principal/account `771551874768`; access-key identifiers were deliberately omitted. This is deterministic evidence that the workflow's long-lived credentials operated as the AWS account root, not merely as a named IAM deployer.
+
+### Required conclusions
 
 - **Did it run?** Yes. Two post-closure workflow-run jobs executed concurrently after separate successful-but-non-deploying `Deploy BNDY API` runs.
-- **Did it deploy?** It did not SAM-deploy Lambda code: source-change detection was false and both SAM steps were skipped. It did perform direct AWS API Gateway mutations.
-- **What changed?** Run `33326965685` reconciled `POST /api/community/source/inspect` to a new integration/route. Run `33326976298` then deleted/replaced that work and installed another integration/route.
-- **Does the route currently work?** UNVERIFIED pending Phase 7. Both historical smoke runs failed.
-- **Is automation still armed?** Yes. `deploy-source-inspector.yml` is active. Successful completion of `Deploy BNDY API` on `master` triggers it even when that workflow's deployment job is skipped. Source-code detection gates only the SAM build/deploy steps; it does not gate destructive route reconciliation.
-- **Does the recovery closure remain valid?** The closure's claim that the recovered CloudFormation stack completed successfully may remain true, but its API-route snapshot ceased to be definitive after the two direct post-closure mutations. Current route coherence must be re-proven.
+- **Did it deploy?** It did not SAM-deploy Lambda code: source-change detection was false and both SAM steps were skipped. It did directly create/delete API Gateway resources.
+- **What changed?** The first run created integration `cxos6l6` and route `yr5ji0e`; the second deleted both and installed current integration `x5ygbhg` and route `j9f4rqn`.
+- **Does the route currently work?** **UNVERIFIED.** It is structurally wired to the expected active Lambda, but both smoke jobs failed and the route was not invoked by this audit.
+- **Is automation still armed?** **Yes.** `deploy-source-inspector.yml` remains active. Successful completion of `Deploy BNDY API` on `master` triggers it even when that workflow's deployment job is skipped. Source-code detection gates only SAM build/deploy, not destructive route reconciliation.
+- **Does recovery closure remain valid?** The statement that the serverless CloudFormation recovery completed at 13:51 remains historically valid. Its route snapshot is no longer authoritative because unmanaged root-credential mutations occurred at 18:03. The recovered stack must not be called wholly stable while this route remains outside CloudFormation and functionally unverified.
 
 ## 8. Capture hot-deploy analysis
 
@@ -531,6 +568,14 @@ Pending Phase 16.
 - **Impact:** any successful completion of the main workflow can delete and recreate the route even when the main deployment was intentionally skipped. Consecutive pushes caused concurrent reconcilers to race after incident closure.
 - **Required decision:** contain the automatic trigger and establish a single CloudFormation owner before further main-branch deployment activity.
 - **HITL approval:** Yes — workflow/default-branch changes are outside this read-only audit.
+
+### P0 — Source Inspector workflow mutated production as AWS account root
+
+- **Evidence:** CloudTrail event `d96aee99-9452-434d-aebb-4e26b59cf529` and the five adjacent route/integration events identify `userIdentity.type=Root`, root ARN/principal, GitHub-runner AWS CLI user agent, and the exact workflow session markers. Access-key IDs were not recorded.
+- **Affected resource:** AWS root credential boundary and every resource reachable by the static workflow credentials; demonstrated target is the production HTTP API.
+- **Impact:** a routinely triggered repository workflow holds root-equivalent production authority, bypassing least privilege, OIDC session control and a single IaC release boundary.
+- **Required decision:** disable the automatic path, remove/rotate the root access key through the account's approved security process, and replace it only with scoped short-lived OIDC permissions after ownership is declared.
+- **HITL approval:** Yes — credential rotation, workflow containment and IAM changes require owner/security approval.
 
 ### P1 — Capture processor retains two cross-repository hot-deployment paths
 
@@ -670,3 +715,14 @@ AWS does not return a completion timestamp from `describe-stack-drift-detection-
 | Normalised deployed-template versus local `cdk.out` comparison | 0 | Exact Enrichment template equality and asset-key mapping; dirty worktree prevents a deterministic Git-SHA claim. |
 
 Because all functions have only `$LATEST`, Lambda aliases and provisioned concurrency are structurally absent: aliases require a published version, and provisioned concurrency cannot target `$LATEST`. No paid provider, product endpoint or Lambda was invoked.
+
+### Phase 7 command record
+
+| Command family | Exit | Evidence obtained |
+| --- | ---: | --- |
+| `aws apigatewayv2 get-routes --api-id qry0k6pmd0` | 0 | Current unique route ID, target, authorisation and total route count. |
+| `aws apigatewayv2 get-integrations --api-id qry0k6pmd0` | 0 | Current unique integration, Lambda target, method, payload and timeout; duplicate count. |
+| `aws cloudformation get-template` in-memory type/literal checks | 0 | Neither related deployed template owns a route or integration. |
+| `aws cloudtrail lookup-events` for `CreateRoute`, `DeleteRoute`, `CreateIntegration`, `DeleteIntegration` after closure | 0 | Six exact mutation events, IDs, order, targets, root actor and workflow-run correlation. Sensitive access-key IDs and source addresses were omitted. |
+
+No API route, Lambda or product endpoint was invoked.
