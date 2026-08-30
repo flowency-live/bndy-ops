@@ -2,7 +2,7 @@
 
 Status: **IN PROGRESS**
 
-Latest completed phase: **Phase 14 — local build, test and template checks**
+Latest completed phase: **Phase 15 — safe CDK/SAM difference report**
 
 Audit started: `2026-08-30T20:18:29.598Z`
 
@@ -16,7 +16,7 @@ Safety boundary: this audit does not deploy, invoke Lambda functions, change inf
 
 ## 1. Executive verdict
 
-The audit is not yet complete. No final resumption or deployment verdict is issued at Phase 13.
+The audit is not yet complete. No final resumption or deployment verdict is issued at Phase 15.
 
 | Question | Verdict | Reason |
 | --- | --- | --- |
@@ -840,7 +840,49 @@ Pending synthesis from Phases 6, 8–10 and 13.
 
 ## 13. CDK/SAM differences
 
-Pending Phases 14–15.
+### Phase 15 — deterministic deployed-versus-local comparison
+
+**Complete.** Deployed `Original` templates were compared in memory with clean Phase 14 SAM build output and CDK cloud assemblies. Every logical-resource set and every non-resource top-level template section matches for the current remote default heads. CDK comparisons used `--no-change-set`; no CloudFormation change set, asset publication or deployment occurred.
+
+| Repository / proposed snapshot | Deployed ↔ local resource set | Lambda code/configuration | All other required categories | Deployment consequence |
+| --- | --- | --- | --- | --- |
+| Enrichment `72a9c23` / `BndyEnrichmentStack` | 79 ↔ 79; no add/remove | `GoogleDiscoveryWorker` code asset only | No replacement, IAM, DynamoDB, stream, event-source, schedule, API route, log group, alarm or ownership change | Would update one already mapped provider worker. It does not enable a provider or canonical stream, but the full parity suite is red, so deployment remains unsafe. |
+| Serverless API `db7f508` / `bndy-serverless-api` | 37 SAM source resources ↔ 37; no add/remove; built and deployed top-level sections equal | All 27 functions have different packaged `CodeUri`; no runtime, environment, event or other function configuration delta | Full API body/270 routes, IAM, eight tables, Claims stream/mapping configuration, SSM, schedules, logs, alarms and ownership unchanged; no replacement | Would rewrite all 27 Lambda code packages from the clean head. Package hashes cannot prove equality to the unmapped deployed build, and 16 functions fail runtime lint. |
+| Serverless API `db7f508` / `bndy-source-inspector` | 2 ↔ 2; no add/remove | `SourceInspectorFunction` packaged code only | Permission unchanged; no route/integration exists in either template, so the unmanaged ownership gap remains; no replacement | Would update the Lambda but neither own nor safely repair its production route. Its additional `nodejs20.x` runtime also fails lint. |
+| Capture `7693e16` / `bndy-capture` | 13 ↔ 13; no add/remove | Both SAM functions have different packaged `CodeUri`; no configuration delta | API/domain, IAM, table, bucket, queues, event-source mapping, routes, schedules, logs, alarms and ownership unchanged; no replacement | Clean source reproduces the deployed shape, but not a deterministic deployed code hash. Both functions would be rewritten. |
+| Signals main `db85ecd` / Storage dev+prod | 3 ↔ 3 dev and 2 ↔ 2 prod; no add/remove | None | No material difference; CDK metadata analytics only under strict comparison | No application-resource change. |
+| Signals main `db85ecd` / Workflow dev+prod | 20 ↔ 20 in each; no add/remove | Five Lambda code assets differ in each environment; configuration unchanged | IAM, queue, Step Functions, event sources, schedules, logs, alarms and ownership unchanged; no replacement | Would rewrite five workflow functions per environment. |
+| Signals main `db85ecd` / API dev+prod | 66 ↔ 66 in each; no add/remove | Five Lambda code assets differ in each environment; configuration unchanged | IAM and all REST API resources/methods unchanged; no tables, streams, schedules, log groups, alarms, ownership changes or replacements | Would rewrite five API functions per environment. |
+| Signals main `db85ecd` / Source Runner dev+prod | 36 ↔ 36 in each; no add/remove | Five Lambda code assets differ in each environment; configuration unchanged | IAM, two tables, five rules, permissions, log-retention resources and ownership unchanged; no stream/event-source/alarm/replacement changes | Production template still declares all five rules `ENABLED` and Intelligence `DRY_RUN=false`; the current code-only diff does not itself list rule updates, but default-head IaC does not encode the live containment. |
+
+The SAM comparison treats local build-directory `CodeUri` values versus deployed S3 object locations as code-package differences, not semantic template differences. It does not claim that local and deployed code differ byte-for-byte; it proves that their identity cannot be deterministically mapped from the available template evidence.
+
+### Signals PR #1 safety-only delta
+
+PR #1 head `7e1456d090d841c4cb8410799c097af215397b4b` preserves the exact 36-resource Source Runner set in dev and prod. It has no additions, removals, replacements, IAM changes, DynamoDB/stream/event-source changes, API changes, log-group/alarm changes or ownership changes.
+
+| Environment | Exact proposed changes |
+| --- | --- |
+| Dev | Update five Lambda code assets and add `LEGACY_SOURCE_WRITES_ENABLED=false` to all five functions. Dev rules are already disabled and Intelligence is already dry-run. |
+| Prod | The same five code/environment updates; change KLMA, On The Case, GigsNews, ScenicEye and Intelligence EventBridge rules from `ENABLED` to `DISABLED`; change Intelligence `DRY_RUN` from `false` to `true`. |
+
+Source review proves the four legacy source handlers now default to `dryRun=true` unless the new variable is exactly `true`; the template pins it to `false`. The PR also removes the artist-community fallback writer and corrects the canonical API base variable lookup. This is fail-closed in both automatic and manual invocation paths. Phase 14 build/tests are green, but merge and deployment remain separate decisions: merging does not repair live state, and this audit does neither.
+
+### Required hazard scan
+
+| Hazard | Result |
+| --- | --- |
+| Remove a Lambda or API route | None proposed by any compared snapshot. The unmanaged Source Inspector route remains outside its template. |
+| Detach/recreate/replace a table or other stateful resource | None proposed. |
+| Enable canonical streams | None; Enrichment was synthesized with `canonicalChangeStreamsEnabled=false`, and no canonical stream parameters/resources appear. |
+| Enable a provider | No enablement delta. Enrichment would update already-wired Google worker code, so paid-provider safety still requires a separate runtime/operational decision. |
+| Enable schedules or event sources | No default-head delta. Signals PR #1 only disables five production rules. |
+| Broaden IAM | None proposed. |
+| Change ownership | None proposed; existing owner gaps therefore persist. |
+
+### Phase 15 conclusion
+
+Template shape is reproducible, but release provenance is not. “No structural difference” is not a deployment approval: Enrichment tests fail; Serverless and Source Inspector use non-updateable runtimes; several broad code-package rewrites remain unmapped; current Signals main does not encode live containment; and runtime/DLQ/alarm findings remain open. Signals PR #1 is the only bounded fail-closed template delta found.
 
 ## 14. Cowork inventory
 
@@ -888,10 +930,10 @@ Pending Phase 16.
 - **Required decision:** complete the clean SAM/deployed-template comparison and designate a reproducible release artefact/source mapping before the next deployment.
 - **HITL approval:** No for read-only validation; yes for any deployment or release-boundary change.
 
-### P1 — Serverless template contains 16 functions on a non-updateable runtime
+### P1 — Serverless templates contain 17 function definitions on a non-updateable runtime
 
-- **Evidence:** the clean default-head SAM build succeeds, but `sam validate --lint` rejects 16 explicit `nodejs20.x` resources. The lint rule records that creation was disabled on `2026-06-01` and updates on `2026-07-01`.
-- **Affected resource:** 16 Serverless API Lambda definitions and the recovery/deployment path.
+- **Evidence:** the clean default-head SAM builds succeed, but `sam validate --lint` rejects 16 explicit `nodejs20.x` resources in the main API template and the additional Source Inspector function in its dedicated template. The lint rule records that creation was disabled on `2026-06-01` and updates on `2026-07-01`.
+- **Affected resource:** 17 Lambda definitions across the two Serverless repository templates and their recovery/deployment paths.
 - **Impact:** a future recovery or feature deployment can fail even when repository tests and packaging succeed.
 - **Required decision:** migrate every explicit `nodejs20.x` function to a supported runtime, pass lint/build/tests, then review the deployed-template difference.
 - **HITL approval:** Yes for deployment; no for local remediation and validation.
@@ -1012,7 +1054,7 @@ Pending Phase 16.
 
 Pending final synthesis. No recovery action will be implemented by this audit.
 
-Checkpoint after Phase 14: Phases 1–14 are evidenced and locally committed. Phase 15 must perform deterministic deployed-versus-local CDK/SAM comparisons for Enrichment, Serverless API, Signals and Capture without creating a change set. Phase 16 must search only available BNDY operational artefacts/task exports and must state `CURRENT COWORK INVENTORY UNAVAILABLE` if no current export exists. Final synthesis must then complete Sections 1, 12, 13, 14 and 16, issue every required explicit verdict, refresh App/Backstage remote heads if they changed again, and commit without pushing.
+Checkpoint after Phase 15: Phases 1–15 are evidenced. Phase 16 must search only available BNDY operational artefacts/task exports and must state `CURRENT COWORK INVENTORY UNAVAILABLE` if no current export exists. Final synthesis must then complete Sections 1, 12, 14 and 16, issue every required explicit verdict, refresh App/Backstage remote heads if they changed again, and commit without pushing.
 
 ## 17. Evidence appendix
 
@@ -1225,3 +1267,18 @@ The six Source Inspector direct-mutation IDs are listed in Section 7 and the Pha
 | Website | install; production build | 0; 18 pages generated. |
 
 All AWS access in this phase was read-only CDK lookup. No Lambda, provider, endpoint, workflow or product operation was invoked; no change set or deployment was created.
+
+### Phase 15 command record
+
+| Command family | Exit | Evidence obtained |
+| --- | ---: | --- |
+| Local CDK synth for Signals main and PR #1 with `stage=dev` / `stage=prod` | 0 | Four clean assemblies per snapshot; only deprecation/cross-stack-reference warnings. |
+| `aws cloudformation get-template --template-stage Original` plus in-memory YAML/JSON normalisation | 0 | Deterministic logical-resource sets, top-level sections and changed top-level resource properties for all twelve deployed stacks. No template value containing a secret was emitted. |
+| Enrichment `cdk diff --no-change-set` | 0 | One Google Discovery Lambda code-asset difference only. |
+| Signals main CDK diff from dev/prod cloud assemblies, `--no-change-set` | 0 | Storage unchanged; Workflow/API/Source Runner code assets only. An initial redundant `--all` option was reported ignored; calls without it repeated the same all-stack results cleanly. |
+| Signals PR #1 Source Runner dev/prod `cdk diff --no-change-set` | 0 | Exact five-function environment/code delta and five production rule-state changes; no security broadening. |
+| Main Serverless API clean SAM build versus deployed template | 0 | Exact 37-resource and top-level configuration match after treating all 27 build-path/S3 `CodeUri` values as code identities. |
+| Source Inspector SAM lint/build and deployed comparison | Lint 1; build/compare 0 | Exact 2-resource configuration match; Lambda code location differs; the dedicated function is an additional `nodejs20.x` lint failure. |
+| Capture clean SAM build versus deployed template | 0 | Exact 13-resource and top-level configuration match after treating both `CodeUri` values as code identities. |
+
+Comparison classification was restricted to logical IDs, resource types, changed property names, route structure and explicit safety booleans. Parameter/secret values and deployed asset paths are not reproduced. No stack, function, route, table, stream, mapping, schedule, alarm or provider was modified or invoked.
