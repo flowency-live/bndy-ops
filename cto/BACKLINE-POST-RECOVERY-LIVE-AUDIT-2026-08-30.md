@@ -2,7 +2,7 @@
 
 Status: **IN PROGRESS**
 
-Latest completed phase: **Phase 9 — SSM stream-reference metadata**
+Latest completed phase: **Phase 10 — schedules and source authority**
 
 Audit started: `2026-08-30T20:18:29.598Z`
 
@@ -16,7 +16,7 @@ Safety boundary: this audit does not deploy, invoke Lambda functions, change inf
 
 ## 1. Executive verdict
 
-The audit is not yet complete. No final resumption or deployment verdict is issued at Phase 9.
+The audit is not yet complete. No final resumption or deployment verdict is issued at Phase 10.
 
 | Question | Verdict | Reason |
 | --- | --- | --- |
@@ -605,7 +605,49 @@ The three absent canonical parameters are fail-closed evidence, not an error req
 
 ## 10. Schedules and source authority
 
-Pending Phase 10.
+### EventBridge rule inventory
+
+All 19 CloudFormation-owned relevant rules have exactly their expected single target, except Lemonrock Fast Gig Tick, which intentionally has two SQS targets. No target has a dead-letter ARN or explicit retry policy; EventBridge service defaults apply. EventBridge does not expose next-fire time for rules, so “next due” is stated only where determinable from a cron expression or registry item.
+
+Metrics are CloudWatch `AWS/Events` sums from `2026-08-30T12:00:00Z` to the `21:00Z` query bound, with the latest non-zero five-minute bucket. A rule invocation count is target delivery, so the two-target Lemonrock rule records two per hourly firing.
+
+| Enrichment logical / physical rule | State | Schedule | Target / safe input | Invocations; latest bucket | Failed | Next due evidence |
+| --- | --- | --- | --- | --- | ---: | --- |
+| `CaptureScanRuleA091BC00` / `...CaptureScanRule...-WiAtLwjsqvxB` | **Enabled** | `rate(5 minutes)` | `bndy-capture-scan`; no input | 107; 20:50Z | 0 | Within five minutes; exact instant unavailable |
+| `DailyScanRule81F5C117` / `...DailyScanRule...-MkunxlY1752Y` | Enabled | `cron(15 3 * * ? *)` | Scan Planner; `entities=[]` | 0; none in window | 0 | 2026-08-31 03:15Z |
+| `LemonrockDailyHealthCheckEE745091` / `...LemonrockDailyHealthCheck...-5RArlVZSXBeJ` | Enabled | `cron(10 2 * * ? *)` | Source Scan queue; `sourceId=lemonrock-future-reconcile`, `reason=scheduled` | 0; none in window | 0 | 2026-08-31 02:10Z |
+| `LemonrockFastGigTickB23E8683` / `...LemonrockFastGigTick...-mMAx5VCnclWZ` | **Enabled** | `rate(1 hour)` | Source Scan queue ×2; `lemonrock-new-gigs` and `lemonrock-cancellations`, scheduled | 18; 20:15Z | 0 | Within one hour; exact instant unavailable |
+| `LemonrockMonthlyFutureReconcileE22F76CE` / `...LemonrockMonthlyFutureReconcile...-2PHqhpDm26dd` | Enabled | `cron(20 2 1 * ? *)` | Source Scan queue; `lemonrock-future-reconcile`, scheduled | 0 | 0 | 2026-09-01 02:20Z |
+| `OnTheCaseHourlyGigTick6AD850EB` / `...OnTheCaseHourlyGigTick...-9YMWT55dzPJ2` | **Enabled** | `rate(1 hour)` | Source Scan queue; `onthecase-gig-index`, scheduled | 9; 20:50Z | 0 | Within one hour; exact instant unavailable |
+| `SourceDispatchTick13E0B2C9` / `...SourceDispatchTick...-YkAbyNcLmjhk` | **Enabled** | `rate(1 hour)` | Source Dispatcher; no input | 9; 20:50Z | 0 | Within one hour; exact instant unavailable |
+| `SourceHealthTick0308599E` / `...SourceHealthTick...-OS4YNhRXwude` | Enabled | `rate(1 hour)` | Source Health worker; no input | 0; newly created | 0 | First firing expected after creation; API gives no timestamp |
+| `TrustLoopDailyClassification6A973B5D` / `...TrustLoopDailyClassification...-MbrXYZcDCEkH` | Enabled | `cron(35 3 * * ? *)` | Trust Loop; no input | 0 | 0 | 2026-08-31 03:35Z |
+
+| Signals environment / rule | State | Schedule / pattern | Target | Invocations / failed in window | Next due |
+| --- | --- | --- | --- | ---: | --- |
+| dev + prod `bndy-gigs-news-schedule-*` | **Disabled** | `cron(0 8 * * ? *)` | `bndy-gigs-news-runner-*` | 0 / 0 in each | None while disabled |
+| dev + prod `bndy-klma-schedule-*` | **Disabled** | `cron(0 8 * * ? *)` | `bndy-klma-runner-*` | 0 / 0 in each | None while disabled |
+| dev + prod `bndy-onthecase-schedule-*` | **Disabled** | `cron(5 3 * * ? *)` | `bndy-onthecase-runner-*` | 0 / 0 in each | None while disabled |
+| dev + prod `bndy-sceniceye-schedule-*` | **Disabled** | `cron(30 8 * * ? *)` | `bndy-sceniceye-runner-*` | 0 / 0 in each | None while disabled |
+| dev + prod `bndy-intelligence-pass-s3-trigger-*` | **Disabled** | S3 Object Created, key suffix `/run.json` | `bndy-intelligence-pass-*` | 0 / 0 in each | Event-driven; disabled |
+
+Both Signals source buckets have S3 EventBridge delivery enabled and no Lambda/SQS/SNS bucket notification. The dev bucket is owned by `BndySignals-Storage-dev`. `bndy-signals-prod-771551874768` exists and supplies the production event pattern, but CloudFormation physical-resource lookup finds **no owning stack**; it is a retained/unmanaged stateful resource even though `BndySourceRunner-prod` depends on it.
+
+EventBridge Scheduler has **zero** matching BNDY/Backline/Capture/Source/Signals schedules. The seven Lambda event-source mappings are recorded in Phase 6; no additional automation path was found there.
+
+### Effective source cadence and authority
+
+| Source | Effective AWS path | Current writer/projection gate | Last success evidence | Duplicate acquisition/writer risk |
+| --- | --- | --- | --- | --- |
+| Lemonrock | New-gigs + cancellations hourly; future health daily; future reconcile monthly; rules enabled and delivering | Registry `enabled=true`, `shadow=true`, writer `aws`; global projection false | EventBridge target delivery at 20:15Z; source-level success/log health pending Phase 12 | No Signals runner; one-off workflows/marker remain separate evidence paths |
+| On The Case | Enrichment direct hourly rule enabled; Signals dev/prod disabled and prod concurrency 0 | Registry shadow true, writer `cowork`; global projection false | EventBridge delivery at 20:50Z; source outcome pending logs | **Yes:** active Backline acquisition plus disabled Signals code and potentially Cowork |
+| KLMA | Enrichment registry dispatcher hourly; config due `2026-08-31T08:00:00Z`; Signals rules disabled/concurrency 0 | Registry shadow true, writer `cowork`, additive-only cap 500; global projection false | Registry `lastScheduledAt=2026-08-30T08:54:52Z`; outcome pending logs | **Yes:** registry, dormant Signals and potentially Cowork |
+| GigsNews | Enrichment registry dispatcher hourly; stored next due `2026-09-04T08:00:00Z`; Signals disabled/concurrency 0 | Registry shadow true, writer `cowork`; global projection false | No same-day source-success evidence yet | **Yes:** registry, dormant Signals and potentially Cowork |
+| ScenicEye | Registry source disabled; Signals rules disabled/concurrency 0 | Shadow true, writer `cowork`; global projection false | None in AWS window | Potential Cowork only; no active AWS acquisition |
+| Insangel | Registry source disabled; no Signals rule/function | Shadow true, writer `cowork`; global projection false | None in AWS | Potential Cowork only |
+| Signals intelligence pass | Dev/prod event rules disabled; production function reserved concurrency 0; S3 EventBridge emission remains enabled | `DRY_RUN` name present; value checked through template/config in canonical-write synthesis | 0 rule deliveries/failures in window | Dormant path remains template-enabled and can be reactivated by redeploy |
+
+No AWS schedule currently gives Signals canonical-writer authority. Enrichment is actively acquiring Lemonrock/On The Case and polling the registry, but its source/global controls keep canonical projection fail-closed. Current Cowork authority remains pending Phase 16 and prevents declaring the cross-system source boundary fully singular.
 
 ## 11. Queues, alarms and logs
 
@@ -688,6 +730,14 @@ Pending Phase 16.
 - **Impact:** stack termination protection does not prevent destructive table replacement during an update, and point-in-time rollback is unavailable.
 - **Required decision:** review table-level PITR/deletion protection as a bounded, non-replacement change after ownership is stable.
 - **HITL approval:** Yes for any infrastructure change; no for continued read-only work.
+
+### P2 — Production Signals source bucket has no CloudFormation owner
+
+- **Evidence:** `bndy-signals-prod-771551874768` exists with EventBridge delivery enabled and is referenced by the production intelligence event rule, but no active stack claims the bucket. The dev equivalent remains owned by `BndySignals-Storage-dev`.
+- **Affected resource:** production Signals source-run object bucket and intelligence trigger boundary.
+- **Impact:** retention, notification configuration and lifecycle changes have no current IaC authority; Source Runner depends on unmanaged state.
+- **Required decision:** designate and adopt the bucket into one Signals storage owner without replacement or object mutation.
+- **HITL approval:** Yes — stateful bucket adoption is outside this audit.
 
 ## 16. Minimum safe recovery sequence
 
@@ -824,3 +874,16 @@ No application item, user data, queue message or private evidence was read.
 | Diagnostic `BeginsWith=/bndy/` metadata query | 0 | This was broader than the required scope and returned only names/types/timestamps for six unrelated secure parameters. No value or decryption was requested; the unrelated metadata was discarded and is not reproduced. |
 
 The last command is recorded as an audit-scope deviation. It exposed no secret value and caused no mutation.
+
+### Phase 10 command record
+
+| Command family | Exit | Evidence obtained |
+| --- | ---: | --- |
+| `aws events describe-rule` and `list-targets-by-rule` for 19 rules | 0 | State, cadence/pattern, target, sanitised input, DLQ and retry configuration. |
+| `aws cloudwatch get-metric-statistics` for `AWS/Events` Invocations/FailedInvocations | 0 | Delivery/failure sums and latest five-minute delivery bucket since 12:00Z. An initial malformed dynamic dimension returned empty data; corrected dimension strings produced the recorded metrics. |
+| `aws scheduler list-schedules` | 0 | No relevant EventBridge Scheduler schedules. |
+| `aws s3api get-bucket-notification-configuration` for Signals dev/prod buckets | 0 | S3 EventBridge delivery enabled; no direct Lambda/SQS/SNS notification. |
+| CloudFormation physical-resource lookup for both Signals buckets | 0 dev; 254 prod | Dev ownership confirmed; production bucket is unmanaged. |
+| Exact source-config timestamp field reads | 0 | Preserved UTC due/last-scheduled strings without locale conversion; no other item attributes retained. |
+
+No schedule, notification, target or function was invoked or modified.
