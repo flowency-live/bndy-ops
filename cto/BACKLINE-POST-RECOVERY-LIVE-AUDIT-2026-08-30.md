@@ -2,7 +2,7 @@
 
 Status: **IN PROGRESS**
 
-Latest completed phase: **Phase 3 — CloudFormation inventory**
+Latest completed phase: **Phase 4 — fresh CloudFormation drift checks**
 
 Audit started: `2026-08-30T20:18:29.598Z`
 
@@ -16,13 +16,13 @@ Safety boundary: this audit does not deploy, invoke Lambda functions, change inf
 
 ## 1. Executive verdict
 
-The audit is not yet complete. No final resumption or deployment verdict is issued at Phase 3.
+The audit is not yet complete. No final resumption or deployment verdict is issued at Phase 4.
 
 | Question | Verdict | Reason |
 | --- | --- | --- |
-| Is the recovered serverless API stack stable? | UNVERIFIED | It is currently `UPDATE_COMPLETE`; fresh drift, route and runtime checks are pending. |
+| Is the recovered serverless API stack stable? | UNVERIFIED | It is `UPDATE_COMPLETE`, but its fresh drift diagnostic was partial and the live Source Inspector route remains pending. |
 | Is Enrichment runtime state verified? | PARTIAL | The stack is `UPDATE_COMPLETE` after user-confirmed parallel CDK work; runtime inventory is pending. |
-| Are CloudFormation owners coherent? | PARTIAL | Twelve relevant active stacks are identified; the resource-level ledger is pending. |
+| Are CloudFormation owners coherent? | PARTIAL | Twelve relevant stacks are identified; production Source Runner is drifted and the resource-level ledger is pending. |
 | Are automatic deployment bypasses contained? | NO | Current workflow inspection proves the Source Inspector and Capture bypasses remain armed. |
 | Are canonical writes proven disabled? | UNVERIFIED | Live controls, stream mappings and writer gates are pending. |
 | Is it safe to resume read-only Backline work? | NO | The required live audit is incomplete. |
@@ -239,7 +239,51 @@ The stack update timestamp changed during the broader audit window. CloudFormati
 
 ### Fresh drift
 
-Pending Phase 4. No historical drift result will be treated as current.
+Fresh detection started across all twelve relevant stacks at `2026-08-30T20:32:21Z`. All reached a terminal diagnostic status by the final observation at `20:34:20Z`. The AWS status API exposes the detection start timestamp but no completion timestamp, so the terminal observation time is the bounded completion evidence.
+
+| Stack | Detection ID | Started UTC | Detection result | Stack drift / count |
+| --- | --- | --- | --- | --- |
+| `BndyEnrichmentStack` | `e77be860-a4b1-11f1-99e5-0ab1de9238ef` | 20:32:22.502 | `DETECTION_FAILED` — 2 internal resource failures | Partial `IN_SYNC` / 0 |
+| `bndy-serverless-api` | `e8335180-a4b1-11f1-9b5e-0235bca2f88f` | 20:32:23.704 | `DETECTION_FAILED` — 2 internal resource failures | Partial `IN_SYNC` / 0 |
+| `bndy-capture` | `e8e78650-a4b1-11f1-927e-0a152873eaa7` | 20:32:24.885 | `DETECTION_COMPLETE` | `IN_SYNC` / 0 |
+| `bndy-source-inspector` | `e99cf3a1-a4b1-11f1-90bb-0a56de3189e1` | 20:32:26.074 | `DETECTION_COMPLETE` | `IN_SYNC` / 0 |
+| `BndySignals-Storage-dev` | `ea5917b0-a4b1-11f1-87af-0646abfd2b13` | 20:32:27.307 | `DETECTION_COMPLETE` | `IN_SYNC` / 0 |
+| `BndySignals-Workflow-dev` | `eb1032b0-a4b1-11f1-b653-02aa72f5b28f` | 20:32:28.507 | `DETECTION_FAILED` — 3 internal resource failures | Partial `IN_SYNC` / 0 |
+| `BndySignals-Api-dev` | `ebc551e0-a4b1-11f1-a223-06db9d8e8551` | 20:32:29.694 | `DETECTION_FAILED` — 3 internal resource failures | Partial `IN_SYNC` / 0 |
+| `BndySignals-Storage-prod` | `ec7b5b70-a4b1-11f1-9eb1-0655b2845313` | 20:32:30.887 | `DETECTION_COMPLETE` | `IN_SYNC` / 0 |
+| `BndySignals-Workflow-prod` | `ed3f95d0-a4b1-11f1-910a-0616edde641d` | 20:32:32.173 | `DETECTION_FAILED` — 1 internal resource failure | Partial `IN_SYNC` / 0 |
+| `BndySignals-Api-prod` | `ee057de0-a4b1-11f1-9357-027f98c10cf5` | 20:32:33.471 | `DETECTION_FAILED` — 1 internal resource failure | Partial `IN_SYNC` / 0 |
+| `BndySourceRunner-dev` | `eecf5d90-a4b1-11f1-86db-02d5fa2bbb37` | 20:32:34.793 | `DETECTION_FAILED` — 4 internal resource failures | Partial `IN_SYNC` / 0 |
+| `BndySourceRunner-prod` | `ef8fee70-a4b1-11f1-8320-02bc20eea893` | 20:32:36.055 | `DETECTION_FAILED` — 3 internal resource failures | Partial **`DRIFTED` / 5** |
+
+`IN_SYNC` paired with `DETECTION_FAILED` is **not** accepted as a complete clean result. AWS reported no explicit “unsupported resource type” response; the incomplete checks were all labelled `Internal Failure`. Affected logical IDs were:
+
+- Enrichment: `LemonrockMonthlyFutureReconcileE22F76CE`, `GoogleDiscoveryQueue5D916585`.
+- Serverless API: `CalendarFunctionGetCalendarSubscriptionsPermission`, `ArtistsFunctionFindOrCreateArtistPermission`.
+- Signals Workflow dev: `InterpreterFnServiceRoleDefaultPolicyEC44D895`, `PackBuilderFnServiceRoleDefaultPolicy2F13CA32`, `InterpreterFnServiceRole7337E5D1`.
+- Signals API dev: `SignalsApicandidatescandidateIdGET064A3585`, one ratify-route Lambda permission, and `EventCandidateApiFnServiceRoleA09D912F`.
+- Signals Workflow prod: `FailureHandlerFn01314552`.
+- Signals API prod: `SignalsApicandidatescandidateIdratifyAD59A5B3`.
+- Source Runner dev: `ScenicEyeRunnerFn00C951E2`, `IntelligencePassS3Trigger1516BA81` and the log-retention provider role/policy.
+- Source Runner prod: `ScenicEyeRunnerFn00C951E2`, `GigsNewsRunnerFnServiceRoleDefaultPolicy2C145578`, and `CDKMetadata`.
+
+### Production Source Runner drift details
+
+All five known differences are `NOT_EQUAL` changes at property `/State`; no resource is deleted.
+
+| Logical resource | Physical rule | Expected | Actual | Difference |
+| --- | --- | --- | --- | --- |
+| `GigsNewsSchedule476135E9` | `bndy-gigs-news-schedule-prod` | `ENABLED` | `DISABLED` | `NOT_EQUAL` |
+| `IntelligencePassS3Trigger1516BA81` | `bndy-intelligence-pass-s3-trigger-prod` | `ENABLED` | `DISABLED` | `NOT_EQUAL` |
+| `KlmaSchedule072A1EA8` | `bndy-klma-schedule-prod` | `ENABLED` | `DISABLED` | `NOT_EQUAL` |
+| `OnTheCaseSchedule2833FF2F` | `bndy-onthecase-schedule-prod` | `ENABLED` | `DISABLED` | `NOT_EQUAL` |
+| `ScenicEyeSchedule31F5D2D5` | `bndy-sceniceye-schedule-prod` | `ENABLED` | `DISABLED` | `NOT_EQUAL` |
+
+The live disabled state is fail-closed, but the deployed production template still declares all five automation paths enabled. Any ordinary stack deployment could reverse the containment. Phase 10 independently verifies the effective rule states and targets.
+
+### Drift blind spots
+
+CloudFormation drift cannot establish the health or ownership of API Gateway routes/integrations created directly by CLI. In particular, `bndy-source-inspector` owns only a Lambda and permission, while the post-closure workflow directly deleted/created the production HTTP API integration and route. A clean drift result for that stack says nothing about those unmanaged objects. Direct Lambda hot-deploy capability and one-off workflows are similarly outside stack drift; Phases 6, 7 and 13 cover those paths.
 
 ## 5. Resource ownership ledger
 
@@ -321,6 +365,14 @@ Pending Phase 16.
 - **Required decision:** diagnose after the route ownership boundary is contained; do not rerun the mutating workflow as a diagnostic.
 - **HITL approval:** Required for any remediation; not required for continued read-only investigation.
 
+### P1 — Production Source Runner template would re-enable five contained triggers
+
+- **Evidence:** fresh detection `ef8fee70-a4b1-11f1-8320-02bc20eea893` reports five `/State` differences: template `ENABLED`, live `DISABLED` for GigsNews, KLMA, On The Case, ScenicEye and the intelligence-pass S3 trigger.
+- **Affected resource:** `BndySourceRunner-prod` and its five production EventBridge rules.
+- **Impact:** current live containment is fail-closed, but deploying the current stack template can silently restore automated acquisition and intelligence processing.
+- **Required decision:** merge/adopt fail-closed IaC without deploying it automatically, then review a bounded deployment under separate approval.
+- **HITL approval:** Yes; this audit will not reconcile drift.
+
 ### P2 — Lemonrock marker mislabels a workflow SHA as deployed SHA
 
 - **Evidence:** verifier assigns `github.event.workflow_run.head_sha` to `deployedSha`; source run `33326926450` was skipped.
@@ -393,3 +445,13 @@ Phase 2 completed at `2026-08-30T20:31:00Z` (rounded command-window end). All re
 | Same | `aws cloudformation describe-termination-protection ...` | 252 | Audit-command correction: that read operation does not exist in AWS CLI v2. Termination protection was then read successfully from `DescribeStacks.EnableTerminationProtection`; no update call was made. |
 
 Phase 3 did not call any mutation API. The Enrichment mutation observed in the same wall-clock window was separate user-confirmed parallel work, and the live inventory was refreshed after it completed.
+
+### Phase 4 command record
+
+| UTC window | Command family | Exit | Evidence obtained |
+| --- | --- | ---: | --- |
+| `2026-08-30T20:32:21Z`–`20:32:36Z` | `aws cloudformation detect-stack-drift --stack-name ...` for all twelve relevant stacks | 0 | Twelve fresh diagnostic IDs. This was the explicitly authorised diagnostic mutation. |
+| `2026-08-30T20:32:37Z`–`20:34:20Z` | `aws cloudformation describe-stack-drift-detection-status --stack-drift-detection-id ...` | 0 | Terminal status, partial/complete drift status, failed logical resources and counts. Polls were spaced and stopped at terminal state. |
+| `2026-08-30T20:33:xxZ` | `aws cloudformation describe-stack-resource-drifts --stack-name BndySourceRunner-prod --stack-resource-drift-status-filters MODIFIED DELETED` | 0 | Every known expected/actual/difference for the five drifted rules. |
+
+AWS does not return a completion timestamp from `describe-stack-drift-detection-status`; `20:34:20Z` is the final terminal observation bound, not an inferred service-side completion time.
