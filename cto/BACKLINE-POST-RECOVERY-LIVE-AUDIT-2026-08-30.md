@@ -2,7 +2,7 @@
 
 Status: **IN PROGRESS**
 
-Latest completed phase: **Phase 13 — CloudTrail mutation audit**
+Latest completed phase: **Phase 14 — local build, test and template checks**
 
 Audit started: `2026-08-30T20:18:29.598Z`
 
@@ -123,6 +123,30 @@ No other scoped repository has an open PR.
 | `bndy-website` `fdf5b93` | Build passed; one-shot workboard jobs skipped. |
 | `bndy-signals`, `bndy-capture`, `bndy-MCP` | Latest recorded default-head checks passed; none is pending. |
 | `bndy-ops`, `bndy-enrichment`, `bndy-infrastructure` | GitHub reports zero check runs/status contexts on the current default head. This is “no checks reported”, not a successful check. |
+
+### Phase 14 — isolated remote-head validation
+
+All validation ran in detached, initially clean worktrees under `C:\VSProjects\_bndy-audit-validation-20260830`. Existing worktrees were not reset, cleaned, stashed, checked out or edited. Generated `cdk.out.audit` directories remain only in the isolated Enrichment and Signals worktrees as Phase 15 inputs. App and Backstage were fetched again after the user's parallel cosmetic pushes; the validated heads below supersede their earlier Phase 2 snapshot values.
+
+| Repository / immutable snapshot | Build and static gates | Tests | Template gate | Result |
+| --- | --- | --- | --- | --- |
+| Enrichment `72a9c23be73bbb347ecc3403f7f3e3211c78e9bc` | TypeScript build PASS | **FAIL:** 55/57 files and 367/369 tests passed. `klma-parity` fixture SHA expected `c036562d...` but observed `53de97b1...`; GigsNews parity contains one material `INPUT_DIFFERENCE` evidence hash plus five expected location-rule differences, so 6 differences were observed where the manifest expects 5. | CDK synth PASS via compiled entrypoint with `canonicalChangeStreamsEnabled=false`. Read-only `cdk diff --no-change-set` PASS and reports one code-asset-only change to `GoogleDiscoveryWorker`; no structural/configuration change. | **FAIL** — parity gates are not green. |
+| Serverless API `db7f5086ce5ecc88eb324fed84aad5ef0eaaec05` | `predeploy` PASS: template validation (two route-count warnings), all 270 source routes verified, 5 security tests, 6 taxonomy tests, identity sync, 5 artist-domain tests and 17 Source Inspector unit tests pass. | Included in `predeploy`. | Clean `sam build --no-cached` PASS. **`sam validate --lint` FAIL:** 16 functions explicitly use `nodejs20.x`, which became non-updateable on `2026-07-01`. | **FAIL** — repository checks pass, but the current template fails deploy lint. |
+| Signals main `db85ecd7ee05f13bdf8816c4a8652d804168ff47` | Build PASS; CDK synth PASS with deprecation/cross-stack-reference warnings. | 46 files / 750 tests PASS; one integration file / 4 tests skipped. | No deployment. | PASS. |
+| Signals PR #1 head `7e1456d090d841c4cb8410799c097af215397b4b` | Separate worktree build PASS; CDK synth PASS with the same warnings. | 46 files / 750 tests PASS; one integration file / 4 tests skipped. | Read-only review and validation only; not merged or deployed. | PASS. |
+| Capture `7693e169cc77a903eea233e4ee64f25d547c7c26` | Server TypeScript build PASS. Python `unittest` 12/12 PASS. | Server Vitest 2/2 PASS. | `sam validate --lint` PASS; clean SAM build PASS. | PASS with dependency reproducibility limitation below. |
+| MCP `5bedc487fc70241d168821021ebf53a69fb482b7` | TypeScript build PASS. | 5 files / 40 tests PASS. | Not applicable. | PASS. |
+| App `4d6e6620f307af32e41ce307d69d38430ca1959d` | Typecheck PASS; lint PASS with five warnings; production build PASS. | 35 files / 259 tests PASS. | Not applicable. | PASS. |
+| Backstage `28277ef9cd1468d2f0e03e82d2e9c3f071dae920` | Production build PASS with chunk warnings. **Typecheck FAIL** with broad incompatible/duplicate domain types. **Lint FAIL** because no ESLint configuration is discoverable. | First run: 28/31 files and 421/469 tests passed, 45 failed, 3 skipped and 16 uncaught errors. A JSON-reporter rerun varied to 43 failures in two venue-coverage files, centred on a `react-leaflet` mock missing `useMap`; the differing totals also show nondeterminism. | Not applicable. | **FAIL** — build output alone is not a reliable release gate. |
+| Website `fdf5b937546c5fb20f19cfedb6e976e6be429284` | Astro production build PASS; 18 pages and trailing-slash Brass Bands route generated. | No test script is defined. | Not applicable. | PASS for the documented build gate. |
+
+Safety context was explicit throughout: canonical table streams were synthesized disabled; canonical projection remained live fail-closed because the global control item is absent; no provider or product endpoint was invoked; no change set was created; and nothing was deployed. The Enrichment template itself still defines enabled acquisition/provider-related schedules and mappings—this is not described as “providers inactive” merely because the audit did not invoke them.
+
+Environmental and reproducibility limitations:
+
+- Capture server has no lockfile. `npm ci` correctly refused to run; dependencies were installed in the isolated worktree with `npm install --no-package-lock --no-audit --no-fund`. This changes no tracked file but prevents a lockfile-reproducible validation claim.
+- Enrichment and Signals bundling emitted CDK deprecation warnings; Enrichment also emitted an `import.meta`-under-CJS warning for `seed-wave1-sources.ts`. These did not fail synth.
+- Backstage failures reproduce at its clean remote head and are code/test-configuration failures, not consequences of the user's dirty active worktree.
 
 ### Relevant Actions runs since `2026-08-30T12:00:00Z`
 
@@ -864,6 +888,22 @@ Pending Phase 16.
 - **Required decision:** complete the clean SAM/deployed-template comparison and designate a reproducible release artefact/source mapping before the next deployment.
 - **HITL approval:** No for read-only validation; yes for any deployment or release-boundary change.
 
+### P1 — Serverless template contains 16 functions on a non-updateable runtime
+
+- **Evidence:** the clean default-head SAM build succeeds, but `sam validate --lint` rejects 16 explicit `nodejs20.x` resources. The lint rule records that creation was disabled on `2026-06-01` and updates on `2026-07-01`.
+- **Affected resource:** 16 Serverless API Lambda definitions and the recovery/deployment path.
+- **Impact:** a future recovery or feature deployment can fail even when repository tests and packaging succeed.
+- **Required decision:** migrate every explicit `nodejs20.x` function to a supported runtime, pass lint/build/tests, then review the deployed-template difference.
+- **HITL approval:** Yes for deployment; no for local remediation and validation.
+
+### P1 — Enrichment default-head parity gates fail
+
+- **Evidence:** clean remote head builds, synthesizes and passes 367/369 tests, but KLMA evidence does not match its manifest hash and GigsNews reports a material evidence-input difference in addition to five expected rule changes.
+- **Affected resource:** KLMA and GigsNews parity evidence plus the proposed `GoogleDiscoveryWorker` code asset.
+- **Impact:** donor-evidence and source-normalisation parity is not proven, so the otherwise code-only proposed Enrichment update is not safe to deploy.
+- **Required decision:** reconcile fixtures/manifests or implementation through reviewed source changes and restore the full suite to green.
+- **HITL approval:** No for local correction; yes for deployment.
+
 ### P1 — Production Source Runner template would re-enable five contained triggers
 
 - **Evidence:** fresh detection `ef8fee70-a4b1-11f1-8320-02bc20eea893` reports five `/State` differences: template `ENABLED`, live `DISABLED` for GigsNews, KLMA, On The Case, ScenicEye and the intelligence-pass S3 trigger.
@@ -952,9 +992,27 @@ Pending Phase 16.
 - **Required decision:** designate and adopt the bucket into one Signals storage owner without replacement or object mutation.
 - **HITL approval:** Yes — stateful bucket adoption is outside this audit.
 
+### P2 — Backstage default head lacks reliable validation gates
+
+- **Evidence:** its production bundle succeeds, but typecheck and lint fail; venue-coverage tests fail with an incomplete map mock and produced differing totals across two clean reruns.
+- **Affected resource:** Backstage release validation.
+- **Impact:** UI changes can appear buildable while type/test regressions are not blocked deterministically.
+- **Required decision:** establish lint configuration, reconcile shared types, repair the map mocks, and make repeat runs deterministic and green.
+- **HITL approval:** No for local correction; yes for release/deployment.
+
+### P2 — Capture server dependency resolution is not lockfile reproducible
+
+- **Evidence:** the repository has no package lock, so `npm ci` cannot run; Phase 14 required an isolated no-lock install before its passing build and tests.
+- **Affected resource:** Capture server validation and packaging inputs.
+- **Impact:** different transitive dependency versions can be resolved over time.
+- **Required decision:** commit the intended lockfile and validate with `npm ci`, Node/Python tests and clean SAM build.
+- **HITL approval:** No for repository work; yes for deployment.
+
 ## 16. Minimum safe recovery sequence
 
 Pending final synthesis. No recovery action will be implemented by this audit.
+
+Checkpoint after Phase 14: Phases 1–14 are evidenced and locally committed. Phase 15 must perform deterministic deployed-versus-local CDK/SAM comparisons for Enrichment, Serverless API, Signals and Capture without creating a change set. Phase 16 must search only available BNDY operational artefacts/task exports and must state `CURRENT COWORK INVENTORY UNAVAILABLE` if no current export exists. Final synthesis must then complete Sections 1, 12, 13, 14 and 16, issue every required explicit verdict, refresh App/Backstage remote heads if they changed again, and commit without pushing.
 
 ## 17. Evidence appendix
 
@@ -1151,3 +1209,19 @@ Relevant CloudTrail event-ID groups:
 - Authorised drift diagnostics: `95731995-...`, `2a18f272-...`, `c361ddbc-...`, `8af19512-...`, `0f1666fd-...`, `792b4ac8-...`, `f19baa34-...`, `53a3a2ad-...`, `26eae5f1-...`, `8743c1ae-...`, `4f2f0e9a-...`, `2515cfb0-...`.
 
 The six Source Inspector direct-mutation IDs are listed in Section 7 and the Phase 7 command record. No request payload containing code locations, template URLs, secret values, parameter values or access-key identifiers was retained.
+
+### Phase 14 command record
+
+| Repository | Commands | Exit / evidence |
+| --- | --- | --- |
+| Isolation | detached `git worktree add`; `git rev-parse HEAD`; `git status --short` | 0. Source snapshots were initially clean; only deliberate CDK synth output is now untracked in isolated synth worktrees. |
+| Enrichment | `npm ci`; build; full and targeted tests; compiled-entrypoint CDK synth; `cdk diff --no-change-set -c canonicalChangeStreamsEnabled=false` | Install/build/synth/diff 0; tests 1. One `GoogleDiscoveryWorker` code asset delta only. |
+| Serverless API | `npm ci`; `npm run predeploy`; `sam validate --lint`; `sam build --no-cached` | Install/predeploy/build 0; lint 1 on 16 `nodejs20.x` resources. |
+| Signals main / PR #1 | `npm ci`; build; tests; CDK synth in separate detached worktrees | 0 for both; no merge/deploy. |
+| Capture | attempted `npm ci`; no-lock install; Node build/tests; Python `unittest`; SAM lint/build | Expected `npm ci` EUSAGE because no lockfile; all subsequent gates 0. |
+| MCP | install; build; tests | 0; 40 tests pass. |
+| App | install; typecheck; lint; tests; production build | 0; 259 tests pass and lint has five warnings. |
+| Backstage | install; typecheck; lint; two test runs; production build | Build 0; typecheck/lint/tests 1 as detailed in Section 3. |
+| Website | install; production build | 0; 18 pages generated. |
+
+All AWS access in this phase was read-only CDK lookup. No Lambda, provider, endpoint, workflow or product operation was invoked; no change set or deployment was created.
