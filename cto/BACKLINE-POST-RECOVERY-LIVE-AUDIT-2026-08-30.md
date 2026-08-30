@@ -2,7 +2,7 @@
 
 Status: **IN PROGRESS**
 
-Latest completed phase: **Phase 12 — alarms and logs**
+Latest completed phase: **Phase 13 — CloudTrail mutation audit**
 
 Audit started: `2026-08-30T20:18:29.598Z`
 
@@ -16,11 +16,11 @@ Safety boundary: this audit does not deploy, invoke Lambda functions, change inf
 
 ## 1. Executive verdict
 
-The audit is not yet complete. No final resumption or deployment verdict is issued at Phase 12.
+The audit is not yet complete. No final resumption or deployment verdict is issued at Phase 13.
 
 | Question | Verdict | Reason |
 | --- | --- | --- |
-| Is the recovered serverless API stack stable? | UNVERIFIED | It is `UPDATE_COMPLETE`; the Source Inspector route is singular and demonstrably responsive but unmanaged, Source Runs recorded 14 Lambda errors, and stack drift was partial. |
+| Is the recovered serverless API stack stable? | UNVERIFIED | It is `UPDATE_COMPLETE`, but a post-closure local SAM deploy rewrote 23 functions from an `UNMAPPED` source; Source Inspector is responsive but unmanaged, Source Runs recorded 14 errors, and drift was partial. |
 | Is Enrichment runtime state verified? | NO | The source-freshness alarm is live `ALARM`, Projection has 37 DLQ messages/111 application error records, and the deployed Git SHA is `UNMAPPED`. Controls remain fail-closed. |
 | Are CloudFormation owners coherent? | NO | Core stack ownership is mapped, but canonical tables and the Source Inspector route/integration have no CloudFormation owner, and two cross-repository deployment paths remain. |
 | Are automatic deployment bypasses contained? | NO | Current workflow inspection proves the Source Inspector and Capture bypasses remain armed. |
@@ -785,6 +785,31 @@ For every row below the log group is `/aws/lambda/<function>`. Stored bytes are 
 
 At phase end, 16 functions had no log group, 10 Source Runner business functions retained logs for 30 days, two CDK retention helpers retained one day, and all other existing Lambda groups retained indefinitely. The API access group `/aws/apigateway/bndy-api` also retains indefinitely, stores approximately 30.8 MB and was last active at 21:01:38Z.
 
+### Phase 13 — CloudTrail mutation audit
+
+Event history was queried from `2026-08-30T12:00:00Z` through phase end. AWS records current Lambda mutations under versioned event names such as `UpdateFunctionCode20150331v2`; both the requested unversioned names and the service's actual names were checked. Targets and actors below are sanitised; request templates, parameter values, secret values, source addresses and access-key IDs are omitted.
+
+| UTC window | Mutation boundary | Actor / source | Current classification | After 13:51:28Z closure? | Boundary result |
+| --- | --- | --- | --- | --- | --- |
+| 13:45:37–13:51:49 | `bndy-serverless-api` surgical auth recovery: change set created/executed; Users/Uploads configuration and code updated; permissions restored | `bndy-deployer`, local AWS CLI/CloudFormation | Expected incident-recovery work documented by the closure report; final permission events completed seconds after the recorded closure instant | Partly | Owner-coherent CloudFormation recovery; no separate bypass |
+| 16:06:42–16:08:49 | `bndy-serverless-api` SAM change set created/executed; **23 Lambda code packages** updated | `bndy-deployer`, local SAM CLI 1.159.1 on Windows | Post-closure deployment, not a GitHub workflow. CloudTrail/CloudFormation cannot map its local build deterministically to a clean Git SHA, so revision is `UNMAPPED` | **Yes** | Correct owning stack, but recovery snapshot/source provenance superseded |
+| 16:35:37–16:38:55 | `bndy-capture` SAM change set created/executed; WhatsApp secret, DLQ/queue, worker, event mapping and webhook permissions created; Capture Lambda/API updated | `bndy-deployer`, local SAM CLI 1.159.1 on Windows | Post-closure feature deployment; no Capture GitHub run in the audit window and deployed revision remains `UNMAPPED` pending deterministic build comparison | **Yes** | Correct owning stack; not either serverless hot-deploy bypass |
+| 18:03:43–18:03:58 | Two direct Source Inspector reconcilers created/deleted/recreated the production integration and route | AWS account root via GitHub-hosted AWS CLI; runs `33326965685` / `33326976298` | Uncontrolled post-closure mutation; exact six-event lineage is in Section 7 | **Yes** | **Violation:** unmanaged direct CLI path and root credential boundary |
+| 18:44:06 | `surgical-sourceruns-db7f5086-20260830194405` change set created but not executed | `bndy-deployer`, local AWS CLI | Still `CREATE_COMPLETE / AVAILABLE`; would modify HTTP API body and Source Runs Lambda code without replacement | **Yes** | No live resource changed, but an executable stale release artefact remains |
+| 20:08:27–20:10:34 | `BndyEnrichmentStack` CDK change set created/executed; 11 existing Lambda packages updated; Source Health worker/rule/alarm created | scoped CDK deploy/execution roles, local `aws-cdk-jason` session | User-confirmed parallel Enrichment deployment; explicitly excluded from incident/unauthorised findings and adopted as live baseline | **Yes** | Correct owning stack and scoped role; deployment exposed live freshness ALARM |
+| 20:32:22–20:32:36 | Twelve `DetectStackDrift` diagnostics | `bndy-deployer`, local AWS CLI 2.28.24 | This audit's explicitly authorised diagnostic operation | **Yes** | Expected diagnostic; no remediation or resource update |
+
+#### Mutation coverage and negatives
+
+- The serverless 16:08 update generated 23 `UpdateFunctionCode20150331v2` events at 16:08:36Z. It changed code only in stack events; no table, event-source mapping or schedule mutation accompanied it.
+- The Capture path generated `CreateSecret`, two `CreateQueue`, `CreateFunction20150331`, `CreateEventSourceMapping20150331`, Capture-function code/configuration updates and two permission additions. The secret's name only was observed; no secret value was read.
+- The Enrichment update generated 11 code updates, one Google Discovery configuration update, `CreateFunction20150331`, `PutRule`, `PutTargets`, `PutMetricAlarm` and a Lambda permission. These correlate exactly with its stack events.
+- No relevant `UpdateStack`, `CreateStack`, direct/unversioned `UpdateFunctionCode`, direct/unversioned `UpdateFunctionConfiguration`, mapping update/delete, `UpdateTable`, `PutParameter` or `PutSecretValue` event occurred in the window.
+- Broadened destructive checks found no relevant stack/function/table/queue/rule/schedule deletion, target removal, queue purge, queue-attribute change, API/stage direct update, bucket-notification update, concurrency change, alarm deletion or secret deletion.
+- The named Capture hot-deploy workflows did not mutate the processor. Its only 30 August code event is `cb737d49-...` at 20:08:49Z, invoked by the Enrichment CloudFormation execution role during the user-confirmed deploy.
+
+CloudTrail therefore disproves any claim that recovery closure was the final production mutation. It also distinguishes owner-coherent post-closure deployments from the Source Inspector's direct/root bypass; the former are provenance problems, not evidence of an unauthorised actor.
+
 ## 12. Canonical-write safety
 
 Pending synthesis from Phases 6, 8–10 and 13.
@@ -830,6 +855,14 @@ Pending Phase 16.
 - **Impact:** default head cannot be treated as fully green. The route is responsive in aggregate access logs, but the expected smoke contract remains unverified.
 - **Required decision:** diagnose after the route ownership boundary is contained; do not rerun the mutating workflow as a diagnostic.
 - **HITL approval:** Required for any remediation; not required for continued read-only investigation.
+
+### P1 — Post-closure serverless deployment rewrote 23 functions from an unmapped source
+
+- **Evidence:** change-set events `d29efce5-...` / `909c18e5-...`, SAM CLI description and 23 `UpdateFunctionCode20150331v2` events at 16:08:36Z; stack events show all completed. This was a local Windows SAM deployment by `bndy-deployer`, not a GitHub run, and no clean Git SHA is deterministically attached.
+- **Affected resource:** 23 `bndy-serverless-api` Lambda functions and the production API release baseline.
+- **Impact:** the 13:51 recovery report is not current code-provenance evidence. Although the update used the correct owning stack, current production code cannot yet be asserted equal to the current default branch.
+- **Required decision:** complete the clean SAM/deployed-template comparison and designate a reproducible release artefact/source mapping before the next deployment.
+- **HITL approval:** No for read-only validation; yes for any deployment or release-boundary change.
 
 ### P1 — Production Source Runner template would re-enable five contained triggers
 
@@ -886,6 +919,22 @@ Pending Phase 16.
 - **Impact:** the operational read surface had a 24.1% function-error rate over the window without an alarm. The later clean calls reduce current severity, but root cause remains unknown.
 - **Required decision:** correlate application/request context through the normal owner process without exposing tokens or user data; add an appropriate error-rate alarm after confirming expected failure semantics.
 - **HITL approval:** No for read-only diagnosis; yes for code, deployment or alarm changes.
+
+### P2 — An executable post-closure Source Runs change set remains available
+
+- **Evidence:** change-set event `0605a0bb-...`; live `describe-change-set` reports `CREATE_COMPLETE / AVAILABLE`, description naming commit `db7f5086`, with non-replacement modifications to `BndyHttpApi.Body` and `SourceRunsFunc.Code`. No matching execution event exists.
+- **Affected resource:** `bndy-serverless-api` HTTP API definition and Source Runs Lambda.
+- **Impact:** a stale manual release artefact can still be executed later and bypass a newly reviewed build; the descriptive commit label is not deterministic deployed-artifact proof.
+- **Required decision:** owner must decide whether to delete or supersede it after review; do not execute it as part of recovery.
+- **HITL approval:** Yes — deleting or executing a change set changes AWS state and is outside this audit.
+
+### P2 — Capture's post-closure feature deployment has unmapped Git provenance
+
+- **Evidence:** local SAM change-set events `443ecfd2-...` / `c506e626-...` created the WhatsApp secret, queues, worker, mapping and permissions and updated Capture Lambda/API at 16:36Z–16:38Z; no Capture GitHub run occurred in the window.
+- **Affected resource:** `bndy-capture` stack and its WhatsApp admission path.
+- **Impact:** ownership is coherent and no hot-deploy bypass ran, but the deployed revision cannot yet be attributed to a clean repository SHA.
+- **Required decision:** use the clean Phase 14/15 build/template comparison to establish whether current remote source reproduces the deployed shape; retain `UNMAPPED` if not deterministic.
+- **HITL approval:** No for read-only comparison; yes for any redeploy.
 
 ### P2 — Recovered entity tables lack table-level recovery protections
 
@@ -1079,3 +1128,26 @@ No queue message was received, inspected, moved, deleted, purged or redriven.
 | API Gateway stage inspection, aggregate API metrics and access-log Insights query `0dd0d232-...` | 0 | Access logging configuration, disabled per-route detailed metrics, stage-level traffic/errors, and exact Source Inspector route response-status counts without request IDs, errors or bodies. |
 
 No log message body, request ID, user identifier, token, queue message or entity payload was emitted into the audit evidence. Logs Insights operations were read-only and restricted to the audit window.
+
+### Phase 13 command record
+
+| Command family | Exit | Evidence obtained |
+| --- | ---: | --- |
+| `aws cloudtrail lookup-events` by every required event name from 12:00Z | 0 after correction | Change-set, route/integration, rules/targets, table, SSM and secret-value mutation coverage. An initial PowerShell loop passed the variable name literally inside the lookup expression and returned false zero counts; quoting the full expression corrected it. |
+| Lookup of AWS's actual versioned Lambda event names | 0 | 37 code updates, four configuration updates, one mapping creation, eight permission additions, and zero mapping update/delete. |
+| Broadened destructive/configuration event-name lookup | 0 | No relevant stack/function/table/queue/rule/schedule deletions, removals, purge, direct API/stage update, bucket notification, concurrency or secret deletion. |
+| Resource-name lookup for Source Runs, Capture processor, WhatsApp worker and Source Health | 0 | Correlated versioned API event names and exact CloudFormation actors; ordinary Lambda execution-role assumptions were discarded. |
+| `aws cloudformation describe-stack-events` after closure | 0 after correction | Exact resource-level effects and terminal status for serverless, Capture and Enrichment deployments. An initial local `DateTime`/`DateTimeOffset` comparison emitted conversion errors; comparison was corrected to UTC `DateTime` and no AWS call was repeated mutatively. |
+| `aws cloudformation list-change-sets` and `describe-change-set` | 0 | Proved the Source Runs change set remains executable and has exactly two non-replacement modifications. No change set was created or executed by the audit. |
+| `lookup-events` for `DetectStackDrift` | 0 | Correlated the twelve authorised diagnostic operations with Phase 4. |
+
+Relevant CloudTrail event-ID groups:
+
+- Recovery auth change set: `f60aff53-...`, `bffc6012-...`; Users/Uploads configuration `04f145ba-...`, `5afce1d5-...`; code `a578e9c6-...`, `f2ad9d84-...`.
+- Post-closure serverless SAM deploy: `d29efce5-...`, `909c18e5-...`; code events `f8d709ae-...`, `eb683a11-...`, `ea0e9463-...`, `debf7423-...`, `ca94bc12-...`, `c0179d12-...`, `72d39075-...`, `b6347a3f-...`, `b3423a2f-...`, `a4780f05-...`, `967e8544-...`, `8fa66740-...`, `79702a6f-...`, `78f93f52-...`, `fc235de9-...`, `bda21e77-...`, `6346c02c-...`, `42fb86a9-...`, `39cb5744-...`, `2a02de73-...`, `093058e3-...`, `01b8265f-...`, `578f5146-...`.
+- Capture deploy: `443ecfd2-...`, `c506e626-...`; secret `4869b420-...`; queues `8c010fc2-...`, `e5c25ac9-...`; worker `abbd3efa-...`; mapping `eb50272f-...`; Capture code/config `ac758448-...`, `f8ee30b5-...`; permissions `2ef02141-...`, `fe43be3f-...`.
+- Available Source Runs change set: `0605a0bb-66c4-4d4c-b6b8-7314cf62e6a6`.
+- User-confirmed Enrichment deploy: `f206d59c-...`, `72437377-...`; Source Health create/rule/target/alarm/permission `d3ef0421-...`, `d64a89e6-...`, `8b7c73bb-...`, `95fcae0e-...`, `fb6f39a3-...`; existing-function code events are correlated in the Lambda ledger.
+- Authorised drift diagnostics: `95731995-...`, `2a18f272-...`, `c361ddbc-...`, `8af19512-...`, `0f1666fd-...`, `792b4ac8-...`, `f19baa34-...`, `53a3a2ad-...`, `26eae5f1-...`, `8743c1ae-...`, `4f2f0e9a-...`, `2515cfb0-...`.
+
+The six Source Inspector direct-mutation IDs are listed in Section 7 and the Phase 7 command record. No request payload containing code locations, template URLs, secret values, parameter values or access-key identifiers was retained.
