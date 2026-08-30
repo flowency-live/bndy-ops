@@ -2,7 +2,7 @@
 
 Status: **IN PROGRESS**
 
-Latest completed phase: **Phase 7 — Source Inspector API investigation**
+Latest completed phase: **Phase 8 — DynamoDB ownership, streams and controls**
 
 Audit started: `2026-08-30T20:18:29.598Z`
 
@@ -16,7 +16,7 @@ Safety boundary: this audit does not deploy, invoke Lambda functions, change inf
 
 ## 1. Executive verdict
 
-The audit is not yet complete. No final resumption or deployment verdict is issued at Phase 7.
+The audit is not yet complete. No final resumption or deployment verdict is issued at Phase 8.
 
 | Question | Verdict | Reason |
 | --- | --- | --- |
@@ -537,7 +537,62 @@ Phase 2 result:
 
 ## 9. DynamoDB, streams and SSM
 
-Pending Phases 8–9.
+### Phase 8 — DynamoDB metadata
+
+All 19 relevant tables are `ACTIVE` and `PAY_PER_REQUEST`; all reported GSIs are `ACTIVE`. Counts and sizes are DynamoDB control-plane estimates, not scan results. No table was scanned or exported.
+
+| Owner / logical ID | Physical table | Created UTC | Keys; GSIs | Stream | TTL | PITR / deletion protection | Items / bytes |
+| --- | --- | --- | --- | --- | --- | --- | ---: |
+| Enrichment / `StateTable9728C7E5` | `BndyEnrichmentStack-StateTable9728C7E5-14HR6N3NEWGLM` | 2026-08-11 13:49:59 | `pk` HASH, `sk` RANGE; ObservationClaims, SourceSchedule, SubjectClaims | None | Enabled `expiresAt` | Enabled / **No** | 3,046,863 / 2,673,375,521 |
+| Serverless / `ActivityLogTable` | `bndy-activity-log` | 2026-08-11 16:42:11 | `user_id` HASH, `sk` RANGE; AllByTime | None | Disabled | Disabled / No | 459 / 110,645 |
+| Serverless / `ClaimsTable` | `bndy-claims` | 2026-08-21 22:53:05 | `claim_id` HASH; ByUser, ByTarget, ByStatus | None | Disabled | Disabled / No | 0 / 0 |
+| Serverless / `EntityClaimsTable` | `bndy-entity-claims` | 2026-08-24 19:35:27 | `claim_id` HASH; user_id-index, entity_key-index | `NEW_AND_OLD_IMAGES`; `bndy-entity-claims/2026-08-29T16:15:10.440` | Disabled | Disabled / No | 1 / 441 |
+| Serverless / `EntityMembershipsTable` | `bndy-entity-memberships` | 2026-08-24 19:33:09 | `membership_id` HASH; user_id-index, entity_id-index | None | Disabled | Disabled / No | 0 / 0 |
+| Serverless / `EntityInvitesTable` | `bndy-entity-invites` | 2026-08-24 20:14:02 | `token` HASH; no GSI | None | Enabled `expires_at` | Disabled / No | 0 / 0 |
+| Serverless / `JoinAnalyticsTable` | `bndy-join-analytics` | 2026-08-24 20:22:14 | `id` HASH; no GSI | None | Enabled `expires_at` | Disabled / No | 62 / 11,985 |
+| Serverless / `FlagsTable` | `bndy-flags` | 2026-08-11 16:58:18 | `id` HASH; ByStatus | None | Disabled | Disabled / No | 1 / 370 |
+| Serverless / `UniqueKeysTable` | `bndy-unique-keys` | 2026-07-27 17:35:32 | `key` HASH; no GSI | None | Disabled | Disabled / No | 18,276 / 3,184,929 |
+| Capture / `CapturesTable` | `bndy-capture-CapturesTable-7YKTGU5HDPA4` | 2026-08-02 20:54:00 | `id` HASH; status-receivedAt-index | None | Enabled `expiresAt` | Enabled / No | 194 / 155,199 |
+| Signals Storage dev / `SignalsTableE8D63F6D` | `bndy-signals-dev` | 2026-05-01 23:05:33 | `PK` HASH, `SK` RANGE; GSI1, GSI2 | None | Disabled | Enabled / No | 251 / 241,623 |
+| Signals Storage prod / `SignalsTableE8D63F6D` | `bndy-signals-prod` | 2026-06-17 13:36:07 | `PK` HASH, `SK` RANGE; GSI1, GSI2 | None | Disabled | Enabled / No | 0 / 0 |
+| Source Runner dev / `SourceStateTable69DA611C` | `bndy-source-state-dev` | 2026-06-16 10:22:06 | `PK` HASH, `SK` RANGE; no GSI | None | Disabled | Enabled / No | 0 / 0 |
+| Source Runner dev / `SourceReviewTableE031BB9A` | `bndy-source-review-dev` | 2026-06-16 10:22:05 | `PK` HASH, `SK` RANGE; GSI1-Status | None | Disabled | Enabled / No | 0 / 0 |
+| Source Runner prod / `SourceStateTable69DA611C` | `bndy-source-state-prod` | 2026-06-15 19:22:57 | `PK` HASH, `SK` RANGE; no GSI | None | Disabled | Enabled / No | 0 / 0 |
+| Source Runner prod / `SourceReviewTableE031BB9A` | `bndy-source-review-prod` | 2026-06-15 19:22:56 | `PK` HASH, `SK` RANGE; GSI1-Status | None | Disabled | Enabled / No | 0 / 0 |
+| **Unmanaged** / none | `bndy-artists` | 2025-09-25 15:48:52 | `id` HASH; name-search-index | None | Disabled | Enabled / **Yes** | 3,422 / 2,762,864 |
+| **Unmanaged** / none | `bndy-venues` | 2025-09-25 15:48:42 | `id` HASH; managed_by_user_id-index, ownerGroupId-index | None | Disabled | Enabled / **Yes** | 3,496 / 2,543,280 |
+| **Unmanaged** / none | `bndy-events` | 2025-10-05 22:18:53 | `id` HASH; 7 active indexes for owner/date, festival, geo, artist, venue and slug | None | Disabled | Enabled / **Yes** | 10,235 / 6,065,506 |
+
+### Imported-table ownership and drift
+
+`EntityClaimsTable`, `EntityMembershipsTable`, `EntityInvitesTable`, and `JoinAnalyticsTable` are current `UPDATE_COMPLETE` resources in `bndy-serverless-api`; each resource reports `IN_SYNC` in the fresh drift snapshot. This confirms the recovery imports remain attached to that stack. The stack-level diagnostic was partial only because two unrelated Lambda permissions returned internal drift-handler failures.
+
+### Stream state
+
+- `bndy-entity-claims` is the sole relevant table with a stream. It uses `NEW_AND_OLD_IMAGES`, matches the enabled Claim Authority mapping exactly and is published through `/bndy/claims/stream-arn` (metadata consistency checked in Phase 9).
+- Canonical `bndy-artists`, `bndy-venues`, and `bndy-events` streams are **disabled**, and Phase 6 found no canonical stream mappings.
+- No relevant table has an unexpected second stream or consumer.
+
+### Exact permitted control reads
+
+The exact consistent read of `CONTROL#PROJECTION / GLOBAL` returned no item. Repository runtime code in `DynamoProjectionControlStore.canonicalWritesEnabled()` selects only `canonicalWritesEnabled` and returns true only for an explicit boolean `true`; an absent item therefore fails closed to **canonical projection disabled**.
+
+Exact `SOURCE#<id> / CONFIG` reads were limited to the ten in-scope safety records and reported only control fields:
+
+| Source config | Enabled | Shadow | Writer authority | Runtime / local time | Safety note |
+| --- | --- | --- | --- | --- | --- |
+| Lemonrock new gigs, cancellations, artist index, venue index, future reconcile | Yes | **Yes** | `aws` | standard / 05:00 | All fail closed before projection because shadow is true. |
+| `onthecase-gig-index` | Yes | **Yes** | `cowork` | standard / 02:40 | Shadow plus non-AWS writer authority. |
+| `gigs-news-daily-import` | Yes | **Yes** | `cowork` | standard / 09:00 | Registry item has a future due time; live rule/function containment checked in Phase 10. |
+| `klma-stoke-gig-list` | Yes | **Yes** | `cowork` | standard / 09:00 | Additive-only policy, max 500 actions, but global/source gates still stop projection. |
+| `sceniceye-daily-import` | **No** | **Yes** | `cowork` | browser / 09:00 | Disabled; stored due time is stale and not authority by itself. |
+| `insangel-daily-import` | **No** | **Yes** | `cowork` | standard / 06:00 | Disabled; stored due time is stale and not authority by itself. |
+
+These exact records prove the current Backline projection engine is fail-closed for the named sources. They do not yet prove every external Signals/Cowork writer is contained.
+
+### Phase 9 SSM
+
+Pending.
 
 ## 10. Schedules and source authority
 
@@ -616,6 +671,14 @@ Pending Phase 16.
 - **Impact:** readers can falsely conclude that commit `3d6f242` is deployed.
 - **Required decision:** replace the field with a deterministic deployed artifact mapping or explicitly use `UNMAPPED`.
 - **HITL approval:** Yes for repository correction; no for documenting the discrepancy.
+
+### P2 — Recovered entity tables lack table-level recovery protections
+
+- **Evidence:** `bndy-entity-claims`, `bndy-entity-memberships`, `bndy-entity-invites` and `bndy-join-analytics` are CloudFormation-owned and in sync, but all have PITR disabled and deletion protection false. Only the parent stack has termination protection.
+- **Affected resource:** the four imported serverless API tables.
+- **Impact:** stack termination protection does not prevent destructive table replacement during an update, and point-in-time rollback is unavailable.
+- **Required decision:** review table-level PITR/deletion protection as a bounded, non-replacement change after ownership is stable.
+- **HITL approval:** Yes for any infrastructure change; no for continued read-only work.
 
 ## 16. Minimum safe recovery sequence
 
@@ -726,3 +789,17 @@ Because all functions have only `$LATEST`, Lambda aliases and provisioned concur
 | `aws cloudtrail lookup-events` for `CreateRoute`, `DeleteRoute`, `CreateIntegration`, `DeleteIntegration` after closure | 0 | Six exact mutation events, IDs, order, targets, root actor and workflow-run correlation. Sensitive access-key IDs and source addresses were omitted. |
 
 No API route, Lambda or product endpoint was invoked.
+
+### Phase 8 command record
+
+| Command family | Exit | Evidence obtained |
+| --- | ---: | --- |
+| `aws dynamodb describe-table --table-name ...` for 19 relevant tables | 0 | Status, creation, billing, keys, GSIs, streams, deletion protection, control-plane item counts and sizes. |
+| `aws dynamodb describe-time-to-live --table-name ...` | 0 | TTL state and attribute name. |
+| `aws dynamodb describe-continuous-backups --table-name ...` | 0 | PITR status. |
+| `aws cloudformation describe-stack-resource` for the four imported tables | 0 | Current stack ownership/status and resource-level `IN_SYNC`. |
+| `aws dynamodb get-item` for `CONTROL#PROJECTION / GLOBAL` | 0, no item | Explicit fail-closed global control evidence. |
+| Ten exact `SOURCE#<id> / CONFIG` consistent reads | 0 | Only enabled/shadow/writer/schedule/runtime/projection safety fields were retained. No source/table scan occurred. |
+| Read-only source inspection of `control-store.ts` and source registry definitions | 0 | Proved absence of the control item evaluates false and identified exact permitted source keys. |
+
+No application item, user data, queue message or private evidence was read.
