@@ -2,7 +2,7 @@
 
 Status: **IN PROGRESS**
 
-Latest completed phase: **Phase 4 — fresh CloudFormation drift checks**
+Latest completed phase: **Phase 5 — deployed templates and ownership ledger**
 
 Audit started: `2026-08-30T20:18:29.598Z`
 
@@ -16,13 +16,13 @@ Safety boundary: this audit does not deploy, invoke Lambda functions, change inf
 
 ## 1. Executive verdict
 
-The audit is not yet complete. No final resumption or deployment verdict is issued at Phase 4.
+The audit is not yet complete. No final resumption or deployment verdict is issued at Phase 5.
 
 | Question | Verdict | Reason |
 | --- | --- | --- |
 | Is the recovered serverless API stack stable? | UNVERIFIED | It is `UPDATE_COMPLETE`, but its fresh drift diagnostic was partial and the live Source Inspector route remains pending. |
 | Is Enrichment runtime state verified? | PARTIAL | The stack is `UPDATE_COMPLETE` after user-confirmed parallel CDK work; runtime inventory is pending. |
-| Are CloudFormation owners coherent? | PARTIAL | Twelve relevant stacks are identified; production Source Runner is drifted and the resource-level ledger is pending. |
+| Are CloudFormation owners coherent? | NO | Core stack ownership is mapped, but canonical tables and the Source Inspector route/integration have no CloudFormation owner, and two cross-repository deployment paths remain. |
 | Are automatic deployment bypasses contained? | NO | Current workflow inspection proves the Source Inspector and Capture bypasses remain armed. |
 | Are canonical writes proven disabled? | UNVERIFIED | Live controls, stream mappings and writer gates are pending. |
 | Is it safe to resume read-only Backline work? | NO | The required live audit is incomplete. |
@@ -287,7 +287,69 @@ CloudFormation drift cannot establish the health or ownership of API Gateway rou
 
 ## 5. Resource ownership ledger
 
-Pending Phase 5.
+### Deployed template evidence
+
+The current `Original` template body was retrieved for every relevant stack. Digests are SHA-256 over the returned body; JSON-bodied CDK templates were normalised through the local JSON parser before hashing, while string/YAML bodies were hashed as returned. These are evidence locators, not claims that local repository heads match production.
+
+| Stack | Template digest | Deployed resources |
+| --- | --- | ---: |
+| `BndyEnrichmentStack` | `a6715ffaf7e2e5c5e3aaba0f55922b94c079399de9a1c4610868478aafb0fac0` | 79 |
+| `bndy-serverless-api` | `6fe1123a18ebacecf756b0259d8abf577ae4baf826583295a69a0689e126eeb9` | 308 |
+| `bndy-capture` | `970c8fd9593cfed308973b773557a34d00186165da83d8b7bbe8914d8ded5317` | 30 |
+| `bndy-source-inspector` | `29fa574026f75b97e0077af3abf038d221a37aeed91ae6eee44bfcb80d07d286` | 2 |
+| `BndySignals-Storage-dev` | `73285a13e9aacfe7f9ef44852015df55caba8939986e623a7c35146821112b2d` | 3 |
+| `BndySignals-Workflow-dev` | `946b2ae95dbe2e68a05d325c3036a09dc4610c01b7ecc67c119f727beff61360` | 20 |
+| `BndySignals-Api-dev` | `7c030b93dc0b6349feafacf227db66b8a2e28b45f2c4ede63a3f48b3c80e51aa` | 66 |
+| `BndySignals-Storage-prod` | `cffc7eccd86dceb47921473497985fceba4071d72a52d74d07d8dea432806ca2` | 2 |
+| `BndySignals-Workflow-prod` | `00d46778c160971facbeea84fc42b1fe9359f54f5f901291272b233a01719284` | 20 |
+| `BndySignals-Api-prod` | `ff09717c11baae0ea69ad67dc96a11ade71591c794c4f8003cb9292282190745` | 66 |
+| `BndySourceRunner-dev` | `a6442369215e3d5450b3b78bd0e6b71b8dca1e9b17a78f6f98e61a93d7f1bd2f` | 36 |
+| `BndySourceRunner-prod` | `38b8b68533b99edb62cb155578780bdcce928cb42824264f01f198b247611678` | 36 |
+
+### Authoritative ownership ledger
+
+“Collision” includes a second deployment path, ambiguous source authority, or missing IaC ownership; it does not assert that two stacks currently claim the same physical ID.
+
+| Resource domain | Physical resource | Logical ID | Owning stack | Intended repository | Evidence | Collision |
+| --- | --- | --- | --- | --- | --- | --- |
+| Backline state | `BndyEnrichmentStack-StateTable9728C7E5-14HR6N3NEWGLM` | `StateTable9728C7E5` | `BndyEnrichmentStack` | `bndy-enrichment` | Deployed template + stack resource | No |
+| Evidence | `bndyenrichmentstack-evidencebucketfba44255-evhoeotjgvyv` | `EvidenceBucketFBA44255` | `BndyEnrichmentStack` | `bndy-enrichment` | Deployed template + stack resource | No |
+| Browser scan queue/DLQ | `...BrowserScanQueue4C491B38-D0v3HZOZEo7V`; `...BrowserScanDLQF60E07F4-NsXNGs23lnLA` | `BrowserScanQueue4C491B38`; `BrowserScanDLQF60E07F4` | `BndyEnrichmentStack` | `bndy-enrichment` | Deployed template + stack resources | No |
+| Capture-processing queue/DLQ | `...CaptureProcessingQueue6959335B-tKwPhKYnpdNr`; `...CaptureProcessingDLQ0A31D9DF-1nkotUMdq4Vs` | `CaptureProcessingQueue6959335B`; `CaptureProcessingDLQ0A31D9DF` | `BndyEnrichmentStack` | `bndy-enrichment` | Deployed template + stack resources | No |
+| Entity-enrichment queue/DLQ | `...EntityEnrichmentQueueD721536B-nJHO6hJNMHCr`; `...EntityEnrichmentDLQA8E8FCCD-n28k9G2OOIef` | `EntityEnrichmentQueueD721536B`; `EntityEnrichmentDLQA8E8FCCD` | `BndyEnrichmentStack` | `bndy-enrichment` | Deployed template + stack resources | No |
+| Google discovery queue/DLQ | `...GoogleDiscoveryQueue5D916585-WYcljufbbQga`; `...GoogleDiscoveryDLQE4DD72E1-deG9eoQofWpS` | `GoogleDiscoveryQueue5D916585`; `GoogleDiscoveryDLQE4DD72E1` | `BndyEnrichmentStack` | `bndy-enrichment` | Deployed template + stack resources | No |
+| Projection queue/DLQ | `...ProjectionQueue84CD9FA9-MNRzvzNKh5Vg`; `...ProjectionDLQ7E1DC66F-PxEmZhDGVUV6` | `ProjectionQueue84CD9FA9`; `ProjectionDLQ7E1DC66F` | `BndyEnrichmentStack` | `bndy-enrichment` | Deployed template + stack resources | No |
+| Source-scan queue/DLQ | `...SourceScanQueue1C378650-2ik6EDD7UUyd`; `...SourceScanDLQB39C3B51-HFgXfNWhjtQ7` | `SourceScanQueue1C378650`; `SourceScanDLQB39C3B51` | `BndyEnrichmentStack` | `bndy-enrichment` | Deployed template + stack resources | No |
+| Historical failure quarantine | `...HistoricalSourceFailureQuarantine6F3AD1FE-QMUFWmB2M4oD` | `HistoricalSourceFailureQuarantine6F3AD1FE` | `BndyEnrichmentStack` | `bndy-enrichment` | Deployed template; no active consumer mapping | No; explicitly **not** an active DLQ |
+| Backline workers | stack-named admin API, browser-source, claim-authority, Google-discovery, projection, planner, dispatcher, source-health, source worker and trust-loop Lambdas | `BacklineAdminApi9B1E7442`; `BrowserSourceWorkerCA2BC3A6`; `ClaimAuthorityStreamWorker0E6B1DD9`; `GoogleDiscoveryWorker66B9CA30`; `ProjectionWorker2E654DBF`; `ScanPlannerBC522289`; `SourceDispatcherB94114BB`; `SourceHealthWorkerB381903F`; `SourceWorker336FEA29`; `TrustLoop620D9456` | `BndyEnrichmentStack` | `bndy-enrichment` | Deployed template + exact stack mapping | No stack collision |
+| Backline rules | nine stack-named rules for capture scan, daily scan, Lemonrock health/fast/monthly, On The Case hourly, dispatch, source health and trust-loop classification | `CaptureScanRuleA091BC00`; `DailyScanRule81F5C117`; `LemonrockDailyHealthCheckEE745091`; `LemonrockFastGigTickB23E8683`; `LemonrockMonthlyFutureReconcileE22F76CE`; `OnTheCaseHourlyGigTick6AD850EB`; `SourceDispatchTick13E0B2C9`; `SourceHealthTick0308599E`; `TrustLoopDailyClassification6A973B5D` | `BndyEnrichmentStack` | `bndy-enrichment` | Deployed template + stack mapping | **Yes:** On The Case also has a Signals runner/rule path |
+| Capture processor | `bndy-capture-processor` | `CaptureProcessorA6E403AD` | `BndyEnrichmentStack` | `bndy-enrichment` | Deployed template + live stack mapping | **Yes:** two active workflows in `bndy-serverless-api` can directly hot-deploy it |
+| Capture scanner | `bndy-capture-scan` | `CaptureScannerA0D85922` | `BndyEnrichmentStack` | `bndy-enrichment` | Deployed template + live stack mapping | Operational acceptance workflows can invoke it; no second IaC owner found |
+| Capture API Lambda | `bndy-capture-CaptureFunction-BVTWEGNTT6jJ` | `CaptureFunction` | `bndy-capture` | `bndy-capture` | Deployed template + stack mapping | No |
+| Capture table | `bndy-capture-CapturesTable-7YKTGU5HDPA4` | `CapturesTable` | `bndy-capture` | `bndy-capture` | Deployed template + stack mapping | No |
+| Capture image bucket | `bndy-capture-images-771551874768-eu-west-2` | `CaptureImagesBucket` | `bndy-capture` | `bndy-capture` | Deployed template + stack mapping | No |
+| Entity Claims | `bndy-entity-claims` | `EntityClaimsTable` | `bndy-serverless-api` | `bndy-serverless-api` | Imported live stack resource, `UPDATE_COMPLETE` | No current owner collision; historically collided with Enrichment |
+| Entity Memberships | `bndy-entity-memberships` | `EntityMembershipsTable` | `bndy-serverless-api` | `bndy-serverless-api` | Imported live stack resource, `UPDATE_COMPLETE` | No current collision |
+| Entity Invites | `bndy-entity-invites` | `EntityInvitesTable` | `bndy-serverless-api` | `bndy-serverless-api` | Imported live stack resource, `UPDATE_COMPLETE` | No current collision |
+| Join Analytics | `bndy-join-analytics` | `JoinAnalyticsTable` | `bndy-serverless-api` | `bndy-serverless-api` | Imported live stack resource, `UPDATE_COMPLETE` | No current collision |
+| Canonical Artists | `bndy-artists` | None | **No CloudFormation owner** | Undeclared; heavily consumed by `bndy-serverless-api` | DynamoDB list + `DescribeStackResources` returns no owning stack | **Yes:** stateful production table without IaC authority |
+| Canonical Venues | `bndy-venues` | None | **No CloudFormation owner** | Undeclared; heavily consumed by `bndy-serverless-api` | DynamoDB list + no owning stack | **Yes** |
+| Canonical Events | `bndy-events` | None | **No CloudFormation owner** | Undeclared; heavily consumed by `bndy-serverless-api` | DynamoDB list + no owning stack | **Yes** |
+| Source Inspector Lambda | `bndy-source-inspector-SourceInspectorFunction-a7P9shrPou6W` | `SourceInspectorFunction` | `bndy-source-inspector` | `bndy-serverless-api` | Deployed template has Lambda + permission only | **Yes:** automatic SAM workflow is armed in another stack's main workflow chain |
+| Source Inspector route/integration | Production HTTP API child objects, IDs recorded in Phase 7 | None | **No CloudFormation owner** | Intended repository is unresolved | Neither deployed template contains `AWS::ApiGatewayV2::Route` or `Integration`; workflow uses direct CLI | **Yes — direct destructive CLI ownership** |
+| Signals source runners, dev/prod | `bndy-{gigs-news,klma,onthecase,sceniceye}-runner-{dev,prod}` | `GigsNewsRunnerFn5895B928`; `KlmaRunnerFn0E5EC8FB`; `OnTheCaseRunnerFnCCCCCA8C`; `ScenicEyeRunnerFn00C951E2` | `BndySourceRunner-dev` / `prod` | `bndy-signals` | Deployed templates + exact stack mappings | **Yes:** source overlap with Backline/Cowork; prod template/live trigger mismatch |
+| Signals intelligence pass, dev/prod | `bndy-intelligence-pass-{dev,prod}` and matching EventBridge trigger | `IntelligencePassFn534CBC29`; `IntelligencePassS3Trigger1516BA81` | `BndySourceRunner-dev` / `prod` | `bndy-signals` | Deployed templates + stack mapping | Prod trigger is drifted disabled; template expects enabled |
+| Signals source state/review, dev/prod | `bndy-source-state-{dev,prod}`; `bndy-source-review-{dev,prod}` | `SourceStateTable69DA611C`; `SourceReviewTableE031BB9A` | `BndySourceRunner-dev` / `prod` | `bndy-signals` | Deployed templates + stack mapping | No physical owner collision |
+| Signals canonical storage, dev/prod | `bndy-signals-{dev,prod}` | `SignalsTableE8D63F6D` | `BndySignals-Storage-dev` / `prod` | `bndy-signals` | Deployed templates + stack mapping | No physical owner collision |
+
+### Ownership conclusions
+
+- Stack ownership for the recovered four imported entity tables is now coherent and belongs to `bndy-serverless-api`; Enrichment consumes the Claims stream but does not own the table.
+- The three canonical Artists/Venues/Events tables exist and are actively referenced, but no active CloudFormation stack owns them. “Used by serverless API” is not the same as IaC ownership.
+- `bndy-capture-processor` has one live CloudFormation owner but three code-release authorities: Enrichment CDK and two direct serverless-repository workflows.
+- The Source Inspector Lambda has a small dedicated stack; its production HTTP API route and integration have no stack owner and are reconstructed destructively by CLI.
+- The historical `bndy-infrastructure` repository owns none of the scoped live resources and remains non-authoritative.
+- Source acquisition authority is not singular: On The Case exists in both Enrichment and Signals, with Cowork still pending Phase 16.
 
 ## 6. Lambda and trigger inventory
 
@@ -373,6 +435,14 @@ Pending Phase 16.
 - **Required decision:** merge/adopt fail-closed IaC without deploying it automatically, then review a bounded deployment under separate approval.
 - **HITL approval:** Yes; this audit will not reconcile drift.
 
+### P1 — Canonical Artists, Venues and Events tables have no CloudFormation owner
+
+- **Evidence:** all three tables are live and heavily referenced by serverless API code; CloudFormation physical-resource lookup returns no owning stack, and none appears in any relevant deployed template.
+- **Affected resource:** `bndy-artists`, `bndy-venues`, `bndy-events`.
+- **Impact:** schema, deletion protection, streams and recovery settings have no declared deployment authority; a future repository assumption could repeat the table collision that caused the incident.
+- **Required decision:** designate one IaC authority and use an explicit, reviewed import/adoption plan; do not recreate or attach them opportunistically.
+- **HITL approval:** Yes — stateful-resource adoption is outside this audit.
+
 ### P2 — Lemonrock marker mislabels a workflow SHA as deployed SHA
 
 - **Evidence:** verifier assigns `github.event.workflow_run.head_sha` to `deployedSha`; source run `33326926450` was skipped.
@@ -455,3 +525,15 @@ Phase 3 did not call any mutation API. The Enrichment mutation observed in the s
 | `2026-08-30T20:33:xxZ` | `aws cloudformation describe-stack-resource-drifts --stack-name BndySourceRunner-prod --stack-resource-drift-status-filters MODIFIED DELETED` | 0 | Every known expected/actual/difference for the five drifted rules. |
 
 AWS does not return a completion timestamp from `describe-stack-drift-detection-status`; `20:34:20Z` is the final terminal observation bound, not an inferred service-side completion time.
+
+### Phase 5 command record
+
+| Command family | Exit | Evidence obtained |
+| --- | ---: | --- |
+| `aws cloudformation get-template --template-stage Original --stack-name ...` for all twelve stacks | 0 | Current deployed template bodies and SHA-256 evidence digests; no change set created. |
+| `aws cloudformation get-template-summary --stack-name ...` | 0 | Template resource types and safe parameter-key metadata for SAM/string-bodied templates. |
+| `aws cloudformation list-stack-resources --stack-name ...` | 0 | Logical ID to physical resource mapping for ledger rows. |
+| `aws dynamodb list-tables --region eu-west-2` | 0 | Existence of canonical and relevant BNDY tables; no item access. |
+| `aws cloudformation describe-stack-resources --physical-resource-id ...` | 0 for imported tables; 255 for the three canonical tables | The four imported tables resolve to `bndy-serverless-api`; canonical tables return no stack owner. The validation error is negative ownership evidence, not an access failure. |
+| In-memory literal/type search of the two deployed Source Inspector-related templates | 0 | Neither template contains `AWS::ApiGatewayV2::Route` or `AWS::ApiGatewayV2::Integration`; no template or secret values were written to the report. |
+| `rg` across scoped repositories | 0 with one Windows `nul` warning | Intended repository references and evidence that canonical tables are application dependencies. Generated/build paths were excluded where practical; no files changed. |
