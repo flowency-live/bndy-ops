@@ -2,7 +2,7 @@
 
 Status: **IN PROGRESS**
 
-Latest completed phase: **Phase 10 — schedules and source authority**
+Latest completed phase: **Phase 11 — queues and dead-letter state**
 
 Audit started: `2026-08-30T20:18:29.598Z`
 
@@ -16,12 +16,12 @@ Safety boundary: this audit does not deploy, invoke Lambda functions, change inf
 
 ## 1. Executive verdict
 
-The audit is not yet complete. No final resumption or deployment verdict is issued at Phase 10.
+The audit is not yet complete. No final resumption or deployment verdict is issued at Phase 11.
 
 | Question | Verdict | Reason |
 | --- | --- | --- |
 | Is the recovered serverless API stack stable? | UNVERIFIED | It is `UPDATE_COMPLETE`; the Source Inspector route is singular/coherent but unmanaged and functionally unverified, and stack drift was partial. |
-| Is Enrichment runtime state verified? | PARTIAL | All functions are active/successful and mappings are coherent; logs, controls and schedules are still pending. The deployed Git SHA is `UNMAPPED`. |
+| Is Enrichment runtime state verified? | PARTIAL | All functions are active/successful, mappings and schedules are coherent, and controls fail closed; 37 recent Projection DLQ messages still require diagnosis and logs are pending. The deployed Git SHA is `UNMAPPED`. |
 | Are CloudFormation owners coherent? | NO | Core stack ownership is mapped, but canonical tables and the Source Inspector route/integration have no CloudFormation owner, and two cross-repository deployment paths remain. |
 | Are automatic deployment bypasses contained? | NO | Current workflow inspection proves the Source Inspector and Capture bypasses remain armed. |
 | Are canonical writes proven disabled? | UNVERIFIED | Live controls, stream mappings and writer gates are pending. |
@@ -651,7 +651,28 @@ No AWS schedule currently gives Signals canonical-writer authority. Enrichment i
 
 ## 11. Queues, alarms and logs
 
-Pending Phases 11–12.
+### Phase 11 — queues and dead-letter state
+
+Observed at approximately `2026-08-30T20:57Z`–`21:01Z`. All **17** scoped queues use SQS-managed server-side encryption, long polling is disabled (`ReceiveMessageWaitTimeSeconds=0`), and no message was received, peeked, moved, deleted or redriven.
+
+| Owner / queue family | Primary state (visible / in flight / delayed) | DLQ or quarantine state | Visibility / retention | Redrive and consumer state |
+| --- | --- | --- | --- | --- |
+| Enrichment Browser Scan | 0 / 0 / 0 | Browser Scan DLQ: 0 / 0 / 0 | Primary 900s / 4d; DLQ 30s / 14d | Max receive 3; enabled Lambda mapping, batch 1, partial-batch response |
+| Enrichment Capture Processing | 0 / 0 / 0 | Capture Processing DLQ: 0 / 0 / 0 | Primary 420s / 4d; DLQ 30s / 14d | Max receive 3; enabled mapping to `bndy-capture-processor`, batch 1, partial-batch response |
+| Enrichment Entity Enrichment | 0 / 0 / 0 | Entity Enrichment DLQ: 0 / 0 / 0 | Primary 360s / 4d; DLQ 30s / 14d | Max receive 3; **no Lambda event-source mapping** exists for the primary queue |
+| Enrichment Google Discovery | 0 / 0 / 0 | Google Discovery DLQ: 0 / 0 / 0 | Primary 360s / 4d; DLQ 30s / 14d | Max receive 3; enabled Lambda mapping, batch 1, partial-batch response |
+| Enrichment Projection | 0 / 0 / 0 | **Projection DLQ: 37 / 0 / 0** | Primary 300s / 4d; DLQ 30s / 14d | Max receive 3; enabled Lambda mapping, batch 1, partial-batch response |
+| Enrichment Source Scan | 0 / 0 / 0 | Source Scan DLQ: 0 / 0 / 0 | Primary 900s / 4d; DLQ 30s / 14d | Max receive 3; enabled Lambda mapping capped at concurrency 2; queue policy permits only EventBridge queue discovery/send operations |
+| Enrichment Historical Source Failure Quarantine | **6,048 / 0 / 0** | Standalone quarantine, explicitly not an active DLQ | 30s / 14d | No redrive policy and no Lambda event-source mapping |
+| Capture WhatsApp | 0 / 0 / 0 | WhatsApp DLQ: 0 / 0 / 0 | Primary 120s / 4d; DLQ 30s / 14d | Max receive 5; enabled Lambda mapping, batch 1, partial-batch response |
+| Signals Workflow dev | N/A | `bndy-signals-failed-dev`: 0 / 0 / 0 | 30s / 14d | Standalone workflow failure DLQ; no redrive policy or Lambda mapping |
+| Signals Workflow prod | N/A | `bndy-signals-failed-prod`: 0 / 0 / 0 | 30s / 14d | Standalone workflow failure DLQ; no redrive policy or Lambda mapping |
+
+The latest CloudWatch `ApproximateAgeOfOldestMessage` datapoints were approximately **1,656 seconds** for the Projection DLQ and **298,023 seconds** for the historical quarantine. All other scoped queues reported zero age. The 6,048 historical records are intentionally segregated and old enough to predate the live audit; their existence is inventory evidence, not proof of a current failure. In contrast, the Projection DLQ contains 37 relatively recent terminal delivery failures even though the primary queue is currently empty and the global projection control is fail-closed. Message contents were deliberately not inspected, so cause, entity scope and replay safety remain unknown.
+
+The empty Entity Enrichment queue has a declared DLQ but no event-source mapping. This is a dormant, consumerless path rather than a current backlog. Its intended owner/activation contract must be confirmed before any producer is enabled.
+
+Alarm and log-group evidence remains pending Phase 12.
 
 ## 12. Canonical-write safety
 
@@ -706,6 +727,14 @@ Pending Phase 16.
 - **Impact:** current live containment is fail-closed, but deploying the current stack template can silently restore automated acquisition and intelligence processing.
 - **Required decision:** merge/adopt fail-closed IaC without deploying it automatically, then review a bounded deployment under separate approval.
 - **HITL approval:** Yes; this audit will not reconcile drift.
+
+### P1 — Projection DLQ contains 37 recent terminal failures
+
+- **Evidence:** exact SQS control-plane attributes show 37 visible messages, zero in flight and zero delayed in `BndyEnrichmentStack-ProjectionDLQ7E1DC66F-PxEmZhDGVUV6`; the latest `ApproximateAgeOfOldestMessage` datapoint is 1,656 seconds. The primary Projection queue is empty and its mapping is enabled.
+- **Affected resource:** Enrichment projection worker, Projection queue/DLQ and any canonical entity operations represented by those messages.
+- **Impact:** runtime health cannot be declared while recent work has exhausted the three-attempt redrive policy. The audit intentionally did not read message bodies, so failure class and replay safety are unknown.
+- **Required decision:** diagnose from aggregate logs and approved operational metadata; any message inspection, purge or redrive requires a separately reviewed recovery procedure. Do not enable global projection to test it.
+- **HITL approval:** Yes for message access/redrive or a control change; no for continued read-only log diagnosis.
 
 ### P1 — Canonical Artists, Venues and Events tables have no CloudFormation owner
 
@@ -887,3 +916,15 @@ The last command is recorded as an audit-scope deviation. It exposed no secret v
 | Exact source-config timestamp field reads | 0 | Preserved UTC due/last-scheduled strings without locale conversion; no other item attributes retained. |
 
 No schedule, notification, target or function was invoked or modified.
+
+### Phase 11 command record
+
+| Command family | Exit | Evidence obtained |
+| --- | ---: | --- |
+| `aws cloudformation list-stack-resources` for Enrichment, Capture and both Signals Workflow stacks | 0 | Exact 17-queue owner and logical/physical resource inventory. |
+| `aws sqs get-queue-attributes --attribute-names All` for every scoped queue | 0 | Current visible/in-flight/delayed counts, visibility, retention, long-poll, encryption, policy and redrive metadata. No receive operation was issued. |
+| `aws lambda list-event-source-mappings` correlation | 0 | Enabled consumers for Browser, Capture Processing, Google Discovery, Projection, Source Scan and WhatsApp; proved the Entity Enrichment primary and all DLQs/quarantines have no Lambda mapping. |
+| `aws cloudwatch get-metric-statistics` for `AWS/SQS` `ApproximateAgeOfOldestMessage` | 0 | Latest age datapoints for all queues since 12:00Z; only Projection DLQ and historical quarantine were non-zero. |
+| Initial physical-ID-to-queue-name conversion attempt | Non-zero for individual lookups; wrapper exit 0 | CloudFormation already returned queue URLs, so passing each URL as `--queue-name` caused harmless `NonExistentQueue` errors. The command was corrected to use each URL directly; no queue state changed. |
+
+No queue message was received, inspected, moved, deleted, purged or redriven.
