@@ -1,7 +1,7 @@
 # BNDY Backline post-recovery live audit
 
 Status: **IN PROGRESS**  
-Latest completed phase: **Phase 1 — identity and stop conditions**  
+Latest completed phase: **Phase 2 — repository truth and CI**  
 Audit started: `2026-08-30T20:18:29.598Z`  
 Required account: `771551874768`  
 Required region: `eu-west-2`
@@ -23,7 +23,7 @@ The audit is not yet complete. No resumption or deployment verdict is issued at 
 | Are canonical writes proven disabled? | UNVERIFIED | Live controls, stream mappings and writer gates are pending. |
 | Is it safe to resume read-only Backline work? | NO | The required live audit is incomplete. |
 | Is it safe to resume local implementation? | NO | The required live audit is incomplete. |
-| Is it safe to merge safety-only changes? | NO | Repository and CI state are pending. |
+| Is it safe to merge safety-only changes? | NO | Signals PR 1 is mergeable and passing, but automatic deployment bypasses and live ownership checks remain unresolved. |
 | Is it safe to deploy Enrichment? | NO | Runtime, ownership and proposed differences are pending. |
 | Is it safe to enable streams or hydration? | NO | Explicitly outside the current safety boundary. |
 | Is it safe to activate providers? | NO | Explicitly outside the current safety boundary. |
@@ -62,7 +62,103 @@ Authoritative starting evidence read:
 
 ## 3. Repository heads and CI
 
-Pending Phase 2.
+### Worktree and remote state
+
+The snapshot below was taken after a fetch that did not change any checked-out branch. Ahead/behind is `local HEAD` versus the remote default branch. Dirty files pre-existed this audit and were preserved.
+
+| Repository | Worktree | Checked-out branch and HEAD | Remote default and HEAD | Ahead / behind | Worktree state |
+| --- | --- | --- | --- | ---: | --- |
+| `bndy-ops` | `C:\VSProjects\bndy-ops` | `main` at `63f57366841559a1f4746d35883957bf6f69617e` | `main` at `1964bbaa03411576d3e2c35f924dbf6ed6190122` | 1 / 0 | Clean; the one local commit is audit Phase 1. |
+| `bndy-enrichment` | `C:\VSProjects\bndy-enrichment` | `main` at `39bae4fcbbe86a27b8e936225c94331cbb343d1c` | `main` at `72a9c23be73bbb347ecc3403f7f3e3211c78e9bc` | 0 / 3 | Dirty: modified `src/google/gemini.ts`; 12 untracked paths including `.worktrees/`, `_to_delete/`, scripts, JSON datasets, `cdk.out.validation/`, a patch, `nul`, and `src/cli/gather-cowork-artists.ts`. |
+| `bndy-serverless-api` | `C:\VSProjects\bndy-serverless-api` | `master` at `d42352f3c83edf671f4e7ca08f3b141f17d80dd8` | `master` at `db7f5086ce5ecc88eb324fed84aad5ef0eaaec05` | 0 / 5 | Dirty: three modified files and seven untracked implementation/build paths. |
+| `bndy-signals` | `C:\VSProjects\florence\bndy-signals` | `main` at `b5167ddb02eaa97c15fe77f3a67d6f8fbcbe8308` | `main` at `db85ecd7ee05f13bdf8816c4a8652d804168ff47` | 1 / 0 | Dirty `README.md`; local-only commit `b5167dd` disables source schedules but is not remote production authority. |
+| `bndy-capture` | `C:\VSProjects\bndy-capture\bndy-capture` | `main` at `f829789b80bcea682d2668b0a7008e9ff12a43b4` | `main` at `7693e169cc77a903eea233e4ee64f25d547c7c26` | 0 / 1 | Dirty Android activity plus untracked Gradle wrapper paths. |
+| `bndy-MCP` | `C:\VSProjects\bndy-MCPServer` | `feature/festivals-phase-1a` at `3766302f436cf6a60e3ee2fb4aaa72c2d94172aa` | `main` at `5bedc487fc70241d168821021ebf53a69fb482b7` | 7 / 9 | Clean but diverged feature branch; not suitable as a default-head validation worktree. |
+| `bndy-app` | `C:\VSProjects\bndy-app` | `skin/cyberpunk` at `1eeaa2d2946e2b7215056c0b7afc822b18e19f61` | `main` at `a54dc959b76393b1e1924dfded5ca35ec3da9071` | 0 / 2 | Dirty rename, six modified files and one untracked incident note. |
+| `bndy-backstage` | `C:\VSProjects\bndy-backstage` | `main` at `78d1e04c7897988d66db3c40501a678a300fe8bb` | `main` at `c4a6ac88eec0f6ceccf4713162b41a62c24ea0a4` | 0 / 16 | Dirty local settings plus six untracked diagnostic/script paths. |
+| `bndy-website` | `C:\VSProjects\_Websites\bndy-publicwebsiteV2` | `main` at `4ed4525f4bd60b4fab0dbfea3a025dd8b5af1f09` | `main` at `fdf5b937546c5fb20f19cfedb6e976e6be429284` | 0 / 114 | Clean but substantially behind. The incident report was read from `origin/main` without checkout. |
+| `bndy-infrastructure` | `C:\VSProjects\bndy-infrastructure-audit` | `master` at `bcb0e263c640d8944e075e1e0d109080d8181d11` | `master` at the same SHA | 0 / 0 | Clean audit clone. The pre-existing similarly named folder was not a Git worktree and was left untouched. |
+
+### Latest remote-default commits
+
+| Repository | Latest commits, newest first |
+| --- | --- |
+| `bndy-ops` | `1964bba` reference recovery checkpoint; `3308709` checkpoint recovery state; `0bdc0f0` owner audit/action plan; `8dad61a` audit execution addendum; `5af9e78` crawl-state sync. |
+| `bndy-enrichment` | `72a9c23` production marker; `3d6f242` merge PR 123; `307c757` deployment boundary; `39bae4f` earlier production marker; `93069c7` Send to bndy hardening. |
+| `bndy-serverless-api` | `db7f508` merge PR 70; `9b763df` merge PR 69; `940bc3d` bounded Backline summary; `b09f59a` Claim route baseline; `ca641b9` aliases/deployment workflow. |
+| `bndy-signals` | `db85ecd` merge write errors; `c4225f5` merge review items; `8d3050b` intelligence pass fixes; `2845442` intelligence Lambda/trigger; `d0089ab` ScenicEye parser. |
+| `bndy-capture` | `7693e16` WhatsApp intake; `f829789` public outcome details; `e905f16` Dropzone convergence; `3356654` Android build; `5d752c0` Android capture context. |
+| `bndy-MCP` | `5bedc48` live acceptance; `85ea8d7` and `91f395b` deployment triggers; `4e3b157` OIDC policy; `ecaf00d` AWS bootstrap. |
+| `bndy-app` | `a54dc95` merge PR 35; `0961cc5` Facebook Claim journey; `1eeaa2d` same-origin auth; `1c84063` Add/Claim journey; `7699824` gig history. |
+| `bndy-backstage` | `c4a6ac8` merge PR 16; `28e25d9` bounded task browsing; `02d8d43` and `90340d6` Claim V2 releases; `17feb13` Claim review actions. |
+| `bndy-website` | `fdf5b93` merge PR 44; `b5f0c1e` post-recovery status; `13a4175` incident report; `a2d3a58` Send to bndy delivery; `e3aad13` Meta checkpoint. |
+| `bndy-infrastructure` | Only two commits exist: `bcb0e26` removed the API from this repository and `7683331` created the historical consolidation repository. This confirms it is not current infrastructure authority. |
+
+### Pull requests
+
+| Repository / PR | State | Draft | Mergeability | Checks | Audit relevance |
+| --- | --- | --- | --- | --- | --- |
+| [Enrichment #17](https://github.com/flowency-live/bndy-enrichment/pull/17) | OPEN | Yes | CONFLICTING | Four historical checks passed | Edition work; not ready to merge. |
+| [Enrichment #28](https://github.com/flowency-live/bndy-enrichment/pull/28) | OPEN | No | CONFLICTING | Two historical tests passed | Claim deduplication; cannot merge cleanly. |
+| [Enrichment #122](https://github.com/flowency-live/bndy-enrichment/pull/122) | CLOSED, unmerged | No | UNKNOWN | Tests passed | Superseded combined release path is not active. |
+| [Enrichment #123](https://github.com/flowency-live/bndy-enrichment/pull/123) | MERGED at `2026-08-30T18:02:32Z` | No | — | CI passed; publish/release skipped | Manual deployment boundary is in remote `main`. |
+| [Serverless API #11](https://github.com/flowency-live/bndy-serverless-api/pull/11) | OPEN | No | CONFLICTING | Test failure; validation passed; deploy skipped | Obsolete one-shot GSI recovery remains open and unsafe to merge. |
+| [Serverless API #69](https://github.com/flowency-live/bndy-serverless-api/pull/69) | MERGED | No | — | Tests and validation passed; deploy skipped | Produced `9b763df`. |
+| [Serverless API #70](https://github.com/flowency-live/bndy-serverless-api/pull/70) | MERGED | No | — | Tests and validation passed; deploy skipped | Produced default head `db7f508`. |
+| [Signals #1](https://github.com/flowency-live/bndy-signals/pull/1) | OPEN | No | MERGEABLE | Test passed | Fail-closed safety change; merge must not imply deployment. |
+
+No other scoped repository has an open PR.
+
+### Default-head checks
+
+| Repository default head | Failed or pending evidence |
+| --- | --- |
+| `bndy-serverless-api` `db7f508` | **FAILED:** two `Deploy Source Inspector` jobs and commit statuses `source-inspector/fail-smoke` and `source-inspector/deploy`. |
+| `bndy-app` `a54dc95` | CI `verify` and `check` passed; multiple one-shot jobs skipped. |
+| `bndy-backstage` `c4a6ac8` | CI passed; release and patch jobs skipped. |
+| `bndy-website` `fdf5b93` | Build passed; one-shot workboard jobs skipped. |
+| `bndy-signals`, `bndy-capture`, `bndy-MCP` | Latest recorded default-head checks passed; none is pending. |
+| `bndy-ops`, `bndy-enrichment`, `bndy-infrastructure` | GitHub reports zero check runs/status contexts on the current default head. This is “no checks reported”, not a successful check. |
+
+### Relevant Actions runs since `2026-08-30T12:00:00Z`
+
+#### Serverless API and Source Inspector
+
+| Run | Workflow / event / SHA | UTC window | Conclusion and failing step | AWS write capability | Evidence of AWS mutation |
+| --- | --- | --- | --- | --- | --- |
+| [33314022350](https://github.com/flowency-live/bndy-serverless-api/actions/runs/33314022350) | Deploy BNDY API / PR / `fd19829` | 13:22:50–13:23:36 | Failure: Lambda tests | Yes, deploy job exists | Deploy job skipped; none. |
+| [33314034284](https://github.com/flowency-live/bndy-serverless-api/actions/runs/33314034284) | Deploy BNDY API / PR / `a7dbf80` | 13:23:06–13:23:53 | Failure: Lambda tests | Yes | Deploy job skipped; none. |
+| [33314043720](https://github.com/flowency-live/bndy-serverless-api/actions/runs/33314043720) | Deploy BNDY API / PR / `2cd03d5` | 13:23:19–13:24:09 | Failure: Lambda tests | Yes | Deploy job skipped; none. |
+| [33314116303](https://github.com/flowency-live/bndy-serverless-api/actions/runs/33314116303) | Deploy BNDY API / PR / `12f985b` | 13:24:57–13:26:06 | Success | Yes | Deploy job skipped; none. |
+| [33314221078](https://github.com/flowency-live/bndy-serverless-api/actions/runs/33314221078) | Deploy BNDY API / push / `ca641b9` | 13:27:12–13:28:33 | Success | Yes | Deploy job skipped; none. |
+| [33314277846](https://github.com/flowency-live/bndy-serverless-api/actions/runs/33314277846) | Deploy Source Inspector / workflow-run / `ca641b9` | 13:28:35–13:29:10 | Failure: smoke | **Yes** | API route/integration reconciliation succeeded; SAM build/deploy skipped. This preceded incident closure. |
+| [33326309190](https://github.com/flowency-live/bndy-serverless-api/actions/runs/33326309190) | Deploy BNDY API / PR / `b09f59a` | 17:49:03–17:50:11 | Success | Yes | Deploy job skipped; none. |
+| [33326799462](https://github.com/flowency-live/bndy-serverless-api/actions/runs/33326799462) | Deploy BNDY API / PR / `940bc3d` | 18:00:08–18:01:20 | Success | Yes | Deploy job skipped; none. |
+| [33326902135](https://github.com/flowency-live/bndy-serverless-api/actions/runs/33326902135) | Deploy BNDY API / push / `9b763df` | 18:02:07–18:03:21 | Success | Yes | Main deployment skipped; its successful completion triggered Source Inspector run `33326965685`. |
+| [33326913608](https://github.com/flowency-live/bndy-serverless-api/actions/runs/33326913608) | Deploy BNDY API / push / `db7f508` | 18:02:21–18:03:35 | Success | Yes | Main deployment skipped; its successful completion triggered Source Inspector run `33326976298`. |
+| [33326965685](https://github.com/flowency-live/bndy-serverless-api/actions/runs/33326965685) | Deploy Source Inspector / workflow-run / `9b763df` | 18:03:23–18:04:00 | Failure: smoke | **Yes** | **Reached mutation:** reconciled route to a newly created integration/route. SAM build/deploy skipped. |
+| [33326976298](https://github.com/flowency-live/bndy-serverless-api/actions/runs/33326976298) | Deploy Source Inspector / workflow-run / `db7f508` | 18:03:37–18:04:11 | Failure: smoke | **Yes** | **Reached mutation:** raced with the preceding run, deleted/recreated its route/integration and installed another. SAM build/deploy skipped. |
+
+The smoke logs emit three passing boolean assertions followed by `false`; command order indicates the first failing assertion was the expected non-empty description for the fixed Facebook page. This is a log-order inference, not a current endpoint test.
+
+#### Enrichment and Lemonrock
+
+| Run | Workflow / SHA | UTC window | Conclusion | AWS mutation boundary |
+| --- | --- | --- | --- | --- |
+| [33323890573](https://github.com/flowency-live/bndy-enrichment/actions/runs/33323890573) | `deploy-aws` / `39bae4f` | 16:57:30–16:57:55 | Failure at `npx cdk bootstrap` | OIDC audit role authenticated, but failed on `cloudformation:GetTemplate` before deployment; no mutation is evidenced by the job log. |
+| `33326678729`, `33326732900`, `33326925644` | malformed historical Lemonrock quarantine workflow registrations | 17:57:20–18:02:34 | Failure, zero jobs | No AWS step ran. |
+| [33326926450](https://github.com/flowency-live/bndy-enrichment/actions/runs/33326926450) | Lemonrock production bootstrap / `3d6f242` | 18:02:35–18:02:36 | **Skipped** | No deploy/bootstrap job ran. |
+| [33326928719](https://github.com/flowency-live/bndy-enrichment/actions/runs/33326928719) | Verify Lemonrock production bootstrap / `3d6f242` | 18:02:38–18:03:16 | Success | Read production metadata and committed a marker; it did not prove or change Lambda code. |
+| `33312889061`, `33325626512`, `33326928914` | Lemonrock monitoring | 12:58:05, 17:34:18 and 18:02:38 | Success | No deployment evidence. |
+
+The current marker records skipped bootstrap run `33326926450` and copies that run's `head_sha` into `deployedSha`. Repository code proves the field is not a deployed-revision measurement. The Lambda revision remains `UNMAPPED` until Phase 6.
+
+#### Capture and Signals
+
+- Neither `capture-acceptance-hotdeploy.yml` nor `capture-unknown-admission-acceptance.yml` ran at or after `2026-08-30T12:00:00Z`. Their most recent runs were 21 and 22 August respectively.
+- The separate historical `Hot-deploy current Capture processor` workflow last ran successfully on 22 August. Its file is absent from `origin/master`, so its still-`active` GitHub registry entry has no default-branch trigger definition.
+- The `bndy-capture` repository had no Actions run in the audit window.
+- `bndy-signals` had no Actions run in the audit window; production PR 1 has not deployed.
 
 ## 4. Stack inventory and drift
 
@@ -78,11 +174,25 @@ Pending Phase 6.
 
 ## 7. Source Inspector incident-after-incident analysis
 
-Pending Phase 7.
+Phase 2 CI finding; live route state and CloudTrail correlation continue in Phases 7 and 13.
+
+- **Did it run?** Yes. Two post-closure workflow-run jobs executed concurrently after separate successful-but-non-deploying `Deploy BNDY API` runs.
+- **Did it deploy?** It did not SAM-deploy Lambda code: source-change detection was false and both SAM steps were skipped. It did perform direct AWS API Gateway mutations.
+- **What changed?** Run `33326965685` reconciled `POST /api/community/source/inspect` to a new integration/route. Run `33326976298` then deleted/replaced that work and installed another integration/route.
+- **Does the route currently work?** UNVERIFIED pending Phase 7. Both historical smoke runs failed.
+- **Is automation still armed?** Yes. `deploy-source-inspector.yml` is active. Successful completion of `Deploy BNDY API` on `master` triggers it even when that workflow's deployment job is skipped. Source-code detection gates only the SAM build/deploy steps; it does not gate destructive route reconciliation.
+- **Does the recovery closure remain valid?** The closure's claim that the recovered CloudFormation stack completed successfully may remain true, but its API-route snapshot ceased to be definitive after the two direct post-closure mutations. Current route coherence must be re-proven.
 
 ## 8. Capture hot-deploy analysis
 
-Pending Phases 2, 6 and 13.
+Phase 2 result:
+
+- Both named workflows are present and registered `active` on `bndy-serverless-api/master`.
+- Neither ran after the recovery window began; there is no CI evidence that either changed `bndy-capture-processor` on 30 August.
+- Both retain long-lived AWS credential configuration and direct `aws lambda update-function-code` capability against the CDK-owned processor.
+- Both can invoke production scanners and mutate Capture records during their acceptance path; they are not ordinary tests.
+- Their path filters require a push changing the workflow file itself, reducing accidental frequency but not removing the ownership bypass.
+- The current processor hash and last-modified time will be compared with workflow history in Phase 6 and CloudTrail in Phase 13.
 
 ## 9. DynamoDB, streams and SSM
 
@@ -110,7 +220,37 @@ Pending Phase 16.
 
 ## 15. Findings ranked by severity
 
-No final severity classification is issued at Phase 1.
+### P0 — Source Inspector workflow bypass performs unconditional route replacement
+
+- **Evidence:** active `deploy-source-inspector.yml`; runs `33326965685` and `33326976298`; successful `Reconcile API Gateway integration and route` steps; failed smoke steps; failed statuses on default head.
+- **Affected resource:** production `POST /api/community/source/inspect` route and its HTTP API integration.
+- **Impact:** any successful completion of the main workflow can delete and recreate the route even when the main deployment was intentionally skipped. Consecutive pushes caused concurrent reconcilers to race after incident closure.
+- **Required decision:** contain the automatic trigger and establish a single CloudFormation owner before further main-branch deployment activity.
+- **HITL approval:** Yes — workflow/default-branch changes are outside this read-only audit.
+
+### P1 — Capture processor retains two cross-repository hot-deployment paths
+
+- **Evidence:** active `capture-acceptance-hotdeploy.yml` and `capture-unknown-admission-acceptance.yml` on serverless API default head, each containing `aws lambda update-function-code` against `bndy-capture-processor` and production replay steps.
+- **Affected resource:** `bndy-capture-processor` and Capture production data-plane operations.
+- **Impact:** bypasses Enrichment CDK ownership and can replace code without a CloudFormation record. No run occurred in the current audit window, so this is an armed capability rather than a demonstrated 30 August mutation.
+- **Required decision:** retire or permanently gate both paths and retain one release authority.
+- **HITL approval:** Yes.
+
+### P1 — Default branch still fails Source Inspector status
+
+- **Evidence:** `db7f508` has failed `source-inspector/fail-smoke` and `source-inspector/deploy` statuses from two failed jobs.
+- **Affected resource:** serverless API release confidence and the Source Inspector route.
+- **Impact:** default head cannot be treated as fully green, and the route's functional state remains unverified.
+- **Required decision:** diagnose after the route ownership boundary is contained; do not rerun the mutating workflow as a diagnostic.
+- **HITL approval:** Required for any remediation; not required for continued read-only investigation.
+
+### P2 — Lemonrock marker mislabels a workflow SHA as deployed SHA
+
+- **Evidence:** verifier assigns `github.event.workflow_run.head_sha` to `deployedSha`; source run `33326926450` was skipped.
+- **Affected resource:** `docs/lemonrock-production-status.json` and operator deployment evidence.
+- **Impact:** readers can falsely conclude that commit `3d6f242` is deployed.
+- **Required decision:** replace the field with a deterministic deployed artifact mapping or explicitly use `UNMAPPED`.
+- **HITL approval:** Yes for repository correction; no for documenting the discrepancy.
 
 ## 16. Minimum safe recovery sequence
 
@@ -139,3 +279,28 @@ All timestamps are UTC. Commands were run locally and did not mutate AWS.
 - The website incident recovery document has not yet been located.
 - No live runtime, drift, data-plane health or repository-currentness conclusion is made from Phase 1 alone.
 - Historical values from the checkpoint and interrupted transcript remain unverified until their corresponding phases complete.
+
+### Phase 2 command record
+
+Phase 2 completed at `2026-08-30T20:31:00Z` (rounded command-window end). All repository operations were read-only except `git fetch`, cloning missing scoped repositories, and the required local audit commit. No branch was checked out or changed.
+
+| Command family | Exit | Evidence obtained |
+| --- | ---: | --- |
+| `git remote get-url`, `branch --show-current`, `rev-parse HEAD`, `status --short`, `ls-remote --symref`, `rev-list --left-right --count`, `log -5` | 0 | Paths, origins, local/default heads, dirty state, divergence and latest commits for all ten repositories. |
+| `git fetch origin` in each existing worktree | 0 | Current remote refs without checkout/reset/stash/clean. |
+| `gh repo clone flowency-live/bndy-ops` and `gh repo clone flowency-live/bndy-infrastructure` | 0 | Missing exact scoped repositories. Existing non-Git directories were not overwritten. |
+| `git show origin/main:docs/SERVERLESS-API-INCIDENT-RECOVERY-2026-08-30.md` | 0 | Authoritative website incident report from current remote without changing the 114-commit-behind worktree. |
+| `gh pr list` for all repositories and `gh pr view` for PRs 17, 28, 122, 123, 11, 69, 70 and 1 | 0 | State, draft status, mergeability and check rollups. |
+| `gh api repos/{repo}/commits/{default}/check-runs` and `/status` | 0 after one corrected empty-SHA query | Current default-head checks and statuses. The initial nested-field query supplied no SHA and returned only API 404/422 errors; it changed nothing. |
+| `gh run list --created '>=2026-08-30T12:00:00Z'` and `gh run view ... --json jobs` | 0 | Relevant run IDs, SHAs, times, jobs, steps and conclusions. |
+| `gh run view {Source Inspector run} --log` | 0 | Exact checked-out SHAs, skipped SAM steps, successful route reconciliation, smoke failure and sanitised credential masking. |
+| `git show origin/master:.github/workflows/{workflow}.yml` | 0 | Current Source Inspector and Capture workflow triggers and mutation capability. |
+| `gh run list --workflow {Capture workflow}` | 0 | No run in the audit window; latest historical runs recorded. |
+| `git show origin/main:docs/lemonrock-production-status.json` and verifier workflow inspection | 0 | Current marker and proof that `deployedSha` copies a skipped run's head SHA. |
+
+### Phase 2 evidence limitations
+
+- GitHub evidence proves the workflow steps that ran but does not alone prove current AWS resource state; Phases 6, 7 and 13 will correlate Lambda configuration, API Gateway and CloudTrail.
+- The Source Inspector smoke failure point is inferred from ordered shell output because the workflow did not print an assertion label.
+- No current deployed Lemonrock commit mapping is available from repository/CI evidence; it remains `UNMAPPED`.
+- The website and several code worktrees are intentionally behind their remote default heads. Later validation will use isolated temporary worktrees rather than modifying them.
