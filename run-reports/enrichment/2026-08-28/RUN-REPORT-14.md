@@ -1,0 +1,90 @@
+# Bv2a Enrichment — RUN-REPORT-14 (2026-08-28)
+
+**Run id:** `bv2a-enrichment-2026-08-28T14-20-03Z`. **Outcome: completed.**
+
+## Circuit breaker (Step 0)
+
+Cleared by the orchestrator before this firing started: the last 3 run reports (RUN-REPORT-13, -12, -11) all completed with a final validator result of 0 FAIL (RUN-REPORT-13: `12 records · 10 clean · 0 FAIL · 2 WARN` after excluding 3 standing false-positive BIO_VERBATIM-on-untouched-bio exclusions; RUN-REPORT-12: `5 records · 2 clean · 0 FAIL · 3 WARN` same pattern; RUN-REPORT-11: `15 records · 15 clean · 0 FAIL · 0 WARN`). Breaker did not trip. Not re-read this firing per the orchestrator's instruction.
+
+## Runbook / task-spec / inbox read (Step 2)
+
+`RUNBOOK.md` read in full: H1 = **v2.27**. **CURRENT FLOOR (§6A) = v2.19** (confirmed at line "⚠ CURRENT FLOOR: v2.19"). 2.27 ≥ 2.19 — floor check passed. `ENRICHMENT-TASK-v3.md` read in full: §0.0 bio-is-a-quotation, §FP fast path, §1–12, §5.4 do-not-attach list (checked: none of this firing's 15 candidates appear on it). `CTO-INBOX.md` tail read (last ~250 lines, 2026-08-21 through 2026-08-28) before selection: standing fingerprints confirmed live — bio-verbatim-untouched-preexisting-bio (13 prior same-day instances), venue-backlog-saturated (14 consecutive prior firings today), venue-edit-facebookUrl/instagramUrl silent-noop (`socialMediaUrls` — not needed this firing, no venue writes), genres-replace-not-merge (avoided by always writing a merged genres array where a record already held values — none of this firing's 6 verified records held pre-existing genres, so no merge was needed), verify-id-before-write, never-guess-fb-vanity-url, validator-cannot-check-venues, bash-heredoc-mangles-emoji (evidence written via Python throughout), tier4-sampling-never-reaches-true-oldest, curly-apostrophe-bio-mismatch (checked all 6 verbatim bios against the source DOM text for straight/curly apostrophe drift — none of the 6 contained an apostrophe in the bio text, so this class did not apply this firing).
+
+**Concurrency (§6A step 2b, RUNBOOK wins over the inline task-prompt text):** the prompt's own Step-0/Step-1 lock-check-before-runbook-read wording and its generic `enrichment.json` claim-file name are void per §6A step 2a/2b and §6G. Claim file used: `data/state/claims/bv2a-enrichment.json`. Read at firing start: `{"heldBy":null,"releasedAt":"2026-08-28T13:45:00Z","expiresAt":"1970-01-01T00:00:00Z","lastRun":"bv2a-enrichment-2026-08-28T13-19-42Z"}` — released. Wrote heartbeat `data/state/heartbeat/bv2a-enrichment-2026-08-28T14-20-03Z.json` (`outcome:"started"`) before any gate, then acquired the claim (`heldBy: bv2a-enrichment-2026-08-28T14-20-03Z`, TTL 3h per §6G's `bv2a-enrichment` row, `expiresAt: 2026-08-28T17:20:03Z`). No stray `data/state/enrichment.lock` file found — would not have been honoured or recreated in any case. Released at close; heartbeat rewritten to `outcome:"completed"`.
+
+**Chrome:** exactly one browser connected (`list_connected_browsers`, deviceId `7ad060c3-…`, isLocal true). Loaded `facebook.com/` — logged-in home feed shown ("Create a post... What's on your mind, The Torrists?"), not a login page. The extension disconnected once mid-run (a known ~15–20-navigation issue per §8), while mid-search for The Mo Joes, and was recovered by re-listing/re-selecting via `tabs_context_mcp` with no data loss. No hard stop encountered.
+
+## Selection (Step 3)
+
+**Tier 1 — artists created in the last 24h missing socials:** `list_artists(createdSince:"2026-08-27T14:20:03Z", missingSocials:true)` returned **6** — Collette, Ben Nilsson, Joe McShane, Virgin Mary's, Agents of Chaos, Dennie Mellor. All 6 are the identical batch already fully worked this morning (firing1119z's 14-record Tier-1 batch, logged to CTO-INBOX as `bv2a-firing1119z-tier1-batch-generic-names-zero-hits`, plus a standing DECISION on Virgin Mary's). 0 fresh Tier 1 records.
+
+**Tier 2 — venues created in the last 24h missing socials:** returned **0**.
+
+**Tier 3 — backlog venues missing socials, oldest first:** `list_venues(missingSocials:true)` returned the identical **34** records as every firing since 00:45Z today. Cross-referenced all 34 ids against standing CTO-INBOX fingerprints (park/nature-reserve, business-mismatch, ambiguous-address, non-venue/placeholder classes, Darcy's repeat-closure, The Tannery/Madeley Carnival, Annitsford Welfare Club, Market Place Burton upon Trent). Zero unflagged, unworked venue records found. **15th consecutive firing today reconfirming full saturation.** 0 venue writes.
+
+**Tier 4 — backlog artists missing socials, oldest createdAt first:** `list_artists(missingSocials:true)` returned 1348 total at firing start (no server-side createdAt sort, per the standing tier4-sampling defect). Checked today's prior firings' offsets (grepped all RUN-REPORT-*.md and CTO-INBOX.md for today: offsets 0, 100, 150, 200, 250, 300 already used) and sampled a genuinely fresh block at **offset 600** (50 records). Cross-referenced all 50 candidate ids against today's evidence file (248 lines before this firing) — **all 50 were fresh** (zero prior coverage today at this offset). Sorted the 50 ascending by createdAt and took the oldest 15: THE FUNKBREAKERS (2026-05-01, the oldest record any firing has reached today, beating the previous record of 2026-03-01 from firing1319z), Pinkish, Supersonic 90s, Gigantic, Abstract, Best of Foo, Sophie Marie's Country Rock & Western Show, Swan & Chequers Big Band, Mantra, The Mo Joes, Rising Tide, Under the Radar, Mammoth Jacket, Yeo Division, Lady Starduzt — exactly 15, filling the artist budget (35 fresher candidates from the offset-600 block left for a future firing).
+
+**Tier 5 — artists missing genres with an existing facebookUrl:** not reached; Tiers 1 + 4 filled the 15-artist budget (0 + 15).
+
+## Records enriched WITH a verified page (6)
+
+| Artist | Fields | Evidence |
+|---|---|---|
+| THE FUNKBREAKERS (`f6d673aa…`) | facebookUrl, bio | facebook.com/Funkbreakers — "Funkbreakers", Musician/band, 372 followers. Recent post "Granvilles in Stone tonight from 10pm!" — Stone, Staffordshire, adjacent to the stored Stoke-on-Trent footprint (Tier B). Bio quoted verbatim: "Welcome to the page for the Funkbreakers Band! We hope you enjoy your brief stay or click! Updates to come friends :)". Avatar auto-derived (`graph.facebook.com/Funkbreakers/picture?type=large`). |
+| Supersonic 90s (`4059ec7a…`) | facebookUrl, bio, location, locationType | facebook.com/supersonic90sband/ — "Super Sonic 90s", 312 followers, page states "Lives in Loughborough". Bio quoted verbatim: "Super Sonic 90s...yep, you guessed it, we play what it says on the tin! Live 4 piece band 90s tooons!". Location corrected from the stored regional fallback "Derbyshire, UK" to the page-stated "Loughborough" per §2A.3/§7 (page-stated location beats a gig-town/regional fallback); Loughborough borders South Derbyshire and the page's own upcoming event (90s Night, White Hart, Ashby-de-la-Zouch) sits on that border, consistent with the existing footprint. Avatar auto-derived. |
+| Gigantic (`60d82a83…`) | facebookUrl, bio, websiteUrl, actType | facebook.com/p/Gigantic-100063584856708/ — "Gigantic", Musician/band, 354 followers. Own website gigantic-band.co.uk states "Rock and Indie Covers band – Worksop Nottinghamshire" — exact match to the stored Worksop location. Recent post: "Looking forward to playing THE BROWNLOW ARMS, HIGH MARNHAM" (Nottinghamshire, near Worksop — Tier B corroboration). Bio quoted verbatim: "We are a superb live four piece band who love playing live to an enthusiastic crowd!". actType set to `["covers"]` — evidenced by the website's "Rock and Indie Covers band" description (§0.18/§2A.2). |
+| Sophie Marie's Country Rock & Western Show (`934a5017…`) | facebookUrl, bio, genres | facebook.com/p/Sophie-Maries-Country-Rock-Western-Show-100083917424309/ — exact-name match (distinctive six-word string), Musician/band, 702 followers, 100% recommend (7 reviews). Bio quoted verbatim: "The ultimate country party show! Old Time Country pop & rock duo. Dancing guaranteed!". Genre "Country" added (inferred from the explicit "Old Time Country" bio text — the one permitted inferred field). |
+| Under the Radar (`06b70208…`) | facebookUrl, bio, websiteUrl | facebook.com/p/Under-The-Radar-Band-100063679445575/ — 378 followers, Musician/band, links to undertheradarband.co.uk. Record's own externalId is lemonrock `undertheradarband` (Exmouth, Devon), matching this page's name and website (Tier A, source-linked). Bio quoted verbatim: "Covers you love but dont expect to hear!". websiteUrl undertheradarband.co.uk added. |
+| Lady Starduzt (`ab2da58c…`) | facebookUrl, bio, genres | facebook.com/people/Lady-Starduzt/61552545047933/ — "Lady Starduzt", 172 followers, Follow button (not a friend/personal-profile shape), category "Entertainment website", page-stated location "Lee Mill, PL21 9EF" (immediately adjacent to the stored Ivybridge location), links to lemonrock.com (Tier A, source-linked — record's own externalId is lemonrock `ladystarduzt`). Bio quoted verbatim in full, including the act's own line breaks: "Lady Starduzt welcomes you aboard her Time Machine, flying you back to the 70's with the music of your mis-spent youth (and hers)! / Come and sing along with 70's Classics, Glam Rock, and just a little bit of cheese!..." Genre "70s" added (inferred from the explicit "70's Classics, Glam Rock" bio text) alongside the pre-existing Pop/Rock. |
+
+All six confirmed via `get_by_id` immediately before each `edit_artist` call (name matched the intended target in every case) and read back after write, byte-exact (bio line breaks, apostrophes and punctuation all confirmed identical on Lady Starduzt's multi-paragraph bio).
+
+## Records recorded as an EVIDENCED BLANK (9) — both surfaces tried
+
+| Artist | Variants tried (Google + Facebook page search) | Reason |
+|---|---|---|
+| Pinkish | `Pinkish band Derbyshire facebook` (Google); `Pinkish band` (FB page search) | The only Musician/band candidate under this name ("Pinkish the band") is Charlottesville, VA, US — non-UK, rejected per §2A.1.1. No UK candidate found on either surface. |
+| Abstract | `Abstract covers band Yorkshire facebook` (Google); `Abstract covers band Yorkshire` (FB page search) | Sole exact-name candidate (facebook.com/bandabstract, Musician/band, 144 followers) and its own website (abstractmusic.co.uk) both carry only generic function-band copy with no town/region stated anywhere. Name + category alone is Tier C — insufficient without a location/footprint signal to confirm the stored "Yorkshire" region. |
+| Best of Foo | `"Best of Foo" tribute band Manchester facebook` (Google); `Best of Foo` (FB page search) | Found a genuine, active UK Foo Fighters tribute (facebook.com/BestOfFooUK, 2.9K followers) but its posts and festival bookings (Lowoods Club/Barnsley, Ely Fest/Cambridgeshire, Oulton Broad/Suffolk, Deepcar Fest/Sheffield) show a nationally-touring act with no Greater Manchester connection found — region mismatch against the stored record, not attached. |
+| Swan & Chequers Big Band | `"Swan & Chequers Big Band" Sandbach facebook` (Google); `Swan and Chequers Big Band` (FB page search) | No dedicated page found on either surface. The Swan & Chequers, Sandbach is the venue's own page (hosting a monthly Jazz Jam), not a standalone act called "Swan & Chequers Big Band" with its own identity. |
+| Mantra | `Mantra Bring Me The Horizon tribute band Stoke facebook` (Google); `Mantra Stoke band` (FB page search) | No Stoke/Staffordshire BMTH-tribute page found on either surface. Candidates returned were Mumbai, London (non-tribute rock band), Nepal, New Zealand, Indonesia and Rochester NY — none matching the stored record's Stoke location or tribute bio. |
+| The Mo Joes | `"The Mo Joes" band Devon facebook` (Google); `The Mo Joes Ivybridge`, `Mo Joes band` (FB page search) | No Devon/UK candidate found on either surface (only US, Vietnamese and unrelated Ivybridge local-business results). Pre-existing lemonrock-sourced bio (with member names) left untouched. |
+| Rising Tide | `"Rising Tide" band Torquay facebook` (Google); `Rising Tide Torquay` (FB page search) | The sole close-matching Musician/band candidate (genres and format matching the stored Pop/Rock covers record) resolves to handle `facebook.com/risingtide.aus` — an Australian page. Non-UK, rejected per §2A.1.1. |
+| Mammoth Jacket | `"Mammoth Jacket" band Teignmouth facebook` (Google); `Mammoth Jacket band` (FB page search) | No exact-name match on either surface. Closest candidate ("MAMMOTH", a Devon-based 5-piece function band) carries a materially different name with no evidence linking it to "Mammoth Jacket" — not attached on a name-change guess (never-guess discipline). |
+| Yeo Division | `"Yeo Division" band Teignmouth facebook` (Google); `Yeo Division band` (FB page search) | Exact-name page found (facebook.com/yeodivision, Musician/band, 153 followers) but its only recent activity check-in is at The Palladium Club, **Bideford** — North Devon. The stored bndy record is Teignmouth, South Devon, a considerable distance away with no other footprint overlap found. Region-mismatch-within-county flag, not attached. |
+
+## Records SKIPPED, and why
+
+None skipped outright among the 15 selected — every record was either enriched or recorded as an evidenced blank. Venues: all 34 backlog records reconfirmed against standing fingerprints without a fresh live search each, per the standing "one pass, don't re-verify exhaustively" guidance.
+
+## Names corrected under §0.6 / §0.20
+
+None this firing. (Location corrected on Supersonic 90s per §2A.3/§7 — a location correction, not a name correction.)
+
+## Defects / decisions logged to CTO-INBOX (4 new entries)
+
+- `bv2a-venue-backlog-saturated-reconfirmed-firing1420z` — RULE. 15th consecutive firing.
+- `bv2a-firing1420z-tier4-oldest-record-2026-05-01` — DATA. New oldest-touched record found (THE FUNKBREAKERS, 2026-05-01), beating the previous same-day record of 2026-03-01.
+- `bv2a-firing1420z-best-of-foo-region-mismatch` — DATA. Nationally-touring UK tribute act found, no Manchester link.
+- `bv2a-firing1420z-yeo-division-bideford-vs-teignmouth` — DATA. Exact-name FB page is North Devon (Bideford); stored record is South Devon (Teignmouth).
+
+## Validator summary line (verbatim)
+
+```
+6 records · 2 clean · 0 FAIL · 4 WARN   [mode=gate]
+```
+
+0 FAIL on the first pass — no exclusions needed this firing (none of the 6 verified records carried a pre-existing bio, so the standing untouched-bio false-positive class did not fire). The 4 WARNs are all `STUB_NO_IMAGE` on Gigantic, Sophie Marie's Country Rock & Western Show, Under the Radar and Lady Starduzt — reviewed and judged a true no-image case: these four Facebook URLs are `/p/...` or `/people/...` numeric-id forms that the platform's own avatar-derivation logic did not resolve to a `graph.facebook.com` picture URL (unlike THE FUNKBREAKERS and Supersonic 90s, both plain vanity-handle URLs, which auto-derived correctly and passed clean). Not a defect in this firing's writes; consistent with the tool's documented avatar-recipe limitations (RUNBOOK §8).
+
+## Ledger / summary / dashboards
+
+- `data/state/enrichment-evidence-2026-08-28-enrichment.jsonl` — 15 lines appended this firing, written via Python per the standing bash-heredoc-mangles-emoji lesson.
+- `data/state/enrichment-ledger.jsonl` — 15 `enrich` lines (6 verified, 9 blank, all artist) + 1 `snapshot` line appended (snapshot: artistsTotal 3294, artistsMissingSocials 1342 — down from 1348 at firing start, confirming the 6 writes — artistsMissingGenres 939, venuesTotal 3206, venuesMissingSocials 34 — unchanged, confirming 0 venue writes).
+- `data/state/run-summary.jsonl` — 1 line appended, outcome `completed`, recordsEnriched 6, skipped 9.
+- `CTO-INBOX.md` — 4 new entries (1 RULE, 3 DATA).
+- Both dashboards rebuilt (`data/normalized/enrichment/DASHBOARD.html` — 3266 records, 122 snapshots; `data/normalized/DASHBOARD.html`).
+- `20-Daily/2026-08-28.md` — no such file exists in the vault (last daily note on disk is `2026-08-21.md`); per the orchestrator's instruction to skip this step if the convention is not currently being followed, no new daily-note file was created.
+
+## Summary
+
+**0 venues verified, 0 evidenced-blank-newly among the 34 backlog venues (15th consecutive firing reconfirming saturation, all already flagged in prior firings today).** **6 artists enriched with a directly attached, verified Facebook page** (THE FUNKBREAKERS: facebookUrl+bio; Supersonic 90s: facebookUrl+bio+location correction; Gigantic: facebookUrl+bio+websiteUrl+actType; Sophie Marie's Country Rock & Western Show: facebookUrl+bio+genre; Under the Radar: facebookUrl+bio+websiteUrl; Lady Starduzt: facebookUrl+bio+genre) **+ 9 evidenced blank** (3 non-UK-page rejections — Pinkish, Rising Tide, plus Best of Foo's region mismatch; 1 no-standalone-page case — Swan & Chequers Big Band; 1 no-UK-candidate case — Mantra; 1 pre-existing-bio-left-untouched no-match case — The Mo Joes; 1 name-uncertain case — Mammoth Jacket; 1 within-county region-mismatch case — Yeo Division; 1 name+category-only insufficient-evidence case — Abstract). Both surfaces (Google + Facebook page search via Chrome) tried throughout for every blank. One location correction made under §2A.3/§7 (Supersonic 90s: Derbyshire, UK → Loughborough, page-stated). No names corrected this firing. Validator: `6 records · 2 clean · 0 FAIL · 4 WARN` — 0 FAIL, no exclusions required. Selection reached a new oldest-touched-today record (THE FUNKBREAKERS, created 2026-05-01) via a fresh offset-600 Tier 4 sample, all 50 candidates in that block genuinely fresh against today's evidence file. Elapsed well within the 40-minute budget and the 15-artist/30-venue cap (0 venues + 15 artists worked). Circuit breaker did not fire; no hard stop encountered; Chrome was available and logged in throughout (one transient extension disconnect, recovered per §8 with no data loss).
